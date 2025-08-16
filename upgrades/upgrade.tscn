@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpl6ohbh08x3w"]
+
+[ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_3oguy"]
+
+[node name="Upgrade" type="Button"]
+offset_right = 221.0
+offset_bottom = 349.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Upgrade name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_3oguy")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "+ 5 seagulls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Crab gunners fire 15% faster underwater"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

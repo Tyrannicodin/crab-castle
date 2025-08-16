@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnvnbsupfdau4"]
+
+[ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_4fuuu"]
+[ext_resource type="Script" uid="uid://dx5wdsegef6t2" path="res://game/end_wave.gd" id="2_dxrkv"]
+[ext_resource type="PackedScene" uid="uid://68en2fypp2j5" path="res://upgrades/UpgradeUI.tscn" id="3_dakft"]
+[ext_resource type="Script" uid="uid://b6y06i07h8uw3" path="res://game/game_end.gd" id="3_u5opy"]
+[ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
+[ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
+shader = ExtResource("4_u5opy")
+shader_parameter/amount = 2.5
+
+[node name="Game" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(679, 454)
+texture = ExtResource("1_4fuuu")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 348.0
+offset_top = 242.0
+offset_right = 430.0
+offset_bottom = 273.0
+text = "End wave"
+script = ExtResource("2_dxrkv")
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 505.0
+offset_top = 250.0
+offset_right = 587.0
+offset_bottom = 281.0
+text = "End Game (loss)"
+script = ExtResource("3_u5opy")
+
+[node name="UpgradeUi" parent="." instance=ExtResource("3_dakft")]
+visible = false
+
+[node name="GameEnd" parent="." instance=ExtResource("4_dxrkv")]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+material = SubResource("ShaderMaterial_lnu2h")
+anchor_mode = 0
+
+[connection signal="pressed" from="Button" to="Button" method="on_pressed"]
+[connection signal="pressed" from="Button2" to="Button2" method="on_pressed"]

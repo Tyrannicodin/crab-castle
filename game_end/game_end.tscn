@@ -1,0 +1,125 @@
+[gd_scene load_steps=7 format=3 uid="uid://jbioikw54jg4"]
+
+[ext_resource type="Script" uid="uid://bsdloip56540v" path="res://game_end/main_menu.gd" id="1_nbbxe"]
+[ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="1_wn2jo"]
+[ext_resource type="Texture2D" uid="uid://g885r3geq3xg" path="res://upgrades/white.png" id="2_mhvgj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ht27"]
+shader = ExtResource("1_wn2jo")
+shader_parameter/amount = 2.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ckj2n"]
+bg_color = Color(0.165656, 0.165656, 0.165656, 1)
+skew = Vector2(0.02, 0.005)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+shadow_size = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_ckj2n"]
+font_size = 33
+
+[node name="GameEnd" type="CanvasLayer"]
+
+[node name="Blur" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_5ht27")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mhvgj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -494.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ckj2n")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_ckj2n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "You made it to wave 5. Not bad!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 4
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Gold spent"
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+min_value = 37.0
+value = 37.0
+alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Rooms built"
+
+[node name="SpinBox2" type="SpinBox" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+value = 9.0
+alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Seagulls sunk"
+
+[node name="SpinBox3" type="SpinBox" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+value = 22.0
+alignment = 1
+
+[node name="Label4" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Octopuses inked"
+
+[node name="SpinBox4" type="SpinBox" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+value = 11.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Button" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+script = ExtResource("1_nbbxe")
+
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/Button" to="MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/Button" method="on_pressed"]
