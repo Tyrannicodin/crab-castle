@@ -18,9 +18,8 @@ func _spawn_enemy():
 	self.enemies.push_back(seagull)
 	seagull.game = self
 	seagull.on_death.connect(func(e: Enemy):
-		self.remove_child(e)
 		e.queue_free()
-		enemies = enemies.filter(func(e_): e != e_)
+		enemies = enemies.filter(func(e_): e.get_instance_id() != e_.get_instance_id())
 	)
 
 func find_closest_enemy(to_room) -> Enemy:
