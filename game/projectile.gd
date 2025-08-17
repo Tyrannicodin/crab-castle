@@ -25,10 +25,9 @@ func y_pos_dx(ex: float, ey: float, x: float):
 	
 func aim(spawnpoint: Vector2, enemy: Enemy):
 	origin = spawnpoint
-	enemy_position = Vector2(enemy.global_position.x - enemy.speed * speed / 100.0, enemy.global_position.y)
+	enemy_position = Vector2(enemy.global_position.x, enemy.global_position.y)
 	var velocity = y_pos_dx(enemy_position.x, enemy_position.y, 0)
-	
-			
+
 func _process(delta: float) -> void:
 	time += delta
 				

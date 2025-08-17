@@ -196,10 +196,10 @@ position = Vector2(331, 363)
 position = Vector2(333, 264)
 
 [node name="Floor4" type="Node2D" parent="ProjectileSpawnPoints"]
-position = Vector2(330, 165)
+position = Vector2(334, 163)
 
 [node name="Floor5" type="Node2D" parent="ProjectileSpawnPoints"]
-position = Vector2(332, 68)
+position = Vector2(333, 65)
 
 [node name="GameStartBits" type="CanvasLayer" parent="."]
 visible = false
