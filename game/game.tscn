@@ -10,7 +10,7 @@
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
 [ext_resource type="PackedScene" uid="uid://bj0ohm7w44ukd" path="res://game/rooms/Slingshot.tscn" id="8_l8g03"]
 [ext_resource type="PackedScene" uid="uid://ds73obbkiouu3" path="res://game/rooms/Cannon.tscn" id="9_j8tme"]
-[ext_resource type="PackedScene" uid="uid://bf3xiqi6q0mvj" path="res://game/rooms/SeashellRoom.tscn" id="10_3vho3"]
+[ext_resource type="PackedScene" path="res://game/rooms/SeashellRoom.tscn" id="10_3vho3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
 shader = ExtResource("4_u5opy")
