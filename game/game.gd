@@ -4,9 +4,11 @@ class_name Game
 var enemies = []
 
 func _ready() -> void:
+	$GameStartBits.visible = true
 	_spawn_enemy()
 	$Tower/Room.game = self
 	$Tower/Room2.game = self
+	$Tower/Room3.game = self
 
 
 func _spawn_enemy():
@@ -21,6 +23,9 @@ func _spawn_enemy():
 		e.queue_free()
 		enemies = enemies.filter(func(e_): e.get_instance_id() != e_.get_instance_id())
 	)
+
+func has_enemies() -> bool:
+	return len(enemies) > 0
 
 func find_closest_enemy(to_room) -> Enemy:
 	if len(enemies) == 0:

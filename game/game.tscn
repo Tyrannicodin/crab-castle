@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=18 format=3 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_4fuuu"]
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
@@ -10,6 +10,7 @@
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
 [ext_resource type="PackedScene" uid="uid://bj0ohm7w44ukd" path="res://game/rooms/Slingshot.tscn" id="8_l8g03"]
 [ext_resource type="PackedScene" uid="uid://ds73obbkiouu3" path="res://game/rooms/Cannon.tscn" id="9_j8tme"]
+[ext_resource type="PackedScene" uid="uid://bf3xiqi6q0mvj" path="res://game/rooms/SeashellRoom.tscn" id="10_3vho3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
 shader = ExtResource("4_u5opy")
@@ -100,9 +101,13 @@ anchor_mode = 0
 position = Vector2(216, 349)
 
 [node name="Room" parent="Tower" instance=ExtResource("8_l8g03")]
+position = Vector2(6, -42)
 
 [node name="Room2" parent="Tower" instance=ExtResource("9_j8tme")]
-position = Vector2(1, -233)
+position = Vector2(4, -268)
+
+[node name="Room3" parent="Tower" instance=ExtResource("10_3vho3")]
+position = Vector2(359, -32)
 
 [node name="GameStartBits" type="CanvasLayer" parent="."]
 visible = false
