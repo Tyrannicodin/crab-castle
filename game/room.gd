@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 		if (game.find_closest_enemy(self) and requires_enemies_to_trigger) or !requires_enemies_to_trigger:
 			cooldown_remaining = cooldown_seconds
 			trigger_weapon()
-	
+
 	if cooldown_seconds > 0 and cooldown_remaining > 0:
 		$CooldownBar.value = cooldown_remaining / cooldown_seconds
 	else:

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyk7tyb0v0w8y"]
+
+[ext_resource type="PackedScene" uid="uid://bligscgn0qlft" path="res://game/Projectile.tscn" id="1_nna2k"]
+[ext_resource type="Texture2D" uid="uid://co60lc74aqh1w" path="res://assets/rooms/arrow.png" id="2_ybyhv"]
+
+[node name="Projectile" instance=ExtResource("1_nna2k")]
+damage = 100
+speed = 1000.0
+pierce = 1
+knockback = 5
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(33, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+position = Vector2(1.19209e-07, -1.42109e-14)
+scale = Vector2(0.234127, 0.234127)
+texture = ExtResource("2_ybyhv")

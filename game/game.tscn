@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=32 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_4fuuu"]
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bf3xiqi6q0mvj" path="res://game/rooms/SeashellRoom.tscn" id="10_3vho3"]
 [ext_resource type="PackedScene" uid="uid://b6tseugg263i5" path="res://game/rooms/Empty.tscn" id="11_ee6o4"]
 [ext_resource type="Texture2D" uid="uid://c0mf8qj5fny5k" path="res://assets/rooms/empty_scaled.png" id="12_qf6n1"]
+[ext_resource type="PackedScene" uid="uid://cboi0aijc0uqh" path="res://game/rooms/Bow.tscn" id="13_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://dkxam7a5hi4pc" path="res://assets/rooms/cannon_scaled.png" id="13_vsp63"]
 [ext_resource type="Texture2D" uid="uid://oyj7iolb3f0y" path="res://assets/rooms/seashell1_scaled.png" id="14_b686c"]
 [ext_resource type="Texture2D" uid="uid://ldwldwfriifr" path="res://assets/rooms/slingshot_scaled.png" id="15_hb504"]
@@ -169,7 +170,7 @@ position = Vector2(232, 496)
 [node name="Room5" parent="Tower" instance=ExtResource("11_ee6o4")]
 position = Vector2(100, 397)
 
-[node name="Room6" parent="Tower" instance=ExtResource("11_ee6o4")]
+[node name="Room6" parent="Tower" instance=ExtResource("13_pxxsx")]
 position = Vector2(232, 397)
 
 [node name="Room7" parent="Tower" instance=ExtResource("11_ee6o4")]
