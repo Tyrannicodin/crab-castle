@@ -96,7 +96,7 @@ material = SubResource("ShaderMaterial_lnu2h")
 anchor_mode = 0
 
 [node name="Tower" type="Node2D" parent="."]
-position = Vector2(148, 489)
+position = Vector2(148, 323)
 scale = Vector2(0.342141, 0.342141)
 
 [node name="Room1" parent="Tower" instance=ExtResource("8_l8g03")]
@@ -130,6 +130,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_l8g03")
 }
 autoplay = "on_start"
+
+[node name="EnemySpawnPoint" type="Node2D" parent="."]
+position = Vector2(428, 296)
 
 [connection signal="pressed" from="Button" to="Button" method="on_pressed"]
 [connection signal="pressed" from="Button2" to="Button2" method="on_pressed"]
