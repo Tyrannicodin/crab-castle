@@ -4,8 +4,9 @@
 [ext_resource type="Script" uid="uid://fuh45tl6bm2n" path="res://game/enemy.gd" id="2_xy0jy"]
 
 [node name="Seagull" type="Sprite2D"]
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_p5qvc")
 script = ExtResource("2_xy0jy")
 display_name = "Seagull"
-speed = 100
+speed = 20
 health = 100
