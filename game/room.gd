@@ -1,7 +1,7 @@
 extends Node
 class_name Room
 
-var sprite: String
-var display_name: String
-var cooldown_seconds: int
-var damage: int
+@export var sprite: String
+@export var display_name: String
+@export var cooldown_seconds: int
+@export var damage: int

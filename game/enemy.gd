@@ -1,7 +1,6 @@
-extends Node
+extends Sprite2D
 class_name Enemy
 
-var sprite: String
-var display_name: String
-var speed: int
-var health: int
+@export var display_name: String
+@export var speed: int
+@export var health: int

@@ -96,6 +96,8 @@ material = SubResource("ShaderMaterial_lnu2h")
 anchor_mode = 0
 
 [node name="Tower" type="Node2D" parent="."]
+position = Vector2(0, 426)
+scale = Vector2(0.342141, 0.342141)
 
 [node name="Room1" type="Sprite2D" parent="Tower"]
 position = Vector2(178, 534.5)
