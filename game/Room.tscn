@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1vj1p3cfm3v0"]
+[gd_scene load_steps=9 format=3 uid="uid://b1vj1p3cfm3v0"]
 
 [ext_resource type="Script" uid="uid://c8on42qdfj7ka" path="res://game/room.gd" id="1_5di8v"]
 [ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/rooms/empty.png" id="1_th6kw"]
 [ext_resource type="Texture2D" uid="uid://f3uls12q6bgs" path="res://assets/health_bar_empty.png" id="2_f06k2"]
 [ext_resource type="Texture2D" uid="uid://cyp7vrfgf8mr8" path="res://assets/cooldown_bar_full.png" id="3_5di8v"]
+[ext_resource type="Texture2D" uid="uid://cgggqyclpoo3o" path="res://assets/rooms/arrow_up.png" id="5_qqhu8"]
+[ext_resource type="Texture2D" uid="uid://dmnmkxsnexb3d" path="res://assets/rooms/arrow_down.png" id="6_tcppf"]
+[ext_resource type="Texture2D" uid="uid://dduhjhbyxd14y" path="res://assets/rooms/arrow_left.png" id="7_613ps"]
+[ext_resource type="Texture2D" uid="uid://cclkm1h2nim3x" path="res://assets/rooms/arrow_right.png" id="8_tcppf"]
 
 [node name="Room" type="Node2D"]
 script = ExtResource("1_5di8v")
@@ -28,3 +32,23 @@ offset_right = 100.0
 offset_bottom = 34.0
 texture_under = ExtResource("2_f06k2")
 texture_progress = ExtResource("3_5di8v")
+
+[node name="Up Arrow" type="Sprite2D" parent="."]
+position = Vector2(1, -39)
+scale = Vector2(0.1945, 0.1945)
+texture = ExtResource("5_qqhu8")
+
+[node name="Down Arrow" type="Sprite2D" parent="."]
+position = Vector2(-1, 39)
+scale = Vector2(0.207031, 0.207031)
+texture = ExtResource("6_tcppf")
+
+[node name="Left Arrow" type="Sprite2D" parent="."]
+position = Vector2(-53, 0)
+scale = Vector2(0.220339, 0.220339)
+texture = ExtResource("7_613ps")
+
+[node name="Right Arrow" type="Sprite2D" parent="."]
+position = Vector2(53, 1)
+scale = Vector2(0.245968, 0.245968)
+texture = ExtResource("8_tcppf")
