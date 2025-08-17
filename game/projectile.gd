@@ -3,9 +3,8 @@ extends Node2D
 @export var damage = 50
 
 @export var speed = 500.0
-@export var velocity = 1.5
-@export var gravity = 2.0
 @export var pierce = 0
+@export var gravity = true
 
 var time = 0
 var enemy_position: Vector2 = Vector2.ZERO
@@ -15,11 +14,17 @@ var disabled = false
 
 func y_pos(ex: float, ey: float, x: float):
 	var inverse_speed = (1.0 / speed)
-	return inverse_speed * x * x - inverse_speed * x * ex + x * ey / ex
+	if gravity:
+		return inverse_speed * x * x - inverse_speed * x * ex + x * ey / ex
+	else:
+		return x * ey / ex
 	
 func y_pos_dx(ex: float, ey: float, x: float):
 	var inverse_speed = (1.0 / speed)
-	return 2 * inverse_speed * x - inverse_speed * ex + ey / ex
+	if gravity:
+		return 2 * inverse_speed * x - inverse_speed * ex + ey / ex
+	else:
+		return ey / ex
 	
 func aim(spawnpoint: Vector2, enemy: Enemy):
 	origin = spawnpoint
