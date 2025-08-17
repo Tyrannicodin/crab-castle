@@ -41,15 +41,17 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 	if parent is not Enemy:
 		return
-	
+
+	var enemy: Enemy = parent
+
+	if !enemy.is_alive():
+		return
+
 	if remaining_pierce == 0:
-		print("Pierce cap reached")
 		self.queue_free()
 		self.disable()
 	else:
 		remaining_pierce -= 1
-	
-	var enemy: Enemy = parent
 
 	enemy.damage(damage)
 

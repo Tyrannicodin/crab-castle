@@ -201,6 +201,23 @@ position = Vector2(334, 163)
 [node name="Floor5" type="Node2D" parent="ProjectileSpawnPoints"]
 position = Vector2(333, 65)
 
+[node name="EnemySpawnPoints" type="Node2D" parent="."]
+
+[node name="Floor1" type="Node2D" parent="EnemySpawnPoints"]
+position = Vector2(1131, 474)
+
+[node name="Floor2" type="Node2D" parent="EnemySpawnPoints"]
+position = Vector2(1130, 370)
+
+[node name="Floor3" type="Node2D" parent="EnemySpawnPoints"]
+position = Vector2(1126, 266)
+
+[node name="Floor4" type="Node2D" parent="EnemySpawnPoints"]
+position = Vector2(1129, 166)
+
+[node name="Floor5" type="Node2D" parent="EnemySpawnPoints"]
+position = Vector2(1126, 60)
+
 [node name="GameStartBits" type="CanvasLayer" parent="."]
 visible = false
 
@@ -231,9 +248,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_l8g03")
 }
 autoplay = "on_start"
-
-[node name="EnemySpawnPoint" type="Node2D" parent="."]
-position = Vector2(1040, 252)
 
 [node name="TowerMap" type="TileMapLayer" parent="."]
 visible = false
