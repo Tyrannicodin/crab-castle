@@ -3,8 +3,7 @@ extends Node2D
 @export var damage = 50
 
 @export var speed = 500.0
-@export var velocity = 1.5
-@export var gravity = 2.0
+@export var max_velocity = 1.5
 @export var pierce = 0
 @export var stun_lock = 0.1
 @export var knockback = 0
@@ -17,22 +16,29 @@ var disabled = false
 
 func y_pos(ex: float, ey: float, x: float):
 	var inverse_speed = (1.0 / speed)
-	return inverse_speed * x * x - inverse_speed * x * ex + x * ey / ex
+	if gravity:
+		return inverse_speed * x * x - inverse_speed * x * ex + x * ey / ex
+	else:
+		return x * ey / ex
 	
 func y_pos_dx(ex: float, ey: float, x: float):
 	var inverse_speed = (1.0 / speed)
-	return 2 * inverse_speed * x - inverse_speed * ex + ey / ex
-
+	if gravity:
+		return 2 * inverse_speed * x - inverse_speed * ex + ey / ex
+	else:
+		return ey / ex
+	
 func aim(spawnpoint: Vector2, enemy: Enemy):
 	origin = spawnpoint
 	enemy_position = Vector2(enemy.global_position.x, enemy.global_position.y)
-	var velocity = y_pos_dx(enemy_position.x, enemy_position.y, 0)
 
 func _process(delta: float) -> void:
 	time += delta
 				
 	self.global_position.x = origin.x + time * speed
 	self.global_position.y = y_pos(enemy_position.x - origin.x, enemy_position.y - origin.y, time * speed) + origin.y
+	self.rotation = atan(y_pos_dx(enemy_position.x - origin.x, enemy_position.y - origin.y, time * speed))
+	
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if disabled:
