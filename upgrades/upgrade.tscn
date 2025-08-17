@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpl6ohbh08x3w"]
+[gd_scene load_steps=4 format=3 uid="uid://bpl6ohbh08x3w"]
 
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_3oguy"]
+[ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="1_rgapa"]
+[ext_resource type="FontVariation" uid="uid://xvvik2j6lvhf" path="res://assets/fonts/nunito.tres" id="3_fvx8q"]
 
 [node name="Upgrade" type="Button"]
 offset_right = 221.0
@@ -18,6 +20,7 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_rgapa")
 text = "Upgrade name"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -30,12 +33,14 @@ stretch_mode = 5
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fvx8q")
 text = "+ 5 seagulls"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fvx8q")
 text = "Crab gunners fire 15% faster underwater"
 horizontal_alignment = 1
 vertical_alignment = 1
