@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="2_serln"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_serln"]
-radius = 26.0
+radius = 25.02
 
 [node name="Projectile" instance=ExtResource("1_6st6q")]
 
@@ -12,7 +12,5 @@ radius = 26.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_serln")
 
-[node name="Area2D" type="Area2D" parent="." index="1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+[node name="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("CircleShape2D_serln")
