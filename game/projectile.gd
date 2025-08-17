@@ -3,6 +3,7 @@ extends Node2D
 @export var damage = 50
 
 @export var speed = 500.0
+@export var max_velocity = 1.5
 @export var pierce = 0
 @export var gravity = true
 
@@ -29,13 +30,14 @@ func y_pos_dx(ex: float, ey: float, x: float):
 func aim(spawnpoint: Vector2, enemy: Enemy):
 	origin = spawnpoint
 	enemy_position = Vector2(enemy.global_position.x, enemy.global_position.y)
-	var velocity = y_pos_dx(enemy_position.x, enemy_position.y, 0)
 
 func _process(delta: float) -> void:
 	time += delta
 				
 	self.global_position.x = origin.x + time * speed
 	self.global_position.y = y_pos(enemy_position.x - origin.x, enemy_position.y - origin.y, time * speed) + origin.y
+	self.rotation = atan(y_pos_dx(enemy_position.x - origin.x, enemy_position.y - origin.y, time * speed))
+	
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if disabled:
