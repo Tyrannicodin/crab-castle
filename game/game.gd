@@ -48,11 +48,19 @@ func _spawn_enemy():
 func has_enemies() -> bool:
 	return len(enemies.filter(func(x: Enemy): return x.is_alive())) > 0
 
-func find_closest_enemy(to_room) -> Enemy:
+func find_closest_enemy(to_room: Room) -> Enemy:
 	if !has_enemies():
 		return null
-	return enemies.filter(func(x: Enemy): return x.is_alive())[0]
-
+	var alive_enemies = enemies.filter(func(x: Enemy): return x.is_alive())
+	
+	var in_range_enemies = alive_enemies.filter(func(e: Enemy):
+		return abs((e.global_position - to_room.global_position).angle()) < PI / 8
+	)
+	
+	if (len(in_range_enemies) > 0):
+		return in_range_enemies[0]
+	return null
+	
 func fire_projectile_from_room(room: Room, projectile: Node2D, target: Enemy):
 	var fire_from_floor = 0
 	var i = 1

@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 	cooldown_remaining -= delta
 
 	if cooldown_remaining < 0:
-		if (game.has_enemies() and requires_enemies_to_trigger) or !requires_enemies_to_trigger:
+		if (game.find_closest_enemy(self) and requires_enemies_to_trigger) or !requires_enemies_to_trigger:
 			cooldown_remaining = cooldown_seconds
 			trigger_weapon()
 	
