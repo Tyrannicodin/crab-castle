@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1y4vxa31d6qw"]
+
+[ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/rooms/empty.png" id="1_nj3ws"]
+[ext_resource type="Texture2D" uid="uid://ujxkhojgkxk5" path="res://assets/rooms/cannon.png" id="2_3f8ls"]
+
+[node name="Cannon" type="Sprite2D"]
+texture = ExtResource("1_nj3ws")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(-0.2, 0.2)
+texture = ExtResource("2_3f8ls")
