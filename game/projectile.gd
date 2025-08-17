@@ -14,26 +14,26 @@ var origin: Vector2 = Vector2.ZERO
 var disabled = false
 
 func y_pos(ex: float, ey: float, x: float):
-	var d = ey / ex
 	var inverse_speed = (1.0 / speed)
-	return inverse_speed * x * x - inverse_speed * x * ex + d * x - ex * d + ey
+	return inverse_speed * x * x - inverse_speed * x * ex + x * ey / ex
 	
 func y_pos_dx(ex: float, ey: float, x: float):
-	var d = ey / ex
 	var inverse_speed = (1.0 / speed)
-	return 2 * inverse_speed * x - inverse_speed * ex + d
+	return 2 * inverse_speed * x - inverse_speed * ex + ey / ex
 	
 func aim(spawnpoint: Vector2, enemy: Enemy):
 	origin = spawnpoint
 	enemy_position = Vector2(enemy.global_position.x, enemy.global_position.y)
 	var velocity = y_pos_dx(enemy_position.x, enemy_position.y, 0)
+	
+	print(enemy_position)
 
 func _process(delta: float) -> void:
 	time += delta
 				
 	self.global_position.x = origin.x + time * speed
-	self.global_position.y = y_pos(enemy_position.x, enemy_position.y, time * speed) + origin.y
-
+	self.global_position.y = y_pos(enemy_position.x - origin.x, enemy_position.y - origin.y, time * speed) + origin.y
+	
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if disabled:
 		return
