@@ -9,6 +9,6 @@ cooldown_seconds = 5
 requires_enemies_to_trigger = false
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="2"]
-position = Vector2(-6, -11)
-scale = Vector2(0.359999, 0.359999)
+position = Vector2(-4.76837e-07, -16)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_23hge")

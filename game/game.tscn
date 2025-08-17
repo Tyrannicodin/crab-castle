@@ -10,7 +10,7 @@
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
 [ext_resource type="PackedScene" uid="uid://bj0ohm7w44ukd" path="res://game/rooms/Slingshot.tscn" id="8_l8g03"]
 [ext_resource type="PackedScene" uid="uid://ds73obbkiouu3" path="res://game/rooms/Cannon.tscn" id="9_j8tme"]
-[ext_resource type="PackedScene" path="res://game/rooms/SeashellRoom.tscn" id="10_3vho3"]
+[ext_resource type="PackedScene" uid="uid://bf3xiqi6q0mvj" path="res://game/rooms/SeashellRoom.tscn" id="10_3vho3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
 shader = ExtResource("4_u5opy")
@@ -72,10 +72,10 @@ position = Vector2(679, 454)
 texture = ExtResource("1_4fuuu")
 
 [node name="Button" type="Button" parent="."]
-offset_left = 348.0
-offset_top = 242.0
-offset_right = 430.0
-offset_bottom = 273.0
+offset_left = 992.0
+offset_top = 324.0
+offset_right = 1074.0
+offset_bottom = 355.0
 text = "End wave"
 script = ExtResource("2_dxrkv")
 
@@ -98,16 +98,16 @@ material = SubResource("ShaderMaterial_lnu2h")
 anchor_mode = 0
 
 [node name="Tower" type="Node2D" parent="."]
-position = Vector2(216, 349)
+position = Vector2(86, 84)
 
 [node name="Room" parent="Tower" instance=ExtResource("8_l8g03")]
-position = Vector2(6, -42)
+position = Vector2(66, 150)
 
 [node name="Room2" parent="Tower" instance=ExtResource("9_j8tme")]
-position = Vector2(4, -268)
+position = Vector2(66, 50)
 
 [node name="Room3" parent="Tower" instance=ExtResource("10_3vho3")]
-position = Vector2(359, -32)
+position = Vector2(66, 249)
 
 [node name="GameStartBits" type="CanvasLayer" parent="."]
 visible = false
@@ -141,7 +141,7 @@ libraries = {
 autoplay = "on_start"
 
 [node name="EnemySpawnPoint" type="Node2D" parent="."]
-position = Vector2(428, 296)
+position = Vector2(930, 34)
 
 [connection signal="pressed" from="Button" to="Button" method="on_pressed"]
 [connection signal="pressed" from="Button2" to="Button2" method="on_pressed"]
