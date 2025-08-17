@@ -2,7 +2,7 @@ extends Node2D
 class_name Room
 
 @export var display_name: String
-@export var cooldown_seconds: int
+@export var cooldown_seconds: float
 @export var requires_enemies_to_trigger: bool = true
 
 # The weapon fires

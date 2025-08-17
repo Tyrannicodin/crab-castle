@@ -5,26 +5,10 @@
 
 [node name="Room2" instance=ExtResource("1_mqnen")]
 display_name = "Seashell Room"
-cooldown_seconds = 5
+cooldown_seconds = 5.0
 requires_enemies_to_trigger = false
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="2"]
 position = Vector2(-4.76837e-07, -7)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_23hge")
-
-[node name="Up Arrow" parent="." index="4"]
-position = Vector2(2, -41)
-scale = Vector2(0.272625, 0.168659)
-
-[node name="Down Arrow" parent="." index="5"]
-position = Vector2(-1, 41.5625)
-scale = Vector2(0.283203, 0.165039)
-
-[node name="Left Arrow" parent="." index="6"]
-position = Vector2(-56.7145, -4.76837e-07)
-scale = Vector2(0.163193, 0.305085)
-
-[node name="Right Arrow" parent="." index="7"]
-position = Vector2(57, 1)
-scale = Vector2(0.17683, 0.324597)

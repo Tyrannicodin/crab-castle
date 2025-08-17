@@ -2,7 +2,7 @@ extends Node2D
 
 @export var damage = 50
 
-@export var speed = 100.0
+@export var speed = 10
 @export var gravity = 2.0
 
 var time = 0
@@ -17,12 +17,12 @@ func y_pos(p: Vector2, e: Vector2, x: float):
 	
 	return y_scale * x * x - y_scale * x * p.x - y_scale * x * e.x + d * x + y_scale * p.x * e.x - e.x * d + e.y
 	
-func aim(room: Room, enemy: Enemy):
+func aim(spawnpoint: Vector2, enemy: Enemy):
 	enemy_position = enemy.global_position
-	origin = room.to_global(room.position)
+	origin = spawnpoint
 
 func _process(delta: float) -> void:
 	time += delta
 		
-	self.global_position.x = time * speed
+	self.global_position.x = time * speed + origin.x
 	self.global_position.y = y_pos(origin, enemy_position, time * speed)

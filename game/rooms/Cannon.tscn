@@ -6,7 +6,8 @@
 
 [node name="Room" instance=ExtResource("1_nj3ws")]
 script = ExtResource("2_h01m3")
-cooldown_seconds = 3
+display_name = "Cannon"
+cooldown_seconds = 0.5
 
 [node name="Cannon" type="Sprite2D" parent="." index="2"]
 position = Vector2(2.80502, -11.8884)

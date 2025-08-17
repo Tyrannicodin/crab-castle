@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=29 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_4fuuu"]
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bj0ohm7w44ukd" path="res://game/rooms/Slingshot.tscn" id="8_l8g03"]
 [ext_resource type="PackedScene" uid="uid://ds73obbkiouu3" path="res://game/rooms/Cannon.tscn" id="9_j8tme"]
 [ext_resource type="PackedScene" uid="uid://bf3xiqi6q0mvj" path="res://game/rooms/SeashellRoom.tscn" id="10_3vho3"]
+[ext_resource type="PackedScene" uid="uid://b6tseugg263i5" path="res://game/rooms/Empty.tscn" id="11_ee6o4"]
 [ext_resource type="Texture2D" uid="uid://c0mf8qj5fny5k" path="res://assets/rooms/empty_scaled.png" id="12_qf6n1"]
 [ext_resource type="Texture2D" uid="uid://dkxam7a5hi4pc" path="res://assets/rooms/cannon_scaled.png" id="13_vsp63"]
 [ext_resource type="Texture2D" uid="uid://oyj7iolb3f0y" path="res://assets/rooms/seashell1_scaled.png" id="14_b686c"]
@@ -136,16 +137,54 @@ material = SubResource("ShaderMaterial_lnu2h")
 anchor_mode = 0
 
 [node name="Tower" type="Node2D" parent="."]
-position = Vector2(101, 79)
+position = Vector2(17, -133)
 
 [node name="Room" parent="Tower" instance=ExtResource("8_l8g03")]
-position = Vector2(66, 150)
+position = Vector2(100, 595)
 
 [node name="Room2" parent="Tower" instance=ExtResource("9_j8tme")]
-position = Vector2(66, 50)
+position = Vector2(232, 595)
 
 [node name="Room3" parent="Tower" instance=ExtResource("10_3vho3")]
-position = Vector2(66, 249)
+position = Vector2(100, 496)
+
+[node name="Room4" parent="Tower" instance=ExtResource("11_ee6o4")]
+position = Vector2(232, 496)
+
+[node name="Room5" parent="Tower" instance=ExtResource("11_ee6o4")]
+position = Vector2(100, 397)
+
+[node name="Room6" parent="Tower" instance=ExtResource("11_ee6o4")]
+position = Vector2(232, 397)
+
+[node name="Room7" parent="Tower" instance=ExtResource("11_ee6o4")]
+position = Vector2(100, 298)
+
+[node name="Room8" parent="Tower" instance=ExtResource("11_ee6o4")]
+position = Vector2(232, 298)
+
+[node name="Room9" parent="Tower" instance=ExtResource("11_ee6o4")]
+position = Vector2(100, 199)
+
+[node name="Room10" parent="Tower" instance=ExtResource("11_ee6o4")]
+position = Vector2(232, 199)
+
+[node name="ProjectileSpawnPoints" type="Node2D" parent="."]
+
+[node name="Floor1" type="Node2D" parent="ProjectileSpawnPoints"]
+position = Vector2(330, 470)
+
+[node name="Floor2" type="Node2D" parent="ProjectileSpawnPoints"]
+position = Vector2(331, 363)
+
+[node name="Floor3" type="Node2D" parent="ProjectileSpawnPoints"]
+position = Vector2(333, 264)
+
+[node name="Floor4" type="Node2D" parent="ProjectileSpawnPoints"]
+position = Vector2(330, 165)
+
+[node name="Floor5" type="Node2D" parent="ProjectileSpawnPoints"]
+position = Vector2(332, 68)
 
 [node name="GameStartBits" type="CanvasLayer" parent="."]
 visible = false
@@ -179,9 +218,10 @@ libraries = {
 autoplay = "on_start"
 
 [node name="EnemySpawnPoint" type="Node2D" parent="."]
-position = Vector2(930, 34)
+position = Vector2(1040, 252)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
 scale = Vector2(0.55, 0.55)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_vsp63")

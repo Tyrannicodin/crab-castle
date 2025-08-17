@@ -34,21 +34,21 @@ texture_under = ExtResource("2_f06k2")
 texture_progress = ExtResource("3_5di8v")
 
 [node name="Up Arrow" type="Sprite2D" parent="."]
-position = Vector2(1, -39)
-scale = Vector2(0.1945, 0.1945)
+position = Vector2(2, -41)
+scale = Vector2(0.272625, 0.168659)
 texture = ExtResource("5_qqhu8")
 
 [node name="Down Arrow" type="Sprite2D" parent="."]
-position = Vector2(-1, 39)
-scale = Vector2(0.207031, 0.207031)
+position = Vector2(-1, 41.5625)
+scale = Vector2(0.283203, 0.165039)
 texture = ExtResource("6_tcppf")
 
 [node name="Left Arrow" type="Sprite2D" parent="."]
-position = Vector2(-53, 0)
-scale = Vector2(0.220339, 0.220339)
+position = Vector2(-56.7145, -4.76837e-07)
+scale = Vector2(0.163193, 0.305085)
 texture = ExtResource("7_613ps")
 
 [node name="Right Arrow" type="Sprite2D" parent="."]
-position = Vector2(53, 1)
-scale = Vector2(0.245968, 0.245968)
+position = Vector2(57, 1)
+scale = Vector2(0.17683, 0.324597)
 texture = ExtResource("8_tcppf")
