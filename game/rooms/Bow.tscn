@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cboi0aijc0uqh"]
+
+[ext_resource type="PackedScene" uid="uid://b1vj1p3cfm3v0" path="res://game/Room.tscn" id="1_4wx8f"]
+[ext_resource type="Texture2D" uid="uid://cs751ld7c4odi" path="res://assets/rooms/bow.png" id="2_qn8hh"]
+
+[node name="Room" instance=ExtResource("1_4wx8f")]
+
+[node name="Up Arrow" parent="." index="3"]
+visible = false
+
+[node name="Down Arrow" parent="." index="4"]
+visible = false
+
+[node name="Left Arrow" parent="." index="5"]
+visible = false
+
+[node name="Right Arrow" parent="." index="6"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="7"]
+position = Vector2(-2, -12)
+scale = Vector2(0.133792, 0.133792)
+texture = ExtResource("2_qn8hh")
