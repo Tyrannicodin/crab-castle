@@ -32,7 +32,7 @@ func find_closest_enemy(to_room) -> Enemy:
 		return null
 	return enemies[0]
 
-func fire_projectile_from_room(projectile: Node2D, target: Enemy):
-	projectile.global_position = Vector2(0, 0)
+func fire_projectile_from_room(room: Room, projectile: Node2D, target: Enemy):
+	#projectile.global_position = Vector2(0, 0)
 	projectile.visible = true
-	projectile.aim(target)
+	projectile.aim(room, target)

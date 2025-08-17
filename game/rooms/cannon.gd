@@ -6,6 +6,6 @@ func _on_trigger() -> void:
 	var target = game.find_closest_enemy(self)
 	
 	if target:
-		var projectile = projectile.instantiate()
-		self.game.add_child(projectile)
-		game.fire_projectile_from_room(projectile, target)
+		var projectileInst = projectile.instantiate()
+		self.game.add_child(projectileInst)
+		game.fire_projectile_from_room(self, projectileInst, target)

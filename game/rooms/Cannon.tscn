@@ -9,8 +9,8 @@ script = ExtResource("2_h01m3")
 cooldown_seconds = 3
 
 [node name="Cannon" type="Sprite2D" parent="." index="2"]
-position = Vector2(-4, -14)
-scale = Vector2(-0.2, 0.2)
+position = Vector2(0, -16)
+scale = Vector2(-0.05, 0.05)
 texture = ExtResource("2_3f8ls")
 
 [connection signal="trigger" from="." to="." method="_on_trigger"]
