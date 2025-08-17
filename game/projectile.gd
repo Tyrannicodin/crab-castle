@@ -25,8 +25,6 @@ func aim(spawnpoint: Vector2, enemy: Enemy):
 	origin = spawnpoint
 	enemy_position = Vector2(enemy.global_position.x, enemy.global_position.y)
 	var velocity = y_pos_dx(enemy_position.x, enemy_position.y, 0)
-	
-	print(enemy_position)
 
 func _process(delta: float) -> void:
 	time += delta
