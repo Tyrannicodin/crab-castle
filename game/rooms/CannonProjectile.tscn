@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://1aw7rutiekhi"]
 
-[ext_resource type="PackedScene" uid="uid://du6x41y50slhb" path="res://game/Projectile.tscn" id="1_6st6q"]
+[ext_resource type="PackedScene" uid="uid://bligscgn0qlft" path="res://game/Projectile.tscn" id="1_6st6q"]
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="2_serln"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_serln"]
@@ -8,6 +8,8 @@ radius = 25.02
 
 [node name="Projectile" instance=ExtResource("1_6st6q")]
 pierce = 10
+stun_lock = 0.5
+knockback = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 scale = Vector2(0.4, 0.4)

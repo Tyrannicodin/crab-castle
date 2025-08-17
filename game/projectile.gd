@@ -6,6 +6,8 @@ extends Node2D
 @export var velocity = 1.5
 @export var gravity = 2.0
 @export var pierce = 0
+@export var stun_lock = 0.1
+@export var knockback = 0
 
 var time = 0
 var enemy_position: Vector2 = Vector2.ZERO
@@ -52,6 +54,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		remaining_pierce -= 1
 
 	enemy.damage(damage)
+	enemy.stun_lock(stun_lock)
+	enemy.knockback(knockback)
 
 func disable():
 	self.visible = false
