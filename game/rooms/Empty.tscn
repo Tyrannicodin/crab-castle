@@ -1,9 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://dc5qas16ubrcl"]
+[gd_scene load_steps=2 format=3 uid="uid://b6tseugg263i5"]
 
-[ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/rooms/empty.png" id="1_asyea"]
-[ext_resource type="Script" uid="uid://c8on42qdfj7ka" path="res://game/room.gd" id="2_gg6q3"]
+[ext_resource type="PackedScene" uid="uid://b1vj1p3cfm3v0" path="res://game/Room.tscn" id="1_asyea"]
 
-[node name="Empty" type="Sprite2D"]
-texture = ExtResource("1_asyea")
-script = ExtResource("2_gg6q3")
-display_name = "Empty Room"
+[node name="Room" instance=ExtResource("1_asyea")]

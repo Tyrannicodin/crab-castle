@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bejedh07vvdip"]
+
+[ext_resource type="Script" uid="uid://fuh45tl6bm2n" path="res://game/enemy.gd" id="1_vodhp"]
+[ext_resource type="Texture2D" uid="uid://b175nckl6o48r" path="res://assets/health_bar_full.png" id="2_h8ejc"]
+[ext_resource type="Texture2D" uid="uid://f3uls12q6bgs" path="res://assets/health_bar_empty.png" id="3_vcbs2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vodhp"]
+size = Vector2(90, 86)
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_vodhp")
+display_name = "Example"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vodhp")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -100.0
+offset_top = 48.0
+offset_right = 100.0
+offset_bottom = 75.0
+texture_under = ExtResource("3_vcbs2")
+texture_progress = ExtResource("2_h8ejc")

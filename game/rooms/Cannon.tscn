@@ -1,16 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1y4vxa31d6qw"]
+[gd_scene load_steps=4 format=3 uid="uid://ds73obbkiouu3"]
 
-[ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/rooms/empty.png" id="1_nj3ws"]
+[ext_resource type="PackedScene" uid="uid://b1vj1p3cfm3v0" path="res://game/Room.tscn" id="1_nj3ws"]
 [ext_resource type="Texture2D" uid="uid://ujxkhojgkxk5" path="res://assets/rooms/cannon.png" id="2_3f8ls"]
-[ext_resource type="Script" uid="uid://c8on42qdfj7ka" path="res://game/room.gd" id="2_h01m3"]
+[ext_resource type="Script" uid="uid://dwjfcvh3d40vl" path="res://game/rooms/cannon.gd" id="2_h01m3"]
 
-[node name="Room" type="Sprite2D"]
-texture = ExtResource("1_nj3ws")
-script = ExtResource("2_h01m3")
-display_name = "Cannon Room"
+[node name="Room" instance=ExtResource("1_nj3ws")]
 cooldown_seconds = 3
-damage = 100
 
-[node name="Cannon" type="Sprite2D" parent="."]
+[node name="Script" type="Node" parent="." index="0"]
+script = ExtResource("2_h01m3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
+position = Vector2(-4, -14)
 scale = Vector2(-0.2, 0.2)
 texture = ExtResource("2_3f8ls")
+
+[connection signal="trigger" from="." to="Script" method="_on_room_trigger"]
