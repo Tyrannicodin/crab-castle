@@ -20,7 +20,7 @@ func y_pos(ex: float, ey: float, x: float):
 func y_pos_dx(ex: float, ey: float, x: float):
 	var inverse_speed = (1.0 / speed)
 	return 2 * inverse_speed * x - inverse_speed * ex + ey / ex
-	
+
 func aim(spawnpoint: Vector2, enemy: Enemy):
 	origin = spawnpoint
 	enemy_position = Vector2(enemy.global_position.x, enemy.global_position.y)
