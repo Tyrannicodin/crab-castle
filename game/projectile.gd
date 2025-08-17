@@ -7,6 +7,7 @@ extends Node2D
 @export var pierce = 0
 @export var stun_lock = 0.1
 @export var knockback = 0
+@export var gravity: bool = true
 
 var time = 0
 var enemy_position: Vector2 = Vector2.ZERO
