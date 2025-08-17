@@ -10,12 +10,20 @@ signal on_death(e: Enemy)
 @onready var health = max_health
 var time = 0.0
 var game: Game
+var downward_accel = 0
 
 func _process(delta: float) -> void:
 	time += delta
 	
 	move(delta)
 	display_hp()
+	
+	if not is_alive():
+		self.global_position.y += downward_accel
+		downward_accel += 50 * delta
+
+func is_alive() -> bool:
+	return self.health > 0
 
 func display_hp():
 	$HealthBar.min_value = 0
@@ -24,9 +32,15 @@ func display_hp():
 
 func move(delta):
 	self.position.x -= delta * speed
-	self.position.y = 10 * sin(2 * time)
+	if is_alive():
+		self.position.y = 10 * sin(2 * time)
 
 func damage(value: int):
 	self.health -= value
 	if self.health <= 0:
 		self.on_death.emit(self)
+		self.death_animation()
+
+func death_animation():
+	self.scale.y = -1
+	$HealthBar.visible = false

@@ -30,8 +30,6 @@ func aim(spawnpoint: Vector2, enemy: Enemy):
 	origin = spawnpoint
 	enemy_position = Vector2(enemy.global_position.x, enemy.global_position.y)
 	var velocity = y_pos_dx(enemy_position.x, enemy_position.y, 0)
-	
-	print(enemy_position)
 
 func _process(delta: float) -> void:
 	time += delta
@@ -46,15 +44,17 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 	if parent is not Enemy:
 		return
-	
+
+	var enemy: Enemy = parent
+
+	if !enemy.is_alive():
+		return
+
 	if remaining_pierce == 0:
-		print("Pierce cap reached")
 		self.queue_free()
 		self.disable()
 	else:
 		remaining_pierce -= 1
-	
-	var enemy: Enemy = parent
 
 	enemy.damage(damage)
 
