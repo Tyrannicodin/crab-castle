@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=17 format=3 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_4fuuu"]
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
@@ -8,7 +8,8 @@
 [ext_resource type="Script" uid="uid://b6y06i07h8uw3" path="res://game/game_end.gd" id="3_u5opy"]
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
-[ext_resource type="PackedScene" uid="uid://b6tseugg263i5" path="res://game/rooms/Empty.tscn" id="8_l8g03"]
+[ext_resource type="PackedScene" uid="uid://bj0ohm7w44ukd" path="res://game/rooms/Slingshot.tscn" id="8_l8g03"]
+[ext_resource type="PackedScene" uid="uid://ds73obbkiouu3" path="res://game/rooms/Cannon.tscn" id="9_j8tme"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
 shader = ExtResource("4_u5opy")
@@ -96,12 +97,15 @@ material = SubResource("ShaderMaterial_lnu2h")
 anchor_mode = 0
 
 [node name="Tower" type="Node2D" parent="."]
-position = Vector2(148, 323)
-scale = Vector2(0.342141, 0.342141)
+position = Vector2(216, 349)
 
-[node name="Room1" parent="Tower" instance=ExtResource("8_l8g03")]
+[node name="Room" parent="Tower" instance=ExtResource("8_l8g03")]
+
+[node name="Room2" parent="Tower" instance=ExtResource("9_j8tme")]
+position = Vector2(1, -233)
 
 [node name="GameStartBits" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="GameStartOverlay" type="TextureRect" parent="GameStartBits"]
 clip_children = 1

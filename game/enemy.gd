@@ -5,8 +5,11 @@ class_name Enemy
 @export var speed: int
 @export var max_health: int
 
+signal on_death(e: Enemy)
+
 @onready var health = max_health
 var time = 0.0
+var game: Game
 
 func _process(delta: float) -> void:
 	time += delta
@@ -16,9 +19,14 @@ func _process(delta: float) -> void:
 
 func display_hp():
 	$HealthBar.min_value = 0
-	$HealthBar.max_value = health
+	$HealthBar.max_value = max_health
 	$HealthBar.value = health
 
 func move(delta):
 	self.position.x -= delta * speed
 	self.position.y = 10 * sin(2 * time)
+
+func damage(value: int):
+	self.health -= value
+	if self.health <= 0:
+		self.on_death.emit(self)

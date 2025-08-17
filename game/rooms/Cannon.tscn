@@ -2,17 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://b1vj1p3cfm3v0" path="res://game/Room.tscn" id="1_nj3ws"]
 [ext_resource type="Texture2D" uid="uid://ujxkhojgkxk5" path="res://assets/rooms/cannon.png" id="2_3f8ls"]
-[ext_resource type="Script" uid="uid://dwjfcvh3d40vl" path="res://game/rooms/cannon.gd" id="2_h01m3"]
+[ext_resource type="Script" uid="uid://bv4uslf8vqsq6" path="res://game/rooms/cannon.gd" id="2_h01m3"]
 
 [node name="Room" instance=ExtResource("1_nj3ws")]
+script = ExtResource("2_h01m3")
 cooldown_seconds = 3
 
-[node name="Script" type="Node" parent="." index="0"]
-script = ExtResource("2_h01m3")
-
-[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
+[node name="Cannon" type="Sprite2D" parent="." index="2"]
 position = Vector2(-4, -14)
 scale = Vector2(-0.2, 0.2)
 texture = ExtResource("2_3f8ls")
 
-[connection signal="trigger" from="." to="Script" method="_on_room_trigger"]
+[connection signal="trigger" from="." to="." method="_on_trigger"]

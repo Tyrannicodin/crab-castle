@@ -4,9 +4,11 @@ class_name Room
 @export var display_name: String
 @export var cooldown_seconds: int
 
+# The weapon fires
 signal trigger
 
-var cooldown_remaining = 0
+var game: Game
+@onready var cooldown_remaining = cooldown_seconds
 
 func _process(delta: float) -> void:
 	cooldown_remaining -= delta

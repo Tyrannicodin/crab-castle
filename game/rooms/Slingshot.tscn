@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj0ohm7w44ukd"]
+
+[ext_resource type="PackedScene" uid="uid://b1vj1p3cfm3v0" path="res://game/Room.tscn" id="1_pgpqn"]
+[ext_resource type="Texture2D" uid="uid://c4ar48ujw5eai" path="res://assets/rooms/slingshot.png" id="2_3jgwp"]
+[ext_resource type="Script" uid="uid://cpuu3oijmomkn" path="res://game/rooms/slingshot.gd" id="2_tuwwt"]
+
+[node name="Room" instance=ExtResource("1_pgpqn")]
+script = ExtResource("2_tuwwt")
+cooldown_seconds = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+position = Vector2(-1, -15)
+scale = Vector2(-0.393, 0.393)
+texture = ExtResource("2_3jgwp")
+
+[connection signal="trigger" from="." to="." method="_on_trigger"]
