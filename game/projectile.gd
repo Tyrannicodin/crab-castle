@@ -2,7 +2,7 @@ extends Node2D
 
 @export var damage = 50
 
-@export var speed = 500.0
+@export var speed = 1000.0
 
 var vertical_speed = 0
 var horizontal_speed = 0
@@ -14,8 +14,9 @@ var origin_y = 0
 
 func y_pos(px: float, py: float, ex: float, ey: float, x: float):
 	var d = (py - ey) / (px - ex)
-	var inverse_speed = (-1.0 / speed)
-	return -inverse_speed * x * x + inverse_speed * x * px + inverse_speed * x * ex + d * x - inverse_speed * px * ex - ex * d + ey
+	var gravity = speed
+	var inverse_gravity = -1.0 / gravity
+	return -inverse_gravity * x * x + inverse_gravity * x * px + inverse_gravity * x * ex + d * x - inverse_gravity * px * ex - ex * d + ey
 	
 func aim(enemy: Enemy):
 	enemy_position_x = 400
