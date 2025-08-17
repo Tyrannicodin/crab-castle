@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3tffw0xgytdu"]
 
-[ext_resource type="PackedScene" path="res://game/Enemy.tscn" id="1_p5qvc"]
+[ext_resource type="PackedScene" uid="uid://bejedh07vvdip" path="res://game/Enemy.tscn" id="1_p5qvc"]
 [ext_resource type="Texture2D" uid="uid://bibts2l2gdqr7" path="res://assets/enemies/seagull.png" id="2_xy0jy"]
 
 [node name="Enemy" instance=ExtResource("1_p5qvc")]
