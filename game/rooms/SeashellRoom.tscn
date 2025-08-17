@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf3xiqi6q0mvj"]
+
+[ext_resource type="PackedScene" uid="uid://b1vj1p3cfm3v0" path="res://game/Room.tscn" id="1_mqnen"]
+[ext_resource type="Texture2D" uid="uid://beeuybh8rqdii" path="res://assets/rooms/seashell1.png" id="2_23hge"]
+
+[node name="Room" instance=ExtResource("1_mqnen")]
+display_name = "Seashell Room"
+cooldown_seconds = 5
+requires_enemies_to_trigger = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+position = Vector2(-6, -11)
+scale = Vector2(0.359999, 0.359999)
+texture = ExtResource("2_23hge")
