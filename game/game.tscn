@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_4fuuu"]
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
-[ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/room_selector.gd" id="2_4cobl"]
+[ext_resource type="Script" path="res://game/room_selector.gd" id="2_4cobl"]
 [ext_resource type="Script" uid="uid://dx5wdsegef6t2" path="res://game/end_wave.gd" id="2_dxrkv"]
 [ext_resource type="PackedScene" uid="uid://68en2fypp2j5" path="res://upgrades/UpgradeUI.tscn" id="3_dakft"]
 [ext_resource type="Script" uid="uid://b6y06i07h8uw3" path="res://game/game_end.gd" id="3_u5opy"]
@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dkxam7a5hi4pc" path="res://assets/rooms/cannon_scaled.png" id="13_vsp63"]
 [ext_resource type="Texture2D" uid="uid://oyj7iolb3f0y" path="res://assets/rooms/seashell1_scaled.png" id="14_b686c"]
 [ext_resource type="Texture2D" uid="uid://ldwldwfriifr" path="res://assets/rooms/slingshot_scaled.png" id="15_hb504"]
-[ext_resource type="Script" uid="uid://c0htur6o5hwgt" path="res://game/tower.gd" id="17_ln7ps"]
+[ext_resource type="Script" path="res://game/tower.gd" id="17_ln7ps"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
 shader = ExtResource("4_u5opy")
