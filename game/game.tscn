@@ -236,6 +236,7 @@ autoplay = "on_start"
 position = Vector2(1040, 252)
 
 [node name="TowerMap" type="TileMapLayer" parent="."]
+visible = false
 scale = Vector2(0.55, 0.55)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAEAAgAAAAAAAAAAAAMAAQAAAAAAAAAAAAEAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_hb504")

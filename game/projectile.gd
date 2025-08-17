@@ -4,10 +4,14 @@ extends Node2D
 
 @export var speed = 500.0
 @export var velocity = 1.5
+@export var gravity = 2.0
+@export var pierce = 0
 
 var time = 0
-var enemy_position: Vector2i = Vector2.ZERO
-var origin: Vector2i = Vector2.ZERO
+var enemy_position: Vector2 = Vector2.ZERO
+var origin: Vector2 = Vector2.ZERO
+@onready var remaining_pierce = pierce
+var disabled = false
 
 func y_pos(ex: float, ey: float, x: float):
 	var d = ey / ex
@@ -30,3 +34,26 @@ func _process(delta: float) -> void:
 				
 	self.global_position.x = origin.x + time * speed
 	self.global_position.y = y_pos(enemy_position.x, enemy_position.y, time * speed) + origin.y
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if disabled:
+		return
+	var parent = area.get_parent()
+
+	if parent is not Enemy:
+		return
+	
+	if remaining_pierce == 0:
+		print("Pierce cap reached")
+		self.queue_free()
+		self.disable()
+	else:
+		remaining_pierce -= 1
+	
+	var enemy: Enemy = parent
+
+	enemy.damage(damage)
+
+func disable():
+	self.visible = false
+	disabled = true
