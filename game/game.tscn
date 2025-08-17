@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=31 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_4fuuu"]
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
+[ext_resource type="Script" path="res://game/room_selector.gd" id="2_4cobl"]
 [ext_resource type="Script" uid="uid://dx5wdsegef6t2" path="res://game/end_wave.gd" id="2_dxrkv"]
 [ext_resource type="PackedScene" uid="uid://68en2fypp2j5" path="res://upgrades/UpgradeUI.tscn" id="3_dakft"]
 [ext_resource type="Script" uid="uid://b6y06i07h8uw3" path="res://game/game_end.gd" id="3_u5opy"]
@@ -16,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dkxam7a5hi4pc" path="res://assets/rooms/cannon_scaled.png" id="13_vsp63"]
 [ext_resource type="Texture2D" uid="uid://oyj7iolb3f0y" path="res://assets/rooms/seashell1_scaled.png" id="14_b686c"]
 [ext_resource type="Texture2D" uid="uid://ldwldwfriifr" path="res://assets/rooms/slingshot_scaled.png" id="15_hb504"]
+[ext_resource type="Script" path="res://game/tower.gd" id="17_ln7ps"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
 shader = ExtResource("4_u5opy")
@@ -69,16 +71,6 @@ _data = {
 &"on_start": SubResource("Animation_u5opy")
 }
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qf6n1"]
-resource_name = "bg"
-texture = ExtResource("12_qf6n1")
-texture_region_size = Vector2i(240, 181)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_vsp63"]
-tile_size = Vector2i(240, 181)
-sources/0 = SubResource("TileSetAtlasSource_qf6n1")
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b686c"]
 resource_name = "cannon"
 texture = ExtResource("13_vsp63")
@@ -103,8 +95,31 @@ sources/0 = SubResource("TileSetAtlasSource_b686c")
 sources/1 = SubResource("TileSetAtlasSource_hb504")
 sources/2 = SubResource("TileSetAtlasSource_ee6o4")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qf6n1"]
+resource_name = "bg"
+texture = ExtResource("12_qf6n1")
+texture_region_size = Vector2i(240, 181)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vsp63"]
+tile_size = Vector2i(240, 181)
+sources/0 = SubResource("TileSetAtlasSource_qf6n1")
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_l8g03")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Rooms" type="HBoxContainer" parent="UI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -125.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+script = ExtResource("2_4cobl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(679, 454)
@@ -220,15 +235,16 @@ autoplay = "on_start"
 [node name="EnemySpawnPoint" type="Node2D" parent="."]
 position = Vector2(1040, 252)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-visible = false
+[node name="TowerMap" type="TileMapLayer" parent="."]
 scale = Vector2(0.55, 0.55)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAEAAgAAAAAAAAAAAAMAAQAAAAAAAAAAAAEAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_hb504")
+script = ExtResource("17_ln7ps")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="TowerMap"]
+show_behind_parent = true
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_vsp63")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="TileMapLayer"]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAEAAgAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAA=")
-tile_set = SubResource("TileSet_hb504")
 
 [connection signal="pressed" from="Button" to="Button" method="on_pressed"]
 [connection signal="pressed" from="Button2" to="Button2" method="on_pressed"]
