@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=9 format=3 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_4fuuu"]
 [ext_resource type="Script" uid="uid://dx5wdsegef6t2" path="res://game/end_wave.gd" id="2_dxrkv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b6y06i07h8uw3" path="res://game/game_end.gd" id="3_u5opy"]
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
+[ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/rooms/empty.png" id="7_u5opy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
 shader = ExtResource("4_u5opy")
@@ -44,6 +45,46 @@ material = SubResource("ShaderMaterial_lnu2h")
 anchor_mode = 0
 
 [node name="Tower" type="Node2D" parent="."]
+
+[node name="Room1" type="Sprite2D" parent="Tower"]
+position = Vector2(178, 534.5)
+texture = ExtResource("7_u5opy")
+
+[node name="Room2" type="Sprite2D" parent="Tower"]
+position = Vector2(478, 534.5)
+texture = ExtResource("7_u5opy")
+
+[node name="Room3" type="Sprite2D" parent="Tower"]
+position = Vector2(178, 307.5)
+texture = ExtResource("7_u5opy")
+
+[node name="Room4" type="Sprite2D" parent="Tower"]
+position = Vector2(478, 307.5)
+texture = ExtResource("7_u5opy")
+
+[node name="Room5" type="Sprite2D" parent="Tower"]
+position = Vector2(178, 80.5)
+texture = ExtResource("7_u5opy")
+
+[node name="Room6" type="Sprite2D" parent="Tower"]
+position = Vector2(478, 80.5)
+texture = ExtResource("7_u5opy")
+
+[node name="Room7" type="Sprite2D" parent="Tower"]
+position = Vector2(178, -146)
+texture = ExtResource("7_u5opy")
+
+[node name="Room8" type="Sprite2D" parent="Tower"]
+position = Vector2(478, -146)
+texture = ExtResource("7_u5opy")
+
+[node name="Room9" type="Sprite2D" parent="Tower"]
+position = Vector2(178, -373)
+texture = ExtResource("7_u5opy")
+
+[node name="Room10" type="Sprite2D" parent="Tower"]
+position = Vector2(478, -373)
+texture = ExtResource("7_u5opy")
 
 [connection signal="pressed" from="Button" to="Button" method="on_pressed"]
 [connection signal="pressed" from="Button2" to="Button2" method="on_pressed"]
