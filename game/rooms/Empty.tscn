@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dc5qas16ubrcl"]
+[gd_scene load_steps=3 format=3 uid="uid://dc5qas16ubrcl"]
 
 [ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/rooms/empty.png" id="1_asyea"]
+[ext_resource type="Script" uid="uid://c8on42qdfj7ka" path="res://game/room.gd" id="2_gg6q3"]
 
 [node name="Empty" type="Sprite2D"]
 texture = ExtResource("1_asyea")
+script = ExtResource("2_gg6q3")
+display_name = "Empty Room"
