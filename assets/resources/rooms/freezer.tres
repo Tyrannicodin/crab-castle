@@ -7,9 +7,8 @@
 [resource]
 script = ExtResource("1_d3tcq")
 display_name = "Freezer"
-tilemap_id = 5
-tilemap_atlas_coords = Vector2i(0, 0)
-icon = ExtResource("1_qabjs")
+image = ExtResource("1_qabjs")
+scale = Vector2(0.3, 0.3)
 visible_progress_bar = true
 visible_arrows = 0
 trigger_script = ExtResource("3_ao2cv")

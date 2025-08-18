@@ -7,9 +7,8 @@
 [resource]
 script = ExtResource("1_c6avb")
 display_name = "Bow"
-tilemap_id = 4
-tilemap_atlas_coords = Vector2i(0, 0)
-icon = ExtResource("1_6owdo")
+image = ExtResource("1_6owdo")
+scale = Vector2(0.3, 0.3)
 visible_progress_bar = true
 visible_arrows = 0
 trigger_script = ExtResource("3_gjesx")

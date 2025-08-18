@@ -5,9 +5,8 @@ class_name Room
 @export var display_name: String = ""
 
 @export_category("display")
-@export var tilemap_id: int
-@export var tilemap_atlas_coords: Vector2i = Vector2i.ZERO
-@export var icon: Texture2D
+@export var image: Texture2D
+@export var scale: Vector2 = Vector2(.3, .3)
 
 @export var visible_progress_bar: bool = true
 @export_flags("up", "right", "down", "left") var visible_arrows: int = 0

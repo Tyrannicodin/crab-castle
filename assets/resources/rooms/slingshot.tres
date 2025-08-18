@@ -7,9 +7,8 @@
 [resource]
 script = ExtResource("1_5o570")
 display_name = ""
-tilemap_id = 3
-tilemap_atlas_coords = Vector2i(0, 0)
-icon = ExtResource("1_pv3f7")
+image = ExtResource("1_pv3f7")
+scale = Vector2(0.3, 0.3)
 visible_progress_bar = true
 visible_arrows = 0
 trigger_script = ExtResource("3_hfnin")

@@ -8,7 +8,7 @@ func _ready():
 	load_rooms()
 	for room in rooms:
 		var but = TextureButton.new()
-		but.texture_normal = room.icon
+		but.texture_normal = room.image
 		but.ignore_texture_size = true
 		but.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
 		but.size_flags_horizontal = Control.SIZE_EXPAND_FILL

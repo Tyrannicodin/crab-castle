@@ -7,9 +7,8 @@
 [resource]
 script = ExtResource("1_bpa10")
 display_name = "Crab cannon"
-tilemap_id = 0
-tilemap_atlas_coords = Vector2i(0, 0)
-icon = ExtResource("1_2vvaa")
+image = ExtResource("1_2vvaa")
+scale = Vector2(0.15, 0.15)
 visible_progress_bar = true
 visible_arrows = 0
 trigger_script = ExtResource("3_tnirv")

@@ -43,3 +43,7 @@ grow_horizontal = 2
 grow_vertical = 2
 max_value = 1.0
 show_percentage = false
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(120, 80)
+scale = Vector2(0.25, 0.25)

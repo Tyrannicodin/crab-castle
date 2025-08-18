@@ -48,11 +48,11 @@ func load_rooms():
 			available_rooms.append(resource) 
 
 func generate_room_sprites() -> void:
-	var used_cells = $AvailableRooms.get_used_cells()
+	var used_cells = get_used_cells()
 	for cell in used_cells:
 		var overlay = room_overlay.instantiate()
 		room_overlays[cell] = overlay
-		overlay.position = $AvailableRooms.map_to_local(cell) - Vector2(120, 90)
+		overlay.position = map_to_local(cell) - Vector2(120, 90)
 		add_child(overlay)
 
 func set_current_room(room: Room) -> void:
@@ -65,19 +65,17 @@ func _input(event) -> void:
 		return
 		
 	var target = local_to_map(get_local_mouse_position())
-	if not target in $AvailableRooms.get_used_cells():
+	if not target in get_used_cells():
 		return
-	var cell = get_cell_source_id(target)
-	if cell == -1:
-		# TODO: implement place logic
-		if not current_room:
-			return
-		set_cell(target, current_room.tilemap_id, Vector2i.ZERO)
-		room_overlays[target].visible_arrows = current_room.visible_arrows
-		room_overlays[target].visible_progress = current_room.visible_progress_bar
-		rooms.append(RoomInstance.new(current_room, target))
+	if room_overlays[target].room:
 		return
-	# TODO: This is where stuff should happen when you click on a room 
+	if not current_room:
+		# TODO: This is where stuff should happen when you click on a placed room
+		return
+	room_overlays[target].room = current_room
+	room_overlays[target].update_sprite()
+	rooms.append(RoomInstance.new(current_room, target))
+	return
 
 func _process(delta: float) -> void:
 	for room in rooms:
@@ -111,7 +109,7 @@ func fire_projectiles_above_enemy(room: RoomInstance, projectile: PackedScene, n
 	for target in targets:
 		var projectileInst = projectile.instantiate()
 		game.add_child(projectileInst)
-		game.fire_projectile_above_enemy(self, projectileInst, target)
+		game.fire_projectile_above_enemy(room, projectileInst, target)
 		await get_tree().create_timer(.1).timeout
 
 func get_room_global_position(room: RoomInstance) -> Vector2:

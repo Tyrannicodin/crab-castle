@@ -7,9 +7,8 @@
 [resource]
 script = ExtResource("1_w1lu8")
 display_name = "Bedroom"
-tilemap_id = 3
-tilemap_atlas_coords = Vector2i(0, 0)
-icon = ExtResource("1_1g7ki")
+image = ExtResource("1_1g7ki")
+scale = Vector2(0.3, 0.3)
 visible_progress_bar = true
 visible_arrows = 15
 trigger_script = ExtResource("3_gklcs")

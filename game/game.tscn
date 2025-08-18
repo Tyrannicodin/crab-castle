@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=32 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
@@ -11,12 +11,6 @@
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
 [ext_resource type="Texture2D" uid="uid://b4ku0d1fup6rh" path="res://assets/background/cloud_1.png" id="8_dxwpq"]
 [ext_resource type="Texture2D" uid="uid://c0mf8qj5fny5k" path="res://assets/room_details/empty_scaled.png" id="12_qf6n1"]
-[ext_resource type="Texture2D" uid="uid://dkxam7a5hi4pc" path="res://assets/rooms/cannon_scaled.png" id="13_vsp63"]
-[ext_resource type="Texture2D" uid="uid://oyj7iolb3f0y" path="res://assets/rooms/seashell1_scaled.png" id="14_b686c"]
-[ext_resource type="Texture2D" uid="uid://dea6qc5ik3c1i" path="res://assets/rooms/bed_scaled.png" id="15_4cobl"]
-[ext_resource type="Texture2D" uid="uid://ldwldwfriifr" path="res://assets/rooms/slingshot_scaled.png" id="15_hb504"]
-[ext_resource type="Texture2D" uid="uid://b4ujuh3a8dcmq" path="res://assets/rooms/bow_scaled.png" id="16_ln7ps"]
-[ext_resource type="Resource" uid="uid://oswxf34lko23" path="res://assets/resources/rooms/cannon.tres" id="16_mhvfb"]
 [ext_resource type="Script" uid="uid://c0htur6o5hwgt" path="res://game/rooms/tower.gd" id="17_ln7ps"]
 [ext_resource type="Script" uid="uid://b7x38g8nwawmq" path="res://game/enemy_manager.gd" id="19_pxxsx"]
 [ext_resource type="Script" uid="uid://biswc6ipcfiun" path="res://game/eliminator.gd" id="20_u8s88"]
@@ -86,47 +80,6 @@ colors = PackedColorArray(0.301961, 0.67451, 0.941176, 1, 0.409467, 0.166, 0.83,
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_mhvfb"]
 gradient = SubResource("Gradient_dxwpq")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b686c"]
-resource_name = "cannon"
-texture = ExtResource("13_vsp63")
-texture_region_size = Vector2i(240, 181)
-0:0/0 = 0
-0:0/0/custom_data_0 = ExtResource("16_mhvfb")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hb504"]
-resource_name = "seashell"
-texture = ExtResource("14_b686c")
-texture_region_size = Vector2i(240, 181)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ee6o4"]
-resource_name = "slingshot"
-texture = ExtResource("15_hb504")
-texture_region_size = Vector2i(240, 181)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ln7ps"]
-resource_name = "bed"
-texture = ExtResource("15_4cobl")
-texture_region_size = Vector2i(240, 181)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pxxsx"]
-resource_name = "bow"
-texture = ExtResource("16_ln7ps")
-texture_region_size = Vector2i(240, 181)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_hb504"]
-tile_size = Vector2i(240, 181)
-custom_data_layer_0/name = "Room"
-custom_data_layer_0/type = 24
-sources/0 = SubResource("TileSetAtlasSource_b686c")
-sources/1 = SubResource("TileSetAtlasSource_hb504")
-sources/2 = SubResource("TileSetAtlasSource_ee6o4")
-sources/3 = SubResource("TileSetAtlasSource_ln7ps")
-sources/4 = SubResource("TileSetAtlasSource_pxxsx")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qf6n1"]
 resource_name = "bg"
@@ -275,13 +228,9 @@ position = Vector2(1126, -148)
 [node name="Tower" type="TileMapLayer" parent="."]
 position = Vector2(93, 312)
 scale = Vector2(0.55, 0.55)
-tile_set = SubResource("TileSet_hb504")
-script = ExtResource("17_ln7ps")
-
-[node name="AvailableRooms" type="TileMapLayer" parent="Tower"]
-show_behind_parent = true
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_vsp63")
+script = ExtResource("17_ln7ps")
 
 [node name="Eliminator" type="Area2D" parent="."]
 monitorable = false
