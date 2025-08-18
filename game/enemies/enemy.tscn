@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b2iys8q280ysb"]
 
-[ext_resource type="Script" uid="uid://c8coed0afy17b" path="res://game/enemies/enemy.gd" id="1_1kd2t"]
-[ext_resource type="Shader" uid="uid://cthja2aw2bnvd" path="res://game/enemy.gdshader" id="1_b4nw2"]
+[ext_resource type="Script" path="res://game/enemies/enemy.gd" id="1_1kd2t"]
+[ext_resource type="Shader" uid="uid://cthja2aw2bnvd" path="res://game/enemies/enemy.gdshader" id="1_b4nw2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qymtj"]
 shader = ExtResource("1_b4nw2")
