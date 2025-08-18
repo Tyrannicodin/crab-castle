@@ -10,7 +10,7 @@ func roll_rooms() -> void:
 
 	var current_rooms = available_rooms.duplicate()
 	var selected
-	for child in $Upgrades.get_children():
+	for child in $Margin/VBox/Upgrades.get_children():
 		selected = rng.rand_weighted(weights)
 		child.set_room(current_rooms[selected])
 		weights.remove_at(selected)
