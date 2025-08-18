@@ -85,8 +85,41 @@ func find_n_closest_enemies(to_room: Room, n: int) -> Array[Enemy]:
 		out.push_back(in_range_enemies.pick_random())
 
 	return out
-	
+
 func fire_projectile_from_room(room: Room, projectile: Node2D, target: Enemy):
 	projectile.visible = true
 	projectile.global_position = room.global_position
 	projectile.aim(room.global_position, target)
+
+func find_adjascent_rooms(room: Room) -> Dictionary[String, Room]:
+	for i in range(len(tower)):
+		for j in range(len(tower[i])):
+			if room != tower[i][j]:
+				continue
+			var up = null
+			var down = null
+			var left = null
+			var right = null
+
+			if i > 0:
+				down = tower[i - 1][j]
+			if i < len(tower) - 1:
+				up = tower[i + 1][j]
+			if j == 1:
+				left = tower[i][0]
+			if j == 0:
+				right = tower[i][1]
+			
+			return {
+				'up': up,
+				'down': down,
+				'left': left,
+				'right': right,
+			}
+
+	return {
+		'up': null,
+		'down': null,
+		'left': null,
+		'right': null,
+	}

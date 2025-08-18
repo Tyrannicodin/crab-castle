@@ -12,6 +12,9 @@ signal trigger
 var extra_scale = Vector2(1, 1)
 var time_since_fired = 0
 
+# Certain rooms can give other rooms extra projectile counts
+var extra_projectiles_for_next_shot = 0
+
 var game: Game
 @onready var cooldown_remaining = cooldown_seconds
 
@@ -40,7 +43,8 @@ func show_activate_animation():
 	time_since_fired = 0
 
 func fire_projectiles(projectile: PackedScene, number: int):
-	var targets = game.find_n_closest_enemies(self, number)
+	var targets = game.find_n_closest_enemies(self, number + extra_projectiles_for_next_shot)
+	extra_projectiles_for_next_shot = 0
 
 	for target in targets:
 		show_activate_animation()

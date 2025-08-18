@@ -1,14 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bf3xiqi6q0mvj"]
+[gd_scene load_steps=4 format=3 uid="uid://bf3xiqi6q0mvj"]
 
 [ext_resource type="PackedScene" uid="uid://b1vj1p3cfm3v0" path="res://game/Room.tscn" id="1_mqnen"]
 [ext_resource type="Texture2D" uid="uid://beeuybh8rqdii" path="res://assets/rooms/seashell1.png" id="2_23hge"]
+[ext_resource type="Script" uid="uid://ds4bbpr75dl3m" path="res://game/rooms/seashell_room.gd" id="2_s6yb1"]
 
 [node name="Room2" instance=ExtResource("1_mqnen")]
-display_name = "Seashell Room"
+script = ExtResource("2_s6yb1")
+display_name = "Conch Room"
 cooldown_seconds = 5.0
-requires_enemies_to_trigger = false
 
 [node name="Weapon" parent="." index="7"]
 position = Vector2(-3, -11)
 scale = Vector2(0.13875, 0.13875)
 texture = ExtResource("2_23hge")
+
+[connection signal="trigger" from="." to="." method="_on_trigger"]

@@ -167,10 +167,10 @@ position = Vector2(100, 496)
 [node name="Room4" parent="Tower" instance=ExtResource("11_ee6o4")]
 position = Vector2(232, 496)
 
-[node name="Room5" parent="Tower" instance=ExtResource("11_ee6o4")]
+[node name="Room5" parent="Tower" instance=ExtResource("13_pxxsx")]
 position = Vector2(100, 397)
 
-[node name="Room6" parent="Tower" instance=ExtResource("13_pxxsx")]
+[node name="Room6" parent="Tower" instance=ExtResource("11_ee6o4")]
 position = Vector2(232, 397)
 
 [node name="Room7" parent="Tower" instance=ExtResource("11_ee6o4")]
