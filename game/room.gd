@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	time_since_fired += delta
 	
 	$Weapon.scale = extra_scale * weapon_scale
-	
+
 	extra_scale = lerp(Vector2(1.2, 1.2), Vector2(1, 1), ease(10 * time_since_fired, -.5))
 
 	if cooldown_remaining < 0:
@@ -34,6 +34,17 @@ func _process(delta: float) -> void:
 		$CooldownBar.value = 0
 
 func trigger_weapon():
-	time_since_fired = 0
-	
 	trigger.emit()
+
+func show_activate_animation():
+	time_since_fired = 0
+
+func fire_projectiles(projectile: PackedScene, number: int):
+	var targets = game.find_n_closest_enemies(self, number)
+
+	for target in targets:
+		show_activate_animation()
+		var projectileInst = projectile.instantiate()
+		self.game.add_child(projectileInst)
+		game.fire_projectile_from_room(self, projectileInst, target)
+		await get_tree().create_timer(.1).timeout

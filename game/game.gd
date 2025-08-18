@@ -70,6 +70,21 @@ func find_closest_enemy(to_room: Room) -> Enemy:
 	if (len(in_range_enemies) > 0):
 		return in_range_enemies[0]
 	return null
+
+# Try to find N unique enemies for a weapon to attack. Repeat enemies if there is not enough in range.
+func find_n_closest_enemies(to_room: Room, n: int) -> Array[Enemy]:
+	var in_range_enemies = find_closest_enemies(to_room)
+	if len(in_range_enemies) == 0:
+		return []
+	
+	if len(in_range_enemies) > n:
+		return in_range_enemies.slice(0, n)
+
+	var out = in_range_enemies.duplicate()
+	for i in range(n - len(in_range_enemies)):
+		out.push_back(in_range_enemies.pick_random())
+
+	return out
 	
 func fire_projectile_from_room(room: Room, projectile: Node2D, target: Enemy):
 	projectile.visible = true
