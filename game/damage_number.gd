@@ -19,3 +19,6 @@ func _process(delta: float) -> void:
 
 	$Label.label_settings.font_color.a = opacity
 	$Label.label_settings.outline_color.a = opacity
+
+	if opacity <= 0:
+		queue_free()

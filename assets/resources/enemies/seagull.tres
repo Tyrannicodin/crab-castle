@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://o4y6j2u8jr6a"]
+
+[ext_resource type="Script" uid="uid://dx0myaehl7et" path="res://assets/resources/definitions/enemy.gd" id="1_l2oac"]
+[ext_resource type="Texture2D" uid="uid://bibts2l2gdqr7" path="res://assets/enemies/seagull.png" id="2_a26qh"]
+
+[resource]
+script = ExtResource("1_l2oac")
+display_name = "Seagull"
+sprite = ExtResource("2_a26qh")
+scale = 0.27
+speed = 60
+max_health = 500
+metadata/_custom_type_script = "uid://dx0myaehl7et"
