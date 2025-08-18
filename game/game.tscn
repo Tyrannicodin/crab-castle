@@ -185,23 +185,6 @@ position = Vector2(100, 199)
 [node name="Room10" parent="Tower" instance=ExtResource("11_ee6o4")]
 position = Vector2(232, 199)
 
-[node name="ProjectileSpawnPoints" type="Node2D" parent="."]
-
-[node name="Floor1" type="Node2D" parent="ProjectileSpawnPoints"]
-position = Vector2(330, 470)
-
-[node name="Floor2" type="Node2D" parent="ProjectileSpawnPoints"]
-position = Vector2(331, 363)
-
-[node name="Floor3" type="Node2D" parent="ProjectileSpawnPoints"]
-position = Vector2(333, 264)
-
-[node name="Floor4" type="Node2D" parent="ProjectileSpawnPoints"]
-position = Vector2(334, 163)
-
-[node name="Floor5" type="Node2D" parent="ProjectileSpawnPoints"]
-position = Vector2(333, 65)
-
 [node name="EnemySpawnPoints" type="Node2D" parent="."]
 
 [node name="Floor1" type="Node2D" parent="EnemySpawnPoints"]

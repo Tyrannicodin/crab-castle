@@ -62,27 +62,6 @@ func find_closest_enemy(to_room: Room) -> Enemy:
 	return null
 	
 func fire_projectile_from_room(room: Room, projectile: Node2D, target: Enemy):
-	var fire_from_floor = 0
-	var i = 1
-	for floor in tower:
-		if room in floor:
-			fire_from_floor = i
-			break
-		i += 1
-
-	var origin: Vector2
-
-	if i == 1:
-		origin = $ProjectileSpawnPoints/Floor1.global_position
-	if i == 2:
-		origin = $ProjectileSpawnPoints/Floor2.global_position
-	if i == 3:
-		origin = $ProjectileSpawnPoints/Floor3.global_position
-	if i == 4:
-		origin = $ProjectileSpawnPoints/Floor4.global_position
-	if i == 5:
-		origin = $ProjectileSpawnPoints/Floor5.global_position
-
 	projectile.visible = true
-	projectile.global_position = origin
-	projectile.aim(origin, target)
+	projectile.global_position = room.global_position
+	projectile.aim(room.global_position, target)
