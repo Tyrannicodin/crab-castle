@@ -8,10 +8,7 @@ display_name = "Seagull"
 speed = 60
 max_health = 500
 
-[node name="HealthBar" parent="." index="1"]
-visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
 use_parent_material = true
 position = Vector2(0, -1)
 scale = Vector2(0.269517, 0.269517)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0xowwe3jslpp"]
+
+[ext_resource type="PackedScene" uid="uid://bligscgn0qlft" path="res://game/projectiles/Projectile.tscn" id="1_4o66m"]
+[ext_resource type="Texture2D" uid="uid://c3l3vbfotcuqo" path="res://assets/projectiles/freezer.png" id="2_wg1pn"]
+
+[node name="Projectile2" instance=ExtResource("1_4o66m")]
+damage = 20
+speed = 0.0
+max_velocity = 0.0
+pierce = 10
+stun_lock = 2.0
+movement_type = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+scale = Vector2(0.149163, 0.149163)
+texture = ExtResource("2_wg1pn")

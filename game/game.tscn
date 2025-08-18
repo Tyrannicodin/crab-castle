@@ -1,44 +1,30 @@
-[gd_scene load_steps=40 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=39 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
-[ext_resource type="Script" path="res://game/room_selector.gd" id="2_4cobl"]
+[ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
 [ext_resource type="Script" uid="uid://dx5wdsegef6t2" path="res://game/end_wave.gd" id="2_dxrkv"]
+[ext_resource type="AudioStream" uid="uid://dqef6khyml52g" path="res://assets/music/crabcastle.mp3" id="2_ee6o4"]
 [ext_resource type="PackedScene" uid="uid://68en2fypp2j5" path="res://upgrades/UpgradeUI.tscn" id="3_dakft"]
 [ext_resource type="Script" uid="uid://b6y06i07h8uw3" path="res://game/game_end.gd" id="3_u5opy"]
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
-[ext_resource type="Script" uid="uid://dfmgr4h7mmliw" path="res://game/new_room.gd" id="5_u8s88"]
 [ext_resource type="Texture2D" uid="uid://b4ku0d1fup6rh" path="res://assets/background/cloud_1.png" id="8_dxwpq"]
-[ext_resource type="PackedScene" uid="uid://bj0ohm7w44ukd" path="res://game/rooms/Slingshot.tscn" id="8_l8g03"]
-[ext_resource type="PackedScene" uid="uid://ds73obbkiouu3" path="res://game/rooms/Cannon.tscn" id="9_j8tme"]
-[ext_resource type="PackedScene" path="res://game/rooms/Bedroom.tscn" id="10_pxxsx"]
-[ext_resource type="PackedScene" uid="uid://b6tseugg263i5" path="res://game/rooms/Empty.tscn" id="11_ee6o4"]
-[ext_resource type="PackedScene" uid="uid://ctuvftctdyav8" path="res://game/rooms/Freezer.tscn" id="12_pxxsx"]
-[ext_resource type="Texture2D" uid="uid://c0mf8qj5fny5k" path="res://assets/rooms/empty_scaled.png" id="12_qf6n1"]
-[ext_resource type="PackedScene" uid="uid://cboi0aijc0uqh" path="res://game/rooms/Bow.tscn" id="13_pxxsx"]
+[ext_resource type="Texture2D" uid="uid://c0mf8qj5fny5k" path="res://assets/room_details/empty_scaled.png" id="12_qf6n1"]
 [ext_resource type="Texture2D" uid="uid://dkxam7a5hi4pc" path="res://assets/rooms/cannon_scaled.png" id="13_vsp63"]
 [ext_resource type="Texture2D" uid="uid://oyj7iolb3f0y" path="res://assets/rooms/seashell1_scaled.png" id="14_b686c"]
+[ext_resource type="Texture2D" uid="uid://dea6qc5ik3c1i" path="res://assets/rooms/bed_scaled.png" id="15_4cobl"]
 [ext_resource type="Texture2D" uid="uid://ldwldwfriifr" path="res://assets/rooms/slingshot_scaled.png" id="15_hb504"]
-[ext_resource type="Script" path="res://game/tower.gd" id="17_ln7ps"]
+[ext_resource type="Texture2D" uid="uid://b4ujuh3a8dcmq" path="res://assets/rooms/bow_scaled.png" id="16_ln7ps"]
+[ext_resource type="Resource" uid="uid://oswxf34lko23" path="res://assets/resources/rooms/cannon.tres" id="16_mhvfb"]
+[ext_resource type="Script" uid="uid://c0htur6o5hwgt" path="res://game/rooms/tower.gd" id="17_ln7ps"]
+[ext_resource type="Script" uid="uid://b7x38g8nwawmq" path="res://game/enemy_manager.gd" id="19_pxxsx"]
 
 [sub_resource type="Gradient" id="Gradient_u8s88"]
 colors = PackedColorArray(0.301961, 0.67451, 0.941176, 1, 0.4888, 0.8648, 0.94, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_dxwpq"]
 gradient = SubResource("Gradient_u8s88")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
-shader = ExtResource("4_u5opy")
-shader_parameter/amount = 2.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u8s88"]
-
-[sub_resource type="Gradient" id="Gradient_dxwpq"]
-colors = PackedColorArray(0.301961, 0.67451, 0.941176, 1, 0.409467, 0.166, 0.83, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_mhvfb"]
-gradient = SubResource("Gradient_dxwpq")
 
 [sub_resource type="Gradient" id="Gradient_jc4t8"]
 interpolation_mode = 2
@@ -88,11 +74,24 @@ _data = {
 &"on_start": SubResource("Animation_u5opy")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
+shader = ExtResource("4_u5opy")
+shader_parameter/amount = 2.5
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u8s88"]
+
+[sub_resource type="Gradient" id="Gradient_dxwpq"]
+colors = PackedColorArray(0.301961, 0.67451, 0.941176, 1, 0.409467, 0.166, 0.83, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mhvfb"]
+gradient = SubResource("Gradient_dxwpq")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b686c"]
 resource_name = "cannon"
 texture = ExtResource("13_vsp63")
 texture_region_size = Vector2i(240, 181)
 0:0/0 = 0
+0:0/0/custom_data_0 = ExtResource("16_mhvfb")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hb504"]
 resource_name = "seashell"
@@ -106,11 +105,27 @@ texture = ExtResource("15_hb504")
 texture_region_size = Vector2i(240, 181)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ln7ps"]
+resource_name = "bed"
+texture = ExtResource("15_4cobl")
+texture_region_size = Vector2i(240, 181)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pxxsx"]
+resource_name = "bow"
+texture = ExtResource("16_ln7ps")
+texture_region_size = Vector2i(240, 181)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_hb504"]
 tile_size = Vector2i(240, 181)
+custom_data_layer_0/name = "Room"
+custom_data_layer_0/type = 24
 sources/0 = SubResource("TileSetAtlasSource_b686c")
 sources/1 = SubResource("TileSetAtlasSource_hb504")
 sources/2 = SubResource("TileSetAtlasSource_ee6o4")
+sources/3 = SubResource("TileSetAtlasSource_ln7ps")
+sources/4 = SubResource("TileSetAtlasSource_pxxsx")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qf6n1"]
 resource_name = "bg"
@@ -122,10 +137,13 @@ texture_region_size = Vector2i(240, 181)
 tile_size = Vector2i(240, 181)
 sources/0 = SubResource("TileSetAtlasSource_qf6n1")
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pxxsx"]
-
 [node name="Game" type="Node2D"]
 script = ExtResource("1_l8g03")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ee6o4")
+autoplay = true
+parameters/looping = true
 
 [node name="Sky" type="Node2D" parent="."]
 
@@ -149,7 +167,7 @@ grow_vertical = 0
 alignment = 1
 script = ExtResource("2_4cobl")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="UI"]
 offset_left = 1810.0
 offset_top = 57.0
 offset_right = 1892.0
@@ -157,7 +175,7 @@ offset_bottom = 88.0
 text = "End wave"
 script = ExtResource("2_dxrkv")
 
-[node name="Button2" type="Button" parent="."]
+[node name="Button2" type="Button" parent="UI"]
 offset_left = 1766.0
 offset_top = 16.0
 offset_right = 1897.0
@@ -170,6 +188,36 @@ visible = false
 
 [node name="GameEnd" parent="." instance=ExtResource("4_dxrkv")]
 visible = false
+
+[node name="GameStartBits" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="GameStartOverlay" type="TextureRect" parent="GameStartBits"]
+clip_children = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -95.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_u5opy")
+
+[node name="Sea gradient" type="TextureRect" parent="GameStartBits/GameStartOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_y36n6")
+
+[node name="GameStartAnimation" type="AnimationPlayer" parent="GameStartBits/GameStartOverlay"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_l8g03")
+}
+autoplay = "on_start"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 material = SubResource("ShaderMaterial_lnu2h")
@@ -193,42 +241,6 @@ texture = SubResource("GradientTexture1D_mhvfb")
 position = Vector2(1357, 388)
 texture = ExtResource("8_dxwpq")
 
-[node name="Tower" type="Node2D" parent="."]
-position = Vector2(104, 433)
-
-[node name="Room" parent="Tower" instance=ExtResource("8_l8g03")]
-position = Vector2(100, 521)
-
-[node name="Room2" parent="Tower" instance=ExtResource("9_j8tme")]
-position = Vector2(232, 521)
-id = "cannon_room"
-
-[node name="Room3" parent="Tower" instance=ExtResource("10_pxxsx")]
-position = Vector2(100, 423)
-
-[node name="Room5" parent="Tower" instance=ExtResource("13_pxxsx")]
-position = Vector2(100, 323)
-id = "bow_and_arrow"
-
-[node name="Room4" parent="Tower" instance=ExtResource("12_pxxsx")]
-position = Vector2(232, 423)
-id = "fridge_room"
-
-[node name="Room6" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(232, 324)
-
-[node name="Room7" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(100, 225)
-
-[node name="Room8" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(232, 225)
-
-[node name="Room9" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(100, 126)
-
-[node name="Room10" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(232, 126)
-
 [node name="EnemySpawnPoints" type="Node2D" parent="."]
 position = Vector2(870, 570)
 
@@ -247,56 +259,20 @@ position = Vector2(1129, -32)
 [node name="Floor5" type="Node2D" parent="EnemySpawnPoints"]
 position = Vector2(1126, -148)
 
-[node name="GameStartBits" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="GameStartOverlay" type="TextureRect" parent="GameStartBits"]
-clip_children = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -1175.0
-offset_right = -768.0
-offset_bottom = -432.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("1_u5opy")
-
-[node name="Sea gradient" type="TextureRect" parent="GameStartBits/GameStartOverlay"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_y36n6")
-metadata/_edit_lock_ = true
-
-[node name="GameStartAnimation" type="AnimationPlayer" parent="GameStartBits/GameStartOverlay"]
-root_node = NodePath("../../..")
-libraries = {
-&"": SubResource("AnimationLibrary_l8g03")
-}
-autoplay = "on_start"
-
-[node name="TowerMap" type="TileMapLayer" parent="."]
-visible = false
+[node name="Tower" type="TileMapLayer" parent="."]
+position = Vector2(93, 312)
 scale = Vector2(0.55, 0.55)
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAEAAgAAAAAAAAAAAAMAAQAAAAAAAAAAAAEAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_hb504")
 script = ExtResource("17_ln7ps")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="TowerMap"]
+[node name="AvailableRooms" type="TileMapLayer" parent="Tower"]
 show_behind_parent = true
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_vsp63")
 
-[node name="NewRoom" type="Sprite2D" parent="."]
-position = Vector2(20.875, 507.875)
-scale = Vector2(40.25, 40.25)
-texture = SubResource("PlaceholderTexture2D_pxxsx")
-script = ExtResource("5_u8s88")
+[node name="EnemyManager" type="Node2D" parent="."]
+script = ExtResource("19_pxxsx")
 
-[connection signal="pressed" from="Button" to="Button" method="on_pressed"]
-[connection signal="pressed" from="Button2" to="Button2" method="on_pressed"]
+[connection signal="room_selected" from="UI/Rooms" to="Tower" method="set_current_room"]
+[connection signal="pressed" from="UI/Button" to="UI/Button" method="on_pressed"]
+[connection signal="pressed" from="UI/Button2" to="UI/Button2" method="on_pressed"]

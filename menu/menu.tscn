@@ -28,8 +28,8 @@ clip_children = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = -95.0
-offset_bottom = 648.0
+offset_top = -180.0
+offset_bottom = 1075.0
 grow_horizontal = 2
 texture = ExtResource("1_j0t7f")
 
