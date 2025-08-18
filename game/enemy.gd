@@ -7,6 +7,8 @@ class_name Enemy
 
 signal on_death(e: Enemy)
 
+var damage_number = load("res://game/DamageNumber.tscn")
+
 @onready var health = max_health
 var time = 0.0
 var game: Game
@@ -49,6 +51,11 @@ func damage(value: int):
 	if self.health <= 0:
 		self.on_death.emit(self)
 		self.death_animation()
+	
+	var num: DamageNumber = damage_number.instantiate()
+	self.get_tree().root.add_child(num)
+	num.set_damage_number(value)
+	num.global_position = self.global_position
 
 func stun_lock(time: float):
 	stun_lock_time_remaining = time
