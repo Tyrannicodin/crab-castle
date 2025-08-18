@@ -9,6 +9,7 @@ script = ExtResource("2_c2qyi")
 display_name = "Seashell"
 image = ExtResource("1_61cp4")
 scale = Vector2(0.3, 0.3)
+animate_on_trigger = true
 visible_progress_bar = true
 visible_arrows = 15
 trigger_script = ExtResource("3_c2qyi")

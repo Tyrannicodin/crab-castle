@@ -7,6 +7,8 @@ class_name Room
 @export_category("display")
 @export var image: Texture2D
 @export var scale: Vector2 = Vector2(.3, .3)
+## Should the pulse animation play on trigger. Should be false for projectile rooms.
+@export var animate_on_trigger: bool = false
 
 @export var visible_progress_bar: bool = true
 @export_flags("up", "right", "down", "left") var visible_arrows: int = 0

@@ -22,8 +22,8 @@ class RoomInstance:
 	
 	func trigger(tower: Tower) -> void:
 		if type.trigger_script:
-			var animate = type.trigger_script.on_trigger(tower, self)
-			if animate:
+			type.trigger_script.on_trigger(tower, self)
+			if type.animate_on_trigger:
 				tower.room_overlays[position].time_since_fired = 0
 		else:
 			print("Room type: '" + type.display_name + "' has no triigger action")
