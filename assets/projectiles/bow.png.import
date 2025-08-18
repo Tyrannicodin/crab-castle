@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmnmkxsnexb3d"
-path="res://.godot/imported/arrow_down.png-a4b272fa39d9bc31b00e054a9950c541.ctex"
+uid="uid://co60lc74aqh1w"
+path="res://.godot/imported/bow.png-73e99c5fd43cca27c41706e83a6909d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/rooms/arrow_down.png"
-dest_files=["res://.godot/imported/arrow_down.png-a4b272fa39d9bc31b00e054a9950c541.ctex"]
+source_file="res://assets/projectiles/bow.png"
+dest_files=["res://.godot/imported/bow.png-73e99c5fd43cca27c41706e83a6909d8.ctex"]
 
 [params]
 

@@ -2,7 +2,7 @@ extends Node2D
 class_name Game
 
 var enemies: Array[Enemy] = []
-@onready var tower = $TowerMap
+@onready var tower = $Tower
 
 @onready var enemy_spawn_points = [
 	$EnemySpawnPoints/Floor1,

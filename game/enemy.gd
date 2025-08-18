@@ -10,7 +10,7 @@ signal on_death(e: Enemy)
 var damage_number = load("res://game/DamageNumber.tscn")
 
 @onready var health = max_health
-var time = 0.0
+var living_time = 0.0
 var game: Game
 var downward_accel = 0
 var stun_lock_time_remaining = 0
@@ -23,7 +23,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:	
 	move(delta)
-	display_hp()
 	
 	if not is_alive():
 		self.global_position.y += downward_accel
@@ -38,11 +37,6 @@ func _process(delta: float) -> void:
 func is_alive() -> bool:
 	return self.health > 0
 
-func display_hp():
-	$HealthBar.min_value = 0
-	$HealthBar.max_value = max_health
-	$HealthBar.value = health
-
 func move(delta):
 	backwards_velocity -= acceleration * delta
 	if backwards_velocity < 0:
@@ -53,8 +47,8 @@ func move(delta):
 		return
 	self.position.x -= delta * speed
 	if is_alive():
-		time += delta
-		self.position.y = 10 * sin(2 * time)
+		living_time += delta
+		self.position.y = 10 * sin(2 * living_time)
 
 func damage(value: int):
 	self.health -= value
@@ -76,4 +70,3 @@ func knockback(power: int):
 
 func death_animation():
 	self.scale.y = -1
-	$HealthBar.visible = false

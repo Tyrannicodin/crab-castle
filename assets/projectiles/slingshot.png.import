@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dduhjhbyxd14y"
-path="res://.godot/imported/arrow_left.png-4b6b542a7d48ff381c324ac8b3e9a039.ctex"
+uid="uid://bo4uc83hk01vu"
+path="res://.godot/imported/slingshot.png-acbfe9289a640f85ea9f54ec050d3a3d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/rooms/arrow_left.png"
-dest_files=["res://.godot/imported/arrow_left.png-4b6b542a7d48ff381c324ac8b3e9a039.ctex"]
+source_file="res://assets/projectiles/slingshot.png"
+dest_files=["res://.godot/imported/slingshot.png-acbfe9289a640f85ea9f54ec050d3a3d.ctex"]
 
 [params]
 

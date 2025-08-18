@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0mf8qj5fny5k"
-path="res://.godot/imported/empty_scaled.png-696b9b73b4c3654d394281faa8972a31.ctex"
+uid="uid://dmnmkxsnexb3d"
+path="res://.godot/imported/arrow_down.png-106ca7de35ff6a9d1b232f368915a606.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/rooms/empty_scaled.png"
-dest_files=["res://.godot/imported/empty_scaled.png-696b9b73b4c3654d394281faa8972a31.ctex"]
+source_file="res://assets/room_details/arrow_down.png"
+dest_files=["res://.godot/imported/arrow_down.png-106ca7de35ff6a9d1b232f368915a606.ctex"]
 
 [params]
 

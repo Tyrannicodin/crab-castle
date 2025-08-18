@@ -1,7 +1,7 @@
 extends TileMapLayer
 class_name Tower
 
-var room_overlay = preload("res://game/room_overlay.tscn")
+var room_overlay = preload("res://game/rooms/room_overlay.tscn")
 
 var available_rooms: Array[Room] = []
 var current_room: Room = null
