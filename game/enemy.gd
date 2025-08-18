@@ -17,6 +17,9 @@ var stun_lock_time_remaining = 0
 var backwards_velocity = 0
 var acceleration = 30
 
+func _ready() -> void:
+	self.material = self.material.duplicate()
+
 func _process(delta: float) -> void:	
 	move(delta)
 	display_hp()
@@ -24,6 +27,10 @@ func _process(delta: float) -> void:
 	if not is_alive():
 		self.global_position.y += downward_accel
 		downward_accel += 50 * delta
+
+	material.set_shader_parameter("brightness",
+		lerp(material.get_shader_parameter("brightness") as float, 0., delta * 10)
+	)
 
 func is_alive() -> bool:
 	return self.health > 0
@@ -56,7 +63,7 @@ func damage(value: int):
 	self.get_tree().root.add_child(num)
 	num.set_damage_number(value)
 	num.global_position = self.global_position
-
+	material.set_shader_parameter("brightness", 1)
 func stun_lock(time: float):
 	stun_lock_time_remaining = time
 
