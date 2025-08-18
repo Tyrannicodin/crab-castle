@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name Projectile
 
 @export var damage = 50
 
@@ -33,7 +33,7 @@ func y_pos_dx(ex: float, ey: float, x: float):
 	else:
 		return ey / ex
 	
-func aim(spawnpoint: Vector2, enemy: Enemy):
+func aim(spawnpoint: Vector2, enemy: EnemyInstance):
 	origin = spawnpoint
 	enemy_position = Vector2(enemy.global_position.x, enemy.global_position.y)
 
@@ -52,12 +52,11 @@ func _process(delta: float) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if disabled:
 		return
-	var parent = area.get_parent()
 
-	if parent is not Enemy:
+	if area is not EnemyInstance:
 		return
 
-	var enemy: Enemy = parent
+	var enemy: EnemyInstance = area
 
 	if !enemy.is_alive():
 		return

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bejedh07vvdip"]
 
-[ext_resource type="Shader" uid="uid://cthja2aw2bnvd" path="res://game/Enemy.gdshader" id="1_vcbs2"]
+[ext_resource type="Shader" uid="uid://cthja2aw2bnvd" path="res://game/enemy.gdshader" id="1_vcbs2"]
 [ext_resource type="Script" uid="uid://fuh45tl6bm2n" path="res://game/enemy.gd" id="1_vodhp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vcbs2"]

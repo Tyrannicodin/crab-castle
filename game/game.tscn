@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=44 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
@@ -19,6 +19,7 @@
 [ext_resource type="Resource" uid="uid://oswxf34lko23" path="res://assets/resources/rooms/cannon.tres" id="16_mhvfb"]
 [ext_resource type="Script" uid="uid://c0htur6o5hwgt" path="res://game/rooms/tower.gd" id="17_ln7ps"]
 [ext_resource type="Script" uid="uid://b7x38g8nwawmq" path="res://game/enemy_manager.gd" id="19_pxxsx"]
+[ext_resource type="Script" uid="uid://biswc6ipcfiun" path="res://game/eliminator.gd" id="20_u8s88"]
 
 [sub_resource type="Gradient" id="Gradient_u8s88"]
 colors = PackedColorArray(0.301961, 0.67451, 0.941176, 1, 0.4888, 0.8648, 0.94, 1)
@@ -137,6 +138,17 @@ texture_region_size = Vector2i(240, 181)
 tile_size = Vector2i(240, 181)
 sources/0 = SubResource("TileSetAtlasSource_qf6n1")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u8s88"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dxwpq"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mhvfb"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5e03w"]
+normal = Vector2(0, 1)
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_l8g03")
 
@@ -241,22 +253,23 @@ texture = SubResource("GradientTexture1D_mhvfb")
 position = Vector2(1357, 388)
 texture = ExtResource("8_dxwpq")
 
-[node name="EnemySpawnPoints" type="Node2D" parent="."]
+[node name="EnemyManager" type="Node2D" parent="."]
 position = Vector2(870, 570)
+script = ExtResource("19_pxxsx")
 
-[node name="Floor1" type="Node2D" parent="EnemySpawnPoints"]
+[node name="Floor1" type="Node2D" parent="EnemyManager"]
 position = Vector2(1131, 306)
 
-[node name="Floor2" type="Node2D" parent="EnemySpawnPoints"]
+[node name="Floor2" type="Node2D" parent="EnemyManager"]
 position = Vector2(1130, 192)
 
-[node name="Floor3" type="Node2D" parent="EnemySpawnPoints"]
+[node name="Floor3" type="Node2D" parent="EnemyManager"]
 position = Vector2(1126, 78)
 
-[node name="Floor4" type="Node2D" parent="EnemySpawnPoints"]
+[node name="Floor4" type="Node2D" parent="EnemyManager"]
 position = Vector2(1129, -32)
 
-[node name="Floor5" type="Node2D" parent="EnemySpawnPoints"]
+[node name="Floor5" type="Node2D" parent="EnemyManager"]
 position = Vector2(1126, -148)
 
 [node name="Tower" type="TileMapLayer" parent="."]
@@ -270,9 +283,27 @@ show_behind_parent = true
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_vsp63")
 
-[node name="EnemyManager" type="Node2D" parent="."]
-script = ExtResource("19_pxxsx")
+[node name="Eliminator" type="Area2D" parent="."]
+monitorable = false
+script = ExtResource("20_u8s88")
+
+[node name="Left" type="CollisionShape2D" parent="Eliminator"]
+position = Vector2(0, 540)
+shape = SubResource("WorldBoundaryShape2D_u8s88")
+
+[node name="Right" type="CollisionShape2D" parent="Eliminator"]
+position = Vector2(1920, 540)
+shape = SubResource("WorldBoundaryShape2D_dxwpq")
+
+[node name="Down" type="CollisionShape2D" parent="Eliminator"]
+position = Vector2(960, 1080)
+shape = SubResource("WorldBoundaryShape2D_mhvfb")
+
+[node name="Up" type="CollisionShape2D" parent="Eliminator"]
+position = Vector2(960, 0)
+shape = SubResource("WorldBoundaryShape2D_5e03w")
 
 [connection signal="room_selected" from="UI/Rooms" to="Tower" method="set_current_room"]
 [connection signal="pressed" from="UI/Button" to="UI/Button" method="on_pressed"]
 [connection signal="pressed" from="UI/Button2" to="UI/Button2" method="on_pressed"]
+[connection signal="area_shape_entered" from="Eliminator" to="Eliminator" method="_on_area_shape_entered"]

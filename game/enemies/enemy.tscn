@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2iys8q280ysb"]
+
+[ext_resource type="Script" uid="uid://c8coed0afy17b" path="res://game/enemies/enemy.gd" id="1_1kd2t"]
+[ext_resource type="Shader" uid="uid://cthja2aw2bnvd" path="res://game/enemy.gdshader" id="1_b4nw2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qymtj"]
+shader = ExtResource("1_b4nw2")
+shader_parameter/brightness = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4nw2"]
+
+[sub_resource type="Animation" id="Animation_b4nw2"]
+resource_name = "hurt"
+length = 0.4421
+
+[sub_resource type="Animation" id="Animation_qymtj"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_muinq"]
+_data = {
+&"RESET": SubResource("Animation_qymtj"),
+&"hurt": SubResource("Animation_b4nw2")
+}
+
+[node name="Enemy" type="Area2D"]
+material = SubResource("ShaderMaterial_qymtj")
+script = ExtResource("1_1kd2t")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b4nw2")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+use_parent_material = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_muinq")
+}
