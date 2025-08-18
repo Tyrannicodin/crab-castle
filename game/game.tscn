@@ -1,26 +1,27 @@
-[gd_scene load_steps=40 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=41 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
-[ext_resource type="Script" path="res://game/room_selector.gd" id="2_4cobl"]
+[ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/room_selector.gd" id="2_4cobl"]
 [ext_resource type="Script" uid="uid://dx5wdsegef6t2" path="res://game/end_wave.gd" id="2_dxrkv"]
 [ext_resource type="PackedScene" uid="uid://68en2fypp2j5" path="res://upgrades/UpgradeUI.tscn" id="3_dakft"]
 [ext_resource type="Script" uid="uid://b6y06i07h8uw3" path="res://game/game_end.gd" id="3_u5opy"]
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
-[ext_resource type="Script" uid="uid://dfmgr4h7mmliw" path="res://game/new_room.gd" id="5_u8s88"]
+[ext_resource type="Script" path="res://game/new_room.gd" id="5_u8s88"]
 [ext_resource type="Texture2D" uid="uid://b4ku0d1fup6rh" path="res://assets/background/cloud_1.png" id="8_dxwpq"]
 [ext_resource type="PackedScene" uid="uid://bj0ohm7w44ukd" path="res://game/rooms/Slingshot.tscn" id="8_l8g03"]
 [ext_resource type="PackedScene" uid="uid://ds73obbkiouu3" path="res://game/rooms/Cannon.tscn" id="9_j8tme"]
 [ext_resource type="PackedScene" path="res://game/rooms/Bedroom.tscn" id="10_pxxsx"]
 [ext_resource type="PackedScene" uid="uid://b6tseugg263i5" path="res://game/rooms/Empty.tscn" id="11_ee6o4"]
-[ext_resource type="PackedScene" uid="uid://ctuvftctdyav8" path="res://game/rooms/Freezer.tscn" id="12_pxxsx"]
+[ext_resource type="PackedScene" path="res://game/rooms/Freezer.tscn" id="12_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://c0mf8qj5fny5k" path="res://assets/rooms/empty_scaled.png" id="12_qf6n1"]
-[ext_resource type="PackedScene" uid="uid://cboi0aijc0uqh" path="res://game/rooms/Bow.tscn" id="13_pxxsx"]
+[ext_resource type="PackedScene" path="res://game/rooms/Bow.tscn" id="13_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://dkxam7a5hi4pc" path="res://assets/rooms/cannon_scaled.png" id="13_vsp63"]
 [ext_resource type="Texture2D" uid="uid://oyj7iolb3f0y" path="res://assets/rooms/seashell1_scaled.png" id="14_b686c"]
 [ext_resource type="Texture2D" uid="uid://ldwldwfriifr" path="res://assets/rooms/slingshot_scaled.png" id="15_hb504"]
-[ext_resource type="Script" path="res://game/tower.gd" id="17_ln7ps"]
+[ext_resource type="Resource" uid="uid://oswxf34lko23" path="res://assets/resources/rooms/cannon.tres" id="16_mhvfb"]
+[ext_resource type="Script" uid="uid://c0htur6o5hwgt" path="res://game/tower.gd" id="17_ln7ps"]
 
 [sub_resource type="Gradient" id="Gradient_u8s88"]
 colors = PackedColorArray(0.301961, 0.67451, 0.941176, 1, 0.4888, 0.8648, 0.94, 1)
@@ -93,6 +94,7 @@ resource_name = "cannon"
 texture = ExtResource("13_vsp63")
 texture_region_size = Vector2i(240, 181)
 0:0/0 = 0
+0:0/0/custom_data_0 = ExtResource("16_mhvfb")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hb504"]
 resource_name = "seashell"
@@ -108,6 +110,8 @@ texture_region_size = Vector2i(240, 181)
 
 [sub_resource type="TileSet" id="TileSet_hb504"]
 tile_size = Vector2i(240, 181)
+custom_data_layer_0/name = "Room"
+custom_data_layer_0/type = 24
 sources/0 = SubResource("TileSetAtlasSource_b686c")
 sources/1 = SubResource("TileSetAtlasSource_hb504")
 sources/2 = SubResource("TileSetAtlasSource_ee6o4")
@@ -256,9 +260,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -1175.0
-offset_right = -768.0
-offset_bottom = -432.0
+offset_left = -384.0
+offset_top = -1607.0
+offset_right = -1152.0
+offset_bottom = -864.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_u5opy")
@@ -281,13 +286,11 @@ libraries = {
 autoplay = "on_start"
 
 [node name="TowerMap" type="TileMapLayer" parent="."]
-visible = false
 scale = Vector2(0.55, 0.55)
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAEAAgAAAAAAAAAAAAMAAQAAAAAAAAAAAAEAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_hb504")
 script = ExtResource("17_ln7ps")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="TowerMap"]
+[node name="AvailableRooms" type="TileMapLayer" parent="TowerMap"]
 show_behind_parent = true
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_vsp63")
@@ -298,5 +301,6 @@ scale = Vector2(40.25, 40.25)
 texture = SubResource("PlaceholderTexture2D_pxxsx")
 script = ExtResource("5_u8s88")
 
+[connection signal="room_selected" from="UI/Rooms" to="TowerMap" method="set_current_room"]
 [connection signal="pressed" from="Button" to="Button" method="on_pressed"]
 [connection signal="pressed" from="Button2" to="Button2" method="on_pressed"]

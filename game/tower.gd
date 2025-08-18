@@ -1,16 +1,51 @@
 extends TileMapLayer
 
-var rooms: Array[RoomResource] = []
+var room_overlay = preload("res://game/room_overlay.tscn")
+
+var available_rooms: Array[RoomResource] = []
+var current_room: RoomResource = null
+
+var room_overlays: Dictionary[Vector2i, RoomOverlay] = {}
+
+class RoomInstance:
+	signal trigger
+
+	var type: RoomResource
+	var bonus_projectiles: int = 0
+	
+	var cooldown_remaining: float
+	var time_since_fired: float = 0
+
+	func _init(room_type: RoomResource):
+		type = room_type
+		cooldown_remaining = type.cooldown_seconds
+	
+
+var rooms: Dictionary[Vector2i, RoomInstance] = {}
+
+@onready var game = $".."
 
 func _ready():
+	print(game)
 	load_rooms()
+	generate_room_sprites()
 
 func load_rooms():
 	for file_name in DirAccess.get_files_at("res://assets/resources/rooms"):
 		if (file_name.get_extension() == "import"):
 			file_name = file_name.replace('.import', '')
-		print(file_name)
-		rooms.append(ResourceLoader.load("res://assets/resources/rooms/" + file_name)) 
+		available_rooms.append(ResourceLoader.load("res://assets/resources/rooms/" + file_name)) 
+
+func generate_room_sprites() -> void:
+	var used_cells = $AvailableRooms.get_used_cells()
+	for cell in used_cells:
+		var overlay = room_overlay.instantiate()
+		room_overlays[cell] = overlay
+		overlay.position = $AvailableRooms.map_to_local(cell) - Vector2(120, 90)
+		add_child(overlay)
+
+func set_current_room(room: RoomResource) -> void:
+	current_room = room
 
 func _input(event) -> void:
 	if not event is InputEventMouseButton:
@@ -19,11 +54,53 @@ func _input(event) -> void:
 		return
 		
 	var target = local_to_map(get_local_mouse_position())
+	if not target in $AvailableRooms.get_used_cells():
+		return
 	var cell = get_cell_source_id(target)
 	if cell == -1:
 		# TODO: implement place logic
+		if not current_room:
+			return
+		set_cell(target, current_room.tilemap_id, Vector2i.ZERO)
+		room_overlays[target].visible_arrows = current_room.visible_arrows
+		room_overlays[target].visible_progress = current_room.visible_progress_bar
+		rooms[target] = RoomInstance.new(current_room)
 		return
-	var room = rooms[rooms.find_custom(
-		func(res: RoomResource): return res.tilemap_id == cell
-	)]
-	print(room.display_name)
+	# TODO: This is where stuff should happen when you click on a room 
+
+func _process(delta: float) -> void:
+	var room: RoomInstance
+	for room_pos in rooms:
+		room = rooms[room_pos]	
+		room.cooldown_remaining -= delta
+		room.time_since_fired += delta
+
+		if room.cooldown_remaining < 0:
+			if game.find_closest_enemy(room) or !room.type.requires_enemies_to_trigger:
+				room.cooldown_remaining = room.type.cooldown_seconds
+				room.trigger.emit()
+
+		if room.type.cooldown_seconds > 0 and room.cooldown_remaining > 0:
+			room_overlays[room_pos].progress = room.cooldown_remaining / room.type.cooldown_seconds
+		else:
+			room_overlays[room_pos].progress = 0
+
+func fire_projectiles(room: RoomInstance, projectile: PackedScene, number: int):
+	var targets = game.find_n_closest_enemies(room, number + room.extra_projectiles_for_next_shot)
+	room.extra_projectiles_for_next_shot = 0
+
+	for target in targets:
+		var projectileInst = projectile.instantiate()
+		game.add_child(projectileInst)
+		game.fire_projectile_from_room(room, projectileInst, target)
+		await get_tree().create_timer(.1).timeout
+
+func fire_projectiles_above_enemy(room: RoomInstance, projectile: PackedScene, number: int):
+	var targets = game.find_n_closest_enemies(room, number + room.extra_projectiles_for_next_shot)
+	room.extra_projectiles_for_next_shot = 0
+
+	for target in targets:
+		var projectileInst = projectile.instantiate()
+		game.add_child(projectileInst)
+		game.fire_projectile_above_enemy(self, projectileInst, target)
+		await get_tree().create_timer(.1).timeout

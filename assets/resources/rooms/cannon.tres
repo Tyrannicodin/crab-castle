@@ -6,8 +6,11 @@
 [resource]
 script = ExtResource("1_bpa10")
 tilemap_id = 0
+tilemap_atlas_coords = Vector2i(0, 0)
+icon = ExtResource("1_2vvaa")
 display_name = "Crab cannon"
 cooldown_seconds = 3.0
 requires_enemies_to_trigger = true
-icon = ExtResource("1_2vvaa")
+visible_progress_bar = true
+visible_arrows = 2
 metadata/_custom_type_script = "uid://s5vpeux5sx8g"
