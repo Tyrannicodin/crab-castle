@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=38 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
 [ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/room_selector.gd" id="2_4cobl"]
 [ext_resource type="Script" uid="uid://dx5wdsegef6t2" path="res://game/end_wave.gd" id="2_dxrkv"]
+[ext_resource type="AudioStream" uid="uid://dqef6khyml52g" path="res://assets/music/crabcastle.mp3" id="2_ee6o4"]
 [ext_resource type="PackedScene" uid="uid://68en2fypp2j5" path="res://upgrades/UpgradeUI.tscn" id="3_dakft"]
 [ext_resource type="Script" uid="uid://b6y06i07h8uw3" path="res://game/game_end.gd" id="3_u5opy"]
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
@@ -12,7 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://c0mf8qj5fny5k" path="res://assets/rooms/empty_scaled.png" id="12_qf6n1"]
 [ext_resource type="Texture2D" uid="uid://dkxam7a5hi4pc" path="res://assets/rooms/cannon_scaled.png" id="13_vsp63"]
 [ext_resource type="Texture2D" uid="uid://oyj7iolb3f0y" path="res://assets/rooms/seashell1_scaled.png" id="14_b686c"]
+[ext_resource type="Texture2D" uid="uid://dea6qc5ik3c1i" path="res://assets/rooms/bed_scaled.png" id="15_4cobl"]
 [ext_resource type="Texture2D" uid="uid://ldwldwfriifr" path="res://assets/rooms/slingshot_scaled.png" id="15_hb504"]
+[ext_resource type="Texture2D" uid="uid://b4ujuh3a8dcmq" path="res://assets/rooms/bow_scaled.png" id="16_ln7ps"]
 [ext_resource type="Resource" uid="uid://oswxf34lko23" path="res://assets/resources/rooms/cannon.tres" id="16_mhvfb"]
 [ext_resource type="Script" uid="uid://c0htur6o5hwgt" path="res://game/tower.gd" id="17_ln7ps"]
 
@@ -101,6 +104,18 @@ texture = ExtResource("15_hb504")
 texture_region_size = Vector2i(240, 181)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ln7ps"]
+resource_name = "bed"
+texture = ExtResource("15_4cobl")
+texture_region_size = Vector2i(240, 181)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pxxsx"]
+resource_name = "bow"
+texture = ExtResource("16_ln7ps")
+texture_region_size = Vector2i(240, 181)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_hb504"]
 tile_size = Vector2i(240, 181)
 custom_data_layer_0/name = "Room"
@@ -108,6 +123,8 @@ custom_data_layer_0/type = 24
 sources/0 = SubResource("TileSetAtlasSource_b686c")
 sources/1 = SubResource("TileSetAtlasSource_hb504")
 sources/2 = SubResource("TileSetAtlasSource_ee6o4")
+sources/3 = SubResource("TileSetAtlasSource_ln7ps")
+sources/4 = SubResource("TileSetAtlasSource_pxxsx")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qf6n1"]
 resource_name = "bg"
@@ -121,6 +138,11 @@ sources/0 = SubResource("TileSetAtlasSource_qf6n1")
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_l8g03")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ee6o4")
+autoplay = true
+parameters/looping = true
 
 [node name="Sky" type="Node2D" parent="."]
 

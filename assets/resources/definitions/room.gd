@@ -1,6 +1,6 @@
 @icon("res://assets/rooms/cannon.png")
 extends Resource
-class_name RoomResource
+class_name Room
 
 @export var display_name: String = ""
 

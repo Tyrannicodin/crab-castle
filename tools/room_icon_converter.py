@@ -1,6 +1,6 @@
 from PIL import Image
 
-im = Image.open("assets\\rooms\\slingshot.png").convert("RGBA")
+im = Image.open("assets\\rooms\\freezer.png").convert("RGBA")
 
 target = Image.new("RGBA", (im.width, im.width))
 
@@ -15,4 +15,4 @@ final = Image.new("RGBA", (240, 181))
 target = target.resize((120, 120))
 final.paste(target, (60, 10, 240-60, 130))
 
-final.save("assets\\rooms\\slingshot_scaled.png")
+final.save("assets\\rooms\\freezer_scaled.png")

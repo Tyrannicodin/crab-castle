@@ -33,7 +33,7 @@ func has_enemies() -> bool:
 func find_closest_enemies(to_room: Tower.RoomInstance) -> Array[Enemy]:
 	if !has_enemies():
 		return []
-	var room_position = tower.get_room_position(to_room)
+	var room_position = tower.get_room_global_position(to_room)
 	var alive_enemies = enemies.filter(func(x: Enemy): return x.is_alive())
 	
 	var in_range_enemies = alive_enemies.filter(func(e: Enemy):
@@ -70,7 +70,7 @@ func find_n_closest_enemies(to_room: Tower.RoomInstance, n: int) -> Array[Enemy]
 	return out
 
 func fire_projectile_from_room(room: Tower.RoomInstance, projectile: Node2D, target: Enemy):
-	var room_positon: Vector2 = tower.get_room_position(room)
+	var room_positon: Vector2 = tower.get_room_global_position(room)
 	projectile.visible = true
 	projectile.global_position = room_positon
 	projectile.aim(room_positon, target)

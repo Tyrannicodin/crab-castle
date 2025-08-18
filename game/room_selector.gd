@@ -1,8 +1,8 @@
 extends HBoxContainer
 
-var rooms: Array[RoomResource] = []
+var rooms: Array[Room] = []
 
-signal room_selected(room: RoomResource)
+signal room_selected(room: Room)
 
 func _ready():
 	load_rooms()
@@ -22,5 +22,5 @@ func load_rooms():
 		var resource = null
 		if file_name.ends_with(".tres"):
 			resource = ResourceLoader.load("res://assets/resources/rooms/" + file_name)
-		if resource is RoomResource:
+		if resource is Room:
 			rooms.append(resource) 
