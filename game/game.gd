@@ -91,6 +91,10 @@ func fire_projectile_from_room(room: Room, projectile: Node2D, target: Enemy):
 	projectile.global_position = room.global_position
 	projectile.aim(room.global_position, target)
 
+func fire_projectile_above_enemy(room: Room, projectile: Node2D, target: Enemy):
+	projectile.visible = true
+	projectile.global_position = target.global_position + Vector2(0, -50)
+
 func find_adjacent_rooms(room: Room) -> Dictionary[String, Room]:
 	for i in range(len(tower)):
 		for j in range(len(tower[i])):

@@ -52,3 +52,14 @@ func fire_projectiles(projectile: PackedScene, number: int):
 		self.game.add_child(projectileInst)
 		game.fire_projectile_from_room(self, projectileInst, target)
 		await get_tree().create_timer(.1).timeout
+
+func fire_projectiles_above_enemy(projectile: PackedScene, number: int):
+	var targets = game.find_n_closest_enemies(self, number + extra_projectiles_for_next_shot)
+	extra_projectiles_for_next_shot = 0
+
+	for target in targets:
+		show_activate_animation()
+		var projectileInst = projectile.instantiate()
+		self.game.add_child(projectileInst)
+		game.fire_projectile_above_enemy(self, projectileInst, target)
+		await get_tree().create_timer(.1).timeout

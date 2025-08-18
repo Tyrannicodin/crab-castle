@@ -1,5 +1,5 @@
 extends Node2D
-class_name Projectile
+
 
 @export var damage = 50
 
@@ -9,10 +9,13 @@ class_name Projectile
 @export var stun_lock = 0.1
 @export var knockback = 0
 @export var gravity: bool = true
+enum MovementType {Parabolic, Drop}
+@export var movement_type: MovementType
 
 var time = 0
 var enemy_position: Vector2 = Vector2.ZERO
 var origin: Vector2 = Vector2.ZERO
+var downward_accel = 0
 @onready var remaining_pierce = pierce
 var disabled = false
 
@@ -36,12 +39,16 @@ func aim(spawnpoint: Vector2, enemy: Enemy):
 
 func _process(delta: float) -> void:
 	time += delta
-				
-	self.global_position.x = origin.x + time * speed
-	self.global_position.y = y_pos(enemy_position.x - origin.x, enemy_position.y - origin.y, time * speed) + origin.y
-	self.rotation = atan(y_pos_dx(enemy_position.x - origin.x, enemy_position.y - origin.y, time * speed))
 	
+	if movement_type == MovementType.Parabolic:
+		self.global_position.x = origin.x + time * speed
+		self.global_position.y = y_pos(enemy_position.x - origin.x, enemy_position.y - origin.y, time * speed) + origin.y
+		self.rotation = atan(y_pos_dx(enemy_position.x - origin.x, enemy_position.y - origin.y, time * speed))
 	
+	if movement_type == MovementType.Drop:
+		self.global_position.y += downward_accel * delta
+		downward_accel += 1000 * delta
+		
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if disabled:
 		return
