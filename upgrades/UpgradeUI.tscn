@@ -21,33 +21,30 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_3vxon")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchors_preset = 14
+[node name="Upgrades" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -267.0
-offset_bottom = 288.0
+offset_left = -414.0
+offset_top = -200.0
+offset_right = 414.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Control" type="Control" parent="HBoxContainer"]
+[node name="Upgrade1" parent="Upgrades" instance=ExtResource("3_3vxon")]
 layout_mode = 2
 
-[node name="Upgrade" parent="HBoxContainer" instance=ExtResource("3_3vxon")]
+[node name="Upgrade2" parent="Upgrades" instance=ExtResource("3_3vxon")]
 layout_mode = 2
 
-[node name="Upgrade2" parent="HBoxContainer" instance=ExtResource("3_3vxon")]
+[node name="Upgrade3" parent="Upgrades" instance=ExtResource("3_3vxon")]
 layout_mode = 2
 
-[node name="Upgrade3" parent="HBoxContainer" instance=ExtResource("3_3vxon")]
-layout_mode = 2
-
-[node name="Control2" type="Control" parent="HBoxContainer"]
-layout_mode = 2
-
-[connection signal="pressed" from="HBoxContainer/Upgrade" to="." method="on_upgrade_selected" binds= ["upgrade_1"]]
-[connection signal="pressed" from="HBoxContainer/Upgrade2" to="." method="on_upgrade_selected" binds= ["upgrade_2"]]
-[connection signal="pressed" from="HBoxContainer/Upgrade3" to="." method="on_upgrade_selected" binds= ["upgrade_3"]]
+[connection signal="room_selected" from="Upgrades/Upgrade1" to="." method="on_upgrade_selected"]
+[connection signal="room_selected" from="Upgrades/Upgrade2" to="." method="on_upgrade_selected"]
+[connection signal="room_selected" from="Upgrades/Upgrade3" to="." method="on_upgrade_selected"]

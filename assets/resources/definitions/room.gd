@@ -17,3 +17,4 @@ class_name Room
 @export var trigger_script: GDScript
 @export var cooldown_seconds: float = 0
 @export var requires_enemies_to_trigger: bool = true
+@export var weight: int = 100

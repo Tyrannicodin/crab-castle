@@ -1,47 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpl6ohbh08x3w"]
+[gd_scene load_steps=5 format=3 uid="uid://bpl6ohbh08x3w"]
 
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_3oguy"]
+[ext_resource type="Script" uid="uid://bgukjsmg28nyr" path="res://upgrades/upgrade.gd" id="1_fvx8q"]
 [ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="1_rgapa"]
-[ext_resource type="FontVariation" uid="uid://xvvik2j6lvhf" path="res://assets/fonts/nunito.tres" id="3_fvx8q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rgapa"]
+font_size = 40
 
 [node name="Upgrade" type="Button"]
-offset_right = 221.0
-offset_bottom = 349.0
+custom_minimum_size = Vector2(400, 700)
+offset_right = 400.0
+offset_bottom = 700.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_fvx8q")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Margin" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 15
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+
+[node name="RoomName" type="Label" parent="Margin/VBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_rgapa")
-text = "Upgrade name"
+text = "Room name"
+label_settings = SubResource("LabelSettings_rgapa")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+[node name="Image" type="TextureRect" parent="Margin/VBox"]
 layout_mode = 2
 texture = ExtResource("1_3oguy")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_fvx8q")
-text = "+ 5 seagulls"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_fvx8q")
-text = "Crab gunners fire 15% faster underwater"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+[connection signal="pressed" from="." to="." method="_on_pressed"]

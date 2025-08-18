@@ -3,8 +3,9 @@ class_name Tower
 
 var room_overlay = preload("res://game/rooms/room_overlay.tscn")
 
-var available_rooms: Array[Room] = []
-var current_room: Room = null
+signal room_placed(room: int)
+
+var current_room: int = -1
 
 var room_overlays: Dictionary[Vector2i, RoomOverlay] = {}
 
@@ -34,19 +35,7 @@ var rooms: Array[RoomInstance] = []
 @onready var game = $".."
 
 func _ready():
-	print(game)
-	load_rooms()
 	generate_room_sprites()
-
-func load_rooms():
-	for file_name in DirAccess.get_files_at("res://assets/resources/rooms"):
-		if (file_name.get_extension() == "import"):
-			file_name = file_name.replace('.import', '')
-		var resource = null
-		if file_name.ends_with(".tres"):
-			resource = ResourceLoader.load("res://assets/resources/rooms/" + file_name)
-		if resource is Room:
-			available_rooms.append(resource) 
 
 func generate_room_sprites() -> void:
 	var used_cells = get_used_cells()
@@ -56,7 +45,7 @@ func generate_room_sprites() -> void:
 		overlay.position = map_to_local(cell) - Vector2(120, 90)
 		add_child(overlay)
 
-func set_current_room(room: Room) -> void:
+func set_current_room(room: int) -> void:
 	current_room = room
 
 func _input(event) -> void:
@@ -64,19 +53,22 @@ func _input(event) -> void:
 		return
 	if event.is_pressed() or event.button_index != 1:
 		return
-		
+
 	var target = local_to_map(get_local_mouse_position())
 	if not target in get_used_cells():
 		return
 	if room_overlays[target].room:
-		return
-	if not current_room:
 		# TODO: This is where stuff should happen when you click on a placed room
 		return
-	room_overlays[target].room = current_room
+	if current_room == -1:
+		return
+	room_overlays[target].room = game.purchased_rooms[current_room]
 	room_overlays[target].update_sprite()
-	rooms.append(RoomInstance.new(current_room, target))
-	return
+	rooms.append(
+		RoomInstance.new(game.purchased_rooms[current_room], target)
+	)
+	room_placed.emit(current_room)
+	current_room = -1
 
 func _process(delta: float) -> void:
 	for room in rooms:

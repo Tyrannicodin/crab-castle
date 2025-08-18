@@ -1,15 +1,34 @@
 extends Node2D
 class_name Game
 
+signal rooms_loaded(rooms: Array[Room])
+signal add_room(room: Room)
+
+var available_rooms: Array[Room] = []
+var purchased_rooms: Array[Room] = []
+
 @onready var tower = $Tower
 @onready var enemy_manager = $EnemyManager
 
 func _ready() -> void:
+	load_rooms()
 	$GameStartBits.visible = true
 	
 	for i in range(20):
 		_spawn_enemy()
 		await get_tree().create_timer(0.5).timeout
+
+func load_rooms():
+	available_rooms = []
+	for file_name in DirAccess.get_files_at("res://assets/resources/rooms"):
+		if (file_name.get_extension() == "import"):
+			file_name = file_name.replace('.import', '')
+		var resource = null
+		if file_name.ends_with(".tres"):
+			resource = ResourceLoader.load("res://assets/resources/rooms/" + file_name)
+		if resource is Room:
+			available_rooms.append(resource) 
+	rooms_loaded.emit(available_rooms)
 
 func _spawn_enemy():
 	# The level of the tower the enemy spawns on
@@ -50,3 +69,10 @@ func fire_projectile_from_room(room: Tower.RoomInstance, projectile: Node2D, tar
 func fire_projectile_above_enemy(_room: Tower.RoomInstance, projectile: Node2D, target: EnemyInstance):
 	projectile.visible = true
 	projectile.global_position = target.global_position + Vector2(0, -50)
+
+func room_selected(room: Room) -> void:
+	purchased_rooms.append(room)
+	add_room.emit(room)
+
+func room_placed(room: int) -> void:
+	purchased_rooms.remove_at(room)
