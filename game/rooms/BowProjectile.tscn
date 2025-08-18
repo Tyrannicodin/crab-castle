@@ -7,7 +7,8 @@
 damage = 100
 speed = 1000.0
 pierce = 1
-knockback = 5
+stun_lock = 0.2
+knockback = 2
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(33, 1)
