@@ -1,4 +1,5 @@
 extends TileMapLayer
+class_name Tower
 
 var room_overlay = preload("res://game/room_overlay.tscn")
 
@@ -8,8 +9,6 @@ var current_room: RoomResource = null
 var room_overlays: Dictionary[Vector2i, RoomOverlay] = {}
 
 class RoomInstance:
-	signal trigger
-
 	var type: RoomResource
 	var bonus_projectiles: int = 0
 	
@@ -19,6 +18,12 @@ class RoomInstance:
 	func _init(room_type: RoomResource):
 		type = room_type
 		cooldown_remaining = type.cooldown_seconds
+	
+	func trigger(tower: Tower) -> void:
+		if type.trigger_script:
+			type.trigger_script.on_trigger(tower, self)
+		else:
+			print("Room type: '" + type.display_name + "' has no triigger action")
 	
 
 var rooms: Dictionary[Vector2i, RoomInstance] = {}
@@ -34,7 +39,11 @@ func load_rooms():
 	for file_name in DirAccess.get_files_at("res://assets/resources/rooms"):
 		if (file_name.get_extension() == "import"):
 			file_name = file_name.replace('.import', '')
-		available_rooms.append(ResourceLoader.load("res://assets/resources/rooms/" + file_name)) 
+		var resource = null
+		if file_name.ends_with(".tres"):
+			resource = ResourceLoader.load("res://assets/resources/rooms/" + file_name)
+		if resource is RoomResource:
+			available_rooms.append(resource) 
 
 func generate_room_sprites() -> void:
 	var used_cells = $AvailableRooms.get_used_cells()
@@ -78,7 +87,7 @@ func _process(delta: float) -> void:
 		if room.cooldown_remaining < 0:
 			if game.find_closest_enemy(room) or !room.type.requires_enemies_to_trigger:
 				room.cooldown_remaining = room.type.cooldown_seconds
-				room.trigger.emit()
+				room.trigger(self)
 
 		if room.type.cooldown_seconds > 0 and room.cooldown_remaining > 0:
 			room_overlays[room_pos].progress = room.cooldown_remaining / room.type.cooldown_seconds
@@ -86,8 +95,8 @@ func _process(delta: float) -> void:
 			room_overlays[room_pos].progress = 0
 
 func fire_projectiles(room: RoomInstance, projectile: PackedScene, number: int):
-	var targets = game.find_n_closest_enemies(room, number + room.extra_projectiles_for_next_shot)
-	room.extra_projectiles_for_next_shot = 0
+	var targets = game.find_n_closest_enemies(room, number + room.bonus_projectiles)
+	room.bonus_projectiles = 0
 
 	for target in targets:
 		var projectileInst = projectile.instantiate()
@@ -96,11 +105,14 @@ func fire_projectiles(room: RoomInstance, projectile: PackedScene, number: int):
 		await get_tree().create_timer(.1).timeout
 
 func fire_projectiles_above_enemy(room: RoomInstance, projectile: PackedScene, number: int):
-	var targets = game.find_n_closest_enemies(room, number + room.extra_projectiles_for_next_shot)
-	room.extra_projectiles_for_next_shot = 0
+	var targets = game.find_n_closest_enemies(room, number + room.bonus_projectiles)
+	room.bonus_projectiles = 0
 
 	for target in targets:
 		var projectileInst = projectile.instantiate()
 		game.add_child(projectileInst)
 		game.fire_projectile_above_enemy(self, projectileInst, target)
 		await get_tree().create_timer(.1).timeout
+
+func get_room_position(room: RoomInstance) -> Vector2:
+	return to_global(map_to_local(rooms.find_key(room)))

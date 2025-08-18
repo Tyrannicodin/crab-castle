@@ -19,5 +19,8 @@ func load_rooms():
 	for file_name in DirAccess.get_files_at("res://assets/resources/rooms"):
 		if (file_name.get_extension() == "import"):
 			file_name = file_name.replace('.import', '')
-		print(file_name)
-		rooms.append(ResourceLoader.load("res://assets/resources/rooms/" + file_name)) 
+		var resource = null
+		if file_name.ends_with(".tres"):
+			resource = ResourceLoader.load("res://assets/resources/rooms/" + file_name)
+		if resource is RoomResource:
+			rooms.append(resource) 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=33 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
@@ -8,15 +8,8 @@
 [ext_resource type="Script" uid="uid://b6y06i07h8uw3" path="res://game/game_end.gd" id="3_u5opy"]
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
-[ext_resource type="Script" path="res://game/new_room.gd" id="5_u8s88"]
 [ext_resource type="Texture2D" uid="uid://b4ku0d1fup6rh" path="res://assets/background/cloud_1.png" id="8_dxwpq"]
-[ext_resource type="PackedScene" uid="uid://bj0ohm7w44ukd" path="res://game/rooms/Slingshot.tscn" id="8_l8g03"]
-[ext_resource type="PackedScene" uid="uid://ds73obbkiouu3" path="res://game/rooms/Cannon.tscn" id="9_j8tme"]
-[ext_resource type="PackedScene" path="res://game/rooms/Bedroom.tscn" id="10_pxxsx"]
-[ext_resource type="PackedScene" uid="uid://b6tseugg263i5" path="res://game/rooms/Empty.tscn" id="11_ee6o4"]
-[ext_resource type="PackedScene" path="res://game/rooms/Freezer.tscn" id="12_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://c0mf8qj5fny5k" path="res://assets/rooms/empty_scaled.png" id="12_qf6n1"]
-[ext_resource type="PackedScene" path="res://game/rooms/Bow.tscn" id="13_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://dkxam7a5hi4pc" path="res://assets/rooms/cannon_scaled.png" id="13_vsp63"]
 [ext_resource type="Texture2D" uid="uid://oyj7iolb3f0y" path="res://assets/rooms/seashell1_scaled.png" id="14_b686c"]
 [ext_resource type="Texture2D" uid="uid://ldwldwfriifr" path="res://assets/rooms/slingshot_scaled.png" id="15_hb504"]
@@ -126,8 +119,6 @@ texture_region_size = Vector2i(240, 181)
 tile_size = Vector2i(240, 181)
 sources/0 = SubResource("TileSetAtlasSource_qf6n1")
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pxxsx"]
-
 [node name="Game" type="Node2D"]
 script = ExtResource("1_l8g03")
 
@@ -197,42 +188,6 @@ texture = SubResource("GradientTexture1D_mhvfb")
 position = Vector2(1357, 388)
 texture = ExtResource("8_dxwpq")
 
-[node name="Tower" type="Node2D" parent="."]
-position = Vector2(104, 433)
-
-[node name="Room" parent="Tower" instance=ExtResource("8_l8g03")]
-position = Vector2(100, 521)
-
-[node name="Room2" parent="Tower" instance=ExtResource("9_j8tme")]
-position = Vector2(232, 521)
-id = "cannon_room"
-
-[node name="Room3" parent="Tower" instance=ExtResource("10_pxxsx")]
-position = Vector2(100, 423)
-
-[node name="Room5" parent="Tower" instance=ExtResource("13_pxxsx")]
-position = Vector2(100, 323)
-id = "bow_and_arrow"
-
-[node name="Room4" parent="Tower" instance=ExtResource("12_pxxsx")]
-position = Vector2(232, 423)
-id = "fridge_room"
-
-[node name="Room6" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(232, 324)
-
-[node name="Room7" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(100, 225)
-
-[node name="Room8" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(232, 225)
-
-[node name="Room9" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(100, 126)
-
-[node name="Room10" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(232, 126)
-
 [node name="EnemySpawnPoints" type="Node2D" parent="."]
 position = Vector2(870, 570)
 
@@ -256,16 +211,13 @@ visible = false
 
 [node name="GameStartOverlay" type="TextureRect" parent="GameStartBits"]
 clip_children = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -384.0
-offset_top = -1607.0
-offset_right = -1152.0
-offset_bottom = -864.0
+offset_top = -95.0
+offset_bottom = 80.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 texture = ExtResource("1_u5opy")
 
 [node name="Sea gradient" type="TextureRect" parent="GameStartBits/GameStartOverlay"]
@@ -276,7 +228,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_y36n6")
-metadata/_edit_lock_ = true
 
 [node name="GameStartAnimation" type="AnimationPlayer" parent="GameStartBits/GameStartOverlay"]
 root_node = NodePath("../../..")
@@ -286,6 +237,7 @@ libraries = {
 autoplay = "on_start"
 
 [node name="TowerMap" type="TileMapLayer" parent="."]
+position = Vector2(93, 312)
 scale = Vector2(0.55, 0.55)
 tile_set = SubResource("TileSet_hb504")
 script = ExtResource("17_ln7ps")
@@ -294,12 +246,6 @@ script = ExtResource("17_ln7ps")
 show_behind_parent = true
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_vsp63")
-
-[node name="NewRoom" type="Sprite2D" parent="."]
-position = Vector2(20.875, 507.875)
-scale = Vector2(40.25, 40.25)
-texture = SubResource("PlaceholderTexture2D_pxxsx")
-script = ExtResource("5_u8s88")
 
 [connection signal="room_selected" from="UI/Rooms" to="TowerMap" method="set_current_room"]
 [connection signal="pressed" from="Button" to="Button" method="on_pressed"]
