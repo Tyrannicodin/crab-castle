@@ -8,7 +8,7 @@ display_name = "Seashell Room"
 cooldown_seconds = 5.0
 requires_enemies_to_trigger = false
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
-position = Vector2(-4.76837e-07, -7)
-scale = Vector2(0.11, 0.11)
+[node name="Weapon" parent="." index="7"]
+position = Vector2(-3, -11)
+scale = Vector2(0.13875, 0.13875)
 texture = ExtResource("2_23hge")

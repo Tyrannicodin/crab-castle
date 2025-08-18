@@ -8,11 +8,20 @@ class_name Room
 # The weapon fires
 signal trigger
 
+@onready var weapon_scale = $Weapon.scale
+var extra_scale = Vector2(1, 1)
+var time_since_fired = 0
+
 var game: Game
 @onready var cooldown_remaining = cooldown_seconds
 
 func _process(delta: float) -> void:
 	cooldown_remaining -= delta
+	time_since_fired += delta
+	
+	$Weapon.scale = extra_scale * weapon_scale
+	
+	extra_scale = lerp(Vector2(1.2, 1.2), Vector2(1, 1), ease(10 * time_since_fired, -.5))
 
 	if cooldown_remaining < 0:
 		if (game.find_closest_enemy(self) and requires_enemies_to_trigger) or !requires_enemies_to_trigger:
@@ -25,4 +34,6 @@ func _process(delta: float) -> void:
 		$CooldownBar.value = 0
 
 func trigger_weapon():
+	time_since_fired = 0
+	
 	trigger.emit()
