@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://x3t0p1jfotvo"]
+[gd_scene load_steps=4 format=3 uid="uid://ctuvftctdyav8"]
 
 [ext_resource type="PackedScene" uid="uid://b1vj1p3cfm3v0" path="res://game/Room.tscn" id="1_pno82"]
 [ext_resource type="Script" uid="uid://c48gcuh58l2eg" path="res://game/rooms/ice_staff.gd" id="2_s6n3e"]
@@ -6,6 +6,8 @@
 
 [node name="Room" instance=ExtResource("1_pno82")]
 script = ExtResource("2_s6n3e")
+display_name = "Freezer"
+id = "freezer"
 cooldown_seconds = 3.0
 
 [node name="Up Arrow" parent="." index="3"]

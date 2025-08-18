@@ -19,6 +19,10 @@ var extra_projectiles_for_next_shot = 0
 var game: Game
 @onready var cooldown_remaining = cooldown_seconds
 
+func _ready() -> void:
+	if id == 'empty':
+		self.visible = false
+
 func _process(delta: float) -> void:
 	cooldown_remaining -= delta
 	time_since_fired += delta

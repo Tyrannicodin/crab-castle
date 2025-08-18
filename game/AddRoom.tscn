@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqbj0ptkqekd4"]
+
+[ext_resource type="Script" uid="uid://b2lqhfhyel1ny" path="res://game/add_room.gd" id="1_mrljn"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5lla0"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_mrljn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, 9.53674e-07)
+scale = Vector2(16.5, 16.5)
+texture = SubResource("PlaceholderTexture2D_5lla0")

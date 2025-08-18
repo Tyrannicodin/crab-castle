@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ds73obbkiouu3" path="res://game/rooms/Cannon.tscn" id="9_j8tme"]
 [ext_resource type="PackedScene" uid="uid://bf3xiqi6q0mvj" path="res://game/rooms/SeashellRoom.tscn" id="10_3vho3"]
 [ext_resource type="PackedScene" uid="uid://b6tseugg263i5" path="res://game/rooms/Empty.tscn" id="11_ee6o4"]
-[ext_resource type="PackedScene" uid="uid://x3t0p1jfotvo" path="res://game/rooms/Freezer.tscn" id="12_pxxsx"]
+[ext_resource type="PackedScene" uid="uid://ctuvftctdyav8" path="res://game/rooms/Freezer.tscn" id="12_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://c0mf8qj5fny5k" path="res://assets/rooms/empty_scaled.png" id="12_qf6n1"]
 [ext_resource type="PackedScene" uid="uid://cboi0aijc0uqh" path="res://game/rooms/Bow.tscn" id="13_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://dkxam7a5hi4pc" path="res://assets/rooms/cannon_scaled.png" id="13_vsp63"]
@@ -156,51 +156,37 @@ position = Vector2(104, 433)
 
 [node name="Room" parent="Tower" instance=ExtResource("8_l8g03")]
 position = Vector2(100, 595)
-display_name = ""
-id = ""
 
 [node name="Room2" parent="Tower" instance=ExtResource("9_j8tme")]
 position = Vector2(232, 595)
-id = ""
+id = "cannon_room"
 
 [node name="Room3" parent="Tower" instance=ExtResource("10_3vho3")]
 position = Vector2(100, 496)
-id = ""
+id = "conch_room"
 
 [node name="Room5" parent="Tower" instance=ExtResource("13_pxxsx")]
 position = Vector2(100, 397)
-display_name = ""
-id = ""
+id = "bow_and_arrow"
 
 [node name="Room4" parent="Tower" instance=ExtResource("12_pxxsx")]
 position = Vector2(232, 497)
-display_name = ""
-id = ""
+id = "fridge_room"
 
 [node name="Room6" parent="Tower" instance=ExtResource("11_ee6o4")]
 position = Vector2(232, 398)
-display_name = ""
-id = ""
 
 [node name="Room7" parent="Tower" instance=ExtResource("11_ee6o4")]
 position = Vector2(100, 299)
-display_name = ""
-id = ""
 
 [node name="Room8" parent="Tower" instance=ExtResource("11_ee6o4")]
 position = Vector2(232, 299)
-display_name = ""
-id = ""
 
 [node name="Room9" parent="Tower" instance=ExtResource("11_ee6o4")]
 position = Vector2(100, 200)
-display_name = ""
-id = ""
 
 [node name="Room10" parent="Tower" instance=ExtResource("11_ee6o4")]
 position = Vector2(232, 200)
-display_name = ""
-id = ""
 
 [node name="EnemySpawnPoints" type="Node2D" parent="."]
 position = Vector2(870, 570)
