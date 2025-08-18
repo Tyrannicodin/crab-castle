@@ -5,7 +5,7 @@
 
 [node name="Enemy" instance=ExtResource("1_p5qvc")]
 display_name = "Seagull"
-speed = 20
+speed = 60
 max_health = 200
 
 [node name="HealthBar" parent="." index="1"]
