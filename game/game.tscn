@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=40 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
@@ -9,9 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
 [ext_resource type="Script" uid="uid://dfmgr4h7mmliw" path="res://game/new_room.gd" id="5_u8s88"]
+[ext_resource type="Texture2D" uid="uid://b4ku0d1fup6rh" path="res://assets/background/cloud_1.png" id="8_dxwpq"]
 [ext_resource type="PackedScene" uid="uid://bj0ohm7w44ukd" path="res://game/rooms/Slingshot.tscn" id="8_l8g03"]
 [ext_resource type="PackedScene" uid="uid://ds73obbkiouu3" path="res://game/rooms/Cannon.tscn" id="9_j8tme"]
-[ext_resource type="PackedScene" uid="uid://86onnmntbak2" path="res://game/rooms/Bedroom.tscn" id="10_pxxsx"]
+[ext_resource type="PackedScene" path="res://game/rooms/Bedroom.tscn" id="10_pxxsx"]
 [ext_resource type="PackedScene" uid="uid://b6tseugg263i5" path="res://game/rooms/Empty.tscn" id="11_ee6o4"]
 [ext_resource type="PackedScene" uid="uid://ctuvftctdyav8" path="res://game/rooms/Freezer.tscn" id="12_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://c0mf8qj5fny5k" path="res://assets/rooms/empty_scaled.png" id="12_qf6n1"]
@@ -21,9 +22,23 @@
 [ext_resource type="Texture2D" uid="uid://ldwldwfriifr" path="res://assets/rooms/slingshot_scaled.png" id="15_hb504"]
 [ext_resource type="Script" path="res://game/tower.gd" id="17_ln7ps"]
 
+[sub_resource type="Gradient" id="Gradient_u8s88"]
+colors = PackedColorArray(0.301961, 0.67451, 0.941176, 1, 0.4888, 0.8648, 0.94, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dxwpq"]
+gradient = SubResource("Gradient_u8s88")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
 shader = ExtResource("4_u5opy")
 shader_parameter/amount = 2.5
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u8s88"]
+
+[sub_resource type="Gradient" id="Gradient_dxwpq"]
+colors = PackedColorArray(0.301961, 0.67451, 0.941176, 1, 0.409467, 0.166, 0.83, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mhvfb"]
+gradient = SubResource("Gradient_dxwpq")
 
 [sub_resource type="Gradient" id="Gradient_jc4t8"]
 interpolation_mode = 2
@@ -112,6 +127,15 @@ sources/0 = SubResource("TileSetAtlasSource_qf6n1")
 [node name="Game" type="Node2D"]
 script = ExtResource("1_l8g03")
 
+[node name="Sky" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Sky"]
+offset_left = 1920.0
+offset_right = 3000.0
+offset_bottom = 1920.0
+rotation = 1.5708
+texture = SubResource("GradientTexture1D_dxwpq")
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Rooms" type="HBoxContainer" parent="UI"]
@@ -151,60 +175,77 @@ visible = false
 material = SubResource("ShaderMaterial_lnu2h")
 anchor_mode = 0
 
+[node name="ground" type="Node2D" parent="."]
+position = Vector2(197, 210)
+
+[node name="Sandbed" type="Sprite2D" parent="ground"]
+position = Vector2(763, 784.875)
+scale = Vector2(1920, 171.75)
+texture = SubResource("PlaceholderTexture2D_u8s88")
+
+[node name="BgWater" type="Sprite2D" parent="ground"]
+position = Vector2(762.985, 572.041)
+rotation = 1.5708
+scale = Vector2(1.00032, 1920.22)
+texture = SubResource("GradientTexture1D_mhvfb")
+
+[node name="cloud" type="Sprite2D" parent="ground"]
+position = Vector2(1357, 388)
+texture = ExtResource("8_dxwpq")
+
 [node name="Tower" type="Node2D" parent="."]
 position = Vector2(104, 433)
 
 [node name="Room" parent="Tower" instance=ExtResource("8_l8g03")]
-position = Vector2(100, 595)
+position = Vector2(100, 521)
 
 [node name="Room2" parent="Tower" instance=ExtResource("9_j8tme")]
-position = Vector2(232, 595)
+position = Vector2(232, 521)
 id = "cannon_room"
 
 [node name="Room3" parent="Tower" instance=ExtResource("10_pxxsx")]
-position = Vector2(100, 497)
-id = ""
+position = Vector2(100, 423)
 
 [node name="Room5" parent="Tower" instance=ExtResource("13_pxxsx")]
-position = Vector2(100, 397)
+position = Vector2(100, 323)
 id = "bow_and_arrow"
 
 [node name="Room4" parent="Tower" instance=ExtResource("12_pxxsx")]
-position = Vector2(232, 497)
+position = Vector2(232, 423)
 id = "fridge_room"
 
 [node name="Room6" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(232, 398)
+position = Vector2(232, 324)
 
 [node name="Room7" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(100, 299)
+position = Vector2(100, 225)
 
 [node name="Room8" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(232, 299)
+position = Vector2(232, 225)
 
 [node name="Room9" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(100, 200)
+position = Vector2(100, 126)
 
 [node name="Room10" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(232, 200)
+position = Vector2(232, 126)
 
 [node name="EnemySpawnPoints" type="Node2D" parent="."]
 position = Vector2(870, 570)
 
 [node name="Floor1" type="Node2D" parent="EnemySpawnPoints"]
-position = Vector2(1131, 474)
+position = Vector2(1131, 306)
 
 [node name="Floor2" type="Node2D" parent="EnemySpawnPoints"]
-position = Vector2(1130, 370)
+position = Vector2(1130, 192)
 
 [node name="Floor3" type="Node2D" parent="EnemySpawnPoints"]
-position = Vector2(1126, 266)
+position = Vector2(1126, 78)
 
 [node name="Floor4" type="Node2D" parent="EnemySpawnPoints"]
-position = Vector2(1129, 166)
+position = Vector2(1129, -32)
 
 [node name="Floor5" type="Node2D" parent="EnemySpawnPoints"]
-position = Vector2(1126, 60)
+position = Vector2(1126, -148)
 
 [node name="GameStartBits" type="CanvasLayer" parent="."]
 visible = false
