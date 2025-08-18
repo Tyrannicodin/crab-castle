@@ -13,7 +13,6 @@ class RoomInstance:
 	var position: Vector2i
 
 	var cooldown_remaining: float
-	var time_since_fired: float = 0
 	var bonus_projectiles: int = 0
 
 	func _init(room_type: Room, pos: Vector2i):
@@ -23,7 +22,9 @@ class RoomInstance:
 	
 	func trigger(tower: Tower) -> void:
 		if type.trigger_script:
-			type.trigger_script.on_trigger(tower, self)
+			var animate = type.trigger_script.on_trigger(tower, self)
+			if animate:
+				tower.room_overlays[position].time_since_fired = 0
 		else:
 			print("Room type: '" + type.display_name + "' has no triigger action")
 	
@@ -80,7 +81,6 @@ func _input(event) -> void:
 func _process(delta: float) -> void:
 	for room in rooms:
 		room.cooldown_remaining -= delta
-		room.time_since_fired += delta
 
 		if room.cooldown_remaining < 0:
 			if game.find_closest_enemy(room) or !room.type.requires_enemies_to_trigger:
@@ -97,6 +97,7 @@ func fire_projectiles(room: RoomInstance, projectile: PackedScene, number: int):
 	room.bonus_projectiles = 0
 
 	for target in targets:
+		room_overlays[room.position].time_since_fired = 0
 		var projectileInst = projectile.instantiate()
 		game.add_child(projectileInst)
 		game.fire_projectile_from_room(room, projectileInst, target)
@@ -107,6 +108,7 @@ func fire_projectiles_above_enemy(room: RoomInstance, projectile: PackedScene, n
 	room.bonus_projectiles = 0
 
 	for target in targets:
+		room_overlays[room.position].time_since_fired = 0
 		var projectileInst = projectile.instantiate()
 		game.add_child(projectileInst)
 		game.fire_projectile_above_enemy(room, projectileInst, target)
