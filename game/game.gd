@@ -33,9 +33,9 @@ func _ready() -> void:
 		[$Tower/Room9, $Tower/Room10], # Floor five
 	]
 	
-	for i in range(10):
+	for i in range(20):
 		_spawn_enemy()
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(0.5).timeout
 
 func _spawn_enemy():
 	# The level of the tower the enemy spawns on
