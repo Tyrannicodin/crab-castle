@@ -22,8 +22,8 @@ visible = false
 visible = false
 
 [node name="Weapon" parent="." index="7"]
-position = Vector2(-1, -10)
-scale = Vector2(-0.068, 0.068)
+position = Vector2(3.11345, 7.26201)
+scale = Vector2(-0.10691, 0.10691)
 texture = ExtResource("2_3f8ls")
 
 [connection signal="trigger" from="." to="." method="_on_trigger"]
