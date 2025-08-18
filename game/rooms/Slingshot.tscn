@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c4ar48ujw5eai" path="res://assets/rooms/slingshot.png" id="2_3jgwp"]
 [ext_resource type="Script" uid="uid://cpuu3oijmomkn" path="res://game/rooms/slingshot.gd" id="2_tuwwt"]
 
-[node name="Room" instance=ExtResource("1_pgpqn")]
+[node name="Room2" instance=ExtResource("1_pgpqn")]
 script = ExtResource("2_tuwwt")
 display_name = "Slingshot"
 id = "slingshot"

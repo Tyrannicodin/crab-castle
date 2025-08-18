@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dduhjhbyxd14y" path="res://assets/rooms/arrow_left.png" id="7_613ps"]
 [ext_resource type="Texture2D" uid="uid://cclkm1h2nim3x" path="res://assets/rooms/arrow_right.png" id="8_tcppf"]
 
-[node name="Room" type="Node2D"]
+[node name="Room3" type="Node2D"]
 script = ExtResource("1_5di8v")
 display_name = "Empty Room"
 id = "empty"

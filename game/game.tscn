@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://dfmgr4h7mmliw" path="res://game/new_room.gd" id="5_u8s88"]
 [ext_resource type="PackedScene" uid="uid://bj0ohm7w44ukd" path="res://game/rooms/Slingshot.tscn" id="8_l8g03"]
 [ext_resource type="PackedScene" uid="uid://ds73obbkiouu3" path="res://game/rooms/Cannon.tscn" id="9_j8tme"]
-[ext_resource type="PackedScene" uid="uid://bf3xiqi6q0mvj" path="res://game/rooms/SeashellRoom.tscn" id="10_3vho3"]
+[ext_resource type="PackedScene" uid="uid://86onnmntbak2" path="res://game/rooms/Bedroom.tscn" id="10_pxxsx"]
 [ext_resource type="PackedScene" uid="uid://b6tseugg263i5" path="res://game/rooms/Empty.tscn" id="11_ee6o4"]
 [ext_resource type="PackedScene" uid="uid://ctuvftctdyav8" path="res://game/rooms/Freezer.tscn" id="12_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://c0mf8qj5fny5k" path="res://assets/rooms/empty_scaled.png" id="12_qf6n1"]
@@ -161,9 +161,9 @@ position = Vector2(100, 595)
 position = Vector2(232, 595)
 id = "cannon_room"
 
-[node name="Room3" parent="Tower" instance=ExtResource("10_3vho3")]
-position = Vector2(100, 496)
-id = "conch_room"
+[node name="Room3" parent="Tower" instance=ExtResource("10_pxxsx")]
+position = Vector2(100, 497)
+id = ""
 
 [node name="Room5" parent="Tower" instance=ExtResource("13_pxxsx")]
 position = Vector2(100, 397)
