@@ -6,6 +6,8 @@
 
 [node name="Room" instance=ExtResource("1_pgpqn")]
 script = ExtResource("2_tuwwt")
+display_name = "Slingshot"
+id = "slingshot"
 cooldown_seconds = 1.3
 
 [node name="Up Arrow" parent="." index="3"]

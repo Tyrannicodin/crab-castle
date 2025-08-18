@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bejedh07vvdip"]
 
-[ext_resource type="Shader" uid="uid://cthja2aw2bnvd" path="res://game/Enemy.gdshader" id="1_vcbs2"]
+[ext_resource type="Shader" path="res://game/Enemy.gdshader" id="1_vcbs2"]
 [ext_resource type="Script" uid="uid://fuh45tl6bm2n" path="res://game/enemy.gd" id="1_vodhp"]
 [ext_resource type="Texture2D" uid="uid://b175nckl6o48r" path="res://assets/health_bar_full.png" id="2_h8ejc"]
 [ext_resource type="Texture2D" uid="uid://f3uls12q6bgs" path="res://assets/health_bar_empty.png" id="3_vcbs2"]

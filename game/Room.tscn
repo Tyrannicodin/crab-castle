@@ -11,6 +11,8 @@
 
 [node name="Room" type="Node2D"]
 script = ExtResource("1_5di8v")
+display_name = "Empty Room"
+id = "empty"
 
 [node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(0.44, 0.44)
