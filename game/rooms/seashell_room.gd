@@ -2,7 +2,7 @@ extends "res://game/room.gd"
 
 
 func _on_trigger() -> void:
-	var buff_rooms: Array[Room] = game.find_adjascent_rooms(self).values()
+	var buff_rooms: Array[Room] = game.find_adjacent_rooms(self).values()
 
 	for room in buff_rooms:
 		if room:
