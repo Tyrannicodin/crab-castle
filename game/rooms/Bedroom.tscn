@@ -6,6 +6,8 @@
 
 [node name="Room" instance=ExtResource("1_4lnk6")]
 script = ExtResource("2_33yti")
+display_name = ""
+id = ""
 cooldown_seconds = 1.0
 requires_enemies_to_trigger = false
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=31 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
@@ -8,14 +8,12 @@
 [ext_resource type="Script" uid="uid://b6y06i07h8uw3" path="res://game/game_end.gd" id="3_u5opy"]
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
-[ext_resource type="Script" uid="uid://dfmgr4h7mmliw" path="res://game/new_room.gd" id="5_u8s88"]
 [ext_resource type="PackedScene" uid="uid://bj0ohm7w44ukd" path="res://game/rooms/Slingshot.tscn" id="8_l8g03"]
 [ext_resource type="PackedScene" uid="uid://ds73obbkiouu3" path="res://game/rooms/Cannon.tscn" id="9_j8tme"]
-[ext_resource type="PackedScene" uid="uid://86onnmntbak2" path="res://game/rooms/Bedroom.tscn" id="10_pxxsx"]
+[ext_resource type="PackedScene" uid="uid://bf3xiqi6q0mvj" path="res://game/rooms/SeashellRoom.tscn" id="10_3vho3"]
 [ext_resource type="PackedScene" uid="uid://b6tseugg263i5" path="res://game/rooms/Empty.tscn" id="11_ee6o4"]
-[ext_resource type="PackedScene" uid="uid://x3t0p1jfotvo" path="res://game/rooms/Freezer.tscn" id="12_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://c0mf8qj5fny5k" path="res://assets/rooms/empty_scaled.png" id="12_qf6n1"]
-[ext_resource type="PackedScene" uid="uid://cboi0aijc0uqh" path="res://game/rooms/Bow.tscn" id="13_pxxsx"]
+[ext_resource type="PackedScene" path="res://game/rooms/Bow.tscn" id="13_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://dkxam7a5hi4pc" path="res://assets/rooms/cannon_scaled.png" id="13_vsp63"]
 [ext_resource type="Texture2D" uid="uid://oyj7iolb3f0y" path="res://assets/rooms/seashell1_scaled.png" id="14_b686c"]
 [ext_resource type="Texture2D" uid="uid://ldwldwfriifr" path="res://assets/rooms/slingshot_scaled.png" id="15_hb504"]
@@ -64,7 +62,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -95), Vector2(1, 1080)]
+"values": [Vector2(0, -95), Vector2(1, 648)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l8g03"]
@@ -107,8 +105,6 @@ texture_region_size = Vector2i(240, 181)
 tile_size = Vector2i(240, 181)
 sources/0 = SubResource("TileSetAtlasSource_qf6n1")
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pxxsx"]
-
 [node name="Game" type="Node2D"]
 script = ExtResource("1_l8g03")
 
@@ -126,18 +122,18 @@ alignment = 1
 script = ExtResource("2_4cobl")
 
 [node name="Button" type="Button" parent="."]
-offset_left = 1810.0
-offset_top = 57.0
-offset_right = 1892.0
-offset_bottom = 88.0
+offset_left = 992.0
+offset_top = 324.0
+offset_right = 1074.0
+offset_bottom = 355.0
 text = "End wave"
 script = ExtResource("2_dxrkv")
 
 [node name="Button2" type="Button" parent="."]
-offset_left = 1766.0
-offset_top = 16.0
-offset_right = 1897.0
-offset_bottom = 47.0
+offset_left = 505.0
+offset_top = 250.0
+offset_right = 587.0
+offset_bottom = 281.0
 text = "End Game (loss)"
 script = ExtResource("3_u5opy")
 
@@ -152,58 +148,56 @@ material = SubResource("ShaderMaterial_lnu2h")
 anchor_mode = 0
 
 [node name="Tower" type="Node2D" parent="."]
-position = Vector2(104, 433)
+position = Vector2(17, -133)
 
 [node name="Room" parent="Tower" instance=ExtResource("8_l8g03")]
 position = Vector2(100, 595)
-display_name = ""
-id = ""
 
 [node name="Room2" parent="Tower" instance=ExtResource("9_j8tme")]
 position = Vector2(232, 595)
-id = ""
 
-[node name="Room3" parent="Tower" instance=ExtResource("10_pxxsx")]
-position = Vector2(100, 497)
-id = ""
+[node name="Room3" parent="Tower" instance=ExtResource("10_3vho3")]
+position = Vector2(100, 496)
 
-[node name="Room5" parent="Tower" instance=ExtResource("13_pxxsx")]
+[node name="Room4" parent="Tower" instance=ExtResource("11_ee6o4")]
+position = Vector2(232, 496)
+
+[node name="Room5" parent="Tower" instance=ExtResource("11_ee6o4")]
 position = Vector2(100, 397)
-display_name = ""
-id = ""
 
-[node name="Room4" parent="Tower" instance=ExtResource("12_pxxsx")]
-position = Vector2(232, 497)
-display_name = ""
-id = ""
-
-[node name="Room6" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(232, 398)
-display_name = ""
-id = ""
+[node name="Room6" parent="Tower" instance=ExtResource("13_pxxsx")]
+position = Vector2(232, 397)
 
 [node name="Room7" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(100, 299)
-display_name = ""
-id = ""
+position = Vector2(100, 298)
 
 [node name="Room8" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(232, 299)
-display_name = ""
-id = ""
+position = Vector2(232, 298)
 
 [node name="Room9" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(100, 200)
-display_name = ""
-id = ""
+position = Vector2(100, 199)
 
 [node name="Room10" parent="Tower" instance=ExtResource("11_ee6o4")]
-position = Vector2(232, 200)
-display_name = ""
-id = ""
+position = Vector2(232, 199)
+
+[node name="ProjectileSpawnPoints" type="Node2D" parent="."]
+
+[node name="Floor1" type="Node2D" parent="ProjectileSpawnPoints"]
+position = Vector2(330, 470)
+
+[node name="Floor2" type="Node2D" parent="ProjectileSpawnPoints"]
+position = Vector2(331, 363)
+
+[node name="Floor3" type="Node2D" parent="ProjectileSpawnPoints"]
+position = Vector2(333, 264)
+
+[node name="Floor4" type="Node2D" parent="ProjectileSpawnPoints"]
+position = Vector2(334, 163)
+
+[node name="Floor5" type="Node2D" parent="ProjectileSpawnPoints"]
+position = Vector2(333, 65)
 
 [node name="EnemySpawnPoints" type="Node2D" parent="."]
-position = Vector2(870, 570)
 
 [node name="Floor1" type="Node2D" parent="EnemySpawnPoints"]
 position = Vector2(1131, 474)
@@ -229,9 +223,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -1175.0
-offset_right = -768.0
-offset_bottom = -432.0
+offset_top = -743.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_u5opy")
@@ -264,12 +256,6 @@ script = ExtResource("17_ln7ps")
 show_behind_parent = true
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_vsp63")
-
-[node name="NewRoom" type="Sprite2D" parent="."]
-position = Vector2(20.875, 507.875)
-scale = Vector2(40.25, 40.25)
-texture = SubResource("PlaceholderTexture2D_pxxsx")
-script = ExtResource("5_u8s88")
 
 [connection signal="pressed" from="Button" to="Button" method="on_pressed"]
 [connection signal="pressed" from="Button2" to="Button2" method="on_pressed"]
