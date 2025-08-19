@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm2xe4krx3arc"]
+
+[ext_resource type="PackedScene" uid="uid://bligscgn0qlft" path="res://game/projectiles/Projectile.tscn" id="1_agwq3"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_agwq3"]
+b = Vector2(1600, 0)
+
+[sub_resource type="Gradient" id="Gradient_agwq3"]
+offsets = PackedFloat32Array(0.558442)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0253i"]
+gradient = SubResource("Gradient_agwq3")
+width = 100
+
+[node name="Projectile2" instance=ExtResource("1_agwq3")]
+damage = 10
+speed = 50000.0
+max_velocity = 50000.0
+pierce = 10000
+stun_lock = 0.0
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("SegmentShape2D_agwq3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+position = Vector2(50, -5.96046e-08)
+scale = Vector2(1, 4)
+texture = SubResource("GradientTexture1D_0253i")

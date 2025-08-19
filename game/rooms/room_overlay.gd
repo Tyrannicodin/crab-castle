@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 class_name RoomOverlay
 
@@ -19,6 +20,7 @@ func _process(delta) -> void:
 	time_since_fired += delta
 
 	$Sprite.scale = extra_scale * room.scale
+	$Sprite.rotation_degrees = room.rotation
 
 	extra_scale = lerp(Vector2(1.2, 1.2), Vector2(1, 1), ease(10 * time_since_fired, -.5))
 

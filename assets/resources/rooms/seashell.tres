@@ -8,11 +8,14 @@
 script = ExtResource("2_c2qyi")
 display_name = "Seashell"
 image = ExtResource("1_61cp4")
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.5, 0.5)
+rotation = 0.0
 animate_on_trigger = true
 visible_progress_bar = true
 visible_arrows = 15
 trigger_script = ExtResource("3_c2qyi")
 cooldown_seconds = 5.0
 requires_enemies_to_trigger = true
+weight = 100
+cost = 5
 metadata/_custom_type_script = "uid://s5vpeux5sx8g"

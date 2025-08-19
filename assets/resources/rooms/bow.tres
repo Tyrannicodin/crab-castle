@@ -8,10 +8,14 @@
 script = ExtResource("1_c6avb")
 display_name = "Bow"
 image = ExtResource("1_6owdo")
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.45, 0.45)
+rotation = 0.0
+animate_on_trigger = false
 visible_progress_bar = true
 visible_arrows = 0
 trigger_script = ExtResource("3_gjesx")
 cooldown_seconds = 3.0
 requires_enemies_to_trigger = true
+weight = 100
+cost = 5
 metadata/_custom_type_script = "uid://s5vpeux5sx8g"

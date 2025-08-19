@@ -1,9 +1,9 @@
 extends Area2D
 class_name EnemyInstance
 
-signal death
+signal death(type: Enemy)
 
-var enemy: EnemyResource
+var enemy: Enemy
 
 var damage_number = preload("res://game/DamageNumber.tscn")
 
@@ -11,7 +11,7 @@ var damage_number = preload("res://game/DamageNumber.tscn")
 
 func _ready():
 	material = material.duplicate()
-	scale = Vector2(enemy.scale, enemy.scale)
+	scale = enemy.scale
 	$Sprite.texture = enemy.sprite
 	$Collider.shape.size = enemy.sprite.get_size()
 
@@ -53,13 +53,13 @@ func is_alive() -> bool:
 func damage(value: int):
 	health -= value
 	if health <= 0:
-		death.emit(self)
+		death.emit(enemy)
 		death_animation()
 	
 	var num: DamageNumber = damage_number.instantiate()
 	get_parent().add_child(num)
 	num.set_damage_number(value)
-	num.global_position = self.global_position
+	num.global_position = global_position
 	time_since_hit = 0
 
 func stun_lock(time: float):
@@ -69,4 +69,4 @@ func knockback(power: int):
 	backwards_velocity = power
 
 func death_animation():
-	scale.y = -1 * enemy.scale
+	scale.y = -1 * enemy.scale.y

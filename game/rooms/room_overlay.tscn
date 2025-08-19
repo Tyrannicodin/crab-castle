@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2k5hxa654km7"]
+[gd_scene load_steps=6 format=3 uid="uid://c2k5hxa654km7"]
 
 [ext_resource type="Script" uid="uid://c16cqdt260q61" path="res://game/rooms/room_overlay.gd" id="1_brg1v"]
-[ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/room_details/empty.png" id="2_5hopr"]
 [ext_resource type="Texture2D" uid="uid://dduhjhbyxd14y" path="res://assets/room_details/arrow_left.png" id="2_c4euj"]
 [ext_resource type="Texture2D" uid="uid://cclkm1h2nim3x" path="res://assets/room_details/arrow_right.png" id="3_0h1jq"]
 [ext_resource type="Texture2D" uid="uid://dmnmkxsnexb3d" path="res://assets/room_details/arrow_down.png" id="4_dic12"]
@@ -10,45 +9,34 @@
 [node name="RoomImages" type="Node2D"]
 script = ExtResource("1_brg1v")
 
-[node name="background" type="Sprite2D" parent="."]
-position = Vector2(234, 171)
-texture = ExtResource("2_5hopr")
-
 [node name="ArrowLeft" type="Sprite2D" parent="."]
-position = Vector2(34, 168)
+position = Vector2(30, 171)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_c4euj")
 
 [node name="ArrowRight" type="Sprite2D" parent="."]
-position = Vector2(432, 168)
+position = Vector2(434, 171)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_0h1jq")
 
 [node name="ArrowDown" type="Sprite2D" parent="."]
-position = Vector2(223, 313)
+position = Vector2(232, 312)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_dic12")
 
 [node name="ArrowUp" type="Sprite2D" parent="."]
-position = Vector2(238, 28)
+position = Vector2(232, 30)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_vvy4f")
 
 [node name="Progress" type="ProgressBar" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -87.0
-offset_top = 85.0
-offset_right = 93.0
-offset_bottom = 112.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 82.0
+offset_top = 250.0
+offset_right = 382.0
+offset_bottom = 277.0
 max_value = 1.0
 show_percentage = false
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(125, 90)
+position = Vector2(232, 171)
 scale = Vector2(0.3, 0.3)
