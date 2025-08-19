@@ -221,6 +221,7 @@ transparent_bg = true
 size = Vector2i(1920, 1080)
 
 [node name="Tower" type="TileMapLayer" parent="TowerViewport"]
+position = Vector2(160, 184)
 scale = Vector2(0.35, 0.35)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_vsp63")
@@ -228,10 +229,8 @@ script = ExtResource("17_ln7ps")
 
 [node name="TowerTexture" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_hb504")
-offset_left = 60.0
-offset_top = 186.0
-offset_right = 1980.0
-offset_bottom = 1266.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 mouse_filter = 2
 texture = SubResource("ViewportTexture_b686c")
 
