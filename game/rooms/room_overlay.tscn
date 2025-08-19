@@ -10,26 +10,31 @@
 script = ExtResource("1_brg1v")
 
 [node name="ArrowLeft" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(30, 171)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_c4euj")
 
 [node name="ArrowRight" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(434, 171)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_0h1jq")
 
 [node name="ArrowDown" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(232, 312)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_dic12")
 
 [node name="ArrowUp" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(232, 30)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_vvy4f")
 
 [node name="Progress" type="ProgressBar" parent="."]
+visible = false
 offset_left = 82.0
 offset_top = 250.0
 offset_right = 382.0
@@ -38,5 +43,6 @@ max_value = 1.0
 show_percentage = false
 
 [node name="Sprite" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(232, 171)
 scale = Vector2(0.3, 0.3)

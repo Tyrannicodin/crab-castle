@@ -6,6 +6,7 @@ signal death(type: Enemy)
 var enemy: Enemy
 
 var damage_number = preload("res://game/DamageNumber.tscn")
+var attack_success = false
 
 @onready var health: int = enemy.max_health
 
@@ -33,6 +34,13 @@ func _process(delta):
 	material.set_shader_parameter("brightness",
 		lerp(1., 0., ease(time_since_hit * 5, 20))
 	)
+	
+	if attack_success:
+		self.scale.x = lerp(self.scale.x, 0., .5)
+		self.scale.y = lerp(self.scale.y, 0., .5)
+	
+	if self.scale.x < .05:
+		self.queue_free()
 
 func move(delta) -> void:
 	backwards_velocity -= enemy.acceleration * delta
@@ -70,3 +78,6 @@ func knockback(power: int):
 
 func death_animation():
 	scale.y = -1 * enemy.scale.y
+
+func attack_successful():
+	attack_success = true
