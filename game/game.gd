@@ -88,13 +88,13 @@ func try_spawn_next_enemy_wave():
 	if enemy_waves_cleared < enemy_waves_spawned:
 		return
 	enemy_waves_spawned += 1
-	if len(current_enemy_wave) <= enemy_waves_cleared:
+	if len(current_enemy_wave["enemies"]) <= enemy_waves_cleared:
 			if $EnemyManager.living_enemy_count() == 0:
 				on_wave_end()
 			return
-	current_wave_enemy_count = len(current_enemy_wave[enemy_waves_cleared])
+	current_wave_enemy_count = len(current_enemy_wave["enemies"][enemy_waves_cleared])
 	finished_spawning = false
-	for enemy in current_enemy_wave[enemy_waves_cleared]:
+	for enemy in current_enemy_wave["enemies"][enemy_waves_cleared]:
 		$EnemyManager.spawn_enemy(enemy)
 		await get_tree().create_timer(.5).timeout
 	finished_spawning = true
