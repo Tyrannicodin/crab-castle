@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=40 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/room_details/empty.png" id="11_ee6o4"]
 [ext_resource type="Shader" uid="uid://dur8qajqyjrlu" path="res://assets/shader/background.gdshader" id="11_hb504"]
 [ext_resource type="Shader" uid="uid://bb1gwvblyt57i" path="res://assets/shader/castle.gdshader" id="12_hb504"]
+[ext_resource type="Texture2D" uid="uid://od7uidhhkf5r" path="res://assets/room_details/palisades.png" id="13_pxxsx"]
+[ext_resource type="Texture2D" uid="uid://cygfg2olr2wsn" path="res://assets/room_details/bottom.png" id="14_u8s88"]
+[ext_resource type="Texture2D" uid="uid://bkmhnjxdeyq3f" path="res://assets/room_details/palisades_mirror.png" id="15_dxwpq"]
 [ext_resource type="Script" uid="uid://c0htur6o5hwgt" path="res://game/rooms/tower.gd" id="17_ln7ps"]
 [ext_resource type="Script" uid="uid://b7x38g8nwawmq" path="res://game/enemy_manager.gd" id="19_pxxsx"]
 [ext_resource type="Script" uid="uid://biswc6ipcfiun" path="res://game/eliminator.gd" id="20_u8s88"]
@@ -89,24 +92,27 @@ texture = ExtResource("11_ee6o4")
 texture_region_size = Vector2i(464, 342)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4cobl"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mhvfb"]
+texture = ExtResource("13_pxxsx")
 texture_region_size = Vector2i(464, 342)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ln7ps"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5e03w"]
+texture = ExtResource("14_u8s88")
 texture_region_size = Vector2i(464, 342)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pxxsx"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_leid8"]
+texture = ExtResource("15_dxwpq")
 texture_region_size = Vector2i(464, 342)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_vsp63"]
 tile_size = Vector2i(464, 342)
 sources/0 = SubResource("TileSetAtlasSource_ee6o4")
-sources/2 = SubResource("TileSetAtlasSource_4cobl")
-sources/3 = SubResource("TileSetAtlasSource_ln7ps")
-sources/4 = SubResource("TileSetAtlasSource_pxxsx")
+sources/1 = SubResource("TileSetAtlasSource_mhvfb")
+sources/6 = SubResource("TileSetAtlasSource_5e03w")
+sources/7 = SubResource("TileSetAtlasSource_leid8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hb504"]
 shader = ExtResource("12_hb504")
@@ -255,7 +261,7 @@ size = Vector2i(1920, 1080)
 [node name="Tower" type="TileMapLayer" parent="TowerViewport"]
 position = Vector2(89, 69)
 scale = Vector2(0.35, 0.35)
-tile_map_data = PackedByteArray("AAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAEAAAAAAAAAAAABAAAAAwAAAAAAAAAAAAAAAgAAAAAAAAAAAAEAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYABAAAAAAAAAAAAAYABAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAEAAAAAAAAAAAABAAAABwAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYABgAAAAAAAAAAAAYABgAAAAAAAAA=")
 tile_set = SubResource("TileSet_vsp63")
 script = ExtResource("17_ln7ps")
 
