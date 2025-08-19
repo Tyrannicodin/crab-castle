@@ -7,7 +7,8 @@ signal add_room(room: Room)
 var available_rooms: Array[Room] = []
 var purchased_rooms: Array[Room] = []
 
-@onready var tower = $Tower
+@onready var viewport = $TowerViewport
+@onready var tower = $TowerViewport/Tower
 @onready var enemy_manager = $EnemyManager
 
 func _ready() -> void:
@@ -17,6 +18,9 @@ func _ready() -> void:
 	for i in range(20):
 		_spawn_enemy()
 		await get_tree().create_timer(0.5).timeout
+
+func _input(event):
+	viewport.push_input(event)
 
 func load_rooms():
 	available_rooms = []

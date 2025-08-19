@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=34 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
@@ -10,16 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
 [ext_resource type="Shader" uid="uid://dur8qajqyjrlu" path="res://assets/shader/background.gdshader" id="11_hb504"]
+[ext_resource type="Shader" uid="uid://bb1gwvblyt57i" path="res://assets/shader/castle.gdshader" id="12_hb504"]
 [ext_resource type="Texture2D" uid="uid://c0mf8qj5fny5k" path="res://assets/room_details/empty_scaled.png" id="12_qf6n1"]
 [ext_resource type="Script" uid="uid://c0htur6o5hwgt" path="res://game/rooms/tower.gd" id="17_ln7ps"]
 [ext_resource type="Script" uid="uid://b7x38g8nwawmq" path="res://game/enemy_manager.gd" id="19_pxxsx"]
 [ext_resource type="Script" uid="uid://biswc6ipcfiun" path="res://game/eliminator.gd" id="20_u8s88"]
-
-[sub_resource type="Gradient" id="Gradient_u8s88"]
-colors = PackedColorArray(0.301961, 0.67451, 0.941176, 1, 0.4888, 0.8648, 0.94, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dxwpq"]
-gradient = SubResource("Gradient_u8s88")
 
 [sub_resource type="Gradient" id="Gradient_jc4t8"]
 interpolation_mode = 2
@@ -99,6 +94,14 @@ texture_region_size = Vector2i(240, 181)
 tile_size = Vector2i(240, 181)
 sources/0 = SubResource("TileSetAtlasSource_qf6n1")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hb504"]
+shader = ExtResource("12_hb504")
+shader_parameter/water_height = 0.3
+shader_parameter/wet_color = Color(0.64, 0.5312, 0.572907, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_b686c"]
+viewport_path = NodePath("TowerViewport")
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u8s88"]
 normal = Vector2(1, 0)
 
@@ -117,15 +120,6 @@ script = ExtResource("1_l8g03")
 stream = ExtResource("2_ee6o4")
 autoplay = true
 parameters/looping = true
-
-[node name="Sky" type="Node2D" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="Sky"]
-offset_left = 1920.0
-offset_right = 3000.0
-offset_bottom = 1920.0
-rotation = 1.5708
-texture = SubResource("GradientTexture1D_dxwpq")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -211,6 +205,24 @@ position = Vector2(764, 784.875)
 scale = Vector2(1920, 171.75)
 texture = SubResource("PlaceholderTexture2D_u8s88")
 
+[node name="TowerViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1920, 1080)
+
+[node name="Tower" type="TileMapLayer" parent="TowerViewport"]
+position = Vector2(93, 312)
+scale = Vector2(0.55, 0.55)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_vsp63")
+script = ExtResource("17_ln7ps")
+
+[node name="TowerTexture" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_hb504")
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = SubResource("ViewportTexture_b686c")
+
 [node name="EnemyManager" type="Node2D" parent="."]
 position = Vector2(870, 570)
 script = ExtResource("19_pxxsx")
@@ -229,13 +241,6 @@ position = Vector2(1129, -32)
 
 [node name="Floor5" type="Node2D" parent="EnemyManager"]
 position = Vector2(1126, -148)
-
-[node name="Tower" type="TileMapLayer" parent="."]
-position = Vector2(93, 312)
-scale = Vector2(0.55, 0.55)
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_vsp63")
-script = ExtResource("17_ln7ps")
 
 [node name="Eliminator" type="Area2D" parent="."]
 monitorable = false
@@ -258,11 +263,11 @@ position = Vector2(960, 0)
 shape = SubResource("WorldBoundaryShape2D_5e03w")
 
 [connection signal="rooms_loaded" from="." to="UpgradeUi" method="on_rooms_loaded"]
-[connection signal="room_selected" from="UI/Rooms" to="Tower" method="set_current_room"]
+[connection signal="room_selected" from="UI/Rooms" to="TowerViewport/Tower" method="set_current_room"]
 [connection signal="pressed" from="UI/Button" to="UI/Button" method="on_pressed"]
 [connection signal="pressed" from="UI/Button2" to="UI/Button2" method="on_pressed"]
 [connection signal="upgrade_selected" from="UpgradeUi" to="." method="room_selected"]
 [connection signal="upgrade_selected" from="UpgradeUi" to="UI/Rooms" method="add_room"]
-[connection signal="room_placed" from="Tower" to="." method="room_placed"]
-[connection signal="room_placed" from="Tower" to="UI/Rooms" method="remove_room"]
+[connection signal="room_placed" from="TowerViewport/Tower" to="." method="room_placed"]
+[connection signal="room_placed" from="TowerViewport/Tower" to="UI/Rooms" method="remove_room"]
 [connection signal="area_shape_entered" from="Eliminator" to="Eliminator" method="_on_area_shape_entered"]
