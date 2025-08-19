@@ -49,6 +49,7 @@ func _ready() -> void:
 	on_wave_end()
 	
 	$BgSkyWater.material.set_shader_parameter("water_height", bg_water_levels[1])
+	$TowerTexture.material.set_shader_parameter("water_height", bg_water_levels[1])
 
 func _process(delta: float) -> void:
 	if in_wave:
@@ -57,6 +58,13 @@ func _process(delta: float) -> void:
 	$BgSkyWater.material.set_shader_parameter("water_height",
 		lerp(
 			$BgSkyWater.material.get_shader_parameter("water_height"),
+			bg_water_levels[water_level],
+			delta
+		)
+	)
+	$TowerTexture.material.set_shader_parameter("water_height",
+		lerp(
+			$TowerTexture.material.get_shader_parameter("water_height"),
 			bg_water_levels[water_level],
 			delta
 		)
