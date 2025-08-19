@@ -79,6 +79,7 @@ func load_rooms():
 	rooms_loaded.emit(available_rooms)
 
 func _spawn_enemy():
+	# The level of the tower the enemy spawns on
 	$EnemyManager.spawn_enemy(preload("res://assets/resources/enemies/seagull.tres"))
 
 # Run when a wave ends and at the start
@@ -88,6 +89,9 @@ func on_wave_end():
 	$"UpgradeUi".roll_rooms(damage_only)
 	$"UpgradeUi".show()
 	$"UI/Start Next Wave".show()
+	
+	if wave_number < len(waves):
+		water_level = waves[wave_number].call()["water_level"]
 	
 	wave_end.emit()
 
