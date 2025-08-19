@@ -4,6 +4,7 @@ uniform float water_height = 0.3;
 uniform vec4 wet_color: source_color;
 uniform vec4 foam_color: source_color;
 uniform vec4 border_color: source_color;
+uniform vec4 target_color: source_color;
 
 uniform float radius = 30;
 uniform int samples = 15;
@@ -42,9 +43,10 @@ void fragment() {
 	float progress = mod(TIME + -3.5 * UV.x, PI * 4.0);
 	float water_offset = sin(progress) / 200.0 + 0.003;
 	if (UV.y > water_offset + 1.0 - water_height + foam_size) {
-		COLOR = COLOR * wet_color;
-	}
-	else if (UV.y > water_offset + 1.0 - water_height - foam_size && COLOR.a > 0.9) {
+		if (tex.b >= target_color.b - 0.3 && tex.b <= target_color.b) {
+			COLOR = COLOR * wet_color;
+		}
+	} else if (UV.y > water_offset + 1.0 - water_height - foam_size && COLOR.a > 0.9) {
 		COLOR = foam_color;
 	}
 }

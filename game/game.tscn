@@ -137,6 +137,7 @@ shader_parameter/water_height = 0.4
 shader_parameter/wet_color = Color(0.4512, 0.55296, 0.96, 1)
 shader_parameter/foam_color = Color(0.698039, 0.996078, 0.996078, 1)
 shader_parameter/border_color = Color(0.133333, 0.101961, 0.0823529, 1)
+shader_parameter/target_color = Color(0.815686, 0.670588, 0.556863, 1)
 shader_parameter/radius = 6.0
 shader_parameter/samples = 15
 shader_parameter/blend_texture = ExtResource("19_dxwpq")
