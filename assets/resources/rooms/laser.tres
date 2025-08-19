@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Room" load_steps=4 format=3 uid="uid://c167w3gmep46g"]
+
+[ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="1_t3art"]
+[ext_resource type="Texture2D" uid="uid://c31p7yeryjo0" path="res://assets/rooms/laser.png" id="1_tngt5"]
+[ext_resource type="Script" uid="uid://bfg2saevd0xcu" path="res://assets/resources/rooms/laser.gd" id="3_n3n6d"]
+
+[resource]
+script = ExtResource("1_t3art")
+display_name = "Laser"
+image = ExtResource("1_tngt5")
+scale = Vector2(-0.55, 0.55)
+rotation = 19.0
+animate_on_trigger = false
+visible_progress_bar = true
+visible_arrows = 0
+trigger_script = ExtResource("3_n3n6d")
+cooldown_seconds = 0.5
+requires_enemies_to_trigger = true
+weight = 80
+cost = 6
+metadata/_custom_type_script = "uid://s5vpeux5sx8g"

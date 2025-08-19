@@ -6,7 +6,7 @@ class_name Enemy
 
 @export_category("display")
 @export var sprite: Texture2D
-@export var scale: float = 1
+@export var scale: Vector2 = Vector2.ONE
 
 @export_category("stats")
 @export var max_health: int = 500

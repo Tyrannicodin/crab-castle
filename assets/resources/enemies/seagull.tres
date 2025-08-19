@@ -7,7 +7,7 @@
 script = ExtResource("1_l2oac")
 display_name = "Seagull"
 sprite = ExtResource("2_a26qh")
-scale = 0.27
+scale = Vector2(0.27, 0.27)
 max_health = 25
 speed = 60
 acceleration = 30

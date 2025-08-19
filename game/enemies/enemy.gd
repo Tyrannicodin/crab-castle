@@ -11,7 +11,7 @@ var damage_number = preload("res://game/DamageNumber.tscn")
 
 func _ready():
 	material = material.duplicate()
-	scale = Vector2(enemy.scale, enemy.scale)
+	scale = enemy.scale
 	$Sprite.texture = enemy.sprite
 	$Collider.shape.size = enemy.sprite.get_size()
 
@@ -69,4 +69,4 @@ func knockback(power: int):
 	backwards_velocity = power
 
 func death_animation():
-	scale.y = -1 * enemy.scale
+	scale.y = -1 * enemy.scale.y

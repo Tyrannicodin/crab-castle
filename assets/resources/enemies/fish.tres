@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://qy1wxo2ykou3"]
+
+[ext_resource type="Script" uid="uid://dx0myaehl7et" path="res://assets/resources/definitions/enemy.gd" id="1_wuwbc"]
+[ext_resource type="Texture2D" uid="uid://d1r03ey4k4oc3" path="res://assets/enemies/fish.png" id="2_rc0d7"]
+
+[resource]
+script = ExtResource("1_wuwbc")
+display_name = "Fish"
+sprite = ExtResource("2_rc0d7")
+scale = Vector2(0.2, 0.2)
+max_health = 60
+speed = 200
+acceleration = 1
+value = 3
+metadata/_custom_type_script = "uid://dx0myaehl7et"
