@@ -9,6 +9,12 @@ var current_room: int = -1
 
 var room_overlays: Dictionary[Vector2i, RoomOverlay] = {}
 
+const BG = 0
+const PALISADES = 1
+const BOTTOM = 6
+const PALISADES_MIRROR = 7
+const BUILDABLE = 8
+
 class RoomInstance:
 	var type: Room
 	var position: Vector2i
@@ -38,6 +44,10 @@ var rooms: Array[RoomInstance] = []
 @onready var game = $"../.."
 
 func _ready():
+	var used_cells = get_used_cells()
+	for cell in used_cells:
+		if (cell.y < 6):
+			set_cell(cell, -1)
 	generate_room_sprites()
 	
 	game.wave_start.connect(func():
@@ -67,14 +77,18 @@ func _input(event) -> void:
 		return
 	if event.is_pressed() or event.button_index != 1:
 		return
-
-	var target = local_to_map(get_local_mouse_position())
-	if not target in get_used_cells():
+	if current_room == -1:
 		return
+	
+	var target = local_to_map(get_local_mouse_position())
+	var room_below = get_cell_source_id(get_neighbor_cell(target, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE))
+	if (room_below != BOTTOM && room_below != BG):
+		return
+	set_cell(target, BG, Vector2(0,0))
+	set_cell(Vector2(target.x, target.y-1), PALISADES_MIRROR if target.x == 1 else PALISADES, Vector2(0,0))
+	generate_room_sprites()
 	if room_overlays[target].room:
 		# TODO: This is where stuff should happen when you click on a placed room
-		return
-	if current_room == -1:
 		return
 	room_overlays[target].room = game.purchased_rooms[current_room]
 	room_overlays[target].update_sprite()
