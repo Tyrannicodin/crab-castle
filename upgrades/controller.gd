@@ -4,9 +4,14 @@ signal upgrade_selected(room: Room)
 
 var available_rooms: Array[Room] = []
 
-func roll_rooms() -> void:
+func roll_rooms(damage_only=false) -> void:
 	var rng = RandomNumberGenerator.new()
-	var weights = PackedFloat32Array(available_rooms.map(func(room: Room): return room.weight))
+	
+	var filtered_rooms = available_rooms
+	if damage_only == true:
+		filtered_rooms = filtered_rooms.filter(func(room: Room): return room.requires_enemies_to_trigger)
+	
+	var weights = PackedFloat32Array(filtered_rooms.map(func(room: Room): return room.weight))
 
 	var current_rooms = available_rooms.duplicate()
 	var selected

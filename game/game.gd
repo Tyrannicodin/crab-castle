@@ -10,13 +10,14 @@ var purchased_rooms: Array[Room] = []
 @onready var tower = $Tower
 @onready var enemy_manager = $EnemyManager
 
+var waves = preload("res://game/enemy_waves.gd").new().waves
+
+var wave_number = 0
+
 func _ready() -> void:
 	load_rooms()
 	$GameStartBits.visible = true
-	
-	for i in range(20):
-		_spawn_enemy()
-		await get_tree().create_timer(0.5).timeout
+	on_wave_end()
 
 func load_rooms():
 	available_rooms = []
@@ -34,6 +35,22 @@ func _spawn_enemy():
 	# The level of the tower the enemy spawns on
 	$EnemyManager.spawn_enemy(preload("res://assets/resources/enemies/seagull.tres"))
 
+# Run when a wave ends and at the start
+func on_wave_end():
+	var damage_only = wave_number < 2
+	$"UpgradeUi".roll_rooms(damage_only)
+	$"UpgradeUi".show()
+	$"UI/Start Next Wave".show()
+
+func on_wave_start():
+	wave_number += 1
+	var enemy_waves = waves[wave_number - 1].call()
+
+	for wave in enemy_waves:
+		for enemy in wave:
+			$EnemyManager.spawn_enemy(enemy)
+	
+	$"UI/Start Next Wave".hide()
 
 func find_closest_enemies(to_room: Tower.RoomInstance) -> Array[EnemyInstance]:
 	var room_positon = tower.get_room_global_position(to_room)
@@ -76,3 +93,7 @@ func room_selected(room: Room) -> void:
 
 func room_placed(room: int) -> void:
 	purchased_rooms.remove_at(room)
+
+
+func _on_start_next_wave_button_down() -> void:
+	on_wave_start()
