@@ -25,13 +25,13 @@ func _process(delta):
 	move(delta)
 		
 	if not is_alive():
-		global_position.y += downward_accel
-		downward_accel += 50 * delta
+		global_position.y += downward_accel * delta
+		downward_accel += 1000 * delta
 	
 	time_since_hit += delta
 	
 	material.set_shader_parameter("brightness",
-		lerp(1., 0., ease(10 * time_since_hit, -.5))
+		lerp(1., 0., ease(time_since_hit * 5, 20))
 	)
 
 func move(delta) -> void:

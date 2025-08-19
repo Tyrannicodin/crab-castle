@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bo4uc83hk01vu" path="res://assets/projectiles/slingshot.png" id="2_ed4cu"]
 
 [node name="Projectile" instance=ExtResource("1_okb0w")]
-damage = 25
+damage = 15
 speed = 1000.0
 stun_lock = 0.2
 knockback = 4

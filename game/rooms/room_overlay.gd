@@ -7,6 +7,8 @@ var progress: float = 0
 var extra_scale = Vector2(1, 1)
 var time_since_fired: float = 0
 
+var hide_progress_bar = false
+
 func _process(delta) -> void:
 	for child in get_children():
 		child.hide()
@@ -30,10 +32,16 @@ func _process(delta) -> void:
 	if room.visible_arrows & 0b1000:
 		$ArrowLeft.show()
 	
-	if room.visible_progress_bar:
+	if room.visible_progress_bar and !hide_progress_bar:
 		$Progress.show()
 		$Progress.value = progress
 
 func update_sprite() -> void:
 	$Sprite.texture = room.image
 	$Sprite.scale = room.scale
+
+func show_progress():
+	hide_progress_bar = false
+
+func hide_progress():
+	hide_progress_bar = true
