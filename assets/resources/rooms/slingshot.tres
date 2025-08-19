@@ -9,6 +9,7 @@ script = ExtResource("1_5o570")
 display_name = "Slingshot"
 image = ExtResource("1_pv3f7")
 scale = Vector2(0.5, 0.5)
+rotation = 0.0
 animate_on_trigger = false
 visible_progress_bar = true
 visible_arrows = 0

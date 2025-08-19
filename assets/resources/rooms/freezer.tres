@@ -9,6 +9,7 @@ script = ExtResource("1_d3tcq")
 display_name = "Freezer"
 image = ExtResource("1_qabjs")
 scale = Vector2(0.4, 0.4)
+rotation = 0.0
 animate_on_trigger = false
 visible_progress_bar = true
 visible_arrows = 0
