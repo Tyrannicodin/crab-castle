@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=42 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://b6y06i07h8uw3" path="res://game/game_end.gd" id="3_u5opy"]
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
+[ext_resource type="Texture2D" uid="uid://dvlr1truseh3y" path="res://assets/sun-yellow.png" id="11_dxwpq"]
 [ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/room_details/empty.png" id="11_ee6o4"]
 [ext_resource type="Shader" uid="uid://dur8qajqyjrlu" path="res://assets/shader/background.gdshader" id="11_hb504"]
 [ext_resource type="Texture2D" uid="uid://od7uidhhkf5r" path="res://assets/room_details/palisades.png" id="12_ee6o4"]
@@ -231,6 +232,11 @@ position = Vector2(954.145, 537.587)
 rotation = 3.14159
 scale = Vector2(7.44232, 1072.46)
 texture = SubResource("GradientTexture1D_mhvfb")
+
+[node name="Sun-yellow" type="Sprite2D" parent="."]
+position = Vector2(1602.75, 154.98)
+scale = Vector2(0.337264, 0.337264)
+texture = ExtResource("11_dxwpq")
 
 [node name="TowerViewport" type="SubViewport" parent="."]
 transparent_bg = true
