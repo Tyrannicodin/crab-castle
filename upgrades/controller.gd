@@ -8,6 +8,7 @@ var money: int = 0
 
 func roll_rooms(set_damage_only = false) -> void:
 	damage_only = set_damage_only
+	show()
 	reroll_rooms()
 
 func reroll_rooms() -> void:

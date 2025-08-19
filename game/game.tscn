@@ -347,7 +347,10 @@ shape = SubResource("WorldBoundaryShape2D_5e03w")
 
 [connection signal="balance_changed" from="." to="UI/gold_display" method="set_gold"]
 [connection signal="balance_changed" from="." to="UpgradeUi" method="on_balance_change"]
+[connection signal="game_end" from="." to="." method="on_game_end"]
+[connection signal="game_end" from="." to="GameEnd" method="show"]
 [connection signal="rooms_loaded" from="." to="UpgradeUi" method="on_rooms_loaded"]
+[connection signal="wave_end" from="." to="UI/Start Next Wave" method="show"]
 [connection signal="room_selected" from="UI/Rooms" to="TowerViewport/Tower" method="set_current_room"]
 [connection signal="pressed" from="UI/Button" to="UI/Button" method="on_pressed"]
 [connection signal="pressed" from="UI/Button2" to="UI/Button2" method="on_pressed"]

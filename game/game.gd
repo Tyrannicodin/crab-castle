@@ -5,6 +5,7 @@ signal rooms_loaded(rooms: Array[Room])
 signal balance_changed(value: int)
 signal wave_start
 signal wave_end
+signal game_end
 signal damage_taken(remaining_health: int)
 
 var available_rooms: Array[Room] = []
@@ -22,13 +23,19 @@ var bg_water_levels = [
 @onready var tower = $TowerViewport/Tower
 var money: int = 10:
 	set(value):
+		if value > money:
+			money_earned = value - money
 		balance_changed.emit(value)
 		money = value
+
+var money_earned: int = 0
+var kills: int = 0
+var rooms_built: int = 0
 
 @onready var enemy_manager = $EnemyManager
 var tower_health = 100
 
-var waves = preload("res://game/enemy_waves.gd").new().waves
+var waves = preload("res://game/enemy_waves.gd").waves
 var wave_number = 0
 var in_wave = false
 
@@ -93,10 +100,11 @@ func _spawn_enemy():
 # Run when a wave ends and at the start
 func on_wave_end():
 	in_wave = false
+	if wave_number == len(waves):
+		game_end.emit()
+		return
 	var damage_only = wave_number < 2
 	$"UpgradeUi".roll_rooms(damage_only)
-	$"UpgradeUi".show()
-	$"UI/Start Next Wave".show()
 	
 	if wave_number < len(waves):
 		water_level = waves[wave_number].call()["water_level"]
@@ -115,7 +123,7 @@ func on_wave_start():
 	wave_start.emit()
 
 func try_spawn_next_enemy_wave():
-	if $EnemyManager.living_enemy_count() <= (current_wave_enemy_count / 2) and enemy_waves_spawned > 0 and finished_spawning:
+	if $EnemyManager.living_enemy_count() <= floor(current_wave_enemy_count / 2.0) and enemy_waves_spawned > 0 and finished_spawning:
 		enemy_waves_cleared += 1
 	if enemy_waves_cleared < enemy_waves_spawned:
 		return
@@ -175,6 +183,7 @@ func room_placed(room: int) -> void:
 	purchased_rooms.remove_at(room)
 
 func enemy_killed(enemy: Enemy) -> void:
+	kills += 1
 	money += enemy.value
 
 func deal_damage(enemy: EnemyInstance) -> void:
@@ -190,7 +199,10 @@ func deal_damage(enemy: EnemyInstance) -> void:
 	damage_taken.emit(tower_health)
 
 func on_death():
-	$GameEnd.show()
+	game_end.emit()
 
 func _on_start_next_wave_button_down() -> void:
 	on_wave_start()
+
+func on_game_end() -> void:
+	get_tree().call_group("statistic", "update_stat", self)
