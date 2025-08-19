@@ -9,7 +9,6 @@ var overlay_inst: RoomOverlay
         room = value
         if overlay_inst:
             overlay_inst.room = value
-            overlay_inst.update_sprite()
 
 func _ready():
     overlay_inst = overlay.instantiate()

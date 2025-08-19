@@ -2,7 +2,10 @@
 extends Node2D
 class_name RoomOverlay
 
-var room: Room
+@export var room: Room : 
+	set(value):
+		room = value
+		update_sprite()
 var progress: float = 0
 
 var extra_scale = Vector2(1, 1)
