@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
-[ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
+[ext_resource type="Script" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
 [ext_resource type="Script" uid="uid://dx5wdsegef6t2" path="res://game/end_wave.gd" id="2_dxrkv"]
 [ext_resource type="AudioStream" uid="uid://dqef6khyml52g" path="res://assets/music/crabcastle.mp3" id="2_ee6o4"]
 [ext_resource type="PackedScene" uid="uid://68en2fypp2j5" path="res://upgrades/UpgradeUI.tscn" id="3_dakft"]
@@ -307,16 +307,16 @@ script = ExtResource("19_pxxsx")
 position = Vector2(1131, 306)
 
 [node name="Floor2" type="Node2D" parent="EnemyManager"]
-position = Vector2(1130, 192)
+position = Vector2(1124, 48)
 
 [node name="Floor3" type="Node2D" parent="EnemyManager"]
-position = Vector2(1126, 78)
+position = Vector2(1124, -79)
 
 [node name="Floor4" type="Node2D" parent="EnemyManager"]
-position = Vector2(1129, -32)
+position = Vector2(1125, -196)
 
 [node name="Floor5" type="Node2D" parent="EnemyManager"]
-position = Vector2(1126, -148)
+position = Vector2(1124, -329)
 
 [node name="Eliminator" type="Area2D" parent="."]
 monitorable = false

@@ -38,13 +38,16 @@ func y_pos_dx(ex: float, ey: float, x: float):
 func aim(spawnpoint: Vector2, enemy: EnemyInstance):
 	origin = spawnpoint
 	enemy_position = Vector2(enemy.global_position.x, enemy.global_position.y)
-
-func _ready() -> void:
-	_process(.01)
+	position_projectile(time, 0.01)
 
 func _process(delta: float) -> void:
 	time += delta
+	position_projectile(time, delta)
 	
+	if instant_kill and time > .2:
+		self.queue_free()
+
+func position_projectile(time: float, delta):
 	if movement_type == MovementType.Parabolic:
 		self.global_position.x = origin.x + time * speed
 		self.global_position.y = y_pos(enemy_position.x - origin.x, enemy_position.y - origin.y, time * speed) + origin.y
@@ -53,10 +56,7 @@ func _process(delta: float) -> void:
 	if movement_type == MovementType.Drop:
 		self.global_position.y += downward_accel * delta
 		downward_accel += 1000 * delta
-	
-	if instant_kill and time > .2:
-		self.queue_free()
-	
+
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if disabled:
 		return
