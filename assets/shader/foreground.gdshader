@@ -8,8 +8,7 @@ uniform vec4 foam_color: source_color;
 const float scaling_factor = 150.0/81.0;
 
 void fragment() {
-		bool right_side = UV.x < 0.9;
-		float progress = mod(TIME + 3.0 * UV.x, PI * 4.0) * (right_side ? 1.25 : 1.0);
+		float progress = mod(TIME + 3.0 * UV.x, PI * 4.0);
 
 		if (UV.y > 0.5) {
 			COLOR.a = 0.0;

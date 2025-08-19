@@ -10,20 +10,20 @@ uniform float foam_size = 0.005;
 const float scaling_factor = 150.0/81.0;
 
 void fragment() {
-		bool right_side = UV.x < 0.9;
-		float progress = mod(TIME + 3.0 * UV.x, PI * 4.0) * (right_side ? 1.25 : 1.0);
+		float progress = mod(TIME + 3.0 * UV.x, PI * 4.0);
+		float water_offset = sin(progress) / 200.0;
 		
 		COLOR = sky_color;
 		
 		if (UV.y > water_height + sin(progress) / 200.0 && UV.y <= 0.5) {
 			COLOR = water_color;
-		} else if (UV.y > water_height - foam_size + sin(progress) / 200.0 && UV.y <= water_height + sin(progress) / 200.0) {
+		} else if (UV.y > water_height - foam_size + water_offset && UV.y <= water_height + water_offset) {
 			COLOR = foam_color;
 		} else if (UV.y < 0.5) {
 			COLOR = underwater_color;
 		}
 		
-		if (0.5 < water_height + sin(progress) / 200.0 && UV.y < water_height - foam_size + sin(progress) / 200.0 && UV.y > 0.5) {
+		if (0.5 < water_height + water_offset && UV.y < water_height - foam_size + water_offset && UV.y > 0.5) {
 			COLOR = surface_color;
 		}
 

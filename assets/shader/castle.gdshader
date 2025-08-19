@@ -2,6 +2,7 @@ shader_type canvas_item;
 
 uniform float water_height = 0.3;
 uniform vec4 wet_color: source_color;
+uniform vec4 foam_color: source_color;
 uniform vec4 border_color: source_color;
 
 uniform float radius = 30;
@@ -23,8 +24,12 @@ float draw_band(float offset, vec2 uv, sampler2D tex, vec2 texture_pixel_size) {
 }
 
 void fragment() {
-    if (texture(TEXTURE, UV).a > .9) {
-        COLOR = texture(TEXTURE, UV) * texture(blend_texture, mod(UV * 4.0, 1.0));
+	vec4 tex = texture(TEXTURE, UV);
+	
+	float foam_size = 0.0025;
+	
+    if (tex.a > .9) {
+        COLOR = tex * texture(blend_texture, mod(UV * 4.0, 1.0));
     } else {
 		float band_1 = draw_band(0, UV, TEXTURE, TEXTURE_PIXEL_SIZE);
 
@@ -32,6 +37,15 @@ void fragment() {
 			border_color.rgb,
 			band_1
 		);
+	}
+		
+	float progress = mod(TIME + -3.5 * UV.x, PI * 4.0);
+	float water_offset = sin(progress) / 200.0 + 0.003;
+	if (UV.y > water_offset + 1.0 - water_height + foam_size) {
+		COLOR = COLOR * wet_color;
+	}
+	else if (UV.y > water_offset + 1.0 - water_height - foam_size && COLOR.a > 0.9) {
+		COLOR = foam_color;
 	}
 }
 
