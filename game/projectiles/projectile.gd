@@ -9,6 +9,8 @@ class_name Projectile
 @export var stun_lock = 0.1
 @export var knockback = 0
 @export var gravity: bool = true
+# Destroy this projectile after 1 frame
+@export var instant_kill: bool = false
 enum MovementType {Parabolic, Drop}
 @export var movement_type: MovementType
 
@@ -37,6 +39,9 @@ func aim(spawnpoint: Vector2, enemy: EnemyInstance):
 	origin = spawnpoint
 	enemy_position = Vector2(enemy.global_position.x, enemy.global_position.y)
 
+func _ready() -> void:
+	_process(.01)
+
 func _process(delta: float) -> void:
 	time += delta
 	
@@ -48,7 +53,10 @@ func _process(delta: float) -> void:
 	if movement_type == MovementType.Drop:
 		self.global_position.y += downward_accel * delta
 		downward_accel += 1000 * delta
-		
+	
+	if instant_kill and time > .2:
+		self.queue_free()
+	
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if disabled:
 		return

@@ -5,7 +5,7 @@
 
 [node name="Projectile" instance=ExtResource("1_okb0w")]
 damage = 15
-speed = 1000.0
+speed = 1800.0
 stun_lock = 0.2
 knockback = 4
 
