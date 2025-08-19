@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=37 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
@@ -10,16 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
 [ext_resource type="Script" uid="uid://daq0fcjji8v2n" path="res://game/gold_display.gd" id="6_hb504"]
-[ext_resource type="Texture2D" uid="uid://dvlr1truseh3y" path="res://assets/sun-yellow.png" id="11_dxwpq"]
 [ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/room_details/empty.png" id="11_ee6o4"]
 [ext_resource type="Shader" uid="uid://dur8qajqyjrlu" path="res://assets/shader/background.gdshader" id="11_hb504"]
-[ext_resource type="Texture2D" uid="uid://od7uidhhkf5r" path="res://assets/room_details/palisades.png" id="12_ee6o4"]
 [ext_resource type="Shader" uid="uid://bb1gwvblyt57i" path="res://assets/shader/castle.gdshader" id="12_hb504"]
-[ext_resource type="Texture2D" uid="uid://bkmhnjxdeyq3f" path="res://assets/room_details/palisades_mirror.png" id="13_4cobl"]
-[ext_resource type="Texture2D" uid="uid://cygfg2olr2wsn" path="res://assets/room_details/bottom.png" id="14_u8s88"]
-[ext_resource type="Texture2D" uid="uid://dppbqemy12cuf" path="res://assets/room_details/pattern.png" id="16_ln7ps"]
 [ext_resource type="Script" uid="uid://c0htur6o5hwgt" path="res://game/rooms/tower.gd" id="17_ln7ps"]
-[ext_resource type="Texture2D" uid="uid://bqb2pyrlvwfv1" path="res://assets/seabed.png" id="17_pxxsx"]
 [ext_resource type="Script" uid="uid://b7x38g8nwawmq" path="res://game/enemy_manager.gd" id="19_pxxsx"]
 [ext_resource type="Script" uid="uid://biswc6ipcfiun" path="res://game/eliminator.gd" id="20_u8s88"]
 
@@ -89,33 +83,30 @@ colors = PackedColorArray(0.301961, 0.67451, 0.941176, 1, 0.409467, 0.166, 0.83,
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_mhvfb"]
 gradient = SubResource("Gradient_dxwpq")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qf6n1"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ee6o4"]
 resource_name = "bg"
 texture = ExtResource("11_ee6o4")
 texture_region_size = Vector2i(464, 342)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ee6o4"]
-texture = ExtResource("12_ee6o4")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4cobl"]
 texture_region_size = Vector2i(464, 342)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ln7ps"]
-texture = ExtResource("13_4cobl")
 texture_region_size = Vector2i(464, 342)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dxwpq"]
-texture = ExtResource("14_u8s88")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pxxsx"]
 texture_region_size = Vector2i(464, 342)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_vsp63"]
 tile_size = Vector2i(464, 342)
-sources/0 = SubResource("TileSetAtlasSource_qf6n1")
-sources/2 = SubResource("TileSetAtlasSource_ee6o4")
+sources/0 = SubResource("TileSetAtlasSource_ee6o4")
+sources/2 = SubResource("TileSetAtlasSource_4cobl")
 sources/3 = SubResource("TileSetAtlasSource_ln7ps")
-sources/4 = SubResource("TileSetAtlasSource_dxwpq")
+sources/4 = SubResource("TileSetAtlasSource_pxxsx")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hb504"]
 shader = ExtResource("12_hb504")
@@ -124,7 +115,6 @@ shader_parameter/wet_color = Color(0.64, 0.5312, 0.572907, 1)
 shader_parameter/border_color = Color(0.133333, 0.101961, 0.0823529, 1)
 shader_parameter/radius = 6.0
 shader_parameter/samples = 15
-shader_parameter/blend_texture = ExtResource("16_ln7ps")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_b686c"]
 viewport_path = NodePath("TowerViewport")
@@ -257,7 +247,6 @@ texture = SubResource("GradientTexture1D_mhvfb")
 [node name="Sun-yellow" type="Sprite2D" parent="."]
 position = Vector2(1602.75, 154.98)
 scale = Vector2(0.337264, 0.337264)
-texture = ExtResource("11_dxwpq")
 
 [node name="TowerViewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -280,7 +269,6 @@ texture = SubResource("ViewportTexture_b686c")
 [node name="Seabed" type="Sprite2D" parent="."]
 position = Vector2(745.075, 922.563)
 scale = Vector2(0.392897, 0.382396)
-texture = ExtResource("17_pxxsx")
 
 [node name="EnemyManager" type="Node2D" parent="."]
 position = Vector2(870, 570)

@@ -56,7 +56,7 @@ func generate_room_sprites() -> void:
 	for cell in used_cells:
 		var overlay = room_overlay.instantiate()
 		room_overlays[cell] = overlay
-		overlay.position = map_to_local(cell) - Vector2(120, 90)
+		overlay.position = map_to_local(cell) - Vector2(232, 171)
 		add_child(overlay)
 
 func set_current_room(room: int) -> void:

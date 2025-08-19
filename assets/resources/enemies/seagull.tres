@@ -11,4 +11,5 @@ scale = 0.27
 max_health = 25
 speed = 60
 acceleration = 30
+value = 1
 metadata/_custom_type_script = "uid://dx0myaehl7et"

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bry2s05iaolij"]
+
+[ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/room_details/empty.png" id="1_fuwc3"]
+[ext_resource type="Script" uid="uid://bmuobh4tmvs1m" path="res://tools/overlay_display.gd" id="2_pqqnw"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqqnw"]
+texture = ExtResource("1_fuwc3")
+texture_region_size = Vector2i(464, 342)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_hu3yy"]
+tile_size = Vector2i(464, 342)
+sources/0 = SubResource("TileSetAtlasSource_pqqnw")
+
+[node name="RoomRender" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(89, 69)
+scale = Vector2(0.35, 0.35)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_hu3yy")
+script = ExtResource("2_pqqnw")

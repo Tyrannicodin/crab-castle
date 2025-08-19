@@ -6,7 +6,8 @@ class_name Room
 
 @export_category("display")
 @export var image: Texture2D
-@export var scale: Vector2 = Vector2(.3, .3)
+@export var scale: Vector2 = Vector2.ONE
+@export_range(-360, 360) var rotation: float = 0
 ## Should the pulse animation play on trigger. Should be false for projectile rooms.
 @export var animate_on_trigger: bool = false
 

@@ -8,10 +8,13 @@
 script = ExtResource("1_bpa10")
 display_name = "Crab cannon"
 image = ExtResource("1_2vvaa")
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.25, 0.25)
+animate_on_trigger = false
 visible_progress_bar = true
 visible_arrows = 0
 trigger_script = ExtResource("3_tnirv")
 cooldown_seconds = 3.0
 requires_enemies_to_trigger = true
+weight = 100
+cost = 5
 metadata/_custom_type_script = "uid://s5vpeux5sx8g"
