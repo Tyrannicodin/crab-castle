@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=33 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://b6y06i07h8uw3" path="res://game/game_end.gd" id="3_u5opy"]
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
-[ext_resource type="Texture2D" uid="uid://b4ku0d1fup6rh" path="res://assets/background/cloud_1.png" id="8_dxwpq"]
+[ext_resource type="Shader" uid="uid://dur8qajqyjrlu" path="res://assets/shader/background.gdshader" id="11_hb504"]
 [ext_resource type="Texture2D" uid="uid://c0mf8qj5fny5k" path="res://assets/room_details/empty_scaled.png" id="12_qf6n1"]
 [ext_resource type="Script" path="res://game/rooms/tower.gd" id="17_ln7ps"]
 [ext_resource type="Script" path="res://game/enemy_manager.gd" id="19_pxxsx"]
@@ -73,13 +73,21 @@ _data = {
 shader = ExtResource("4_u5opy")
 shader_parameter/amount = 2.5
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u8s88"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ee6o4"]
+shader = ExtResource("11_hb504")
+shader_parameter/water_height = 0.3
+shader_parameter/sky_color = Color(0.458775, 0.633477, 0.987434, 1)
+shader_parameter/water_color = Color(0.2349, 0.40743, 0.81, 1)
+shader_parameter/underwater_color = Color(0.296933, 0.238, 0.68, 1)
+shader_parameter/foam_color = Color(0.698039, 0.996078, 0.996078, 1)
 
 [sub_resource type="Gradient" id="Gradient_dxwpq"]
 colors = PackedColorArray(0.301961, 0.67451, 0.941176, 1, 0.409467, 0.166, 0.83, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_mhvfb"]
 gradient = SubResource("Gradient_dxwpq")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u8s88"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qf6n1"]
 resource_name = "bg"
@@ -201,20 +209,17 @@ anchor_mode = 0
 [node name="ground" type="Node2D" parent="."]
 position = Vector2(197, 210)
 
-[node name="Sandbed" type="Sprite2D" parent="ground"]
-position = Vector2(763, 784.875)
-scale = Vector2(1920, 171.75)
-texture = SubResource("PlaceholderTexture2D_u8s88")
-
-[node name="BgWater" type="Sprite2D" parent="ground"]
-position = Vector2(762.985, 572.041)
-rotation = 1.5708
-scale = Vector2(1.00032, 1920.22)
+[node name="BgSkyWater" type="Sprite2D" parent="ground"]
+material = SubResource("ShaderMaterial_ee6o4")
+position = Vector2(763.177, 329.893)
+rotation = 3.14159
+scale = Vector2(7.50161, 1080.01)
 texture = SubResource("GradientTexture1D_mhvfb")
 
-[node name="cloud" type="Sprite2D" parent="ground"]
-position = Vector2(1357, 388)
-texture = ExtResource("8_dxwpq")
+[node name="Sandbed" type="Sprite2D" parent="ground"]
+position = Vector2(764, 784.875)
+scale = Vector2(1920, 171.75)
+texture = SubResource("PlaceholderTexture2D_u8s88")
 
 [node name="EnemyManager" type="Node2D" parent="."]
 position = Vector2(870, 570)
