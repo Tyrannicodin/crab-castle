@@ -1,6 +1,6 @@
 @icon("res://assets/enemies/seagull.png")
 extends Resource
-class_name EnemyResource
+class_name Enemy
 
 @export var display_name: String = ""
 
@@ -12,3 +12,4 @@ class_name EnemyResource
 @export var max_health: int = 500
 @export var speed: int = 60
 @export var acceleration: int = 30
+@export var value: int = 1

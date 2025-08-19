@@ -50,16 +50,28 @@ layout_mode = 2
 [node name="Upgrade3" parent="Margin/VBox/Upgrades" instance=ExtResource("3_3vxon")]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="Margin/VBox"]
+[node name="Center" type="CenterContainer" parent="Margin/VBox"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Margin/VBox/CenterContainer"]
+[node name="VBox" type="HBoxContainer" parent="Margin/VBox/Center"]
+layout_mode = 2
+theme_override_constants/separation = 120
+alignment = 1
+
+[node name="Roll" type="Button" parent="Margin/VBox/Center/VBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_hdd03")
 theme_override_font_sizes/font_size = 40
 text = "Re-roll rooms"
 
+[node name="Skip" type="Button" parent="Margin/VBox/Center/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_hdd03")
+theme_override_font_sizes/font_size = 40
+text = "Skip room"
+
 [connection signal="room_selected" from="Margin/VBox/Upgrades/Upgrade1" to="." method="on_upgrade_selected"]
 [connection signal="room_selected" from="Margin/VBox/Upgrades/Upgrade2" to="." method="on_upgrade_selected"]
 [connection signal="room_selected" from="Margin/VBox/Upgrades/Upgrade3" to="." method="on_upgrade_selected"]
-[connection signal="pressed" from="Margin/VBox/CenterContainer/Button" to="." method="roll_rooms"]
+[connection signal="pressed" from="Margin/VBox/Center/VBox/Roll" to="." method="roll_rooms"]
+[connection signal="pressed" from="Margin/VBox/Center/VBox/Skip" to="." method="skip"]

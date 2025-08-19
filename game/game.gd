@@ -2,7 +2,7 @@ extends Node2D
 class_name Game
 
 signal rooms_loaded(rooms: Array[Room])
-signal add_room(room: Room)
+signal balance_changed(value: int)
 signal wave_start
 signal wave_end
 
@@ -11,6 +11,11 @@ var purchased_rooms: Array[Room] = []
 
 @onready var viewport = $TowerViewport
 @onready var tower = $TowerViewport/Tower
+var money: int = 10:
+	set(value):
+		balance_changed.emit(value)
+		money = value
+
 @onready var enemy_manager = $EnemyManager
 
 var waves = preload("res://game/enemy_waves.gd").new().waves
@@ -27,6 +32,7 @@ func is_in_wave() -> bool:
 	return in_wave
 
 func _ready() -> void:
+	balance_changed.emit(money)
 	load_rooms()
 	$GameStartBits.visible = true
 	on_wave_end()
@@ -128,12 +134,14 @@ func fire_projectile_above_enemy(_room: Tower.RoomInstance, projectile: Node2D, 
 	projectile.global_position = target.global_position + Vector2(0, -50)
 
 func room_selected(room: Room) -> void:
+	money -= room.cost
 	purchased_rooms.append(room)
-	add_room.emit(room)
 
 func room_placed(room: int) -> void:
 	purchased_rooms.remove_at(room)
 
+func enemy_killed(enemy: Enemy) -> void:
+	money += enemy.value
 
 func _on_start_next_wave_button_down() -> void:
 	on_wave_start()

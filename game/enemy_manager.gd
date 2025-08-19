@@ -2,8 +2,9 @@ extends Node2D
 
 var enemy_base = preload("res://game/enemies/enemy.tscn")
 
-func spawn_enemy(enemy: EnemyResource) -> void:
+func spawn_enemy(enemy: Enemy) -> void:
 	var new_enemy = enemy_base.instantiate()
+	new_enemy.death.connect($"..".enemy_killed)
 	new_enemy.enemy = enemy
 	var layer = randi_range(0, get_child_count() - 1)
 	get_child(layer).add_child(new_enemy)

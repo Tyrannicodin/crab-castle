@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://b6y06i07h8uw3" path="res://game/game_end.gd" id="3_u5opy"]
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
+[ext_resource type="Script" uid="uid://daq0fcjji8v2n" path="res://game/gold_display.gd" id="6_hb504"]
 [ext_resource type="Texture2D" uid="uid://dvlr1truseh3y" path="res://assets/sun-yellow.png" id="11_dxwpq"]
 [ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/room_details/empty.png" id="11_ee6o4"]
 [ext_resource type="Shader" uid="uid://dur8qajqyjrlu" path="res://assets/shader/background.gdshader" id="11_hb504"]
@@ -186,6 +187,26 @@ offset_bottom = 62.0
 text = "Start Next Wave
 "
 
+[node name="gold_display" type="Label" parent="UI"]
+offset_left = 1611.0
+offset_top = 12.0
+offset_right = 1715.0
+offset_bottom = 85.0
+text = "Gold: "
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_hb504")
+
+[node name="Panel" type="Panel" parent="UI/gold_display"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
 [node name="UpgradeUi" parent="." instance=ExtResource("3_dakft")]
 visible = false
 
@@ -300,6 +321,8 @@ shape = SubResource("WorldBoundaryShape2D_mhvfb")
 position = Vector2(960, 0)
 shape = SubResource("WorldBoundaryShape2D_5e03w")
 
+[connection signal="balance_changed" from="." to="UI/gold_display" method="set_gold"]
+[connection signal="balance_changed" from="." to="UpgradeUi" method="on_balance_change"]
 [connection signal="rooms_loaded" from="." to="UpgradeUi" method="on_rooms_loaded"]
 [connection signal="room_selected" from="UI/Rooms" to="TowerViewport/Tower" method="set_current_room"]
 [connection signal="pressed" from="UI/Button" to="UI/Button" method="on_pressed"]

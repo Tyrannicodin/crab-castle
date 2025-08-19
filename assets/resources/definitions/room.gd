@@ -18,3 +18,4 @@ class_name Room
 @export var cooldown_seconds: float = 0
 @export var requires_enemies_to_trigger: bool = true
 @export var weight: int = 100
+@export var cost: int = 5
