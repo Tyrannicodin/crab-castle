@@ -35,7 +35,7 @@ class RoomInstance:
 
 var rooms: Array[RoomInstance] = []
 
-@onready var game = $".."
+@onready var game = $"../.."
 
 func _ready():
 	generate_room_sprites()

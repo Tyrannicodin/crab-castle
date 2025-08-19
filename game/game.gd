@@ -9,7 +9,8 @@ signal wave_end
 var available_rooms: Array[Room] = []
 var purchased_rooms: Array[Room] = []
 
-@onready var tower = $Tower
+@onready var viewport = $TowerViewport
+@onready var tower = $TowerViewport/Tower
 @onready var enemy_manager = $EnemyManager
 
 var waves = preload("res://game/enemy_waves.gd").new().waves
@@ -33,6 +34,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if in_wave:
 		try_spawn_next_enemy_wave()
+
+func _input(event):
+	viewport.push_input(event)
 
 func load_rooms():
 	available_rooms = []
