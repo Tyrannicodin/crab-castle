@@ -78,7 +78,7 @@ shader_parameter/amount = 2.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ee6o4"]
 shader = ExtResource("11_hb504")
-shader_parameter/water_height = 0.28
+shader_parameter/water_height = 0.1
 shader_parameter/sky_color = Color(0.458775, 0.633477, 0.987434, 1)
 shader_parameter/water_color = Color(0.2349, 0.40743, 0.81, 1)
 shader_parameter/underwater_color = Color(0.296933, 0.238, 0.68, 1)

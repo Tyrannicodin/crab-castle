@@ -10,6 +10,14 @@ signal damage_taken(remaining_health: int)
 var available_rooms: Array[Room] = []
 var purchased_rooms: Array[Room] = []
 
+var bg_water_levels = [
+	0.0,
+	0.4,
+	0.5,
+	0.6,
+	0.7,
+]
+
 @onready var viewport = $TowerViewport
 @onready var tower = $TowerViewport/Tower
 var money: int = 10:
@@ -39,10 +47,21 @@ func _ready() -> void:
 	load_rooms()
 	$GameStartBits.visible = true
 	on_wave_end()
+	
+	$BgSkyWater.material.set_shader_parameter("water_height", bg_water_levels[1])
 
 func _process(delta: float) -> void:
 	if in_wave:
 		try_spawn_next_enemy_wave()
+
+	$BgSkyWater.material.set_shader_parameter("water_height",
+		lerp(
+			$BgSkyWater.material.get_shader_parameter("water_height"),
+			bg_water_levels[water_level],
+			delta
+		)
+	)
+
 
 func _input(event):
 	viewport.push_input(event)
@@ -60,7 +79,6 @@ func load_rooms():
 	rooms_loaded.emit(available_rooms)
 
 func _spawn_enemy():
-	# The level of the tower the enemy spawns on
 	$EnemyManager.spawn_enemy(preload("res://assets/resources/enemies/seagull.tres"))
 
 # Run when a wave ends and at the start

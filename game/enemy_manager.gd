@@ -13,7 +13,7 @@ func spawn_enemy(enemy: Enemy) -> void:
 	var layer = 0
 	
 	if enemy.underwater:
-		layer = randi_range(0, water_level)
+		layer = randi_range(0, water_level - 1)
 	else:
 		layer = randi_range(water_level, layer_count)
 
