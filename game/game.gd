@@ -18,6 +18,7 @@ var enemy_waves_cleared = 0
 var enemy_waves_spawned = 0
 var current_enemy_wave = []
 var current_wave_enemy_count = 0
+var finished_spawning = false
 
 func _ready() -> void:
 	load_rooms()
@@ -62,7 +63,7 @@ func on_wave_start():
 	$"UI/Start Next Wave".hide()
 
 func try_spawn_next_enemy_wave():
-	if $EnemyManager.living_enemy_count() <= (current_wave_enemy_count / 2) and enemy_waves_spawned > 0:
+	if $EnemyManager.living_enemy_count() <= (current_wave_enemy_count / 2) and enemy_waves_spawned > 0 and finished_spawning:
 		enemy_waves_cleared += 1
 	if enemy_waves_cleared < enemy_waves_spawned:
 		return
@@ -72,8 +73,12 @@ func try_spawn_next_enemy_wave():
 				on_wave_end()
 			return
 	current_wave_enemy_count = len(current_enemy_wave[enemy_waves_cleared])
+	finished_spawning = false
 	for enemy in current_enemy_wave[enemy_waves_cleared]:
 		$EnemyManager.spawn_enemy(enemy)
+		await get_tree().create_timer(.5).timeout
+	finished_spawning = true
+
 
 func find_closest_enemies(to_room: Tower.RoomInstance) -> Array[EnemyInstance]:
 	var room_positon = tower.get_room_global_position(to_room)
