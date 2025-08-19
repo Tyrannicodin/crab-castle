@@ -5,6 +5,7 @@ signal rooms_loaded(rooms: Array[Room])
 signal balance_changed(value: int)
 signal wave_start
 signal wave_end
+signal damage_taken(remaining_health: int)
 
 var available_rooms: Array[Room] = []
 var purchased_rooms: Array[Room] = []
@@ -17,6 +18,7 @@ var money: int = 10:
 		money = value
 
 @onready var enemy_manager = $EnemyManager
+var tower_health = 100
 
 var waves = preload("res://game/enemy_waves.gd").new().waves
 var wave_number = 0
@@ -86,13 +88,13 @@ func try_spawn_next_enemy_wave():
 	if enemy_waves_cleared < enemy_waves_spawned:
 		return
 	enemy_waves_spawned += 1
-	if len(current_enemy_wave) <= enemy_waves_cleared:
+	if len(current_enemy_wave["enemies"]) <= enemy_waves_cleared:
 			if $EnemyManager.living_enemy_count() == 0:
 				on_wave_end()
 			return
-	current_wave_enemy_count = len(current_enemy_wave[enemy_waves_cleared])
+	current_wave_enemy_count = len(current_enemy_wave["enemies"][enemy_waves_cleared])
 	finished_spawning = false
-	for enemy in current_enemy_wave[enemy_waves_cleared]:
+	for enemy in current_enemy_wave["enemies"][enemy_waves_cleared]:
 		$EnemyManager.spawn_enemy(enemy)
 		await get_tree().create_timer(.5).timeout
 	finished_spawning = true
@@ -142,6 +144,21 @@ func room_placed(room: int) -> void:
 
 func enemy_killed(enemy: Enemy) -> void:
 	money += enemy.value
+
+func deal_damage(enemy: EnemyInstance) -> void:
+	if enemy.attack_success:
+		return
+	tower_health -= enemy.health
+	enemy.attack_successful()
+	$UI/health_display.text = "Health: " + str(tower_health)
+	
+	if tower_health == 0:
+		on_death()
+
+	damage_taken.emit(tower_health)
+
+func on_death():
+	$GameEnd.show()
 
 func _on_start_next_wave_button_down() -> void:
 	on_wave_start()
