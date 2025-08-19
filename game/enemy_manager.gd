@@ -36,3 +36,6 @@ func find_closest_enemies(to: Vector2) -> Array[EnemyInstance]:
 	if (len(in_range_enemies) > 0):
 		return in_range_enemies
 	return []
+
+func living_enemy_count():
+	return len(get_all_enemies().filter(func(x: EnemyInstance): return x.is_alive()))

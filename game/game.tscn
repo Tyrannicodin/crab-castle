@@ -12,7 +12,7 @@
 [ext_resource type="Shader" uid="uid://dur8qajqyjrlu" path="res://assets/shader/background.gdshader" id="11_hb504"]
 [ext_resource type="Texture2D" uid="uid://c0mf8qj5fny5k" path="res://assets/room_details/empty_scaled.png" id="12_qf6n1"]
 [ext_resource type="Script" path="res://game/rooms/tower.gd" id="17_ln7ps"]
-[ext_resource type="Script" path="res://game/enemy_manager.gd" id="19_pxxsx"]
+[ext_resource type="Script" uid="uid://b7x38g8nwawmq" path="res://game/enemy_manager.gd" id="19_pxxsx"]
 [ext_resource type="Script" path="res://game/eliminator.gd" id="20_u8s88"]
 
 [sub_resource type="Gradient" id="Gradient_u8s88"]

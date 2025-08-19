@@ -11,13 +11,22 @@ var purchased_rooms: Array[Room] = []
 @onready var enemy_manager = $EnemyManager
 
 var waves = preload("res://game/enemy_waves.gd").new().waves
-
 var wave_number = 0
+var in_wave = false
+
+var enemy_waves_cleared = 0
+var enemy_waves_spawned = 0
+var current_enemy_wave = []
+var current_wave_enemy_count = 0
 
 func _ready() -> void:
 	load_rooms()
 	$GameStartBits.visible = true
 	on_wave_end()
+
+func _process(delta: float) -> void:
+	if in_wave:
+		try_spawn_next_enemy_wave()
 
 func load_rooms():
 	available_rooms = []
@@ -37,20 +46,34 @@ func _spawn_enemy():
 
 # Run when a wave ends and at the start
 func on_wave_end():
+	in_wave = false
 	var damage_only = wave_number < 2
 	$"UpgradeUi".roll_rooms(damage_only)
 	$"UpgradeUi".show()
 	$"UI/Start Next Wave".show()
 
 func on_wave_start():
+	in_wave = true
+	enemy_waves_cleared = 0
+	enemy_waves_spawned = 0
 	wave_number += 1
-	var enemy_waves = waves[wave_number - 1].call()
+	current_enemy_wave = waves[wave_number - 1].call()
 
-	for wave in enemy_waves:
-		for enemy in wave:
-			$EnemyManager.spawn_enemy(enemy)
-	
 	$"UI/Start Next Wave".hide()
+
+func try_spawn_next_enemy_wave():
+	if $EnemyManager.living_enemy_count() <= (current_wave_enemy_count / 2) and enemy_waves_spawned > 0:
+		enemy_waves_cleared += 1
+	if enemy_waves_cleared < enemy_waves_spawned:
+		return
+	enemy_waves_spawned += 1
+	if len(current_enemy_wave) <= enemy_waves_cleared:
+			if $EnemyManager.living_enemy_count() == 0:
+				on_wave_end()
+			return
+	current_wave_enemy_count = len(current_enemy_wave[enemy_waves_cleared])
+	for enemy in current_enemy_wave[enemy_waves_cleared]:
+		$EnemyManager.spawn_enemy(enemy)
 
 func find_closest_enemies(to_room: Tower.RoomInstance) -> Array[EnemyInstance]:
 	var room_positon = tower.get_room_global_position(to_room)
