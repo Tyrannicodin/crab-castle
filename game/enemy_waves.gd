@@ -6,7 +6,7 @@ var Fish = load("res://assets/resources/enemies/fish.tres")
 var waves = [
 	# Wave 1
 	func(): return {
-		"water_level": 1,	
+		"water_level": 0,	
 		"enemies": [
 			[Seagull]
 		]

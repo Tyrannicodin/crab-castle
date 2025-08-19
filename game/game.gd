@@ -11,7 +11,7 @@ var available_rooms: Array[Room] = []
 var purchased_rooms: Array[Room] = []
 
 var bg_water_levels = [
-	0.0,
+	0.2,
 	0.4,
 	0.5,
 	0.6,
@@ -37,7 +37,7 @@ var enemy_waves_spawned = 0
 var current_enemy_wave = []
 var current_wave_enemy_count = 0
 var finished_spawning = false
-var water_level = 1
+var water_level = 0
 
 func is_in_wave() -> bool:
 	return in_wave
@@ -48,8 +48,8 @@ func _ready() -> void:
 	$GameStartBits.visible = true
 	on_wave_end()
 	
-	$BgSkyWater.material.set_shader_parameter("water_height", bg_water_levels[1])
-	$TowerTexture.material.set_shader_parameter("water_height", bg_water_levels[1])
+	$BgSkyWater.material.set_shader_parameter("water_height", bg_water_levels[water_level])
+	$TowerTexture.material.set_shader_parameter("water_height", bg_water_levels[water_level])
 
 func _process(delta: float) -> void:
 	if in_wave:
