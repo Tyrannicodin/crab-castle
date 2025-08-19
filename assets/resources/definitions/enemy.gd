@@ -9,6 +9,7 @@ class_name Enemy
 @export var scale: Vector2 = Vector2.ONE
 
 @export_category("stats")
+@export var underwater: bool = false
 @export var max_health: int = 500
 @export var speed: int = 60
 @export var acceleration: int = 30

@@ -8,6 +8,7 @@ script = ExtResource("1_wuwbc")
 display_name = "Fish"
 sprite = ExtResource("2_rc0d7")
 scale = Vector2(0.2, 0.2)
+underwater = true
 max_health = 60
 speed = 200
 acceleration = 1

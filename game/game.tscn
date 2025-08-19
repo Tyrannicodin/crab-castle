@@ -304,7 +304,7 @@ position = Vector2(870, 570)
 script = ExtResource("19_pxxsx")
 
 [node name="Floor1" type="Node2D" parent="EnemyManager"]
-position = Vector2(1131, 306)
+position = Vector2(1131, 178)
 
 [node name="Floor2" type="Node2D" parent="EnemyManager"]
 position = Vector2(1124, 48)

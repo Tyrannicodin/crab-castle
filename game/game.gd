@@ -29,6 +29,7 @@ var enemy_waves_spawned = 0
 var current_enemy_wave = []
 var current_wave_enemy_count = 0
 var finished_spawning = false
+var water_level = 1
 
 func is_in_wave() -> bool:
 	return in_wave
@@ -79,6 +80,7 @@ func on_wave_start():
 	wave_number += 1
 	current_enemy_wave = waves[wave_number - 1].call()
 	$"UI/Start Next Wave".hide()
+	water_level = current_enemy_wave["water_level"]
 	
 	wave_start.emit()
 

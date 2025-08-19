@@ -6,7 +6,17 @@ func spawn_enemy(enemy: Enemy) -> void:
 	var new_enemy = enemy_base.instantiate()
 	new_enemy.death.connect($"..".enemy_killed)
 	new_enemy.enemy = enemy
-	var layer = randi_range(0, get_child_count() - 1)
+	
+	var water_level = $"..".water_level
+
+	var layer_count = get_child_count() - 1
+	var layer = 0
+	
+	if enemy.underwater:
+		layer = randi_range(0, water_level)
+	else:
+		layer = randi_range(water_level, layer_count)
+
 	get_child(layer).add_child(new_enemy)
 	new_enemy.position = Vector2.ZERO
 
