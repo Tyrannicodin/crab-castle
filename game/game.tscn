@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
-[ext_resource type="Script" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
+[ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
 [ext_resource type="Script" uid="uid://dx5wdsegef6t2" path="res://game/end_wave.gd" id="2_dxrkv"]
 [ext_resource type="AudioStream" uid="uid://dqef6khyml52g" path="res://assets/music/crabcastle.mp3" id="2_ee6o4"]
 [ext_resource type="PackedScene" uid="uid://68en2fypp2j5" path="res://upgrades/UpgradeUI.tscn" id="3_dakft"]
@@ -82,7 +82,9 @@ shader_parameter/water_height = 0.1
 shader_parameter/sky_color = Color(0.458775, 0.633477, 0.987434, 1)
 shader_parameter/water_color = Color(0.2349, 0.40743, 0.81, 1)
 shader_parameter/underwater_color = Color(0.296933, 0.238, 0.68, 1)
+shader_parameter/surface_color = Color(0.235294, 0.407843, 0.811765, 1)
 shader_parameter/foam_color = Color(0.698039, 0.996078, 0.996078, 1)
+shader_parameter/foam_size = 0.005
 
 [sub_resource type="Gradient" id="Gradient_dxwpq"]
 colors = PackedColorArray(0.301961, 0.67451, 0.941176, 1, 0.409467, 0.166, 0.83, 1)
