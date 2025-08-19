@@ -3,9 +3,14 @@ extends CanvasLayer
 signal upgrade_selected(room: Room)
 
 var available_rooms: Array[Room] = []
+var damage_only: bool = false
 var money: int = 0
 
-func roll_rooms(damage_only=false) -> void:
+func roll_rooms(set_damage_only = false) -> void:
+	damage_only = set_damage_only
+	reroll_rooms()
+
+func reroll_rooms() -> void:
 	var rng = RandomNumberGenerator.new()
 	
 	var filtered_rooms = available_rooms
@@ -16,14 +21,13 @@ func roll_rooms(damage_only=false) -> void:
 
 	$Margin/VBox/Center/VBox/Roll.disabled = money < 5
 
-	var current_rooms = available_rooms.duplicate()
 	var selected
 	for child in $Margin/VBox/Upgrades.get_children():
 		selected = rng.rand_weighted(weights)
-		child.set_room(current_rooms[selected])
-		child.disabled = money < current_rooms[selected].cost
+		child.set_room(filtered_rooms[selected])
+		child.disabled = money < filtered_rooms[selected].cost
 		weights.remove_at(selected)
-		current_rooms.remove_at(selected)
+		filtered_rooms.remove_at(selected)
 
 func on_upgrade_selected(room: Room) -> void:
 	# Maybe ID could be replaced with a resource
