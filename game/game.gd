@@ -3,6 +3,8 @@ class_name Game
 
 signal rooms_loaded(rooms: Array[Room])
 signal add_room(room: Room)
+signal wave_start
+signal wave_end
 
 var available_rooms: Array[Room] = []
 var purchased_rooms: Array[Room] = []
@@ -19,6 +21,9 @@ var enemy_waves_spawned = 0
 var current_enemy_wave = []
 var current_wave_enemy_count = 0
 var finished_spawning = false
+
+func is_in_wave() -> bool:
+	return in_wave
 
 func _ready() -> void:
 	load_rooms()
@@ -52,6 +57,8 @@ func on_wave_end():
 	$"UpgradeUi".roll_rooms(damage_only)
 	$"UpgradeUi".show()
 	$"UI/Start Next Wave".show()
+	
+	wave_end.emit()
 
 func on_wave_start():
 	in_wave = true
@@ -59,8 +66,9 @@ func on_wave_start():
 	enemy_waves_spawned = 0
 	wave_number += 1
 	current_enemy_wave = waves[wave_number - 1].call()
-
 	$"UI/Start Next Wave".hide()
+	
+	wave_start.emit()
 
 func try_spawn_next_enemy_wave():
 	if $EnemyManager.living_enemy_count() <= (current_wave_enemy_count / 2) and enemy_waves_spawned > 0 and finished_spawning:

@@ -20,7 +20,10 @@ class RoomInstance:
 		type = room_type
 		position = pos
 		cooldown_remaining = type.cooldown_seconds
-	
+
+	func reset_cooldown():
+		cooldown_remaining = type.cooldown_seconds
+
 	func trigger(tower: Tower) -> void:
 		if type.trigger_script:
 			type.trigger_script.on_trigger(tower, self)
@@ -36,6 +39,17 @@ var rooms: Array[RoomInstance] = []
 
 func _ready():
 	generate_room_sprites()
+	
+	game.wave_start.connect(func():
+		for room in rooms:
+			room.reset_cooldown()
+		for room in room_overlays.values():
+			room.show_progress()
+	)
+	game.wave_end.connect(func():
+		for room in room_overlays.values():
+			room.hide_progress()
+	)
 
 func generate_room_sprites() -> void:
 	var used_cells = get_used_cells()
@@ -71,6 +85,8 @@ func _input(event) -> void:
 	current_room = -1
 
 func _process(delta: float) -> void:
+	if !game.is_in_wave():
+		return
 	for room in rooms:
 		room.cooldown_remaining -= delta
 
