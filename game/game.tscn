@@ -9,9 +9,9 @@
 [ext_resource type="Script" uid="uid://b6y06i07h8uw3" path="res://game/game_end.gd" id="3_u5opy"]
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
+[ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/room_details/empty.png" id="11_ee6o4"]
 [ext_resource type="Shader" uid="uid://dur8qajqyjrlu" path="res://assets/shader/background.gdshader" id="11_hb504"]
 [ext_resource type="Shader" uid="uid://bb1gwvblyt57i" path="res://assets/shader/castle.gdshader" id="12_hb504"]
-[ext_resource type="Texture2D" uid="uid://c0mf8qj5fny5k" path="res://assets/room_details/empty_scaled.png" id="12_qf6n1"]
 [ext_resource type="Script" uid="uid://c0htur6o5hwgt" path="res://game/rooms/tower.gd" id="17_ln7ps"]
 [ext_resource type="Script" uid="uid://b7x38g8nwawmq" path="res://game/enemy_manager.gd" id="19_pxxsx"]
 [ext_resource type="Script" path="res://game/eliminator.gd" id="20_u8s88"]
@@ -86,12 +86,12 @@ gradient = SubResource("Gradient_dxwpq")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qf6n1"]
 resource_name = "bg"
-texture = ExtResource("12_qf6n1")
-texture_region_size = Vector2i(240, 181)
+texture = ExtResource("11_ee6o4")
+texture_region_size = Vector2i(464, 342)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_vsp63"]
-tile_size = Vector2i(240, 181)
+tile_size = Vector2i(464, 342)
 sources/0 = SubResource("TileSetAtlasSource_qf6n1")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hb504"]
@@ -202,6 +202,7 @@ anchor_mode = 0
 
 [node name="ground" type="Node2D" parent="."]
 position = Vector2(197, 210)
+scale = Vector2(0.992096, 0.99301)
 
 [node name="BgSkyWater" type="Sprite2D" parent="ground"]
 material = SubResource("ShaderMaterial_ee6o4")
@@ -220,16 +221,17 @@ transparent_bg = true
 size = Vector2i(1920, 1080)
 
 [node name="Tower" type="TileMapLayer" parent="TowerViewport"]
-position = Vector2(93, 312)
-scale = Vector2(0.55, 0.55)
+scale = Vector2(0.35, 0.35)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_vsp63")
 script = ExtResource("17_ln7ps")
 
 [node name="TowerTexture" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_hb504")
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = 60.0
+offset_top = 186.0
+offset_right = 1980.0
+offset_bottom = 1266.0
 mouse_filter = 2
 texture = SubResource("ViewportTexture_b686c")
 
