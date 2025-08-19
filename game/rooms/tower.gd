@@ -91,7 +91,6 @@ func _input(event) -> void:
 		# TODO: This is where stuff should happen when you click on a placed room
 		return
 	room_overlays[target].room = game.purchased_rooms[current_room]
-	room_overlays[target].update_sprite()
 	rooms.append(
 		RoomInstance.new(game.purchased_rooms[current_room], target)
 	)
