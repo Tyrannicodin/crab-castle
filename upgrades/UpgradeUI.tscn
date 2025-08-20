@@ -9,7 +9,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xfgd8"]
 shader = ExtResource("1_jokft")
-shader_parameter/amount = 2.5
+shader_parameter/amount = 4.0
 
 [node name="UpgradeUi" type="CanvasLayer"]
 script = ExtResource("1_xfgd8")
