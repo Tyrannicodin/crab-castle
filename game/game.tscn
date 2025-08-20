@@ -207,11 +207,12 @@ text = "End Game (loss)"
 script = ExtResource("3_u5opy")
 
 [node name="Start Next Wave" type="Button" parent="UI"]
-offset_left = 1350.0
-offset_top = 985.0
-offset_right = 1483.0
-offset_bottom = 1016.0
+offset_left = 1353.0
+offset_top = 963.0
+offset_right = 1587.0
+offset_bottom = 1035.0
 theme_override_fonts/font = ExtResource("6_mhvfb")
+theme_override_font_sizes/font_size = 48
 text = "Next Wave
 "
 
