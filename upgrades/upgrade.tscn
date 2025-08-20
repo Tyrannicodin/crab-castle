@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpl6ohbh08x3w"]
+[gd_scene load_steps=6 format=3 uid="uid://bpl6ohbh08x3w"]
 
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_3oguy"]
 [ext_resource type="Script" uid="uid://bgukjsmg28nyr" path="res://upgrades/upgrade.gd" id="1_fvx8q"]
 [ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="1_rgapa"]
+[ext_resource type="FontVariation" uid="uid://xvvik2j6lvhf" path="res://assets/fonts/nunito.tres" id="4_wh05j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rgapa"]
 font_size = 40
@@ -43,5 +44,20 @@ layout_mode = 2
 texture = ExtResource("1_3oguy")
 expand_mode = 4
 stretch_mode = 5
+
+[node name="Description" type="Label" parent="Margin/VBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_wh05j")
+theme_override_font_sizes/font_size = 24
+text = "The description of the tower"
+autowrap_mode = 3
+
+[node name="Cooldown" type="Label" parent="Margin/VBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Cooldown: 4.5s"
+autowrap_mode = 3
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -3,6 +3,7 @@ extends Resource
 class_name Room
 
 @export var display_name: String = ""
+@export var description: String = ""
 
 @export_category("display")
 @export var image: Texture2D

@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("1_bpa10")
 display_name = "Crab cannon"
+description = "Deals 20 damage."
 image = ExtResource("1_2vvaa")
 scale = Vector2(-0.35, 0.35)
 translation = Vector2(0, 0)

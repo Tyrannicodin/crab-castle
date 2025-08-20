@@ -58,7 +58,7 @@ func move(delta) -> void:
 	position.x -= delta * enemy.speed
 	if is_alive():
 		living_time += delta
-		position.y = 10 * sin(2 * living_time)
+		position.y = -20 * abs(sin(2 * living_time)) + 10
 
 func is_alive() -> bool:
 	return health > 0

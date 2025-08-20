@@ -2,13 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://beeuybh8rqdii" path="res://assets/rooms/seashell1.png" id="1_61cp4"]
 [ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="2_c2qyi"]
-[ext_resource type="Script" path="res://assets/resources/rooms/seashell.gd" id="3_c2qyi"]
+[ext_resource type="Script" uid="uid://ds4bbpr75dl3m" path="res://assets/resources/rooms/seashell.gd" id="3_c2qyi"]
 
 [resource]
 script = ExtResource("2_c2qyi")
 display_name = "Seashell"
+description = "All adjacent rooms fire an extra projectile."
 image = ExtResource("1_61cp4")
 scale = Vector2(0.5, 0.5)
+translation = Vector2(0, 0)
 rotation = 0.0
 animate_on_trigger = true
 visible_progress_bar = true

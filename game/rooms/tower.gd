@@ -20,11 +20,13 @@ class RoomInstance:
 	var position: Vector2i
 
 	var cooldown_remaining: float
+	var cooldown: float
 	var bonus_projectiles: int = 0
 
 	func _init(room_type: Room, pos: Vector2i):
 		type = room_type
 		position = pos
+		cooldown = type.cooldown_seconds
 		cooldown_remaining = type.cooldown_seconds
 
 	func reset_cooldown():
