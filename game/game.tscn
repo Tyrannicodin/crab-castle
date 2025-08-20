@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=46 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
 [ext_resource type="Script" uid="uid://daq0fcjji8v2n" path="res://game/gold_display.gd" id="6_hb504"]
+[ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="6_mhvfb"]
 [ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/room_details/empty.png" id="11_ee6o4"]
 [ext_resource type="Shader" uid="uid://dur8qajqyjrlu" path="res://assets/shader/background.gdshader" id="11_hb504"]
 [ext_resource type="Shader" uid="uid://bb1gwvblyt57i" path="res://assets/shader/castle.gdshader" id="12_hb504"]
@@ -21,9 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bcp5t1pl737lf" path="res://assets/room_details/paper_blend.png" id="19_dxwpq"]
 [ext_resource type="Script" uid="uid://b7x38g8nwawmq" path="res://game/enemy_manager.gd" id="19_pxxsx"]
 [ext_resource type="Script" uid="uid://biswc6ipcfiun" path="res://game/eliminator.gd" id="20_u8s88"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_pxxsx"]
-font_size = 32
+[ext_resource type="Texture2D" uid="uid://bg6np85mcxhrw" path="res://assets/bench.png" id="21_5e03w"]
 
 [sub_resource type="Gradient" id="Gradient_jc4t8"]
 interpolation_mode = 2
@@ -145,6 +144,9 @@ shader_parameter/blend_texture = ExtResource("19_dxwpq")
 [sub_resource type="ViewportTexture" id="ViewportTexture_b686c"]
 viewport_path = NodePath("TowerViewport")
 
+[sub_resource type="LabelSettings" id="LabelSettings_pxxsx"]
+font_size = 32
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u8s88"]
 normal = Vector2(0.999987, -0.00502506)
 distance = 366.005
@@ -164,73 +166,6 @@ script = ExtResource("1_l8g03")
 stream = ExtResource("2_ee6o4")
 autoplay = true
 parameters/looping = true
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Rooms" type="HBoxContainer" parent="UI"]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -125.0
-grow_horizontal = 2
-grow_vertical = 0
-alignment = 1
-script = ExtResource("2_4cobl")
-
-[node name="Button" type="Button" parent="UI"]
-visible = false
-offset_left = 1810.0
-offset_top = 57.0
-offset_right = 1892.0
-offset_bottom = 88.0
-text = "End wave"
-script = ExtResource("2_dxrkv")
-
-[node name="Button2" type="Button" parent="UI"]
-visible = false
-offset_left = 1766.0
-offset_top = 16.0
-offset_right = 1897.0
-offset_bottom = 47.0
-text = "End Game (loss)"
-script = ExtResource("3_u5opy")
-
-[node name="Start Next Wave" type="Button" parent="UI"]
-offset_left = 1740.0
-offset_top = 31.0
-offset_right = 1873.0
-offset_bottom = 62.0
-text = "Start Next Wave
-"
-
-[node name="gold_display" type="Label" parent="UI"]
-offset_left = 1611.0
-offset_top = 12.0
-offset_right = 1715.0
-offset_bottom = 85.0
-text = "Gold: "
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("6_hb504")
-
-[node name="Panel" type="Panel" parent="UI/gold_display"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_lock_ = true
-
-[node name="health_display" type="Label" parent="UI"]
-offset_left = 159.0
-offset_top = 39.0
-offset_right = 334.0
-offset_bottom = 84.0
-text = "Health: 100"
-label_settings = SubResource("LabelSettings_pxxsx")
 
 [node name="UpgradeUi" parent="." instance=ExtResource("3_dakft")]
 visible = false
@@ -306,6 +241,79 @@ texture = SubResource("ViewportTexture_b686c")
 position = Vector2(745.075, 922.563)
 scale = Vector2(0.392897, 0.382396)
 
+[node name="Bench" type="Sprite2D" parent="."]
+position = Vector2(926, 999)
+scale = Vector2(0.804878, 0.804878)
+texture = ExtResource("21_5e03w")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Rooms" type="HBoxContainer" parent="UI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -125.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+script = ExtResource("2_4cobl")
+
+[node name="Button" type="Button" parent="UI"]
+visible = false
+offset_left = 1810.0
+offset_top = 57.0
+offset_right = 1892.0
+offset_bottom = 88.0
+text = "End wave"
+script = ExtResource("2_dxrkv")
+
+[node name="Button2" type="Button" parent="UI"]
+visible = false
+offset_left = 1766.0
+offset_top = 16.0
+offset_right = 1897.0
+offset_bottom = 47.0
+text = "End Game (loss)"
+script = ExtResource("3_u5opy")
+
+[node name="Start Next Wave" type="Button" parent="UI"]
+offset_left = 1350.0
+offset_top = 985.0
+offset_right = 1483.0
+offset_bottom = 1016.0
+theme_override_fonts/font = ExtResource("6_mhvfb")
+text = "Next Wave
+"
+
+[node name="gold_display" type="Label" parent="UI"]
+offset_left = 387.0
+offset_top = 961.0
+offset_right = 491.0
+offset_bottom = 1034.0
+text = "Gold: "
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_hb504")
+
+[node name="Panel" type="Panel" parent="UI/gold_display"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="health_display" type="Label" parent="UI"]
+offset_left = 159.0
+offset_top = 39.0
+offset_right = 334.0
+offset_bottom = 84.0
+text = "Health: 100"
+label_settings = SubResource("LabelSettings_pxxsx")
+
 [node name="EnemyManager" type="Node2D" parent="."]
 position = Vector2(870, 570)
 script = ExtResource("19_pxxsx")
@@ -357,4 +365,8 @@ shape = SubResource("WorldBoundaryShape2D_5e03w")
 [connection signal="upgrade_selected" from="UpgradeUi" to="UI/Rooms" method="add_room"]
 [connection signal="room_placed" from="TowerViewport/Tower" to="." method="room_placed"]
 [connection signal="room_placed" from="TowerViewport/Tower" to="UI/Rooms" method="remove_room"]
+[connection signal="room_selected" from="UI/Rooms" to="TowerViewport/Tower" method="set_current_room"]
+[connection signal="pressed" from="UI/Button" to="UI/Button" method="on_pressed"]
+[connection signal="pressed" from="UI/Button2" to="UI/Button2" method="on_pressed"]
+[connection signal="button_down" from="UI/Start Next Wave" to="." method="_on_start_next_wave_button_down"]
 [connection signal="area_shape_entered" from="Eliminator" to="Eliminator" method="_on_area_shape_entered"]
