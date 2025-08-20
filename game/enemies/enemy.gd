@@ -76,6 +76,9 @@ func damage(value: int):
 	num.global_position = global_position
 	num.global_position.y -= 40
 	time_since_hit = 0
+	
+	$Hit.pitch_scale = randf_range(1, 1.4)
+	$Hit.play()
 
 func stun_lock(time: float):
 	stun_lock_time_remaining = time

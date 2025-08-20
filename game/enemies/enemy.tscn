@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2iys8q280ysb"]
+[gd_scene load_steps=9 format=3 uid="uid://b2iys8q280ysb"]
 
 [ext_resource type="Script" uid="uid://c8coed0afy17b" path="res://game/enemies/enemy.gd" id="1_1kd2t"]
 [ext_resource type="Shader" path="res://game/enemies/enemy.gdshader" id="1_b4nw2"]
+[ext_resource type="AudioStream" uid="uid://bgsc5emduw20g" path="res://assets/sfx/hit.mp3" id="3_qymtj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qymtj"]
 shader = ExtResource("1_b4nw2")
@@ -36,3 +37,6 @@ use_parent_material = true
 libraries = {
 &"": SubResource("AnimationLibrary_muinq")
 }
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qymtj")
