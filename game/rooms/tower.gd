@@ -102,7 +102,9 @@ func _input(event) -> void:
 			redraw_castle()
 		return
 	
-	if get_cell_source_id(Vector2(target.x, target.y + 1)) == -1:
+	if target.x != 0 and target.x != 1:
+		return 
+	if target.y != 5 and get_cell_source_id(Vector2(target.x, target.y + 1)) != BG:
 		return
 	if get_cell_source_id(Vector2(target.x, target.y)) == BG:
 		# Can not place a room where there is already a room
