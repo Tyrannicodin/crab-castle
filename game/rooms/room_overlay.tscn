@@ -13,7 +13,11 @@ script = ExtResource("1_brg1v")
 
 [node name="Build" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_llj3t")
+<<<<<<< HEAD
 pitch_scale = 1.10697
+=======
+pitch_scale = 1.19007
+>>>>>>> ea2940e6a1be829b962c5e4457fff0449213d776
 
 [node name="Buff" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(232, 171)

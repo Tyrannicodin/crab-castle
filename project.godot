@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Chili game jam"
-run/main_scene="uid://i6v1rkxycknj"
+run/main_scene="uid://buphc88egqhj5"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
