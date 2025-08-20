@@ -19,7 +19,7 @@ static var waves = [
 		"water_level": 1,
 		"enemies": [
 			[Seagull, Seagull],
-			[Seagull, Seagull, Seagull, Seagull],
+			[Seagull, Seagull, Seagull],
 		]
 	},
 	# Wave 3
@@ -27,7 +27,7 @@ static var waves = [
 		"water_level": 2,
 		"enemies": [
 			[Octopus],
-			[Octopus, Seagull, Seagull],
+			[Octopus, Octopus, Seagull, Seagull],
 		]
 	},
 	# Wave 4
@@ -43,7 +43,7 @@ static var waves = [
 		"water_level": 4,
 		"enemies": [
 			[Octopus, Octopus, Octopus, Octopus],
-			[Octopus, Octopus, Octopus, Seagull, Seagull],
+			[Octopus, Octopus, Octopus, Seagull, Seagull, Seagull],
 			[Shark]
 		]
 	},
@@ -52,8 +52,8 @@ static var waves = [
 		"water_level": 2,
 		"enemies": [
 			[Fish],
-			[Fish, Fish, Fish, Fish, Fish, Fish, Fish, Fish, Fish],
-			[Fish, Fish, Fish, Fish, Fish, Shark]
+			[Fish, Fish, Fish, Fish, Fish, Fish, Fish, Fish, Fish, Fish, Fish, Fish],
+			[Octopus, Octopus, Fish, Fish, Fish, Fish, Fish, Fish, Fish, Fish, Shark]
 		]
 	}
 ]
