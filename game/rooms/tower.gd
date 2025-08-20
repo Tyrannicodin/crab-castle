@@ -22,6 +22,7 @@ class RoomInstance:
 	var cooldown_remaining: float
 	var cooldown: float
 	var bonus_projectiles: int = 0
+	var extra_damage: int = 0
 
 	func _init(room_type: Room, pos: Vector2i):
 		type = room_type
@@ -129,8 +130,6 @@ func fire_projectiles(room: RoomInstance, projectile: PackedScene, number: int, 
 	room.bonus_projectiles = 0
 
 	for target in targets:
-		if target.is_queued_for_deletion():
-			continue
 		room_overlays[room.position].time_since_fired = 0
 		var projectileInst = projectile.instantiate()
 		game.add_child(projectileInst)
@@ -139,14 +138,17 @@ func fire_projectiles(room: RoomInstance, projectile: PackedScene, number: int, 
 
 func fire_projectiles_above_enemy(room: RoomInstance, projectile: PackedScene, number: int, filter = null):
 	var targets = game.find_n_closest_enemies(room, number + room.bonus_projectiles, filter)
-	room.bonus_projectiles = 0
 
 	for target in targets:
 		room_overlays[room.position].time_since_fired = 0
 		var projectileInst = projectile.instantiate()
+		projectileInst.damage += room.extra_damage
 		game.add_child(projectileInst)
 		game.fire_projectile_above_enemy(room, projectileInst, target)
 		await get_tree().create_timer(.1).timeout
+	
+	room.bonus_projectiles = 0
+	room.extra_damage = 0
 
 func get_room_global_position(room: RoomInstance) -> Vector2:
 	return to_global(map_to_local(room.position))
