@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=46 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
 [ext_resource type="Script" uid="uid://daq0fcjji8v2n" path="res://game/gold_display.gd" id="6_hb504"]
+[ext_resource type="Texture2D" uid="uid://dvlr1truseh3y" path="res://assets/sun-yellow.png" id="6_jucfl"]
 [ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="6_mhvfb"]
 [ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/room_details/empty.png" id="11_ee6o4"]
 [ext_resource type="Shader" uid="uid://dur8qajqyjrlu" path="res://assets/shader/background.gdshader" id="11_hb504"]
@@ -30,6 +31,18 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
 shader = ExtResource("4_u5opy")
 shader_parameter/amount = 2.5
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u8s88"]
+normal = Vector2(0.999987, -0.00502506)
+distance = 366.005
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dxwpq"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mhvfb"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5e03w"]
+normal = Vector2(0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ee6o4"]
 shader = ExtResource("11_hb504")
@@ -107,18 +120,6 @@ font_size = 48
 font = ExtResource("6_mhvfb")
 font_size = 48
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u8s88"]
-normal = Vector2(0.999987, -0.00502506)
-distance = 366.005
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dxwpq"]
-normal = Vector2(-1, 0)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mhvfb"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5e03w"]
-normal = Vector2(0, 1)
-
 [node name="Game" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_l8g03")
@@ -129,17 +130,29 @@ autoplay = true
 bus = &"Music"
 parameters/looping = true
 
-[node name="UpgradeUi" parent="." instance=ExtResource("3_dakft")]
-visible = false
-offset = Vector2(250, -80)
-transform = Transform2D(1, 0, 0, 1, 250, -80)
-
-[node name="GameEnd" parent="." instance=ExtResource("4_dxrkv")]
-visible = false
-
 [node name="Camera2D" type="Camera2D" parent="."]
 material = SubResource("ShaderMaterial_lnu2h")
 anchor_mode = 0
+
+[node name="Eliminator" type="Area2D" parent="."]
+monitorable = false
+script = ExtResource("20_u8s88")
+
+[node name="Left" type="CollisionShape2D" parent="Eliminator"]
+position = Vector2(0, 540)
+shape = SubResource("WorldBoundaryShape2D_u8s88")
+
+[node name="Right" type="CollisionShape2D" parent="Eliminator"]
+position = Vector2(1920, 540)
+shape = SubResource("WorldBoundaryShape2D_dxwpq")
+
+[node name="Down" type="CollisionShape2D" parent="Eliminator"]
+position = Vector2(960, 1080)
+shape = SubResource("WorldBoundaryShape2D_mhvfb")
+
+[node name="Up" type="CollisionShape2D" parent="Eliminator"]
+position = Vector2(960, 0)
+shape = SubResource("WorldBoundaryShape2D_5e03w")
 
 [node name="BgSkyWater" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ee6o4")
@@ -151,6 +164,7 @@ texture = SubResource("GradientTexture1D_mhvfb")
 [node name="Sun-yellow" type="Sprite2D" parent="."]
 position = Vector2(1602.75, 154.98)
 scale = Vector2(0.337264, 0.337264)
+texture = ExtResource("6_jucfl")
 
 [node name="TowerViewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -238,6 +252,14 @@ position = Vector2(82, 995)
 scale = Vector2(0.639995, 0.639995)
 texture = ExtResource("23_q52ks")
 
+[node name="UpgradeUi" parent="." instance=ExtResource("3_dakft")]
+visible = false
+offset = Vector2(250, -80)
+transform = Transform2D(1, 0, 0, 1, 250, -80)
+
+[node name="GameEnd" parent="." instance=ExtResource("4_dxrkv")]
+visible = false
+
 [node name="EnemyManager" type="Node2D" parent="."]
 position = Vector2(870, 570)
 script = ExtResource("19_pxxsx")
@@ -257,26 +279,6 @@ position = Vector2(1125, -196)
 [node name="Floor5" type="Node2D" parent="EnemyManager"]
 position = Vector2(1124, -329)
 
-[node name="Eliminator" type="Area2D" parent="."]
-monitorable = false
-script = ExtResource("20_u8s88")
-
-[node name="Left" type="CollisionShape2D" parent="Eliminator"]
-position = Vector2(0, 540)
-shape = SubResource("WorldBoundaryShape2D_u8s88")
-
-[node name="Right" type="CollisionShape2D" parent="Eliminator"]
-position = Vector2(1920, 540)
-shape = SubResource("WorldBoundaryShape2D_dxwpq")
-
-[node name="Down" type="CollisionShape2D" parent="Eliminator"]
-position = Vector2(960, 1080)
-shape = SubResource("WorldBoundaryShape2D_mhvfb")
-
-[node name="Up" type="CollisionShape2D" parent="Eliminator"]
-position = Vector2(960, 0)
-shape = SubResource("WorldBoundaryShape2D_5e03w")
-
 [node name="SeaOverlay" parent="." instance=ExtResource("23_5e03w")]
 visible = false
 
@@ -286,10 +288,10 @@ visible = false
 [connection signal="game_end" from="." to="GameEnd" method="show"]
 [connection signal="rooms_loaded" from="." to="UpgradeUi" method="on_rooms_loaded"]
 [connection signal="wave_end" from="." to="UI/Start Next Wave" method="show"]
-[connection signal="upgrade_selected" from="UpgradeUi" to="." method="room_selected"]
-[connection signal="upgrade_selected" from="UpgradeUi" to="UI/Rooms" method="add_room"]
+[connection signal="area_shape_entered" from="Eliminator" to="Eliminator" method="_on_area_shape_entered"]
 [connection signal="room_placed" from="TowerViewport/Tower" to="." method="room_placed"]
 [connection signal="room_placed" from="TowerViewport/Tower" to="UI/Rooms" method="remove_room"]
 [connection signal="room_selected" from="UI/Rooms" to="TowerViewport/Tower" method="set_current_room"]
 [connection signal="button_down" from="UI/Start Next Wave" to="." method="_on_start_next_wave_button_down"]
-[connection signal="area_shape_entered" from="Eliminator" to="Eliminator" method="_on_area_shape_entered"]
+[connection signal="upgrade_selected" from="UpgradeUi" to="." method="room_selected"]
+[connection signal="upgrade_selected" from="UpgradeUi" to="UI/Rooms" method="add_room"]
