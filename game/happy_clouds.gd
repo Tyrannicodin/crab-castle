@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 		cloud.global_position.x -= 20 * delta
 		if cloud.position.x < -300:
 			cloud.queue_free()
+			clouds.remove_at(clouds.find(cloud))
 
 func create_new_cloud(x = null):
 	var new_cloud = $Base.duplicate()
