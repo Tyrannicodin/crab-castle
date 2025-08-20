@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cefnmebb7e6h4" path="res://assets/room_details/build.png" id="16_u8s88"]
 [ext_resource type="Texture2D" uid="uid://dk0gh0dlml27l" path="res://assets/crane_game_arm.png" id="17_jucfl"]
 [ext_resource type="Script" uid="uid://c0htur6o5hwgt" path="res://game/rooms/tower.gd" id="17_ln7ps"]
-[ext_resource type="Script" uid="uid://ci4t2wa870mqd" path="res://game/crane.gd" id="18_jdpby"]
+[ext_resource type="Script" path="res://game/crane.gd" id="18_jdpby"]
 [ext_resource type="Texture2D" uid="uid://bcp5t1pl737lf" path="res://assets/room_details/paper_blend.png" id="19_dxwpq"]
 [ext_resource type="Script" uid="uid://b7x38g8nwawmq" path="res://game/enemy_manager.gd" id="19_pxxsx"]
 [ext_resource type="Script" uid="uid://biswc6ipcfiun" path="res://game/eliminator.gd" id="20_u8s88"]
