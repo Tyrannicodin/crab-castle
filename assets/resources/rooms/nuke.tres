@@ -9,6 +9,7 @@ script = ExtResource("2_xgsxh")
 display_name = "Nuclear silo"
 image = ExtResource("1_e3its")
 scale = Vector2(0.75, 0.75)
+translation = Vector2(0, 0)
 rotation = 0.0
 animate_on_trigger = false
 visible_progress_bar = true
