@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="Room" load_steps=3 format=3 uid="uid://c167w3gmep46g"]
+[gd_resource type="Resource" script_class="Room" load_steps=4 format=3 uid="uid://c167w3gmep46g"]
 
 [ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="1_t3art"]
 [ext_resource type="Texture2D" uid="uid://c31p7yeryjo0" path="res://assets/rooms/laser.png" id="1_tngt5"]
+[ext_resource type="Script" uid="uid://bfg2saevd0xcu" path="res://assets/resources/rooms/laser.gd" id="3_n3n6d"]
 
 [resource]
 script = ExtResource("1_t3art")
-display_name = ""
+display_name = "Laser Gun"
 image = ExtResource("1_tngt5")
 scale = Vector2(-0.65, 0.65)
 translation = Vector2(0, 0)
@@ -13,7 +14,8 @@ rotation = -2.386
 animate_on_trigger = false
 visible_progress_bar = true
 visible_arrows = 0
-cooldown_seconds = 0.0
+trigger_script = ExtResource("3_n3n6d")
+cooldown_seconds = 0.5
 requires_enemies_to_trigger = true
 weight = 100
 cost = 5
