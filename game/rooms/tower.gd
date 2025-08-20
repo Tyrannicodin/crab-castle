@@ -58,6 +58,8 @@ func _ready():
 func generate_room_sprites() -> void:
 	var used_cells = get_used_cells()
 	for cell in used_cells:
+		if room_overlays.has(cell):
+			continue
 		var overlay = room_overlay.instantiate()
 		game.wave_end.connect(overlay.hide_progress)
 		game.wave_start.connect(overlay.show_progress)
