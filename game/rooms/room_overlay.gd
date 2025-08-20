@@ -5,13 +5,17 @@ class_name RoomOverlay
 @export var room: Room : 
 	set(value):
 		room = value
-		update_sprite()
+		if room:
+			update_sprite()
 var progress: float = 0
 
 var extra_scale = Vector2(1, 1)
 var time_since_fired: float = 0
 
 var hide_progress_bar = false
+
+func _ready() -> void:
+	hide_progress_bar = true
 
 func _process(delta) -> void:
 	for child in get_children():

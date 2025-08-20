@@ -1,6 +1,6 @@
 extends Node2D
 class_name Game
-
+\
 signal rooms_loaded(rooms: Array[Room])
 signal balance_changed(value: int)
 signal wave_start
