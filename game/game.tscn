@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=46 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://cefnmebb7e6h4" path="res://assets/room_details/build.png" id="16_u8s88"]
 [ext_resource type="Texture2D" uid="uid://dk0gh0dlml27l" path="res://assets/crane_game_arm.png" id="17_jucfl"]
 [ext_resource type="Script" uid="uid://c0htur6o5hwgt" path="res://game/rooms/tower.gd" id="17_ln7ps"]
-[ext_resource type="Script" uid="uid://ci4t2wa870mqd" path="res://game/crane.gd" id="18_jdpby"]
 [ext_resource type="Texture2D" uid="uid://bcp5t1pl737lf" path="res://assets/room_details/paper_blend.png" id="19_dxwpq"]
 [ext_resource type="Script" uid="uid://b7x38g8nwawmq" path="res://game/enemy_manager.gd" id="19_pxxsx"]
 [ext_resource type="Script" uid="uid://biswc6ipcfiun" path="res://game/eliminator.gd" id="20_u8s88"]
@@ -190,7 +189,6 @@ texture = ExtResource("21_5e03w")
 position = Vector2(-459.697, 1.2424)
 scale = Vector2(0.187839, 0.187839)
 texture = ExtResource("17_jucfl")
-script = ExtResource("18_jdpby")
 
 [node name="Rooms" type="Node2D" parent="UI"]
 position = Vector2(657, 947)
@@ -240,7 +238,7 @@ offset_left = 120.0
 offset_top = 965.0
 offset_right = 295.0
 offset_bottom = 1029.0
-text = "100"
+text = "150"
 label_settings = SubResource("LabelSettings_pxxsx")
 
 [node name="Money" type="Sprite2D" parent="UI"]
@@ -297,6 +295,8 @@ visible = false
 
 [connection signal="balance_changed" from="." to="UpgradeUi" method="on_balance_change"]
 [connection signal="balance_changed" from="." to="UI/gold_display" method="set_gold"]
+[connection signal="game_end" from="." to="." method="_on_game_end"]
+[connection signal="game_end" from="." to="GameEnd" method="show"]
 [connection signal="rooms_loaded" from="." to="UpgradeUi" method="on_rooms_loaded"]
 [connection signal="wave_end" from="." to="UI/Start Next Wave" method="show"]
 [connection signal="upgrade_selected" from="UpgradeUi" to="." method="room_selected"]
