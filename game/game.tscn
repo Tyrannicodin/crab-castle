@@ -161,7 +161,7 @@ tile_set = SubResource("TileSet_vsp63")
 script = ExtResource("17_ln7ps")
 
 [node name="Seabed" type="Sprite2D" parent="TowerViewport"]
-position = Vector2(1100, 919)
+position = Vector2(1100, 924)
 scale = Vector2(0.392897, 0.382396)
 texture = ExtResource("15_leid8")
 

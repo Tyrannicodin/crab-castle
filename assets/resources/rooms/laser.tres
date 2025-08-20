@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_t3art")
 display_name = "Laser Gun"
-description = ""
+description = "Deals 2 damage in a straight line."
 image = ExtResource("1_tngt5")
 scale = Vector2(-0.65, 0.65)
 translation = Vector2(0, 0)
