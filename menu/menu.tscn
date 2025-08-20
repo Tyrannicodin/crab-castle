@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://buphc88egqhj5"]
 
-[ext_resource type="Script" path="res://menu/menu.gd" id="1_wal61"]
+[ext_resource type="Script" uid="uid://bqm22m7vq1t3h" path="res://menu/menu.gd" id="1_wal61"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="2_xptdw"]
 [ext_resource type="Script" uid="uid://lfjkc5ltahax" path="res://menu/volume.gd" id="3_6nwqt"]
 
@@ -149,6 +149,7 @@ layout_mode = 2
 text = "Quit"
 
 [node name="Options" type="VBoxContainer" parent="GameStartOverlay/SeaGradient"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5

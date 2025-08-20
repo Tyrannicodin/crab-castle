@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=52 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
@@ -9,9 +9,9 @@
 [ext_resource type="Script" uid="uid://daq0fcjji8v2n" path="res://game/gold_display.gd" id="6_hb504"]
 [ext_resource type="Texture2D" uid="uid://dvlr1truseh3y" path="res://assets/sun-yellow.png" id="6_jucfl"]
 [ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="6_mhvfb"]
-[ext_resource type="Shader" uid="uid://bvs3xyo6lff1h" path="res://assets/shader/reflection.gdshader" id="7_jdpby"]
+[ext_resource type="Shader" path="res://assets/shader/reflection.gdshader" id="7_jdpby"]
 [ext_resource type="Texture2D" uid="uid://cnk12qj5b8tpq" path="res://assets/cloud.png" id="8_58yx1"]
-[ext_resource type="Script" path="res://game/happy_clouds.gd" id="8_hbvmx"]
+[ext_resource type="Script" uid="uid://bvgeo6l2ym3qs" path="res://game/happy_clouds.gd" id="8_hbvmx"]
 [ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/room_details/empty.png" id="11_ee6o4"]
 [ext_resource type="Shader" uid="uid://dur8qajqyjrlu" path="res://assets/shader/background.gdshader" id="11_hb504"]
 [ext_resource type="Shader" uid="uid://bb1gwvblyt57i" path="res://assets/shader/castle.gdshader" id="12_hb504"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://biswc6ipcfiun" path="res://game/eliminator.gd" id="20_u8s88"]
 [ext_resource type="Texture2D" uid="uid://bg6np85mcxhrw" path="res://assets/bench.png" id="21_5e03w"]
 [ext_resource type="Texture2D" uid="uid://bewvh84gv88sy" path="res://assets/money.png" id="22_8bboj"]
+[ext_resource type="PackedScene" uid="uid://buphc88egqhj5" path="res://menu/menu.tscn" id="23_5e03w"]
 [ext_resource type="Texture2D" uid="uid://b1tvic7afvxmn" path="res://assets/heart.png" id="23_q52ks"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
@@ -314,18 +315,8 @@ position = Vector2(1125, -196)
 [node name="Floor5" type="Node2D" parent="EnemyManager"]
 position = Vector2(1124, -329)
 
-[node name="SeaOverlay" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
+[node name="SeaOverlay" parent="." instance=ExtResource("23_5e03w")]
 visible = false
-script = null
 
 [connection signal="balance_changed" from="." to="UI/gold_display" method="set_gold"]
 [connection signal="balance_changed" from="." to="UpgradeUi" method="on_balance_change"]
