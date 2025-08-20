@@ -5,7 +5,7 @@ signal death(type: Enemy)
 
 var enemy: Enemy
 
-var damage_number = preload("res://game/DamageNumber.tscn")
+var damage_number = preload("res://game/FlavorText.tscn")
 var attack_success = false
 var underwater = false
 const ACCELERATION = 30

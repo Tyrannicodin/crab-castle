@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://baioc2fjhpaty"]
+
+[ext_resource type="Script" uid="uid://c7r1ahytvt68p" path="res://game/flavor_text.gd" id="1_x5r66"]
+[ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="2_g5s8o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eo2dw"]
+font = ExtResource("2_g5s8o")
+font_size = 24
+font_color = Color(0.27, 0.27, 0.27, 1)
+outline_size = 5
+
+[node name="FlavorText" type="Node2D"]
+script = ExtResource("1_x5r66")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -81.0
+offset_top = -22.0
+offset_right = 84.0
+offset_bottom = 21.0
+size_flags_horizontal = 4
+text = "Text Goes Here"
+label_settings = SubResource("LabelSettings_eo2dw")
+horizontal_alignment = 1
+vertical_alignment = 1
