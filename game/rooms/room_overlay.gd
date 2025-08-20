@@ -23,8 +23,8 @@ func _ready() -> void:
 
 func _process(delta) -> void:
 	time_since_last_text += delta
-	
 	for child in get_children():
+		if child is AudioStreamPlayer: continue
 		child.hide()
 
 	$Pos.visible = true
@@ -85,3 +85,8 @@ func summon_text(text: String):
 	get_tree().root.add_child(inst)
 	inst.global_position.x = global_position.x + 80
 	inst.global_position.y = global_position.y + 40 + randi_range(-20, 10)
+
+func play_sound(sound: String):
+	if sound == "buff":
+		print("playing sound")
+		$Buff.play()

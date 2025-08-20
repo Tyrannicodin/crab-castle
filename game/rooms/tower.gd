@@ -30,6 +30,9 @@ class RoomInstance:
 		cooldown = type.cooldown_seconds
 		cooldown_remaining = type.cooldown_seconds
 
+	func play_sound(tower: Tower, sound: String):
+		tower.room_overlays[position].play_sound(sound)
+
 	func reset_cooldown():
 		cooldown_remaining = type.cooldown_seconds
 
