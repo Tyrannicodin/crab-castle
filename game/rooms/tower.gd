@@ -56,24 +56,12 @@ func _ready():
 	for cell in used_cells:
 		if (cell.y < 6):
 			set_cell(cell, -1)
-	generate_room_sprites()
+	redraw_castle()
 	
 	game.wave_start.connect(func():
 		for room in rooms:
 			room.reset_cooldown()
 	)
-
-func generate_room_sprites() -> void:
-	var used_cells = get_used_cells()
-	for cell in used_cells:
-		if room_overlays.has(cell):
-			continue
-		var overlay = room_overlay.instantiate()
-		game.wave_end.connect(overlay.hide_progress)
-		game.wave_start.connect(overlay.show_progress)
-		room_overlays[cell] = overlay
-		overlay.position = map_to_local(cell) - Vector2(232, 171)
-		add_child(overlay)
 
 func set_current_room(room: int) -> void:
 	current_room = room
@@ -93,33 +81,54 @@ func _input(event) -> void:
 	if current_room == -2:
 		if room_overlays.has(target):
 			var overlay = room_overlays[target]
-			set_cell(target, PALISADES, Vector2.ZERO)
 			room_overlays.erase(target)
 			rooms = rooms.filter(func(room: RoomInstance): room.position != target)
 			print(overlay.room)
 			$"../../UpgradeUi".upgrade_selected.emit(overlay.room)
 			overlay.queue_free()
-			generate_room_sprites()
+			redraw_castle()
 		return
 	
 	var target_cell = get_cell_source_id(target)
-	var room_below = get_cell_source_id(get_neighbor_cell(target, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE))
-	if (room_below != BOTTOM && room_below != BG):
-		return
-	if (target_cell == BG):
-		return
-	set_cell(target, BG, Vector2(0,0))
-	set_cell(Vector2(target.x, target.y-1), PALISADES_MIRROR if target.x == 1 else PALISADES, Vector2(0,0))
-	generate_room_sprites()
-	if room_overlays[target].room:
-		# TODO: This is where stuff should happen when you click on a placed room
-		return
+	
+	# Add the new room
+	var overlay = room_overlay.instantiate()
+	game.wave_end.connect(overlay.hide_progress)
+	game.wave_start.connect(overlay.show_progress)
+	room_overlays[target] = overlay
+	overlay.position = map_to_local(target) - Vector2(232, 171)
+	add_child(overlay)
+	redraw_castle()
+
 	room_overlays[target].room = game.purchased_rooms[current_room]
 	rooms.append(
 		RoomInstance.new(game.purchased_rooms[current_room], target)
 	)
 	room_placed.emit(current_room)
 	current_room = -1
+
+func redraw_castle():
+	for cell in self.get_used_cells():
+		set_cell(cell, -1, Vector2.ZERO)
+
+	set_cell(Vector2(0, 6), BOTTOM, Vector2.ZERO)
+	set_cell(Vector2(1, 6), BOTTOM, Vector2.ZERO)
+
+	var heights = [0, 0]
+
+	for target in room_overlays.keys():
+		set_cell(target, BG, Vector2.ZERO)
+		
+		if heights[target.x] < target.y:
+			heights[target.x] = target.y
+
+	var i = 0
+	for h in heights:
+		if h != 0 and i == 0:
+			set_cell(Vector2(i, h - 1), PALISADES, Vector2.ZERO)
+		if h != 0 and i == 1:
+			set_cell(Vector2(i, h - 1), PALISADES_MIRROR, Vector2.ZERO)
+		i+=1
 
 func _process(delta: float) -> void:
 	if !game.is_in_wave():
