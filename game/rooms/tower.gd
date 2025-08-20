@@ -1,7 +1,7 @@
 extends TileMapLayer
 class_name Tower
 
-var room_overlay = preload("res://game/rooms/room_overlay.tscn")
+@onready var room_overlay = preload("res://game/rooms/room_overlay.tscn")
 
 signal room_placed(room: int)
 
@@ -53,18 +53,14 @@ func _ready():
 	game.wave_start.connect(func():
 		for room in rooms:
 			room.reset_cooldown()
-		for room in room_overlays.values():
-			room.show_progress()
-	)
-	game.wave_end.connect(func():
-		for room in room_overlays.values():
-			room.hide_progress()
 	)
 
 func generate_room_sprites() -> void:
 	var used_cells = get_used_cells()
 	for cell in used_cells:
 		var overlay = room_overlay.instantiate()
+		game.wave_end.connect(overlay.hide_progress)
+		game.wave_start.connect(overlay.show_progress)
 		room_overlays[cell] = overlay
 		overlay.position = map_to_local(cell) - Vector2(232, 171)
 		add_child(overlay)
