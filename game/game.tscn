@@ -270,6 +270,7 @@ position = Vector2(960, 0)
 shape = SubResource("WorldBoundaryShape2D_5e03w")
 
 [node name="SeaOverlay" parent="." instance=ExtResource("23_5e03w")]
+visible = false
 
 [connection signal="balance_changed" from="." to="UpgradeUi" method="on_balance_change"]
 [connection signal="balance_changed" from="." to="UI/gold_display" method="set_gold"]
