@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5x1yp653mov4"]
+
+[ext_resource type="Texture2D" uid="uid://ujxkhojgkxk5" path="res://assets/rooms/cannon.png" id="1_5oeny"]
+[ext_resource type="Script" uid="uid://by6hymbbdufns" path="res://game/bench_room.gd" id="2_7xk3i"]
+[ext_resource type="Script" uid="uid://cyre2fbdj4vom" path="res://game/rooms/custom_tooltip.gd" id="3_7203o"]
+
+[node name="BenchedRoom" type="Sprite2D"]
+texture = ExtResource("1_5oeny")
+script = ExtResource("2_7xk3i")
+
+[node name="Tooltip" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -380.0
+offset_top = -384.0
+offset_right = 362.0
+offset_bottom = 358.0
+script = ExtResource("3_7203o")

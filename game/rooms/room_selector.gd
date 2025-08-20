@@ -4,11 +4,13 @@ signal room_selected(index: int)
 
 var bench = []
 var child_script = load("res://game/bench_room.gd")
+var BenchedRoom = load("res://game/BenchedRoom.tscn")
 
 func add_room(room: Room) -> void:
-	var but = Sprite2D.new()
+	var but = BenchedRoom.instantiate()
 	but.global_scale = room.scale / 2.5;
 	but.texture = room.image
+	but.room = room
 	but.set_script(child_script)
 	bench.push_back(but)
 	self.add_child(but)

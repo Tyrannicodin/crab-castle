@@ -2,10 +2,11 @@
 extends Node2D
 class_name RoomOverlay
 
-@export var room: Room : 
+@export var room: Room :
 	set(value):
 		room = value
 		if room:
+			$Tooltip.set_room_tooltip(room)
 			update_sprite()
 var progress: float = 0
 var flavor_text = preload("res://game/FlavorText.tscn")
@@ -26,6 +27,7 @@ func _process(delta) -> void:
 	time_since_last_text += delta
 	for child in get_children():
 		if child is AudioStreamPlayer2D or child is AudioStreamPlayer: continue
+		if child is Control and child is not ProgressBar: continue
 		child.hide()
 
 	$Pos.visible = true
@@ -46,14 +48,14 @@ func _process(delta) -> void:
 	extra_scale = lerp(Vector2(1.2, 1.2), Vector2(1, 1), ease(10 * time_since_fired, -.5))
 
 	$Pos/Sprite.show()
-	if room.visible_arrows & 0b0001:
-		$ArrowUp.show()
-	if room.visible_arrows & 0b0010:
-		$ArrowRight.show()
-	if room.visible_arrows & 0b0100:
-		$ArrowDown.show()
-	if room.visible_arrows & 0b1000:
-		$ArrowLeft.show()
+	#if room.visible_arrows & 0b0001:
+	#	$ArrowUp.show()
+	#if room.visible_arrows & 0b0010:
+	#	$ArrowRight.show()
+	#if room.visible_arrows & 0b0100:
+	#	$ArrowDown.show()
+	#if room.visible_arrows & 0b1000:
+	#	$ArrowLeft.show()
 	
 	if room.visible_progress_bar and !hide_progress_bar:
 		$Progress.show()

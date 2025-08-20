@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2k5hxa654km7"]
+[gd_scene load_steps=9 format=3 uid="uid://c2k5hxa654km7"]
 
 [ext_resource type="Script" uid="uid://c16cqdt260q61" path="res://game/rooms/room_overlay.gd" id="1_brg1v"]
 [ext_resource type="Texture2D" uid="uid://dduhjhbyxd14y" path="res://assets/room_details/arrow_left.png" id="2_c4euj"]
@@ -7,13 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://dmnmkxsnexb3d" path="res://assets/room_details/arrow_down.png" id="4_dic12"]
 [ext_resource type="Texture2D" uid="uid://cgggqyclpoo3o" path="res://assets/room_details/arrow_up.png" id="5_vvy4f"]
 [ext_resource type="AudioStream" uid="uid://68tov3l70any" path="res://assets/sfx/buff.mp3" id="6_5hopr"]
+[ext_resource type="Script" uid="uid://cyre2fbdj4vom" path="res://game/rooms/custom_tooltip.gd" id="8_q8w3g"]
 
 [node name="RoomImages" type="Node2D"]
 script = ExtResource("1_brg1v")
 
 [node name="Build" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_llj3t")
-pitch_scale = 1.19007
+pitch_scale = 1.06209
 
 [node name="Buff" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(232, 171)
@@ -59,3 +60,11 @@ offset_right = 382.0
 offset_bottom = 277.0
 max_value = 1.0
 show_percentage = false
+
+[node name="Tooltip" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 443.0
+offset_bottom = 299.0
+tooltip_text = "Hello World"
+script = ExtResource("8_q8w3g")
