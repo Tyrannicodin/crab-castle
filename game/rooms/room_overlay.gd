@@ -88,4 +88,5 @@ func summon_text(text: String):
 
 func play_sound(sound: String):
 	if sound == "buff":
+		$Buff.pitch_scale = randf_range(1, 1.2)
 		$Buff.play()
