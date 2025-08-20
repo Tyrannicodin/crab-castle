@@ -11,6 +11,6 @@ scale = Vector2(0.2, 0.2)
 underwater = true
 max_health = 30
 speed = 130
-value = 3
+value = 1
 knockback_resist = 0.0
 metadata/_custom_type_script = "uid://dx0myaehl7et"

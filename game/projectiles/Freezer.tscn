@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://c3l3vbfotcuqo" path="res://assets/projectiles/freezer.png" id="2_wg1pn"]
 
 [node name="Projectile2" instance=ExtResource("1_4o66m")]
-damage = 20
+damage = 0
 speed = 0.0
 max_velocity = 0.0
 pierce = 10
-stun_lock = 2.0
+stun_lock = 3.0
 movement_type = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="1"]
