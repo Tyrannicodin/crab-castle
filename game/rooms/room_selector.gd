@@ -7,7 +7,7 @@ var child_script = load("res://game/bench_room.gd")
 
 func add_room(room: Room) -> void:
 	var but = Sprite2D.new()
-	but.global_scale = Vector2(0.3,0.3);
+	but.global_scale = room.scale / 2.5;
 	but.texture = room.image
 	but.set_script(child_script)
 	bench.push_back(but)
