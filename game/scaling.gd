@@ -12,4 +12,4 @@ func scale_gold_gained():
 	return 2
 
 func scale_reroll_price(wave_number, amount_of_rerolls):
-	return 5
+	return 5 + wave_number + amount_of_rerolls

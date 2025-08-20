@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://6lsj8u78lvu8" path="res://game/projectiles/projectile.gd" id="1_wqu2c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqu2c"]
-radius = 15.0333
+radius = 5.0
 
 [node name="Projectile2" type="Node2D"]
 script = ExtResource("1_wqu2c")

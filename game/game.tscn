@@ -161,7 +161,7 @@ tile_set = SubResource("TileSet_vsp63")
 script = ExtResource("17_ln7ps")
 
 [node name="Seabed" type="Sprite2D" parent="TowerViewport"]
-position = Vector2(1100, 924)
+position = Vector2(1100, 919)
 scale = Vector2(0.392897, 0.382396)
 texture = ExtResource("15_leid8")
 
@@ -185,7 +185,7 @@ texture = ExtResource("21_5e03w")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Rooms" type="Node2D" parent="UI"]
-position = Vector2(675, 947)
+position = Vector2(657, 947)
 script = ExtResource("2_4cobl")
 
 [node name="Button" type="Button" parent="UI"]
@@ -288,8 +288,6 @@ visible = false
 
 [connection signal="balance_changed" from="." to="UpgradeUi" method="on_balance_change"]
 [connection signal="balance_changed" from="." to="UI/gold_display" method="set_gold"]
-[connection signal="game_end" from="." to="." method="on_game_end"]
-[connection signal="game_end" from="." to="GameEnd" method="show"]
 [connection signal="rooms_loaded" from="." to="UpgradeUi" method="on_rooms_loaded"]
 [connection signal="wave_end" from="." to="UI/Start Next Wave" method="show"]
 [connection signal="upgrade_selected" from="UpgradeUi" to="." method="room_selected"]

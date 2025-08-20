@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://68en2fypp2j5"]
+[gd_scene load_steps=8 format=3 uid="uid://68en2fypp2j5"]
 
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="1_jokft"]
 [ext_resource type="Script" uid="uid://b5ed35yvv6m1r" path="res://upgrades/controller.gd" id="1_xfgd8"]
 [ext_resource type="Texture2D" uid="uid://g885r3geq3xg" path="res://upgrades/white.png" id="2_3vxon"]
 [ext_resource type="PackedScene" uid="uid://bpl6ohbh08x3w" path="res://upgrades/upgrade.tscn" id="3_3vxon"]
 [ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="5_hdd03"]
+[ext_resource type="Texture2D" uid="uid://bewvh84gv88sy" path="res://assets/money.png" id="6_tl1mp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xfgd8"]
 shader = ExtResource("1_jokft")
@@ -60,15 +61,18 @@ alignment = 1
 
 [node name="Roll" type="Button" parent="Margin/VBox/Center/VBox"]
 layout_mode = 2
+theme_override_constants/icon_max_width = 48
 theme_override_fonts/font = ExtResource("5_hdd03")
 theme_override_font_sizes/font_size = 40
-text = "Re-roll rooms"
+text = "Reroll -0"
+icon = ExtResource("6_tl1mp")
+icon_alignment = 2
 
 [node name="Skip" type="Button" parent="Margin/VBox/Center/VBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_hdd03")
 theme_override_font_sizes/font_size = 40
-text = "Skip room"
+text = "Skip"
 
 [connection signal="room_selected" from="Margin/VBox/Upgrades/Upgrade1" to="." method="on_upgrade_selected"]
 [connection signal="room_selected" from="Margin/VBox/Upgrades/Upgrade2" to="." method="on_upgrade_selected"]

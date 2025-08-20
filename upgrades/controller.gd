@@ -1,21 +1,30 @@
 extends CanvasLayer
 
 signal upgrade_selected(room: Room)
+signal balance_changed(new_balance: int)
 
 var available_rooms: Array[Room] = []
 var damage_only: bool = false
 var money: int = 0
 var wave_number = 0
 var scaling: Scaling = load("res://game/scaling.gd").new()
+var number_of_rerolls = 0
+var last_reroll_cost = 0
 
-func roll_rooms(new_wave_number) -> void:
-	damage_only = new_wave_number < 1
+func roll_rooms(wave_number) -> void:
+	damage_only = wave_number < 1
+	number_of_rerolls = 0
 	show()
 	reroll_rooms()
 
-	wave_number = new_wave_number
+	self.wave_number = wave_number
 
 func reroll_rooms() -> void:
+	on_balance_change(money - last_reroll_cost)
+	self.balance_changed.emit(money)
+	var reroll_cost = scaling.scale_reroll_price(wave_number, number_of_rerolls)
+	last_reroll_cost = reroll_cost
+	number_of_rerolls += 1
 	var rng = RandomNumberGenerator.new()
 	
 	var filtered_rooms = available_rooms.duplicate()
@@ -24,7 +33,8 @@ func reroll_rooms() -> void:
 
 	var weights = PackedFloat32Array(filtered_rooms.map(func(room: Room): return room.weight))
 
-	$Margin/VBox/Center/VBox/Roll.disabled = money < 5
+	$Margin/VBox/Center/VBox/Roll.text = "Reroll -%d" % reroll_cost
+	$Margin/VBox/Center/VBox/Roll.disabled = money < reroll_cost
 
 	var selected
 	for child in $Margin/VBox/Upgrades.get_children():
@@ -37,6 +47,7 @@ func reroll_rooms() -> void:
 		filtered_rooms.remove_at(selected)
 
 func on_upgrade_selected(room: Room) -> void:
+	# Maybe ID could be replaced with a resource
 	upgrade_selected.emit(room)
 	hide()
 
