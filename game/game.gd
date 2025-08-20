@@ -60,7 +60,6 @@ func _ready() -> void:
 	$BgSkyWater.material.set_shader_parameter("water_height", bg_water_levels[water_level])
 	$TowerTexture.material.set_shader_parameter("water_height", bg_water_levels[water_level])
 	load_rooms()
-	$SeaOverlay.show()
 	$UpgradeUi.balance_changed.connect(func(m): money = m)
 	on_wave_end(false)
 
