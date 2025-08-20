@@ -1,7 +1,9 @@
 extends TileMapLayer
 class_name Tower
 
-@onready var room_overlay = preload("res://game/rooms/room_overlay.tscn")
+var room_overlay = preload("res://game/rooms/room_overlay.tscn")
+
+@onready var tower_overlay_node = $"../../TowerOverlay"
 
 signal room_placed(room: int)
 
@@ -55,6 +57,9 @@ var rooms: Array[RoomInstance] = []
 @onready var game = $"../.."
 
 func _ready():
+	tower_overlay_node.global_position = global_position
+	tower_overlay_node.scale = scale
+
 	var used_cells = get_used_cells()
 	for cell in used_cells:
 		if (cell.y < 6):
@@ -106,7 +111,7 @@ func _input(event) -> void:
 	game.wave_start.connect(new_overlay.show_progress)
 	room_overlays[target] = new_overlay
 	new_overlay.position = map_to_local(target) - Vector2(232, 171)
-	add_child(new_overlay)
+	tower_overlay_node.add_child(new_overlay)
 	redraw_castle()
 
 	room_overlays[target].room = game.purchased_rooms[current_room]
