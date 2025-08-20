@@ -18,10 +18,10 @@ func roll_rooms(wave_number) -> void:
 func reroll_rooms() -> void:
 	var rng = RandomNumberGenerator.new()
 	
-	var filtered_rooms = available_rooms
+	var filtered_rooms = available_rooms.duplicate()
 	if damage_only == true:
 		filtered_rooms = filtered_rooms.filter(func(room: Room): return room.requires_enemies_to_trigger)
-	
+
 	var weights = PackedFloat32Array(filtered_rooms.map(func(room: Room): return room.weight))
 
 	$Margin/VBox/Center/VBox/Roll.disabled = money < 5

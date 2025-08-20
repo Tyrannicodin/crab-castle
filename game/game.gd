@@ -20,7 +20,7 @@ var bg_water_levels = [
 
 @onready var viewport = $TowerViewport
 @onready var tower = $TowerViewport/Tower
-var money: int = 22:
+var money: int = 12:
 	set(value):
 		balance_changed.emit(value)
 		money = value
@@ -85,10 +85,12 @@ func load_rooms():
 	rooms_loaded.emit(available_rooms)
 
 # Run when a wave ends and at the start
-func on_wave_end(wait_for_wave=true):	
+func on_wave_end(wait_for_wave=true):
 	var last_water_level = water_level
 	if wave_number < len(waves):
 		water_level = waves[wave_number].call()["water_level"]
+
+	money += 10
 
 	in_wave = false
 
