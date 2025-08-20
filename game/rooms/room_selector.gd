@@ -1,22 +1,22 @@
-extends HBoxContainer
+extends Node2D
 
 signal room_selected(index: int)
 
 var bench = []
+var child_script = load("res://game/bench_room.gd")
 
 func add_room(room: Room) -> void:
-	var but = TextureButton.new()
-	but.texture_normal = room.image
-	but.ignore_texture_size = true
-	but.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
-	but.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	but.global_position.x = 0;
+	var but = Sprite2D.new()
+	but.global_scale = Vector2(0.3,0.3);
+	but.texture = room.image
+	but.set_script(child_script)
 	bench.push_back(but)
-	but.connect(
-		"pressed",
-		func(): room_selected.emit(get_children().find(but))
-	)
-	add_child(but)
+	self.add_child(but)
+	
+	but.global_position.x = self.global_position.x
+	but.global_position.y = self.global_position.y
+	but.room_id = len(bench) - 1
+	but.z_index = 1000000
 
 func remove_room(index: int) -> void:
 	remove_child(bench[index])
