@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm2xe4krx3arc"]
+[gd_scene load_steps=6 format=3 uid="uid://bm2xe4krx3arc"]
 
 [ext_resource type="PackedScene" uid="uid://bligscgn0qlft" path="res://game/projectiles/Projectile.tscn" id="1_agwq3"]
+[ext_resource type="AudioStream" uid="uid://ytris2a1fcic" path="res://assets/sfx/laser.mp3" id="2_0253i"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_agwq3"]
 b = Vector2(5009, 1)
@@ -29,3 +30,8 @@ shape = SubResource("SegmentShape2D_agwq3")
 position = Vector2(2500, 0)
 scale = Vector2(50, 2)
 texture = SubResource("GradientTexture1D_0253i")
+
+[node name="Sound" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource("2_0253i")
+volume_db = -4.0
+bus = &"SFX"

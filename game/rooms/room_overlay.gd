@@ -25,7 +25,7 @@ func _ready() -> void:
 func _process(delta) -> void:
 	time_since_last_text += delta
 	for child in get_children():
-		if child is AudioStreamPlayer2D: continue
+		if child is AudioStreamPlayer2D or child is AudioStreamPlayer: continue
 		child.hide()
 
 	$Pos.visible = true

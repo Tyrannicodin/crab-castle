@@ -34,11 +34,15 @@ func y_pos_dx(ex: float, ey: float, x: float):
 		return 2 * inverse_speed * x - inverse_speed * ex + ey / ex
 	else:
 		return ey / ex
-	
+
 func aim(spawnpoint: Vector2, enemy: EnemyInstance):
 	origin = spawnpoint
 	enemy_position = Vector2(enemy.global_position.x, enemy.global_position.y)
 	position_projectile(time, 0.01)
+	
+	if has_node("Sound"):
+		$Sound.pitch_scale = randf_range(1, 1.2)
+		$Sound.play()
 
 func _process(delta: float) -> void:
 	time += delta
