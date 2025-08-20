@@ -31,7 +31,7 @@ void fragment() {
 	
     if (tex.a > .9) {
         COLOR = tex * texture(blend_texture, mod(UV * 4.0, 1.0));
-    } else {
+    } else if (UV.x > 0.043 && UV.x < 0.219) {
 		float band_1 = draw_band(0, UV, TEXTURE, TEXTURE_PIXEL_SIZE);
 
 		COLOR = vec4(
@@ -43,27 +43,10 @@ void fragment() {
 	float progress = mod(TIME + -3.5 * UV.x, PI * 4.0);
 	float water_offset = sin(progress) / 200.0 + 0.003;
 	if (UV.y > water_offset + 1.0 - water_height + foam_size) {
-		if (tex.b >= target_color.b - 0.3 && tex.b <= target_color.b) {
+		if ((tex.b >= target_color.b - 0.3 && tex.b <= target_color.b) || UV.y > 0.72) {
 			COLOR = COLOR * wet_color;
 		}
 	} else if (UV.y > water_offset + 1.0 - water_height - foam_size && COLOR.a > 0.9) {
 		COLOR = foam_color;
 	}
 }
-
-//void fragment() {
-		//vec4 tex = texture(TEXTURE, UV);
-		//bool right_side = UV.x < 0.95;
-		//float progress = mod(TIME + 3.0 * UV.x, PI * 4.0) * (right_side ? 1.25 : 1.0);
-//
-		//if ((UV.x > 0.053 && UV.x < 0.1813) && (UV.y < 0.834)) {
-		//}
-		//else if (UV.y > 1.0 - water_height - 0.04 - sin(progress) / 200.0 && tex.a >= 0.95) {
-			//vec4 blended_texture = wet_color * tex; 
-			//float f = ((UV.y / 2.0) - 0.166 + water_height) * 6.0;
-			//if (UV.y > water_height) {
-				//COLOR = (blended_texture * f + tex * (1.0 - f));
-			//}
-			//COLOR.a = 1.0;
-		//}
-//}
