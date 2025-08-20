@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://cs751ld7c4odi" path="res://assets/rooms/bow.png" id="1_6owdo"]
 [ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="1_c6avb"]
-[ext_resource type="Script" uid="uid://p8a2etvx2nqn" path="res://assets/resources/rooms/bow.gd" id="3_gjesx"]
+[ext_resource type="Script" path="res://assets/resources/rooms/bow.gd" id="3_gjesx"]
 
 [resource]
 script = ExtResource("1_c6avb")
 display_name = "Bow"
-description = "Deals 15 damage."
+description = ""
 image = ExtResource("1_6owdo")
 scale = Vector2(0.63, 0.63)
 translation = Vector2(0, 10)

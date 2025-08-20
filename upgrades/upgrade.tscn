@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpl6ohbh08x3w"]
+[gd_scene load_steps=7 format=3 uid="uid://bpl6ohbh08x3w"]
 
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_3oguy"]
 [ext_resource type="Script" uid="uid://bgukjsmg28nyr" path="res://upgrades/upgrade.gd" id="1_fvx8q"]
 [ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="1_rgapa"]
 [ext_resource type="FontVariation" uid="uid://xvvik2j6lvhf" path="res://assets/fonts/nunito.tres" id="4_wh05j"]
+[ext_resource type="Texture2D" uid="uid://bewvh84gv88sy" path="res://assets/money.png" id="5_cit4l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rgapa"]
 font_size = 40
@@ -38,6 +39,21 @@ text = "Room name"
 label_settings = SubResource("LabelSettings_rgapa")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Image" type="TextureRect" parent="Margin/VBox/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_cit4l")
+expand_mode = 2
+
+[node name="Price" type="Label" parent="Margin/VBox/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_rgapa")
+theme_override_font_sizes/font_size = 32
+text = "PRICE GOES HERE"
 
 [node name="Image" type="TextureRect" parent="Margin/VBox"]
 layout_mode = 2

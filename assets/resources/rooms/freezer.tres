@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_d3tcq")
 display_name = "Freezer"
-description = "Freeze under water enemies for 2 seconds."
+description = ""
 image = ExtResource("1_qabjs")
 scale = Vector2(0.55, 0.55)
 translation = Vector2(0, 0)
