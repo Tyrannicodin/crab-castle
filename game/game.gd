@@ -172,7 +172,6 @@ func fire_projectile_above_enemy(_room: Tower.RoomInstance, projectile: Node2D, 
 	projectile.global_position = target.global_position + Vector2(0, -50)
 
 func room_selected(room: Room) -> void:
-	money -= room.cost
 	purchased_rooms.append(room)
 
 func room_placed(room: int) -> void:

@@ -93,10 +93,11 @@ func _input(event) -> void:
 	if current_room == -2:
 		if room_overlays.has(target):
 			var overlay = room_overlays[target]
-			print("Removing room")
 			set_cell(target, PALISADES, Vector2.ZERO)
-			room_overlays[target].room = null
+			room_overlays.erase(target)
 			rooms = rooms.filter(func(room: RoomInstance): room.position != target)
+			print(overlay.room)
+			$"../../UpgradeUi".upgrade_selected.emit(overlay.room)
 			overlay.queue_free()
 			generate_room_sprites()
 		return
