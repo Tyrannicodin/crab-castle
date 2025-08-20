@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n02uwyu7pfm"
-path="res://.godot/imported/weird_sea_creature2.png-61be7ca33c4d6040616f9aefcfdfe9a0.ctex"
+uid="uid://dn2vt3kgjcqj7"
+path="res://.godot/imported/alligator_fish.png-6c90f45bdb13786c6576a6a20b8d4b6d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/weird_sea_creature2.png"
-dest_files=["res://.godot/imported/weird_sea_creature2.png-61be7ca33c4d6040616f9aefcfdfe9a0.ctex"]
+source_file="res://assets/enemies/alligator_fish.png"
+dest_files=["res://.godot/imported/alligator_fish.png-6c90f45bdb13786c6576a6a20b8d4b6d.ctex"]
 
 [params]
 

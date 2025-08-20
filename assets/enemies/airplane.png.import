@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n02uwyu7pfm"
-path="res://.godot/imported/weird_sea_creature2.png-61be7ca33c4d6040616f9aefcfdfe9a0.ctex"
+uid="uid://cu2v0gc7t134d"
+path="res://.godot/imported/airplane.png-1416650a4e4bb26fe8cba4fa5c905d70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/weird_sea_creature2.png"
-dest_files=["res://.godot/imported/weird_sea_creature2.png-61be7ca33c4d6040616f9aefcfdfe9a0.ctex"]
+source_file="res://assets/enemies/airplane.png"
+dest_files=["res://.godot/imported/airplane.png-1416650a4e4bb26fe8cba4fa5c905d70.ctex"]
 
 [params]
 
