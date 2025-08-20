@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7pgl4dswjuas"]
+
+[ext_resource type="PackedScene" uid="uid://bligscgn0qlft" path="res://game/projectiles/Projectile.tscn" id="1_24ewo"]
+[ext_resource type="Texture2D" uid="uid://bbx8p5tcn1ftl" path="res://assets/projectiles/fire.png" id="2_24ewo"]
+
+[node name="Projectile2" instance=ExtResource("1_24ewo")]
+damage = 20
+speed = 2000.0
+pierce = 2
+knockback = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+position = Vector2(1, -6)
+scale = Vector2(0.22713, 0.22713)
+texture = ExtResource("2_24ewo")

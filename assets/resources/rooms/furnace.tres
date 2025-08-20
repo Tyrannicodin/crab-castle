@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Room" load_steps=4 format=3 uid="uid://d1evxegovpau1"]
+
+[ext_resource type="Texture2D" uid="uid://7wruohypdegd" path="res://assets/rooms/furnace.png" id="1_noesb"]
+[ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="2_tgfwx"]
+[ext_resource type="Script" uid="uid://j2kfblbkj6w7" path="res://assets/resources/rooms/furnace.gd" id="3_3hkpn"]
+
+[resource]
+script = ExtResource("2_tgfwx")
+display_name = "Furnace"
+description = "Deals 20 damage to enemies above water."
+image = ExtResource("1_noesb")
+scale = Vector2(0.55, 0.55)
+translation = Vector2(0, 0)
+rotation = 0.0
+animate_on_trigger = false
+visible_progress_bar = true
+visible_arrows = 0
+trigger_script = ExtResource("3_3hkpn")
+cooldown_seconds = 3.0
+requires_enemies_to_trigger = true
+weight = 90
+cost = 15
+metadata/_custom_type_script = "uid://s5vpeux5sx8g"

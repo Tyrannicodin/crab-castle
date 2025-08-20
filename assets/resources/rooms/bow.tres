@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_c6avb")
 display_name = "Bow"
-description = ""
+description = "Deals 15 damage."
 image = ExtResource("1_6owdo")
 scale = Vector2(0.63, 0.63)
 translation = Vector2(0, 10)
