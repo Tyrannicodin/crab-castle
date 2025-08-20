@@ -27,7 +27,7 @@ static var waves = [
 		"water_level": 2,
 		"enemies": [
 			[Octopus],
-			[Octopus, Seagull, Seagull, Seagull, Seagull],
+			[Octopus, Seagull, Seagull],
 		]
 	},
 	# Wave 4
@@ -35,7 +35,7 @@ static var waves = [
 		"water_level": 3,
 		"enemies": [
 			[Seagull, Seagull, Seagull, Seagull],
-			[Octopus, Octopus, Octopus, Seagull],
+			[Octopus, Octopus, Octopus, Octopus],
 		]
 	},
 	# Wave 5

@@ -12,4 +12,4 @@ func scale_gold_gained(gold: float, wave_number: int) -> float:
 	return gold
 
 func scale_reroll_price(wave_number: int, amount_of_rerolls: int):
-	return 1 + (amount_of_rerolls**1.5)
+	return (1 if wave_number == 0 else 2 + wave_number) + (amount_of_rerolls**1.5)
