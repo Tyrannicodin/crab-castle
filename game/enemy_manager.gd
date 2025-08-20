@@ -32,11 +32,14 @@ func get_all_enemies() -> Array[EnemyInstance]:
 func has_enemies() -> bool:
 	return len(get_all_enemies().filter(func(x: EnemyInstance): return x.is_alive())) > 0
 
-func find_closest_enemies(to: Vector2) -> Array[EnemyInstance]:
+func find_closest_enemies(to: Vector2, filter = null) -> Array[EnemyInstance]:
 	if !has_enemies():
 		return []
 	var alive_enemies = get_all_enemies().filter(func(x: EnemyInstance): return x.is_alive())
-	
+	if filter != null:
+		alive_enemies = alive_enemies.filter(filter)
+		if len(alive_enemies) == 0:
+			return []
 	var in_range_enemies = alive_enemies.filter(func(e: EnemyInstance):
 		return abs((e.global_position - to).angle()) < PI / 8
 	)

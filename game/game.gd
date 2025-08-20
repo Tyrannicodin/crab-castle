@@ -1,6 +1,6 @@
 extends Node2D
 class_name Game
-\
+
 signal rooms_loaded(rooms: Array[Room])
 signal balance_changed(value: int)
 signal wave_start
@@ -58,14 +58,14 @@ func _process(delta: float) -> void:
 		lerp(
 			$BgSkyWater.material.get_shader_parameter("water_height"),
 			bg_water_levels[water_level],
-			delta
+			3 * delta
 		)
 	)
 	$TowerTexture.material.set_shader_parameter("water_height",
 		lerp(
 			$TowerTexture.material.get_shader_parameter("water_height"),
 			bg_water_levels[water_level],
-			delta
+			3 * delta
 		)
 	)
 
@@ -98,9 +98,9 @@ func on_wave_end(wait_for_wave=true):
 
 	if wait_for_wave:
 		if water_level != last_water_level:
-			await get_tree().create_timer(3).timeout
+			await get_tree().create_timer(1.5).timeout
 		else:
-			await get_tree().create_timer(1).timeout
+			await get_tree().create_timer(.5).timeout
 
 	var damage_only = wave_number < 2
 	$"UpgradeUi".roll_rooms(damage_only)
@@ -138,19 +138,19 @@ func try_spawn_next_enemy_wave():
 	finished_spawning = true
 
 
-func find_closest_enemies(to_room: Tower.RoomInstance) -> Array[EnemyInstance]:
+func find_closest_enemies(to_room: Tower.RoomInstance, filter = null) -> Array[EnemyInstance]:
 	var room_positon = tower.get_room_global_position(to_room)
-	return enemy_manager.find_closest_enemies(room_positon)
+	return enemy_manager.find_closest_enemies(room_positon, filter)
 
-func find_closest_enemy(to_room: Tower.RoomInstance) -> EnemyInstance:
-	var in_range_enemies = find_closest_enemies(to_room)
+func find_closest_enemy(to_room: Tower.RoomInstance, filter = null) -> EnemyInstance:
+	var in_range_enemies = find_closest_enemies(to_room, filter)
 	if (len(in_range_enemies) > 0):
 		return in_range_enemies[0]
 	return null
 
 # Try to find N unique enemies for a weapon to attack. Repeat enemies if there is not enough in range.
-func find_n_closest_enemies(to_room: Tower.RoomInstance, n: int) -> Array[EnemyInstance]:
-	var in_range_enemies = find_closest_enemies(to_room)
+func find_n_closest_enemies(to_room: Tower.RoomInstance, n: int, filter=null) -> Array[EnemyInstance]:
+	var in_range_enemies = find_closest_enemies(to_room, filter)
 	if len(in_range_enemies) == 0:
 		return []
 	
