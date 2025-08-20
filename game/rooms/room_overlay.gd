@@ -20,6 +20,7 @@ var default_position = null
 
 func _ready() -> void:
 	hide_progress_bar = true
+	play_sound("build")
 
 func _process(delta) -> void:
 	time_since_last_text += delta
@@ -90,3 +91,6 @@ func play_sound(sound: String):
 	if sound == "buff":
 		$Buff.pitch_scale = randf_range(1, 1.2)
 		$Buff.play()
+	if sound == "build":
+		$Build.pitch_scale = randf_range(1, 1.2)
+		$Build.play()
