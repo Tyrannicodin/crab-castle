@@ -1,3 +1,5 @@
+static var projectile = preload("res://game/projectiles/Cannon.tscn")
+
 static func on_trigger(tower: Tower, room: Tower.RoomInstance) -> void:
 	var rooms = tower.rooms.duplicate()
 	rooms.shuffle()
@@ -8,4 +10,5 @@ static func on_trigger(tower: Tower, room: Tower.RoomInstance) -> void:
 	
 	for r in rooms:
 		r.trigger(tower)
+		r.create_flavor_text(tower, "Trigger!")
 		await tower.get_tree().create_timer(.2).timeout

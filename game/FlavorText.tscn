@@ -10,6 +10,7 @@ font_color = Color(0.27, 0.27, 0.27, 1)
 outline_size = 5
 
 [node name="FlavorText" type="Node2D"]
+z_index = 10
 script = ExtResource("1_x5r66")
 
 [node name="Label" type="Label" parent="."]

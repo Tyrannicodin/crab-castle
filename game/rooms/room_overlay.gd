@@ -8,9 +8,12 @@ class_name RoomOverlay
 		if room:
 			update_sprite()
 var progress: float = 0
+var flavor_text = preload("res://game/FlavorText.tscn")
 
 var extra_scale = Vector2(1, 1)
 var time_since_fired: float = 0
+var flavor_text_queue = []
+var time_since_last_text = 100
 
 var hide_progress_bar = false
 var default_position = null
@@ -19,6 +22,8 @@ func _ready() -> void:
 	hide_progress_bar = true
 
 func _process(delta) -> void:
+	time_since_last_text += delta
+	
 	for child in get_children():
 		child.hide()
 
@@ -52,6 +57,11 @@ func _process(delta) -> void:
 	if room.visible_progress_bar and !hide_progress_bar:
 		$Progress.show()
 		$Progress.value = progress
+	
+	if time_since_last_text > .2 and len(flavor_text_queue) >= 1:
+		var text = flavor_text_queue.pop_front()
+		summon_text(text)
+		time_since_last_text = 0
 
 func update_sprite() -> void:
 	if room:
@@ -63,3 +73,15 @@ func show_progress():
 
 func hide_progress():
 	hide_progress_bar = true
+
+func create_flavor_text(text: String):
+	flavor_text_queue.push_back(text)
+
+func summon_text(text: String):
+	if flavor_text == null:
+		return
+	var inst = flavor_text.instantiate()
+	inst.set_flavor_text(text)
+	get_tree().root.add_child(inst)
+	inst.global_position.x = global_position.x + 80
+	inst.global_position.y = global_position.y + 40 + randi_range(-20, 10)

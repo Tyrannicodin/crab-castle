@@ -33,6 +33,9 @@ class RoomInstance:
 	func reset_cooldown():
 		cooldown_remaining = type.cooldown_seconds
 
+	func create_flavor_text(tower: Tower, text: String):
+		tower.room_overlays[position].create_flavor_text(text)
+
 	func trigger(tower: Tower) -> void:
 		if type.trigger_script:
 			type.trigger_script.on_trigger(tower, self)

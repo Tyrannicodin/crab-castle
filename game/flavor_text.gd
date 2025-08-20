@@ -11,6 +11,9 @@ func _ready() -> void:
 func set_damage_number(value: int):
 	$Label.text = str(value)
 
+func set_flavor_text(value: String):
+	$Label.text = value
+
 func _process(delta: float) -> void:
 	initial_up_velocity += 100 * delta
 	global_position.y += initial_up_velocity * delta

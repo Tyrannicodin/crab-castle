@@ -3,3 +3,4 @@ static func on_trigger(tower: Tower, room: Tower.RoomInstance) -> void:
 	for target_room in buff_rooms:
 		if target_room:
 			target_room.bonus_projectiles += 1
+			target_room.create_flavor_text(tower, "+1 Projectile")
