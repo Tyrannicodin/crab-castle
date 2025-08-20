@@ -6,7 +6,7 @@ func spawn_enemy(enemy: Enemy) -> void:
 	var new_enemy = enemy_base.instantiate()
 	new_enemy.death.connect($"..".enemy_killed)
 	new_enemy.enemy = enemy
-	
+
 	var water_level = $"..".water_level
 
 	var layer_count = get_child_count() - 1

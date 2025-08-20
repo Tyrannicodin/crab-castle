@@ -20,7 +20,7 @@ var bg_water_levels = [
 
 @onready var viewport = $TowerViewport
 @onready var tower = $TowerViewport/Tower
-var money: int = 10:
+var money: int = 22:
 	set(value):
 		balance_changed.emit(value)
 		money = value
