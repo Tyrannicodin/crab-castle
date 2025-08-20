@@ -6,7 +6,7 @@
 [node name="Projectile" instance=ExtResource("1_okb0w")]
 damage = 4
 speed = 1800.0
-stun_lock = 0.2
+stun_lock = 0.05
 knockback = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="1"]
