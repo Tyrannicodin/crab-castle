@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=42 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://od7uidhhkf5r" path="res://assets/room_details/palisades.png" id="13_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://cygfg2olr2wsn" path="res://assets/room_details/bottom.png" id="14_u8s88"]
 [ext_resource type="Texture2D" uid="uid://bkmhnjxdeyq3f" path="res://assets/room_details/palisades_mirror.png" id="15_dxwpq"]
+[ext_resource type="Texture2D" uid="uid://bqb2pyrlvwfv1" path="res://assets/seabed.png" id="15_leid8"]
 [ext_resource type="Texture2D" uid="uid://cefnmebb7e6h4" path="res://assets/room_details/build.png" id="16_u8s88"]
 [ext_resource type="Script" uid="uid://c0htur6o5hwgt" path="res://game/rooms/tower.gd" id="17_ln7ps"]
 [ext_resource type="Texture2D" uid="uid://bcp5t1pl737lf" path="res://assets/room_details/paper_blend.png" id="19_dxwpq"]
@@ -152,6 +153,11 @@ tile_map_data = PackedByteArray("AAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAIAAAAAAAA
 tile_set = SubResource("TileSet_vsp63")
 script = ExtResource("17_ln7ps")
 
+[node name="Seabed" type="Sprite2D" parent="TowerViewport"]
+position = Vector2(1100, 919)
+scale = Vector2(0.392897, 0.382396)
+texture = ExtResource("15_leid8")
+
 [node name="TowerTexture" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_hb504")
 offset_left = 1.0
@@ -160,9 +166,9 @@ offset_bottom = 1080.0
 mouse_filter = 2
 texture = SubResource("ViewportTexture_b686c")
 
-[node name="Seabed" type="Sprite2D" parent="."]
-position = Vector2(745.075, 922.563)
-scale = Vector2(0.392897, 0.382396)
+[node name="SeabedViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1920, 1080)
 
 [node name="Bench" type="Sprite2D" parent="."]
 position = Vector2(926, 999)
