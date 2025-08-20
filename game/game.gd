@@ -47,7 +47,7 @@ func _ready() -> void:
 	$BgSkyWater.material.set_shader_parameter("water_height", bg_water_levels[water_level])
 	$TowerTexture.material.set_shader_parameter("water_height", bg_water_levels[water_level])
 	load_rooms()
-	$GameStartBits.visible = true
+	$SeaOverlay.show()
 	on_wave_end(false)
 
 func _process(delta: float) -> void:
