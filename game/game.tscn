@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://daq0fcjji8v2n" path="res://game/gold_display.gd" id="6_hb504"]
 [ext_resource type="Texture2D" uid="uid://dvlr1truseh3y" path="res://assets/sun-yellow.png" id="6_jucfl"]
 [ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="6_mhvfb"]
-[ext_resource type="Script" uid="uid://bvgeo6l2ym3qs" path="res://game/happy_clouds.gd" id="7_jdpby"]
+[ext_resource type="Script" path="res://game/happy_clouds.gd" id="7_jdpby"]
 [ext_resource type="Texture2D" uid="uid://cnk12qj5b8tpq" path="res://assets/cloud.png" id="8_58yx1"]
 [ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/room_details/empty.png" id="11_ee6o4"]
 [ext_resource type="Shader" uid="uid://dur8qajqyjrlu" path="res://assets/shader/background.gdshader" id="11_hb504"]
@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cefnmebb7e6h4" path="res://assets/room_details/build.png" id="16_u8s88"]
 [ext_resource type="Texture2D" uid="uid://dk0gh0dlml27l" path="res://assets/crane_game_arm.png" id="17_jucfl"]
 [ext_resource type="Script" uid="uid://c0htur6o5hwgt" path="res://game/rooms/tower.gd" id="17_ln7ps"]
-[ext_resource type="Script" uid="uid://ci4t2wa870mqd" path="res://game/crane.gd" id="18_jdpby"]
+[ext_resource type="Script" path="res://game/crane.gd" id="18_jdpby"]
 [ext_resource type="Texture2D" uid="uid://bcp5t1pl737lf" path="res://assets/room_details/paper_blend.png" id="19_dxwpq"]
 [ext_resource type="Script" uid="uid://b7x38g8nwawmq" path="res://game/enemy_manager.gd" id="19_pxxsx"]
 [ext_resource type="Script" uid="uid://biswc6ipcfiun" path="res://game/eliminator.gd" id="20_u8s88"]
@@ -127,8 +127,10 @@ process_mode = 1
 script = ExtResource("1_l8g03")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("2_ee6o4")
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://buphc88egqhj5"]
+[gd_scene load_steps=11 format=3 uid="uid://buphc88egqhj5"]
 
 [ext_resource type="Script" uid="uid://bqm22m7vq1t3h" path="res://menu/menu.gd" id="1_wal61"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="2_xptdw"]
+[ext_resource type="Script" uid="uid://lfjkc5ltahax" path="res://menu/volume.gd" id="3_6nwqt"]
 
 [sub_resource type="Gradient" id="Gradient_jc4t8"]
 interpolation_mode = 2
@@ -148,7 +149,6 @@ layout_mode = 2
 text = "Quit"
 
 [node name="Options" type="VBoxContainer" parent="GameStartOverlay/SeaGradient"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -162,20 +162,10 @@ offset_bottom = -995.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameStartOverlay/SeaGradient/Options"]
+[node name="Volume" type="GridContainer" parent="GameStartOverlay/SeaGradient/Options"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="GameStartOverlay/SeaGradient/Options/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "Volume"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSlider" type="HSlider" parent="GameStartOverlay/SeaGradient/Options/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
+columns = 2
+script = ExtResource("3_6nwqt")
 
 [node name="Back" type="Button" parent="GameStartOverlay/SeaGradient/Options"]
 layout_mode = 2
