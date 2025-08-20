@@ -85,7 +85,7 @@ func _input(event) -> void:
 				return
 			var overlay = room_overlays[target]
 			room_overlays.erase(target)
-			rooms = rooms.filter(func(room: RoomInstance): room.position != target)
+			rooms = rooms.filter(func(room: RoomInstance): return room.position != target)
 			$"../../UpgradeUi".upgrade_selected.emit(overlay.room)
 			overlay.queue_free()
 			redraw_castle()
@@ -95,7 +95,10 @@ func _input(event) -> void:
 	
 	if get_cell_source_id(Vector2(target.x, target.y + 1)) == -1:
 		return
-	
+	if get_cell_source_id(Vector2(target.x, target.y)) == BG:
+		# Can not place a room where there is already a room
+		return
+
 	# Add the new room
 	var overlay = room_overlay.instantiate()
 	game.wave_end.connect(overlay.hide_progress)
