@@ -4,10 +4,10 @@
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="1_wn2jo"]
 [ext_resource type="Texture2D" uid="uid://g885r3geq3xg" path="res://upgrades/white.png" id="2_mhvgj"]
 [ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="3_5ht27"]
-[ext_resource type="Script" uid="uid://bn2x8uuhk5u8k" path="res://game_end/outcome.gd" id="4_g3c4v"]
+[ext_resource type="Script" path="res://game_end/outcome.gd" id="4_g3c4v"]
 [ext_resource type="FontVariation" uid="uid://xvvik2j6lvhf" path="res://assets/fonts/nunito.tres" id="4_wrq5b"]
 [ext_resource type="PackedScene" uid="uid://dt1xpla3sg1p6" path="res://game_end/statistic.tscn" id="5_wrq5b"]
-[ext_resource type="Script" uid="uid://cnh4fjaquu1lo" path="res://game_end/wave_count.gd" id="6_tmv5n"]
+[ext_resource type="Script" path="res://game_end/wave_count.gd" id="6_tmv5n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5ht27"]
 shader = ExtResource("1_wn2jo")
