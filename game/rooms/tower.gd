@@ -80,10 +80,12 @@ func _input(event) -> void:
 	# Dont you dare complain about the code
 	if current_room == -2:
 		if room_overlays.has(target):
+			if get_cell_source_id(Vector2(target.x, target.y - 1)) == BG:
+				# can not remove rooms if there is a room above it
+				return
 			var overlay = room_overlays[target]
 			room_overlays.erase(target)
 			rooms = rooms.filter(func(room: RoomInstance): room.position != target)
-			print(overlay.room)
 			$"../../UpgradeUi".upgrade_selected.emit(overlay.room)
 			overlay.queue_free()
 			redraw_castle()
