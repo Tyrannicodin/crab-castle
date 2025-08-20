@@ -15,6 +15,7 @@ shader_parameter/amount = 2.5
 script = ExtResource("1_xfgd8")
 
 [node name="Blur" type="TextureRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_xfgd8")
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,20 +37,6 @@ theme_override_constants/margin_right = 330
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
-
-[node name="Upgrades" type="HBoxContainer" parent="Margin/VBox"]
-layout_mode = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="Upgrade1" parent="Margin/VBox/Upgrades" instance=ExtResource("3_3vxon")]
-layout_mode = 2
-
-[node name="Upgrade2" parent="Margin/VBox/Upgrades" instance=ExtResource("3_3vxon")]
-layout_mode = 2
-
-[node name="Upgrade3" parent="Margin/VBox/Upgrades" instance=ExtResource("3_3vxon")]
-layout_mode = 2
 
 [node name="Center" type="CenterContainer" parent="Margin/VBox"]
 layout_mode = 2
@@ -74,8 +61,22 @@ theme_override_fonts/font = ExtResource("5_hdd03")
 theme_override_font_sizes/font_size = 40
 text = "Skip"
 
+[node name="Upgrades" type="HBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Upgrade1" parent="Margin/VBox/Upgrades" instance=ExtResource("3_3vxon")]
+layout_mode = 2
+
+[node name="Upgrade2" parent="Margin/VBox/Upgrades" instance=ExtResource("3_3vxon")]
+layout_mode = 2
+
+[node name="Upgrade3" parent="Margin/VBox/Upgrades" instance=ExtResource("3_3vxon")]
+layout_mode = 2
+
+[connection signal="pressed" from="Margin/VBox/Center/VBox/Roll" to="." method="reroll_rooms"]
+[connection signal="pressed" from="Margin/VBox/Center/VBox/Skip" to="." method="skip"]
 [connection signal="room_selected" from="Margin/VBox/Upgrades/Upgrade1" to="." method="on_upgrade_selected"]
 [connection signal="room_selected" from="Margin/VBox/Upgrades/Upgrade2" to="." method="on_upgrade_selected"]
 [connection signal="room_selected" from="Margin/VBox/Upgrades/Upgrade3" to="." method="on_upgrade_selected"]
-[connection signal="pressed" from="Margin/VBox/Center/VBox/Roll" to="." method="reroll_rooms"]
-[connection signal="pressed" from="Margin/VBox/Center/VBox/Skip" to="." method="skip"]
