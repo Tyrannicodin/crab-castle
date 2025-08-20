@@ -59,6 +59,7 @@ func _ready() -> void:
 	balance_changed.emit(money)
 	$BgSkyWater.material.set_shader_parameter("water_height", bg_water_levels[water_level])
 	$TowerTexture.material.set_shader_parameter("water_height", bg_water_levels[water_level])
+	$SkyReflection.material.set_shader_parameter("water_height", bg_water_levels[water_level])
 	load_rooms()
 	$SeaOverlay.show()
 	$UpgradeUi.balance_changed.connect(func(m): money = m)
@@ -82,7 +83,13 @@ func _process(delta: float) -> void:
 			3 * delta
 		)
 	)
-
+	$SkyReflection.material.set_shader_parameter("water_height",
+		lerp(
+			$SkyReflection.material.get_shader_parameter("water_height"),
+			bg_water_levels[water_level],
+			3 * delta
+		)
+	)
 func _input(event):
 	viewport.push_input(event)
 
