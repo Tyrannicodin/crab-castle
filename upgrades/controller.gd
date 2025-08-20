@@ -11,14 +11,14 @@ var scaling: Scaling = load("res://game/scaling.gd").new()
 var number_of_rerolls = 0
 var last_reroll_cost = 0
 
-func roll_rooms(wave_number) -> void:
-	damage_only = wave_number < 1
+func roll_rooms(new_wave_number) -> void:
+	damage_only = new_wave_number < 1
 	number_of_rerolls = 0
 	show()
 	reroll_rooms()
 	$"../UI/Start Next Wave".disabled = true
 
-	self.wave_number = wave_number
+	wave_number = new_wave_number
 
 func reroll_rooms() -> void:
 	on_balance_change(money - last_reroll_cost)
