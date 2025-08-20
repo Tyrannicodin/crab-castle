@@ -84,8 +84,11 @@ func _input(event) -> void:
 		return
 	
 	var target = local_to_map(get_local_mouse_position())
+	var target_cell = get_cell_source_id(target)
 	var room_below = get_cell_source_id(get_neighbor_cell(target, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE))
 	if (room_below != BOTTOM && room_below != BG):
+		return
+	if (target_cell == BG):
 		return
 	set_cell(target, BG, Vector2(0,0))
 	set_cell(Vector2(target.x, target.y-1), PALISADES_MIRROR if target.x == 1 else PALISADES, Vector2(0,0))
