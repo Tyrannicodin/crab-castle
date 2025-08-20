@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=46 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bkmhnjxdeyq3f" path="res://assets/room_details/palisades_mirror.png" id="15_dxwpq"]
 [ext_resource type="Texture2D" uid="uid://bqb2pyrlvwfv1" path="res://assets/seabed.png" id="15_leid8"]
 [ext_resource type="Texture2D" uid="uid://cefnmebb7e6h4" path="res://assets/room_details/build.png" id="16_u8s88"]
+[ext_resource type="Texture2D" uid="uid://dk0gh0dlml27l" path="res://assets/crane_game_arm.png" id="17_jucfl"]
 [ext_resource type="Script" uid="uid://c0htur6o5hwgt" path="res://game/rooms/tower.gd" id="17_ln7ps"]
 [ext_resource type="Texture2D" uid="uid://bcp5t1pl737lf" path="res://assets/room_details/paper_blend.png" id="19_dxwpq"]
 [ext_resource type="Script" uid="uid://b7x38g8nwawmq" path="res://game/enemy_manager.gd" id="19_pxxsx"]
@@ -179,6 +180,16 @@ size = Vector2i(1920, 1080)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="Bench" type="Sprite2D" parent="UI"]
+position = Vector2(926, 999)
+scale = Vector2(0.804878, 0.804878)
+texture = ExtResource("21_5e03w")
+
+[node name="Crane" type="Sprite2D" parent="UI/Bench"]
+position = Vector2(-459.697, -2.48483)
+scale = Vector2(0.332589, 0.332589)
+texture = ExtResource("17_jucfl")
+
 [node name="Rooms" type="Node2D" parent="UI"]
 position = Vector2(657, 947)
 script = ExtResource("2_4cobl")
@@ -238,11 +249,6 @@ texture = ExtResource("22_8bboj")
 position = Vector2(82, 995)
 scale = Vector2(0.639995, 0.639995)
 texture = ExtResource("23_q52ks")
-
-[node name="Bench" type="Sprite2D" parent="UI"]
-position = Vector2(926, 999)
-scale = Vector2(0.804878, 0.804878)
-texture = ExtResource("21_5e03w")
 
 [node name="EnemyManager" type="Node2D" parent="."]
 position = Vector2(870, 570)
