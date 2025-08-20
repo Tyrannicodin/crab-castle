@@ -8,6 +8,7 @@ var enemy: Enemy
 var damage_number = preload("res://game/DamageNumber.tscn")
 var attack_success = false
 var underwater = false
+const ACCELERATION = 30
 
 @onready var health: int = enemy.max_health
 
@@ -28,7 +29,7 @@ func _process(delta):
 	move(delta)
 		
 	if not is_alive():
-		global_position.y += downward_accel * delta
+		global_position.y += 30 * delta
 		downward_accel += 1000 * delta
 		
 		rotation += rotational_vel
@@ -48,7 +49,7 @@ func _process(delta):
 		self.queue_free()
 
 func move(delta) -> void:
-	backwards_velocity -= enemy.acceleration * delta
+	backwards_velocity -= ACCELERATION * delta
 	if backwards_velocity < 0:
 		backwards_velocity = 0
 	position.x += backwards_velocity
@@ -79,7 +80,7 @@ func stun_lock(time: float):
 	stun_lock_time_remaining = time
 
 func knockback(power: int):
-	backwards_velocity = power
+	backwards_velocity = power * (1 - enemy.knockback_resist)
 
 func death_animation():
 	pass

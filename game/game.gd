@@ -188,7 +188,7 @@ func deal_damage(enemy: EnemyInstance) -> void:
 		return
 	tower_health -= enemy.health
 	enemy.attack_successful()
-	$UI/health_display.text = "Health: " + str(tower_health)
+	$UI/health_display.text = str(tower_health)
 	
 	if tower_health == 0:
 		on_death()

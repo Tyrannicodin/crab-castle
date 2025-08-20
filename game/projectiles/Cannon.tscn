@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://1aw7rutiekhi"]
 
 [ext_resource type="PackedScene" uid="uid://bligscgn0qlft" path="res://game/projectiles/Projectile.tscn" id="1_6st6q"]
-[ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="2_serln"]
+[ext_resource type="Texture2D" uid="uid://beobwjswao6cp" path="res://assets/projectiles/ocean_boulder.png" id="2_bcq35"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_serln"]
 radius = 34.0147
@@ -14,8 +14,10 @@ stun_lock = 0.5
 knockback = 8
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_serln")
+position = Vector2(0, -1.90735e-06)
+rotation = 1.52999
+scale = Vector2(0.255, 0.2675)
+texture = ExtResource("2_bcq35")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("CircleShape2D_serln")

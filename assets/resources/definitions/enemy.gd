@@ -12,5 +12,5 @@ class_name Enemy
 @export var underwater: bool = false
 @export var max_health: int = 500
 @export var speed: int = 60
-@export var acceleration: int = 30
 @export var value: int = 1
+@export var knockback_resist: float = 0.

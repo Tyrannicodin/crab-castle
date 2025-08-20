@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=45 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
@@ -23,7 +23,9 @@
 [ext_resource type="Script" uid="uid://b7x38g8nwawmq" path="res://game/enemy_manager.gd" id="19_pxxsx"]
 [ext_resource type="Script" uid="uid://biswc6ipcfiun" path="res://game/eliminator.gd" id="20_u8s88"]
 [ext_resource type="Texture2D" uid="uid://bg6np85mcxhrw" path="res://assets/bench.png" id="21_5e03w"]
+[ext_resource type="Texture2D" uid="uid://bewvh84gv88sy" path="res://assets/money.png" id="22_8bboj"]
 [ext_resource type="PackedScene" uid="uid://buphc88egqhj5" path="res://sea_overlay/sea_overlay.tscn" id="23_5e03w"]
+[ext_resource type="Texture2D" uid="uid://b1tvic7afvxmn" path="res://assets/heart.png" id="23_q52ks"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
 shader = ExtResource("4_u5opy")
@@ -97,8 +99,13 @@ shader_parameter/blend_texture = ExtResource("19_dxwpq")
 [sub_resource type="ViewportTexture" id="ViewportTexture_b686c"]
 viewport_path = NodePath("TowerViewport")
 
+[sub_resource type="LabelSettings" id="LabelSettings_q52ks"]
+font = ExtResource("6_mhvfb")
+font_size = 48
+
 [sub_resource type="LabelSettings" id="LabelSettings_pxxsx"]
-font_size = 32
+font = ExtResource("6_mhvfb")
+font_size = 48
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u8s88"]
 normal = Vector2(0.999987, -0.00502506)
@@ -200,11 +207,12 @@ text = "End Game (loss)"
 script = ExtResource("3_u5opy")
 
 [node name="Start Next Wave" type="Button" parent="UI"]
-offset_left = 1350.0
-offset_top = 985.0
-offset_right = 1483.0
-offset_bottom = 1016.0
+offset_left = 1353.0
+offset_top = 963.0
+offset_right = 1587.0
+offset_bottom = 1035.0
 theme_override_fonts/font = ExtResource("6_mhvfb")
+theme_override_font_sizes/font_size = 48
 text = "Next Wave
 "
 
@@ -213,28 +221,28 @@ offset_left = 387.0
 offset_top = 961.0
 offset_right = 491.0
 offset_bottom = 1034.0
-text = "Gold: "
-horizontal_alignment = 1
+text = "0"
+label_settings = SubResource("LabelSettings_q52ks")
 vertical_alignment = 1
 script = ExtResource("6_hb504")
 
-[node name="Panel" type="Panel" parent="UI/gold_display"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_lock_ = true
-
 [node name="health_display" type="Label" parent="UI"]
-offset_left = 159.0
-offset_top = 39.0
-offset_right = 334.0
-offset_bottom = 84.0
-text = "Health: 100"
+offset_left = 120.0
+offset_top = 965.0
+offset_right = 295.0
+offset_bottom = 1029.0
+text = "100"
 label_settings = SubResource("LabelSettings_pxxsx")
+
+[node name="Money" type="Sprite2D" parent="UI"]
+position = Vector2(354, 997)
+scale = Vector2(0.352941, 0.352941)
+texture = ExtResource("22_8bboj")
+
+[node name="Health" type="Sprite2D" parent="UI"]
+position = Vector2(82, 995)
+scale = Vector2(0.639995, 0.639995)
+texture = ExtResource("23_q52ks")
 
 [node name="EnemyManager" type="Node2D" parent="."]
 position = Vector2(870, 570)
