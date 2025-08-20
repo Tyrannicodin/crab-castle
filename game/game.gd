@@ -5,7 +5,6 @@ signal rooms_loaded(rooms: Array[Room])
 signal balance_changed(value: int)
 signal wave_start
 signal wave_end
-signal game_end
 signal damage_taken(remaining_health: int)
 
 var available_rooms: Array[Room] = []
@@ -23,19 +22,13 @@ var bg_water_levels = [
 @onready var tower = $TowerViewport/Tower
 var money: int = 10:
 	set(value):
-		if value > money:
-			money_earned = value - money
 		balance_changed.emit(value)
 		money = value
-
-var money_earned: int = 0
-var kills: int = 0
-var rooms_built: int = 0
 
 @onready var enemy_manager = $EnemyManager
 var tower_health = 100
 
-var waves = preload("res://game/enemy_waves.gd").waves
+var waves = preload("res://game/enemy_waves.gd").new().waves
 var wave_number = 0
 var in_wave = false
 
@@ -51,12 +44,11 @@ func is_in_wave() -> bool:
 
 func _ready() -> void:
 	balance_changed.emit(money)
+	$BgSkyWater.material.set_shader_parameter("water_height", bg_water_levels[1])
+	$TowerTexture.material.set_shader_parameter("water_height", bg_water_levels[1])
 	load_rooms()
 	$GameStartBits.visible = true
-	on_wave_end()
-	
-	$BgSkyWater.material.set_shader_parameter("water_height", bg_water_levels[water_level])
-	$TowerTexture.material.set_shader_parameter("water_height", bg_water_levels[water_level])
+	on_wave_end(false)
 
 func _process(delta: float) -> void:
 	if in_wave:
@@ -76,7 +68,6 @@ func _process(delta: float) -> void:
 			delta
 		)
 	)
-
 
 func _input(event):
 	viewport.push_input(event)
@@ -98,17 +89,24 @@ func _spawn_enemy():
 	$EnemyManager.spawn_enemy(preload("res://assets/resources/enemies/seagull.tres"))
 
 # Run when a wave ends and at the start
-func on_wave_end():
-	in_wave = false
-	if wave_number == len(waves):
-		game_end.emit()
-		return
-	var damage_only = wave_number < 2
-	$"UpgradeUi".roll_rooms(damage_only)
-	
+func on_wave_end(wait_for_wave=true):	
+	var last_water_level = water_level
 	if wave_number < len(waves):
 		water_level = waves[wave_number].call()["water_level"]
-	
+
+	in_wave = false
+
+	if wait_for_wave:
+		if water_level != last_water_level:
+			await get_tree().create_timer(3).timeout
+		else:
+			await get_tree().create_timer(1).timeout
+
+	var damage_only = wave_number < 2
+	$"UpgradeUi".roll_rooms(damage_only)
+	$"UpgradeUi".show()
+	$"UI/Start Next Wave".show()
+
 	wave_end.emit()
 
 func on_wave_start():
@@ -123,7 +121,7 @@ func on_wave_start():
 	wave_start.emit()
 
 func try_spawn_next_enemy_wave():
-	if $EnemyManager.living_enemy_count() <= floor(current_wave_enemy_count / 2.0) and enemy_waves_spawned > 0 and finished_spawning:
+	if $EnemyManager.living_enemy_count() <= (current_wave_enemy_count / 2) and enemy_waves_spawned > 0 and finished_spawning:
 		enemy_waves_cleared += 1
 	if enemy_waves_cleared < enemy_waves_spawned:
 		return
@@ -183,7 +181,6 @@ func room_placed(room: int) -> void:
 	purchased_rooms.remove_at(room)
 
 func enemy_killed(enemy: Enemy) -> void:
-	kills += 1
 	money += enemy.value
 
 func deal_damage(enemy: EnemyInstance) -> void:
@@ -199,10 +196,7 @@ func deal_damage(enemy: EnemyInstance) -> void:
 	damage_taken.emit(tower_health)
 
 func on_death():
-	game_end.emit()
+	$GameEnd.show()
 
 func _on_start_next_wave_button_down() -> void:
 	on_wave_start()
-
-func on_game_end() -> void:
-	get_tree().call_group("statistic", "update_stat", self)
