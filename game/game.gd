@@ -31,7 +31,7 @@ var money: int = 12:
 @onready var enemy_manager = $EnemyManager
 var tower_health = 100 :
 	set(value):
-		if tower_health < value:
+		if value < tower_health:
 			total_damage_taken += tower_health - value
 		tower_health = value
 
