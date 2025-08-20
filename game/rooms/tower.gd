@@ -91,6 +91,9 @@ func _input(event) -> void:
 	
 	var target_cell = get_cell_source_id(target)
 	
+	if get_cell_source_id(Vector2(target.x, target.y + 1)) == -1:
+		return
+	
 	# Add the new room
 	var overlay = room_overlay.instantiate()
 	game.wave_end.connect(overlay.hide_progress)
