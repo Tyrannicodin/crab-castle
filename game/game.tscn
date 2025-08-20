@@ -186,8 +186,8 @@ scale = Vector2(0.804878, 0.804878)
 texture = ExtResource("21_5e03w")
 
 [node name="Crane" type="Sprite2D" parent="UI/Bench"]
-position = Vector2(-459.697, -2.48483)
-scale = Vector2(0.332589, 0.332589)
+position = Vector2(-459.697, 1.2424)
+scale = Vector2(0.187839, 0.187839)
 texture = ExtResource("17_jucfl")
 
 [node name="Rooms" type="Node2D" parent="UI"]

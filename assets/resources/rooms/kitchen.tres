@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Room" load_steps=4 format=3 uid="uid://cx0vge0jbufxh"]
+[gd_resource type="Resource" script_class="Room" load_steps=4 format=3 uid="uid://b46lmfjjkpdva"]
 
 [ext_resource type="Texture2D" uid="uid://bibpdt6webove" path="res://assets/rooms/kitchen.png" id="1_jd35q"]
 [ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="2_ovj38"]
@@ -18,6 +18,6 @@ visible_arrows = 0
 trigger_script = ExtResource("3_jd35q")
 cooldown_seconds = 3.0
 requires_enemies_to_trigger = false
-weight = 90
+weight = 9000
 cost = 18
 metadata/_custom_type_script = "uid://s5vpeux5sx8g"

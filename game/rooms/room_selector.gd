@@ -9,12 +9,11 @@ func add_room(room: Room) -> void:
 	var but = Sprite2D.new()
 	but.global_scale = Vector2(0.3,0.3);
 	but.texture = room.image
-	but.scale = room.scale / 2.5
 	but.set_script(child_script)
 	bench.push_back(but)
 	self.add_child(but)
-	
-	but.global_position.x = self.global_position.x + (len(bench) - 1) * 40
+
+	but.global_position.x = self.global_position.x
 	but.global_position.y = self.global_position.y
 	but.room_id = len(bench) - 1
 

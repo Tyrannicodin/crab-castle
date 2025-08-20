@@ -126,29 +126,26 @@ func _process(delta: float) -> void:
 			room_overlays[room.position].progress = 0
 
 func fire_projectiles(room: RoomInstance, projectile: PackedScene, number: int, filter = null):
-	var targets = game.find_n_closest_enemies(room, number + room.bonus_projectiles, filter)
-	room.bonus_projectiles = 0
-
-	for target in targets:
-		room_overlays[room.position].time_since_fired = 0
-		var projectileInst = projectile.instantiate()
-		game.add_child(projectileInst)
-		game.fire_projectile_from_room(room, projectileInst, target)
-		await get_tree().create_timer(.1).timeout
+	fire_projectiles_with_target(room, projectile, number, game.fire_projectile_from_room, filter)
 
 func fire_projectiles_above_enemy(room: RoomInstance, projectile: PackedScene, number: int, filter = null):
-	var targets = game.find_n_closest_enemies(room, number + room.bonus_projectiles, filter)
+	fire_projectiles_with_target(room, projectile, number, game.fire_projectile_above_enemy, filter)
 
-	for target in targets:
-		room_overlays[room.position].time_since_fired = 0
-		var projectileInst = projectile.instantiate()
-		projectileInst.damage += room.extra_damage
-		game.add_child(projectileInst)
-		game.fire_projectile_above_enemy(room, projectileInst, target)
-		await get_tree().create_timer(.1).timeout
+func fire_projectiles_with_target(room: RoomInstance, projectile: PackedScene, number: int, target_func: Callable, filter=null):
+	var targets = game.find_n_closest_enemies(room, number + room.bonus_projectiles, filter)
+	var this_volley_extra_damage = room.extra_damage
 	
 	room.bonus_projectiles = 0
 	room.extra_damage = 0
+
+	for target in targets:
+		room_overlays[room.position].time_since_fired = 0
+		var projectileInst = projectile.instantiate()
+		projectileInst.damage += this_volley_extra_damage
+		game.add_child(projectileInst)
+		target_func.call(room, projectileInst, target)
+		await get_tree().create_timer(.1).timeout
+
 
 func get_room_global_position(room: RoomInstance) -> Vector2:
 	return to_global(map_to_local(room.position))
