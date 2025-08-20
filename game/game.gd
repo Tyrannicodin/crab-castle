@@ -44,8 +44,8 @@ func is_in_wave() -> bool:
 
 func _ready() -> void:
 	balance_changed.emit(money)
-	$BgSkyWater.material.set_shader_parameter("water_height", bg_water_levels[1])
-	$TowerTexture.material.set_shader_parameter("water_height", bg_water_levels[1])
+	$BgSkyWater.material.set_shader_parameter("water_height", bg_water_levels[water_level])
+	$TowerTexture.material.set_shader_parameter("water_height", bg_water_levels[water_level])
 	load_rooms()
 	$GameStartBits.visible = true
 	on_wave_end(false)
