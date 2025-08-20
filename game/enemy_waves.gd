@@ -2,6 +2,7 @@ extends Node
 
 static var Seagull = preload("res://assets/resources/enemies/seagull.tres")
 static var Fish = preload("res://assets/resources/enemies/fish.tres")
+static var Shark = preload("res://assets/resources/enemies/shark.tres")
 
 static var waves = [
 	# Wave 1
@@ -31,8 +32,17 @@ static var waves = [
 	func() : return {
 		"water_level": 3,
 		"enemies": [
-			[Fish, Fish, Fish, Fish, Seagull, Seagull],
-			[Fish, Fish, Fish, Fish, Fish, Fish, Seagull, Seagull, Seagull],
+			[Fish, Fish, Seagull, Seagull],
+			[Fish, Fish, Fish, Fish, Fish, Fish, Fish, Seagull, Seagull],
+		]
+	},
+	# Wave 5
+	func() : return {
+		"water_level": 4,
+		"enemies": [
+			[Shark, Seagull, Seagull],
+			[Fish, Fish, Fish, Seagull, Seagull, Seagull, Seagull],
+			[Shark, Shark]
 		]
 	}
 ]
