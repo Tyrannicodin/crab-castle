@@ -5,11 +5,15 @@ signal upgrade_selected(room: Room)
 var available_rooms: Array[Room] = []
 var damage_only: bool = false
 var money: int = 0
+var wave_number = 0
+var scaling: Scaling = load("res://game/scaling.gd").new()
 
-func roll_rooms(set_damage_only = false) -> void:
-	damage_only = set_damage_only
+func roll_rooms(wave_number) -> void:
+	damage_only = wave_number < 2
 	show()
 	reroll_rooms()
+
+	self.wave_number = wave_number
 
 func reroll_rooms() -> void:
 	var rng = RandomNumberGenerator.new()
@@ -25,8 +29,10 @@ func reroll_rooms() -> void:
 	var selected
 	for child in $Margin/VBox/Upgrades.get_children():
 		selected = rng.rand_weighted(weights)
-		child.set_room(filtered_rooms[selected])
-		child.disabled = money < filtered_rooms[selected].cost
+		var room = filtered_rooms[selected].duplicate()
+		room.cost = scaling.scale_shop(wave_number, room.cost)
+		child.set_room(room)
+		child.disabled = money < room.cost
 		weights.remove_at(selected)
 		filtered_rooms.remove_at(selected)
 

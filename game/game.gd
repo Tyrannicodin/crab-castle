@@ -102,8 +102,7 @@ func on_wave_end(wait_for_wave=true):
 		else:
 			await get_tree().create_timer(.5).timeout
 
-	var damage_only = wave_number < 2
-	$"UpgradeUi".roll_rooms(damage_only)
+	$"UpgradeUi".roll_rooms(wave_number)
 	$"UpgradeUi".show()
 	$"UI/Start Next Wave".show()
 
