@@ -74,6 +74,7 @@ func damage(value: int):
 	get_parent().add_child(num)
 	num.set_damage_number(value)
 	num.global_position = global_position
+	num.global_position.y -= 40
 	time_since_hit = 0
 
 func stun_lock(time: float):
