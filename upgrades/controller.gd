@@ -16,6 +16,7 @@ func roll_rooms(wave_number) -> void:
 	number_of_rerolls = 0
 	show()
 	reroll_rooms()
+	$"../UI/Start Next Wave".disabled = true
 
 	self.wave_number = wave_number
 
@@ -49,7 +50,7 @@ func reroll_rooms() -> void:
 func on_upgrade_selected(room: Room) -> void:
 	# Maybe ID could be replaced with a resource
 	upgrade_selected.emit(room)
-	hide()
+	on_close()
 
 func on_rooms_loaded(rooms: Array[Room]):
 	available_rooms = rooms
@@ -58,4 +59,8 @@ func on_balance_change(value: float) -> void:
 	money = value
 
 func skip() -> void:
+	on_close()
+
+func on_close():
+	$"../UI/Start Next Wave".disabled = false
 	hide()

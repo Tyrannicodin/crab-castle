@@ -104,7 +104,6 @@ func on_wave_end(wait_for_wave=true):
 
 	$"UpgradeUi".roll_rooms(wave_number)
 	$"UpgradeUi".show()
-	$"UI/Start Next Wave".show()
 
 	wave_end.emit()
 
@@ -114,7 +113,7 @@ func on_wave_start():
 	enemy_waves_spawned = 0
 	wave_number += 1
 	current_enemy_wave = waves[wave_number - 1].call()
-	$"UI/Start Next Wave".hide()
+	$"UI/Start Next Wave".disabled = true
 	water_level = current_enemy_wave["water_level"]
 	
 	wave_start.emit()
