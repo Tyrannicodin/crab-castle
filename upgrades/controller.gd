@@ -1,11 +1,11 @@
 extends CanvasLayer
 
 signal upgrade_selected(room: Room)
-signal balance_changed(new_balance: int)
+signal balance_changed(new_balance: float)
 
 var available_rooms: Array[Room] = []
 var damage_only: bool = false
-var money: int = 0
+var money: float = 0
 var wave_number = 0
 var scaling: Scaling = load("res://game/scaling.gd").new()
 var number_of_rerolls = 0
@@ -54,7 +54,7 @@ func on_upgrade_selected(room: Room) -> void:
 func on_rooms_loaded(rooms: Array[Room]):
 	available_rooms = rooms
 
-func on_balance_change(value: int) -> void:
+func on_balance_change(value: float) -> void:
 	money = value
 
 func skip() -> void:

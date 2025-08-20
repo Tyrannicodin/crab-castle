@@ -20,7 +20,7 @@ var bg_water_levels = [
 
 @onready var viewport = $TowerViewport
 @onready var tower = $TowerViewport/Tower
-var money: int = 12:
+var money: float = 12.:
 	set(value):
 		balance_changed.emit(value)
 		money = value
@@ -29,6 +29,7 @@ var money: int = 12:
 var tower_health = 100
 
 var waves = preload("res://game/enemy_waves.gd").new().waves
+var scaling = preload("res://game/scaling.gd").new()
 var wave_number = 0
 var in_wave = false
 
@@ -179,7 +180,7 @@ func room_placed(room: int) -> void:
 	purchased_rooms.remove_at(room)
 
 func enemy_killed(enemy: Enemy) -> void:
-	money += enemy.value
+	money += scaling.scale_gold_gained(enemy.value, wave_number)
 
 func deal_damage(enemy: EnemyInstance) -> void:
 	if enemy.attack_success:
