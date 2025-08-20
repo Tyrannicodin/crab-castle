@@ -127,7 +127,6 @@ script = ExtResource("1_l8g03")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ee6o4")
 autoplay = true
-bus = &"Music"
 parameters/looping = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -282,8 +281,8 @@ position = Vector2(1124, -329)
 [node name="SeaOverlay" parent="." instance=ExtResource("23_5e03w")]
 visible = false
 
-[connection signal="balance_changed" from="." to="UpgradeUi" method="on_balance_change"]
 [connection signal="balance_changed" from="." to="UI/gold_display" method="set_gold"]
+[connection signal="balance_changed" from="." to="UpgradeUi" method="on_balance_change"]
 [connection signal="game_end" from="." to="." method="_on_game_end"]
 [connection signal="game_end" from="." to="GameEnd" method="show"]
 [connection signal="rooms_loaded" from="." to="UpgradeUi" method="on_rooms_loaded"]

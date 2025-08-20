@@ -24,7 +24,7 @@ func _ready() -> void:
 func _process(delta) -> void:
 	time_since_last_text += delta
 	for child in get_children():
-		if child is AudioStreamPlayer: continue
+		if child is AudioStreamPlayer2D: continue
 		child.hide()
 
 	$Pos.visible = true
@@ -88,5 +88,4 @@ func summon_text(text: String):
 
 func play_sound(sound: String):
 	if sound == "buff":
-		print("playing sound")
 		$Buff.play()
