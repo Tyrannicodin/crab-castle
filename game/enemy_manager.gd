@@ -44,7 +44,7 @@ func find_closest_enemies(to: Vector2, filter = null) -> Array[EnemyInstance]:
 		if len(alive_enemies) == 0:
 			return []
 	var in_range_enemies = alive_enemies.filter(func(e: EnemyInstance):
-		return abs((e.global_position - to).angle()) < PI / 8
+		return (e.global_position - to).length() < 2000
 	)
 	
 	in_range_enemies.sort_custom(func(a: EnemyInstance, b: EnemyInstance):

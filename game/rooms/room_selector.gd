@@ -16,7 +16,6 @@ func add_room(room: Room) -> void:
 	but.global_position.x = self.global_position.x
 	but.global_position.y = self.global_position.y
 	but.room_id = len(bench) - 1
-	but.z_index = 1000000
 
 func remove_room(index: int) -> void:
 	remove_child(bench[index])
