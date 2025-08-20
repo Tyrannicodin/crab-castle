@@ -114,19 +114,18 @@ func redraw_castle():
 	set_cell(Vector2(0, 6), BOTTOM, Vector2.ZERO)
 	set_cell(Vector2(1, 6), BOTTOM, Vector2.ZERO)
 
-	var heights = [0, 0]
+	var heights = [6, 6]
 
 	for target in room_overlays.keys():
 		set_cell(target, BG, Vector2.ZERO)
-		
-		if heights[target.x] < target.y:
+		if heights[target.x] > target.y:
 			heights[target.x] = target.y
 
 	var i = 0
 	for h in heights:
-		if h != 0 and i == 0:
+		if h != 6 and i == 0:
 			set_cell(Vector2(i, h - 1), PALISADES, Vector2.ZERO)
-		if h != 0 and i == 1:
+		if h != 6 and i == 1:
 			set_cell(Vector2(i, h - 1), PALISADES_MIRROR, Vector2.ZERO)
 		i+=1
 
