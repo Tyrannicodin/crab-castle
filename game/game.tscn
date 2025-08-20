@@ -126,6 +126,7 @@ script = ExtResource("1_l8g03")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ee6o4")
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="UpgradeUi" parent="." instance=ExtResource("3_dakft")]
