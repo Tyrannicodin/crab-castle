@@ -8,12 +8,12 @@ var money: int = 0
 var wave_number = 0
 var scaling: Scaling = load("res://game/scaling.gd").new()
 
-func roll_rooms(wave_number) -> void:
-	damage_only = wave_number < 1
+func roll_rooms(new_wave_number) -> void:
+	damage_only = new_wave_number < 1
 	show()
 	reroll_rooms()
 
-	self.wave_number = wave_number
+	wave_number = new_wave_number
 
 func reroll_rooms() -> void:
 	var rng = RandomNumberGenerator.new()
@@ -37,7 +37,6 @@ func reroll_rooms() -> void:
 		filtered_rooms.remove_at(selected)
 
 func on_upgrade_selected(room: Room) -> void:
-	# Maybe ID could be replaced with a resource
 	upgrade_selected.emit(room)
 	hide()
 

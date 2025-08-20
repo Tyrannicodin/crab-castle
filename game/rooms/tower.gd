@@ -129,6 +129,8 @@ func fire_projectiles(room: RoomInstance, projectile: PackedScene, number: int, 
 	room.bonus_projectiles = 0
 
 	for target in targets:
+		if target.is_queued_for_deletion():
+			continue
 		room_overlays[room.position].time_since_fired = 0
 		var projectileInst = projectile.instantiate()
 		game.add_child(projectileInst)

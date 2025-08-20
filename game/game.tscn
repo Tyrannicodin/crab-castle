@@ -288,6 +288,8 @@ visible = false
 
 [connection signal="balance_changed" from="." to="UpgradeUi" method="on_balance_change"]
 [connection signal="balance_changed" from="." to="UI/gold_display" method="set_gold"]
+[connection signal="game_end" from="." to="." method="on_game_end"]
+[connection signal="game_end" from="." to="GameEnd" method="show"]
 [connection signal="rooms_loaded" from="." to="UpgradeUi" method="on_rooms_loaded"]
 [connection signal="wave_end" from="." to="UI/Start Next Wave" method="show"]
 [connection signal="upgrade_selected" from="UpgradeUi" to="." method="room_selected"]
