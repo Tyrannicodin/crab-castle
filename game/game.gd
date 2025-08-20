@@ -84,10 +84,6 @@ func load_rooms():
 			available_rooms.append(resource) 
 	rooms_loaded.emit(available_rooms)
 
-func _spawn_enemy():
-	# The level of the tower the enemy spawns on
-	$EnemyManager.spawn_enemy(preload("res://assets/resources/enemies/seagull.tres"))
-
 # Run when a wave ends and at the start
 func on_wave_end(wait_for_wave=true):	
 	var last_water_level = water_level
@@ -132,7 +128,7 @@ func try_spawn_next_enemy_wave():
 	current_wave_enemy_count = len(current_enemy_wave["enemies"][enemy_waves_cleared])
 	finished_spawning = false
 	for enemy in current_enemy_wave["enemies"][enemy_waves_cleared]:
-		$EnemyManager.spawn_enemy(enemy)
+		$EnemyManager.spawn_enemy(wave_number, enemy)
 		await get_tree().create_timer(.5).timeout
 	finished_spawning = true
 

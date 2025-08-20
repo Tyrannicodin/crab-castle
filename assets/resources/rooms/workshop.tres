@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="Room" load_steps=4 format=3 uid="uid://cljat78pa3o0j"]
+[gd_resource type="Resource" script_class="Room" load_steps=4 format=3 uid="uid://m5e7jlra68by"]
 
 [ext_resource type="Texture2D" uid="uid://cj4rj2bn3ii4i" path="res://assets/rooms/workshop.png" id="1_sctq5"]
 [ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="2_ihymt"]
-[ext_resource type="Script" uid="uid://bobdtfbx081ym" path="res://assets/resources/rooms/workshop.gd" id="3_sctq5"]
+[ext_resource type="Script" path="res://assets/resources/rooms/workshop.gd" id="3_sctq5"]
 
 [resource]
 script = ExtResource("2_ihymt")
@@ -17,7 +17,7 @@ visible_progress_bar = true
 visible_arrows = 0
 trigger_script = ExtResource("3_sctq5")
 cooldown_seconds = 5.0
-requires_enemies_to_trigger = true
+requires_enemies_to_trigger = false
 weight = 100
 cost = 17
 metadata/_custom_type_script = "uid://s5vpeux5sx8g"
