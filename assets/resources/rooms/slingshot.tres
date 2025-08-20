@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="1_5o570"]
 [ext_resource type="Texture2D" uid="uid://c4ar48ujw5eai" path="res://assets/rooms/slingshot.png" id="1_pv3f7"]
-[ext_resource type="Script" path="res://assets/resources/rooms/slingshot.gd" id="3_hfnin"]
+[ext_resource type="Script" uid="uid://cb2g4slulqywi" path="res://assets/resources/rooms/slingshot.gd" id="3_hfnin"]
 
 [resource]
 script = ExtResource("1_5o570")
 display_name = "Slingshot"
-description = "Deals 4 damage 3 times."
+description = "Deals 1 damage 3 times."
 image = ExtResource("1_pv3f7")
 scale = Vector2(0.55, 0.55)
 translation = Vector2(0, 0)

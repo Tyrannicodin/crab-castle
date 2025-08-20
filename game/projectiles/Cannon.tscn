@@ -7,11 +7,11 @@
 radius = 34.0147
 
 [node name="Projectile" instance=ExtResource("1_6st6q")]
-damage = 20
+damage = 12
 speed = 1500.0
 pierce = 10
 stun_lock = 0.5
-knockback = 8
+knockback = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 position = Vector2(0, -1.90735e-06)

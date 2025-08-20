@@ -7,9 +7,9 @@
 script = ExtResource("1_c1oe0")
 display_name = "Shark"
 sprite = ExtResource("2_c1oe0")
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.5, 0.5)
 underwater = true
-max_health = 200
+max_health = 300
 speed = 65
 value = 3
 knockback_resist = 0.6
