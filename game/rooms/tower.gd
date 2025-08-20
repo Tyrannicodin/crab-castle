@@ -37,7 +37,12 @@ class RoomInstance:
 				tower.room_overlays[position].time_since_fired = 0
 		else:
 			print("Room type: '" + type.display_name + "' has no triigger action")
-	
+
+	func can_fire(game: Game, tower: Tower):
+		if type.trigger_script and "can_fire" in type.trigger_script:
+			return type.trigger_script.can_fire(game, tower, self)
+		else:
+			return true
 
 var rooms: Array[RoomInstance] = []
 
@@ -102,7 +107,10 @@ func _process(delta: float) -> void:
 		room.cooldown_remaining -= delta
 
 		if room.cooldown_remaining < 0:
-			if game.find_closest_enemy(room) or !room.type.requires_enemies_to_trigger:
+			var can_fire = game.find_closest_enemy(room) or !room.type.requires_enemies_to_trigger
+			if room.can_fire != null and can_fire:
+				can_fire = room.can_fire(game, self)
+			if can_fire:
 				room.cooldown_remaining = room.type.cooldown_seconds
 				room.trigger(self)
 
@@ -111,8 +119,8 @@ func _process(delta: float) -> void:
 		else:
 			room_overlays[room.position].progress = 0
 
-func fire_projectiles(room: RoomInstance, projectile: PackedScene, number: int):
-	var targets = game.find_n_closest_enemies(room, number + room.bonus_projectiles)
+func fire_projectiles(room: RoomInstance, projectile: PackedScene, number: int, filter = null):
+	var targets = game.find_n_closest_enemies(room, number + room.bonus_projectiles, filter)
 	room.bonus_projectiles = 0
 
 	for target in targets:
@@ -122,8 +130,8 @@ func fire_projectiles(room: RoomInstance, projectile: PackedScene, number: int):
 		game.fire_projectile_from_room(room, projectileInst, target)
 		await get_tree().create_timer(.1).timeout
 
-func fire_projectiles_above_enemy(room: RoomInstance, projectile: PackedScene, number: int):
-	var targets = game.find_n_closest_enemies(room, number + room.bonus_projectiles)
+func fire_projectiles_above_enemy(room: RoomInstance, projectile: PackedScene, number: int, filter = null):
+	var targets = game.find_n_closest_enemies(room, number + room.bonus_projectiles, filter)
 	room.bonus_projectiles = 0
 
 	for target in targets:
