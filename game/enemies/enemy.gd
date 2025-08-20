@@ -17,6 +17,7 @@ func _ready():
 	$Collider.shape.size = enemy.sprite.get_size()
 
 var downward_accel: float = 0
+var rotational_vel: float = 0
 var time_since_hit: float = 10
 var backwards_velocity: float = 0
 var stun_lock_time_remaining: float = 0
@@ -28,6 +29,9 @@ func _process(delta):
 	if not is_alive():
 		global_position.y += downward_accel * delta
 		downward_accel += 1000 * delta
+		
+		rotation += rotational_vel
+		rotational_vel += delta
 	
 	time_since_hit += delta
 	
@@ -35,9 +39,9 @@ func _process(delta):
 		lerp(1., 0., ease(time_since_hit * 5, 20))
 	)
 	
-	if attack_success:
-		self.scale.x = lerp(self.scale.x, 0., .5)
-		self.scale.y = lerp(self.scale.y, 0., .5)
+	if attack_success or not is_alive():
+		self.scale.x = lerp(self.scale.x, 0., 3 * delta)
+		self.scale.y = lerp(self.scale.y, 0., 3 * delta)
 	
 	if self.scale.x < .05:
 		self.queue_free()
@@ -77,7 +81,7 @@ func knockback(power: int):
 	backwards_velocity = power
 
 func death_animation():
-	scale.y = -1 * enemy.scale.y
+	pass
 
 func attack_successful():
 	attack_success = true

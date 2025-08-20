@@ -26,5 +26,13 @@ static var waves = [
 			[Fish],
 			range(4).map(func(_i): return Seagull),
 		]
+	},
+	# Wave 4
+	func() : return {
+		"water_level": 3,
+		"enemies": [
+			[Fish, Fish, Fish, Fish, Seagull, Seagull],
+			[Fish, Fish, Fish, Fish, Fish, Fish, Seagull, Seagull, Seagull],
+		]
 	}
 ]
