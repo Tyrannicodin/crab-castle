@@ -10,6 +10,8 @@ func set_room(new_room: Room) -> void:
 	$Margin/VBox/Image.texture = new_room.image
 	$Margin/VBox/Description.text = new_room.description
 	$Margin/VBox/Cooldown.text = "Cooldown: " + str(new_room.cooldown_seconds) + "s"
+	# TODO: Set price
+	$Margin/VBox/HBoxContainer/Price.text = str(new_room.cost)
 
 func _on_pressed() -> void:
 	room_selected.emit(room)

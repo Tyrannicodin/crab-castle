@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://ujxkhojgkxk5" path="res://assets/rooms/cannon.png" id="1_2vvaa"]
 [ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="1_bpa10"]
-[ext_resource type="Script" uid="uid://n7b0uytv6jo" path="res://assets/resources/rooms/cannon.gd" id="3_tnirv"]
+[ext_resource type="Script" path="res://assets/resources/rooms/cannon.gd" id="3_tnirv"]
 
 [resource]
 script = ExtResource("1_bpa10")
 display_name = "Crab cannon"
-description = "Deals 20 damage."
+description = ""
 image = ExtResource("1_2vvaa")
 scale = Vector2(-0.35, 0.35)
 translation = Vector2(0, 0)
@@ -19,5 +19,5 @@ trigger_script = ExtResource("3_tnirv")
 cooldown_seconds = 4.5
 requires_enemies_to_trigger = true
 weight = 100
-cost = 5
+cost = 12
 metadata/_custom_type_script = "uid://s5vpeux5sx8g"

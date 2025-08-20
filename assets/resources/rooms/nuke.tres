@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_xgsxh")
 display_name = "Nuclear silo"
-description = "Destroys all enemies in a large radius."
+description = ""
 image = ExtResource("1_e3its")
 scale = Vector2(0.75, 0.75)
 translation = Vector2(0, 0)
@@ -19,5 +19,5 @@ trigger_script = ExtResource("3_ns5gb")
 cooldown_seconds = 10.0
 requires_enemies_to_trigger = true
 weight = 10
-cost = 5
+cost = 24
 metadata/_custom_type_script = "uid://s5vpeux5sx8g"
