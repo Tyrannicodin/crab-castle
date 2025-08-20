@@ -12,5 +12,5 @@ underwater = true
 max_health = 35
 speed = 200
 value = 3
-knockback_resist = -1.0
+knockback_resist = 0.0
 metadata/_custom_type_script = "uid://dx0myaehl7et"
