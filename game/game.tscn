@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="1_u5opy"]
-[ext_resource type="Script" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
+[ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
 [ext_resource type="Script" uid="uid://dx5wdsegef6t2" path="res://game/end_wave.gd" id="2_dxrkv"]
 [ext_resource type="AudioStream" uid="uid://dqef6khyml52g" path="res://assets/music/crabcastle.mp3" id="2_ee6o4"]
 [ext_resource type="PackedScene" uid="uid://68en2fypp2j5" path="res://upgrades/UpgradeUI.tscn" id="3_dakft"]
@@ -353,14 +353,10 @@ shape = SubResource("WorldBoundaryShape2D_mhvfb")
 position = Vector2(960, 0)
 shape = SubResource("WorldBoundaryShape2D_5e03w")
 
-[connection signal="balance_changed" from="." to="UI/gold_display" method="set_gold"]
 [connection signal="balance_changed" from="." to="UpgradeUi" method="on_balance_change"]
+[connection signal="balance_changed" from="." to="UI/gold_display" method="set_gold"]
 [connection signal="rooms_loaded" from="." to="UpgradeUi" method="on_rooms_loaded"]
 [connection signal="wave_end" from="." to="UI/Start Next Wave" method="show"]
-[connection signal="room_selected" from="UI/Rooms" to="TowerViewport/Tower" method="set_current_room"]
-[connection signal="pressed" from="UI/Button" to="UI/Button" method="on_pressed"]
-[connection signal="pressed" from="UI/Button2" to="UI/Button2" method="on_pressed"]
-[connection signal="button_down" from="UI/Start Next Wave" to="." method="_on_start_next_wave_button_down"]
 [connection signal="upgrade_selected" from="UpgradeUi" to="." method="room_selected"]
 [connection signal="upgrade_selected" from="UpgradeUi" to="UI/Rooms" method="add_room"]
 [connection signal="room_placed" from="TowerViewport/Tower" to="." method="room_placed"]
