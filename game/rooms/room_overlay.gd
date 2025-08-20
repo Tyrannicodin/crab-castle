@@ -24,6 +24,7 @@ func _process(delta) -> void:
 
 	$Pos.visible = true
 	$Pos/Sprite.visible = true
+	update_sprite()
 
 	if not room:
 		return
@@ -53,8 +54,9 @@ func _process(delta) -> void:
 		$Progress.value = progress
 
 func update_sprite() -> void:
-	$Pos/Sprite.texture = room.image
-	$Pos/Sprite.scale = room.scale
+	if room:
+		$Pos/Sprite.texture = room.image
+		$Pos/Sprite.scale = room.scale
 
 func show_progress():
 	hide_progress_bar = false
