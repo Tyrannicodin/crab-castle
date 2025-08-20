@@ -170,6 +170,8 @@ func fire_projectiles_with_target(room: RoomInstance, projectile: PackedScene, n
 	room.extra_damage = 0
 
 	for target in targets:
+		if target == null:
+			continue
 		room_overlays[room.position].time_since_fired = 0
 		var projectileInst = projectile.instantiate()
 		projectileInst.damage += this_volley_extra_damage
