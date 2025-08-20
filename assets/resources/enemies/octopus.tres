@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://d4lvpy1mtc42f"]
+
+[ext_resource type="Script" uid="uid://dx0myaehl7et" path="res://assets/resources/definitions/enemy.gd" id="1_bu0l6"]
+[ext_resource type="Texture2D" uid="uid://b60fbcdldq6b8" path="res://assets/enemies/octopus.png" id="2_bu0l6"]
+
+[resource]
+script = ExtResource("1_bu0l6")
+display_name = "Shark"
+sprite = ExtResource("2_bu0l6")
+scale = Vector2(0.25, 0.25)
+underwater = true
+max_health = 40
+speed = 80
+value = 3
+knockback_resist = 0.0
+metadata/_custom_type_script = "uid://dx0myaehl7et"
