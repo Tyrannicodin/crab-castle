@@ -9,7 +9,7 @@ var wave_number = 0
 var scaling: Scaling = load("res://game/scaling.gd").new()
 
 func roll_rooms(wave_number) -> void:
-	damage_only = wave_number < 2
+	damage_only = wave_number < 1
 	show()
 	reroll_rooms()
 
