@@ -1,5 +1,5 @@
 extends Node2D
-class_name DamageNumber
+class_name FlavorText
 
 var opacity = 1
 var initial_up_velocity = -20

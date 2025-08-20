@@ -5,7 +5,7 @@ signal death(type: Enemy)
 
 var enemy: Enemy
 
-var damage_number = preload("res://game/FlavorText.tscn")
+var flavor_text = preload("res://game/FlavorText.tscn")
 var attack_success = false
 var underwater = false
 const ACCELERATION = 30
@@ -70,11 +70,11 @@ func damage(value: int):
 		death.emit(enemy)
 		death_animation()
 	
-	var num: DamageNumber = damage_number.instantiate()
-	get_parent().add_child(num)
-	num.set_damage_number(value)
-	num.global_position = global_position
-	num.global_position.y -= 40
+	var text: FlavorText = flavor_text.instantiate()
+	get_parent().add_child(text)
+	text.set_damage_number(value)
+	text.global_position = global_position
+	text.global_position.y -= 40
 	time_since_hit = 0
 	
 	$Hit.pitch_scale = randf_range(1, 1.4)
