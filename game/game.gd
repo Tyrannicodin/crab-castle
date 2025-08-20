@@ -26,7 +26,7 @@ var money: float = 12.:
 		money = value
 
 @onready var enemy_manager = $EnemyManager
-var tower_health = 100
+var tower_health = 150
 
 var waves = preload("res://game/enemy_waves.gd").new().waves
 var scaling = preload("res://game/scaling.gd").new()
