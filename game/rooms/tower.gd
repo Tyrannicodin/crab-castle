@@ -94,8 +94,6 @@ func _input(event) -> void:
 			redraw_castle()
 		return
 	
-	var target_cell = get_cell_source_id(target)
-	
 	if get_cell_source_id(Vector2(target.x, target.y + 1)) == -1:
 		return
 	if get_cell_source_id(Vector2(target.x, target.y)) == BG:
@@ -103,12 +101,12 @@ func _input(event) -> void:
 		return
 
 	# Add the new room
-	var overlay = room_overlay.instantiate()
-	game.wave_end.connect(overlay.hide_progress)
-	game.wave_start.connect(overlay.show_progress)
-	room_overlays[target] = overlay
-	overlay.position = map_to_local(target) - Vector2(232, 171)
-	add_child(overlay)
+	var new_overlay = room_overlay.instantiate()
+	game.wave_end.connect(new_overlay.hide_progress)
+	game.wave_start.connect(new_overlay.show_progress)
+	room_overlays[target] = new_overlay
+	new_overlay.position = map_to_local(target) - Vector2(232, 171)
+	add_child(new_overlay)
 	redraw_castle()
 
 	room_overlays[target].room = game.purchased_rooms[current_room]

@@ -106,6 +106,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_y36n6")
 
 [node name="Menu" type="VBoxContainer" parent="GameStartOverlay/SeaGradient"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
