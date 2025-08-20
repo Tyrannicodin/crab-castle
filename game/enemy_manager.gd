@@ -19,6 +19,7 @@ func spawn_enemy(enemy: Enemy) -> void:
 
 	get_child(layer).add_child(new_enemy)
 	new_enemy.position = Vector2.ZERO
+	new_enemy.underwater = enemy.underwater
 
 func get_all_enemies() -> Array[EnemyInstance]:
 	var all_children: Array[EnemyInstance] = []

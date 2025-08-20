@@ -7,6 +7,7 @@ var enemy: Enemy
 
 var damage_number = preload("res://game/DamageNumber.tscn")
 var attack_success = false
+var underwater = false
 
 @onready var health: int = enemy.max_health
 

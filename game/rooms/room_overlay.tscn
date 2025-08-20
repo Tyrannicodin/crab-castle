@@ -33,6 +33,12 @@ position = Vector2(232, 30)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_vvy4f")
 
+[node name="Pos" type="Node2D" parent="."]
+position = Vector2(232, 171)
+
+[node name="Sprite" type="Sprite2D" parent="Pos"]
+scale = Vector2(0.3, 0.3)
+
 [node name="Progress" type="ProgressBar" parent="."]
 visible = false
 offset_left = 82.0
@@ -41,8 +47,3 @@ offset_right = 382.0
 offset_bottom = 277.0
 max_value = 1.0
 show_percentage = false
-
-[node name="Sprite" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(232, 171)
-scale = Vector2(0.3, 0.3)

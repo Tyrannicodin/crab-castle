@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bry2s05iaolij"]
+[gd_scene load_steps=6 format=3 uid="uid://bry2s05iaolij"]
 
 [ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/room_details/empty.png" id="1_fuwc3"]
 [ext_resource type="Script" uid="uid://bmuobh4tmvs1m" path="res://tools/overlay_display.gd" id="2_pqqnw"]
+[ext_resource type="Resource" uid="uid://oswxf34lko23" path="res://assets/resources/rooms/cannon.tres" id="3_c4clm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqqnw"]
 texture = ExtResource("1_fuwc3")
@@ -20,3 +21,4 @@ scale = Vector2(0.35, 0.35)
 tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_hu3yy")
 script = ExtResource("2_pqqnw")
+room = ExtResource("3_c4clm")

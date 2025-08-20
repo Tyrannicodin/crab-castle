@@ -8,7 +8,8 @@
 script = ExtResource("1_bpa10")
 display_name = "Crab cannon"
 image = ExtResource("1_2vvaa")
-scale = Vector2(0.25, 0.25)
+scale = Vector2(-0.35, 0.35)
+translation = Vector2(0, 0)
 rotation = 0.0
 animate_on_trigger = false
 visible_progress_bar = true
