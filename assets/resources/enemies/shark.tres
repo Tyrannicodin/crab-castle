@@ -1,16 +1,16 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://bjy24qf3imb2g"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://cc72i3hm01vwj"]
 
 [ext_resource type="Script" uid="uid://dx0myaehl7et" path="res://assets/resources/definitions/enemy.gd" id="1_c1oe0"]
-[ext_resource type="Texture2D" uid="uid://cy14ssft34m42" path="res://assets/enemies/shark1.png" id="2_c1oe0"]
+[ext_resource type="Texture2D" uid="uid://dom8ht2quxm3p" path="res://assets/enemies/shark1.png" id="2_c1oe0"]
 
 [resource]
 script = ExtResource("1_c1oe0")
 display_name = "Shark"
 sprite = ExtResource("2_c1oe0")
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.4, 0.4)
 underwater = true
 max_health = 200
 speed = 50
-acceleration = 1
 value = 3
+knockback_resist = 0.6
 metadata/_custom_type_script = "uid://dx0myaehl7et"
