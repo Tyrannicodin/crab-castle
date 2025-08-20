@@ -12,11 +12,18 @@ func add_room(room: Room) -> void:
 	but.set_script(child_script)
 	bench.push_back(but)
 	self.add_child(but)
+	
+	for i in range(len(bench)):
+		position_on_bench(bench[i], i)
 
-	but.global_position.x = self.global_position.x
-	but.global_position.y = self.global_position.y
-	but.room_id = len(bench) - 1
+func position_on_bench(but: Sprite2D, i: int):
+	but.global_position.x = self.global_position.x + (i * 80) + 32
+	but.global_position.y = self.global_position.y + 32
+	but.room_id = i
 
 func remove_room(index: int) -> void:
 	remove_child(bench[index])
 	bench.pop_at(index)
+	
+	for i in range(len(bench)):
+		position_on_bench(bench[i], i)
