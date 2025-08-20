@@ -44,12 +44,11 @@ func is_in_wave() -> bool:
 
 func _ready() -> void:
 	balance_changed.emit(money)
-	load_rooms()
-	$GameStartBits.visible = true
-	on_wave_end()
-	
 	$BgSkyWater.material.set_shader_parameter("water_height", bg_water_levels[water_level])
 	$TowerTexture.material.set_shader_parameter("water_height", bg_water_levels[water_level])
+	load_rooms()
+	$GameStartBits.visible = true
+	on_wave_end(false)
 
 func _process(delta: float) -> void:
 	if in_wave:
@@ -69,7 +68,6 @@ func _process(delta: float) -> void:
 			delta
 		)
 	)
-
 
 func _input(event):
 	viewport.push_input(event)
@@ -91,16 +89,24 @@ func _spawn_enemy():
 	$EnemyManager.spawn_enemy(preload("res://assets/resources/enemies/seagull.tres"))
 
 # Run when a wave ends and at the start
-func on_wave_end():
+func on_wave_end(wait_for_wave=true):	
+	var last_water_level = water_level
+	if wave_number < len(waves):
+		water_level = waves[wave_number].call()["water_level"]
+
 	in_wave = false
+
+	if wait_for_wave:
+		if water_level != last_water_level:
+			await get_tree().create_timer(3).timeout
+		else:
+			await get_tree().create_timer(1).timeout
+
 	var damage_only = wave_number < 2
 	$"UpgradeUi".roll_rooms(damage_only)
 	$"UpgradeUi".show()
 	$"UI/Start Next Wave".show()
-	
-	if wave_number < len(waves):
-		water_level = waves[wave_number].call()["water_level"]
-	
+
 	wave_end.emit()
 
 func on_wave_start():

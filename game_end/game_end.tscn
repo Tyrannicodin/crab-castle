@@ -1,8 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://jbioikw54jg4"]
+[gd_scene load_steps=13 format=3 uid="uid://jbioikw54jg4"]
 
 [ext_resource type="Script" uid="uid://bsdloip56540v" path="res://game_end/main_menu.gd" id="1_nbbxe"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="1_wn2jo"]
 [ext_resource type="Texture2D" uid="uid://g885r3geq3xg" path="res://upgrades/white.png" id="2_mhvgj"]
+[ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="3_5ht27"]
+[ext_resource type="Script" uid="uid://bn2x8uuhk5u8k" path="res://game_end/outcome.gd" id="4_g3c4v"]
+[ext_resource type="FontVariation" uid="uid://xvvik2j6lvhf" path="res://assets/fonts/nunito.tres" id="4_wrq5b"]
+[ext_resource type="PackedScene" uid="uid://dt1xpla3sg1p6" path="res://game_end/statistic.tscn" id="5_wrq5b"]
+[ext_resource type="Script" uid="uid://cnh4fjaquu1lo" path="res://game_end/wave_count.gd" id="6_tmv5n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5ht27"]
 shader = ExtResource("1_wn2jo")
@@ -18,7 +23,12 @@ corner_radius_bottom_left = 7
 shadow_size = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_ckj2n"]
-font_size = 33
+font = ExtResource("3_5ht27")
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_8dehv"]
+font = ExtResource("4_wrq5b")
+font_size = 25
 
 [node name="GameEnd" type="CanvasLayer"]
 
@@ -36,13 +46,13 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -494.0
+offset_left = -866.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 250
+theme_override_constants/margin_bottom = 100
 
 [node name="Panel" type="Panel" parent="MarginContainer"]
 layout_mode = 2
@@ -58,59 +68,44 @@ theme_override_constants/margin_bottom = 15
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer" groups=["statistic"]]
 layout_mode = 2
-text = "GAME OVER"
+text = "YOU WIN"
 label_settings = SubResource("LabelSettings_ckj2n")
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("4_g3c4v")
 
-[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer" groups=["statistic"]]
 layout_mode = 2
-text = "You made it to wave 5. Not bad!"
+label_settings = SubResource("LabelSettings_8dehv")
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("6_tmv5n")
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-columns = 4
+theme_override_constants/h_separation = 20
+columns = 2
 
-[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Statistic" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
 layout_mode = 2
-text = "Gold spent"
+stat_name = "Gold earned: "
+property = &"money_earned"
 
-[node name="SpinBox" type="SpinBox" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Statistic2" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
 layout_mode = 2
-min_value = 37.0
-value = 37.0
-alignment = 1
+stat_name = "Enemies killed: "
+property = &"kills"
 
-[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Statistic3" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
 layout_mode = 2
-text = "Rooms built"
+stat_name = "Rooms built: "
+property = &"rooms_built"
 
-[node name="SpinBox2" type="SpinBox" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Statistic4" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
 layout_mode = 2
-value = 9.0
-alignment = 1
-
-[node name="Label3" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-text = "Seagulls sunk"
-
-[node name="SpinBox3" type="SpinBox" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-value = 22.0
-alignment = 1
-
-[node name="Label4" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-text = "Octopuses inked"
-
-[node name="SpinBox4" type="SpinBox" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-value = 11.0
-alignment = 1
+stat_name = "Rooms destroyed: "
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

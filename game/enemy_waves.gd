@@ -1,9 +1,9 @@
 extends Node
 
-var Seagull = load("res://assets/resources/enemies/seagull.tres")
-var Fish = load("res://assets/resources/enemies/fish.tres")
+static var Seagull = preload("res://assets/resources/enemies/seagull.tres")
+static var Fish = preload("res://assets/resources/enemies/fish.tres")
 
-var waves = [
+static var waves = [
 	# Wave 1
 	func(): return {
 		"water_level": 0,	
