@@ -85,8 +85,22 @@ func _input(event) -> void:
 		return
 	if current_room == -1:
 		return
-	
+
 	var target = local_to_map(get_local_mouse_position())
+
+	# We use the id -2 and the claw to destroy the room, and put it back on the bench
+	# Dont you dare complain about the code
+	if current_room == -2:
+		if room_overlays.has(target):
+			var overlay = room_overlays[target]
+			print("Removing room")
+			set_cell(target, PALISADES, Vector2.ZERO)
+			room_overlays[target].room = null
+			rooms = rooms.filter(func(room: RoomInstance): room.position != target)
+			overlay.queue_free()
+			generate_room_sprites()
+		return
+	
 	var target_cell = get_cell_source_id(target)
 	var room_below = get_cell_source_id(get_neighbor_cell(target, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE))
 	if (room_below != BOTTOM && room_below != BG):

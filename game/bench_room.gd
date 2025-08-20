@@ -13,7 +13,6 @@ func _input(event):
 				dragging = true
 		if dragging and not event.pressed:
 			dragging = false
-			print("reset")
 			self.global_position = initial_pos
 		
 	if event is InputEventMouseMotion and dragging:
