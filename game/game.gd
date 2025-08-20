@@ -58,14 +58,14 @@ func _process(delta: float) -> void:
 		lerp(
 			$BgSkyWater.material.get_shader_parameter("water_height"),
 			bg_water_levels[water_level],
-			delta
+			3 * delta
 		)
 	)
 	$TowerTexture.material.set_shader_parameter("water_height",
 		lerp(
 			$TowerTexture.material.get_shader_parameter("water_height"),
 			bg_water_levels[water_level],
-			delta
+			3 * delta
 		)
 	)
 
@@ -98,9 +98,9 @@ func on_wave_end(wait_for_wave=true):
 
 	if wait_for_wave:
 		if water_level != last_water_level:
-			await get_tree().create_timer(3).timeout
+			await get_tree().create_timer(1.5).timeout
 		else:
-			await get_tree().create_timer(1).timeout
+			await get_tree().create_timer(.5).timeout
 
 	var damage_only = wave_number < 2
 	$"UpgradeUi".roll_rooms(damage_only)
