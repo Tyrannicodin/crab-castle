@@ -14,3 +14,7 @@ func set_position(pos: Vector2i):
 
 func get_position():
 	return $PanelContainer.global_position
+
+func sell_price(value: int):
+	$PanelContainer/VBoxContainer/Sell.show()
+	$PanelContainer/VBoxContainer/Sell/SellValue.text = str(value)

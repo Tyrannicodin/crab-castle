@@ -76,5 +76,26 @@ layout_mode = 2
 texture = ExtResource("4_6h5qk")
 expand_mode = 2
 
+[node name="Sell" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Sell"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0wuj5")
+theme_override_font_sizes/font_size = 20
+text = "Sells for"
+
+[node name="SellValue" type="Label" parent="PanelContainer/VBoxContainer/Sell"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0wuj5")
+theme_override_font_sizes/font_size = 20
+text = "1"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/Sell"]
+layout_mode = 2
+texture = ExtResource("4_6h5qk")
+expand_mode = 2
+
 [connection signal="mouse_exited" from="PanelContainer" to="PanelContainer" method="_on_mouse_exited"]
 [connection signal="mouse_exited" from="PanelContainer/VBoxContainer/name" to="PanelContainer/VBoxContainer/name" method="_on_mouse_exited"]
