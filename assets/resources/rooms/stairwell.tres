@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_g437o")
 display_name = "Stairwell"
-description = "Copy buff to adjascent rooms twice."
+description = "Copy buff to adjacent rooms twice."
 image = ExtResource("1_v6to4")
 scale = Vector2(0.55, 0.55)
 translation = Vector2(0, 0)
@@ -18,6 +18,6 @@ visible_arrows = 0
 trigger_script = ExtResource("3_v6to4")
 cooldown_seconds = 2.6
 requires_enemies_to_trigger = false
-weight = 500000
+weight = 75
 cost = 31
 metadata/_custom_type_script = "uid://s5vpeux5sx8g"
