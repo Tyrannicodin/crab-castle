@@ -19,5 +19,5 @@ trigger_script = ExtResource("3_ns5gb")
 cooldown_seconds = 10.0
 requires_enemies_to_trigger = true
 weight = 10
-cost = 24
+cost = 50
 metadata/_custom_type_script = "uid://s5vpeux5sx8g"

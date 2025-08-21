@@ -105,7 +105,7 @@ static var waves = [
 		"enemies": [
 			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
 			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
-			[[Shark, 2]]
+			[[Shark, 1]]
 		]
 	},
 	# Wave 12

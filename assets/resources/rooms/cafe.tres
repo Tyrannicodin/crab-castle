@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cshtcorxn0r7b" path="res://assets/rooms/cafe.png" id="1_nls84"]
 [ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="2_xn1kk"]
-[ext_resource type="Script" uid="uid://cw8ylmcysaqm2" path="res://assets/resources/rooms/cafe.gd" id="3_nls84"]
+[ext_resource type="Script" path="res://assets/resources/rooms/cafe.gd" id="3_nls84"]
 
 [resource]
 script = ExtResource("2_xn1kk")
@@ -18,6 +18,6 @@ visible_arrows = 0
 trigger_script = ExtResource("3_nls84")
 cooldown_seconds = 1.5
 requires_enemies_to_trigger = false
-weight = 100
+weight = 90
 cost = 20
 metadata/_custom_type_script = "uid://s5vpeux5sx8g"
