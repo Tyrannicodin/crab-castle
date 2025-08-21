@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_xgsxh")
-display_name = "Nuclear silo"
+display_name = "Nuclear Silo"
 description = "It's a really big bomb."
 image = ExtResource("1_e3its")
 scale = Vector2(0.75, 0.75)
