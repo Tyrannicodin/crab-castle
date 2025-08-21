@@ -19,7 +19,7 @@ static var waves = [
 		"water_level": 1,
 		"enemies": [
 			[Seagull, Seagull],
-			[Seagull, Seagull, Seagull],
+			[Seagull, Seagull],
 		]
 	},
 	# Wave 3
@@ -63,6 +63,15 @@ static var waves = [
 			[Fish, Fish, Fish, Fish, Fish, Fish, Fish, Fish, Seagull, Seagull, Seagull, Seagull],
 			[Fish, Fish, Fish, Fish, Fish, Fish, Octopus, Octopus, Seagull, Seagull, Seagull, Seagull],
 			[Octopus, Octopus, Fish, Fish, Fish, Fish, Fish, Fish, Fish, Shark, Shark]
+		]
+	},
+	# Wave 8
+	func() : return {
+		"water_level": 1,
+		"enemies": [
+			[Seagull, Seagull, Seagull, Seagull, Seagull, Seagull, Seagull, Seagull],
+			[Seagull, Seagull, Seagull, Seagull, Seagull, Seagull, Seagull, Seagull],
+			[Seagull, Seagull, Seagull, Seagull, Seagull, Seagull, Seagull, Seagull],
 		]
 	}
 ]
