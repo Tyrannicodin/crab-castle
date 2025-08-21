@@ -10,4 +10,7 @@ func _ready() -> void:
 func get_tooltip_label(n, text) -> Tooltip:
 	var tooltip = super.get_tooltip_label(n, text)
 	tooltip.show_cost(cost)
+	
+	var y = tooltip.get_position().y - 30
+	tooltip.set_position(Vector2i(tooltip.get_position().x,  y))
 	return tooltip
