@@ -4,7 +4,6 @@ signal upgrade_selected(room: Room)
 signal balance_changed(new_balance: float)
 
 var available_rooms: Array[Room] = []
-var damage_only: bool = false
 var money: float = 0
 var wave_number = 0
 var scaling: Scaling = load("res://game/scaling.gd").new()
@@ -12,15 +11,15 @@ var number_of_rerolls = 0
 var last_reroll_cost = 0
 
 func roll_rooms(new_wave_number) -> void:
-	damage_only = new_wave_number < 1
 	number_of_rerolls = 0
+	wave_number = new_wave_number
 	show()
 	reroll_rooms()
 	$"../UI/Start Next Wave".disabled = true
 
-	wave_number = new_wave_number
-
 func reroll_rooms() -> void:
+	$Margin/VBox/Center/VBox/Roll.show()
+	$Margin/VBox/Center/VBox/Skip.show()
 	on_balance_change(money - last_reroll_cost)
 	self.balance_changed.emit(money)
 	var reroll_cost = scaling.scale_reroll_price(wave_number, number_of_rerolls)
@@ -29,8 +28,12 @@ func reroll_rooms() -> void:
 	var rng = RandomNumberGenerator.new()
 	
 	var filtered_rooms = available_rooms.duplicate()
-	if damage_only == true:
-		filtered_rooms = filtered_rooms.filter(func(room: Room): return room.requires_enemies_to_trigger)
+	
+	# We force the player to pick a simple weapon on the first wave
+	if wave_number < 1:
+		$Margin/VBox/Center/VBox/Roll.hide()
+		$Margin/VBox/Center/VBox/Skip.hide()
+		filtered_rooms = filtered_rooms.filter(func(room: Room): return room.display_name in ["Slingshot", "Bow", "Crab Cannon"])
 
 	var weights = PackedFloat32Array(filtered_rooms.map(func(room: Room): return room.weight))
 
