@@ -5,12 +5,13 @@ var enemy_base = preload("res://game/enemies/enemy.tscn")
 
 var scaling: Scaling = preload("res://game/scaling.gd").new()
 
-func spawn_enemy(wave_number: int, enemy: Enemy, initial_pos: Vector2 = Vector2.ZERO) -> void:
+func spawn_enemy(wave_number: int, enemy: Enemy, rank: int, initial_pos: Vector2 = Vector2.ZERO) -> void:
 	var new_enemy = enemy_base.instantiate()
 	new_enemy.set_script(enemy.instance_script)
 	new_enemy.death.connect($"..".enemy_killed)
 	new_enemy.enemy = enemy
-	new_enemy.health = int(scaling.scale_enemy_hp(wave_number, enemy.max_health))
+	new_enemy.set_rank(rank)
+	new_enemy.health = int(scaling.scale_enemy_hp(wave_number, enemy.max_health)) * 2**rank
 
 	var water_level = $"..".water_level
 

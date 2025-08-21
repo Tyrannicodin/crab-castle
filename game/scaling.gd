@@ -3,7 +3,7 @@ class_name Scaling
 
 func scale_enemy_hp(wave_number: int, hp: int):
 	if wave_number > 3:
-		return  hp + (hp/10.0)**wave_number
+		return  hp + hp * (wave_number-1) / 5.0
 	return hp
 
 func scale_shop(wave_number: int, price: int):

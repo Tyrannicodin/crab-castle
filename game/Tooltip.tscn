@@ -2,7 +2,7 @@
 
 [ext_resource type="FontVariation" uid="uid://xvvik2j6lvhf" path="res://assets/fonts/nunito.tres" id="1_0wuj5"]
 [ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="2_bjmkw"]
-[ext_resource type="Script" path="res://game/tooltip.gd" id="2_lvb04"]
+[ext_resource type="Script" uid="uid://li2qfkfdcud3" path="res://game/tooltip.gd" id="2_lvb04"]
 [ext_resource type="Texture2D" uid="uid://bewvh84gv88sy" path="res://assets/money.png" id="4_6h5qk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvb04"]
