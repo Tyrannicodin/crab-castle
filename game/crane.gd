@@ -2,12 +2,20 @@ extends Sprite2D
 
 # I love copy paste!
 
+var disabled = false
 var dragging = false
 var click_radius = 40
 var initial_pos = position
 @export var room_id = -2
 
+func _process(delta: float) -> void:
+	if disabled:
+		# grayscale this here
+		pass
+
 func _input(event):
+	if disabled:
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if (event.position - self.global_position).length() < click_radius:
 			$'../../Rooms'.room_selected.emit(room_id)
