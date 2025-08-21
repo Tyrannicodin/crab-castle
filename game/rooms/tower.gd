@@ -126,6 +126,9 @@ func _input(event) -> void:
 	# We use the id -2 and the claw to destroy the room, and put it back on the bench
 	# Dont you dare complain about the code
 	if current_room == -2:
+		# cant remove if the bench is full
+		if $"../../UI/Rooms".is_full():
+			return
 		if room_overlays.has(target):
 			if get_cell_source_id(Vector2(target.x, target.y - 1)) == BG:
 				# can not remove rooms if there is a room above it
