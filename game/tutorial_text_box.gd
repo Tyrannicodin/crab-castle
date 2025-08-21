@@ -3,5 +3,5 @@ extends Node2D
 
 @export_multiline var text: String = ""
 
-func _ready():
+func _process(_delta):
 	$PanelContainer/Label.text = text
