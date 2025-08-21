@@ -28,7 +28,7 @@
 [ext_resource type="Script" uid="uid://biswc6ipcfiun" path="res://game/eliminator.gd" id="20_u8s88"]
 [ext_resource type="Texture2D" uid="uid://bg6np85mcxhrw" path="res://assets/bench.png" id="21_5e03w"]
 [ext_resource type="Texture2D" uid="uid://bewvh84gv88sy" path="res://assets/money.png" id="22_8bboj"]
-[ext_resource type="Script" uid="uid://cyre2fbdj4vom" path="res://game/custom_tooltip.gd" id="22_fegy3"]
+[ext_resource type="Script" uid="uid://b7oo264lufx8i" path="res://game/crane_tooltip.gd" id="22_fegy3"]
 [ext_resource type="PackedScene" uid="uid://buphc88egqhj5" path="res://menu/menu.tscn" id="23_5e03w"]
 [ext_resource type="Texture2D" uid="uid://b1tvic7afvxmn" path="res://assets/heart.png" id="23_q52ks"]
 
@@ -249,10 +249,10 @@ script = ExtResource("18_jdpby")
 [node name="Crane Tooltip" type="Control" parent="UI/Bench"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -459.697
-offset_top = 1.24243
-offset_right = -419.697
-offset_bottom = 41.2424
+offset_left = -499.0
+offset_top = -42.0
+offset_right = -419.0
+offset_bottom = 41.0
 script = ExtResource("22_fegy3")
 
 [node name="Rooms" type="Node2D" parent="UI"]
