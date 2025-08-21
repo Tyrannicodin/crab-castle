@@ -21,7 +21,7 @@ func next_tutorial() -> void:
 
 	textBox.show()
 	textBox.text = text[tutorial_index]
-	if get_node("Tutorial" + str(tutorial_index)):
+	if get_node_or_null("Tutorial" + str(tutorial_index)):
 		get_node("Tutorial" + str(tutorial_index)).show()
 	tutorial_index += 1
 
