@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://buphc88egqhj5"]
 
-[ext_resource type="Script" uid="uid://bqm22m7vq1t3h" path="res://game/pause.gd" id="1_wal61"]
+[ext_resource type="Script" uid="uid://bqm22m7vq1t3h" path="res://menu/menu.gd" id="1_wal61"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="2_xptdw"]
 
 [sub_resource type="Gradient" id="Gradient_jc4t8"]
