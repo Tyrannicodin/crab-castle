@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://b7i558xh62xbl" path="res://assets/rooms/stairwell.png" id="1_v6to4"]
 [ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="2_g437o"]
-[ext_resource type="Script" uid="uid://c8rv6p416qfd" path="res://assets/resources/rooms/stairwell.gd" id="3_v6to4"]
+[ext_resource type="Script" path="res://assets/resources/rooms/stairwell.gd" id="3_v6to4"]
 
 [resource]
 script = ExtResource("2_g437o")
 display_name = "Stairwell"
-description = "Copy buff to adjacent rooms twice."
+description = "Copies effect of adjacent rooms to other adjacent rooms, twice."
 image = ExtResource("1_v6to4")
 scale = Vector2(0.55, 0.55)
 translation = Vector2(0, 0)

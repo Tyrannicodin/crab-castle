@@ -5,6 +5,7 @@ static var Fish = preload("res://assets/resources/enemies/fish.tres")
 static var Shark = preload("res://assets/resources/enemies/shark.tres")
 static var Octopus = preload("res://assets/resources/enemies/octopus.tres")
 static var PlaneEnemy = preload("res://assets/resources/enemies/plane.tres")
+static var CrazyBird = preload("res://assets/resources/enemies/crazy-bird.tres")
 
 
 static var waves = [
@@ -72,7 +73,7 @@ static var waves = [
 		"enemies": [
 			[PlaneEnemy],
 			[[Seagull, 1],[Seagull, 1],[Seagull, 1],[Seagull, 1],Seagull, Seagull, Seagull,Seagull, Seagull, Seagull],
-			[PlaneEnemy, PlaneEnemy],
+			[PlaneEnemy],
 		]
 	},
 	# Wave 9
@@ -84,6 +85,27 @@ static var waves = [
 			range(10).map(func(_i): return [Fish, 1]),
 			second,
 			[PlaneEnemy, PlaneEnemy, Shark, Shark]
+		]
+	},
+	# Wave 10
+	func() : 
+		return {
+		"water_level": 3,
+		"enemies": [
+			[CrazyBird],
+			range(6).map(func(_i): return [Octopus, 1]) + range(5).map(func(_i): return CrazyBird),
+			range(10).map(func(_i): return [Seagull, 1]) + [Shark, Shark],
+			[[Shark, 1]]
+		]
+	},
+	# Wave 11
+	func() : 
+		return {
+		"water_level": 4,
+		"enemies": [
+			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
+			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
+			[[Shark, 2]]
 		]
 	},
 ]
