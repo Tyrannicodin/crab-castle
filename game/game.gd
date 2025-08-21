@@ -239,6 +239,8 @@ func check_can_use_removal_service():
 	$"UI/Bench/Crane".disabled = money < removal_service_price
 
 func _on_tower_removal_service() -> void:
-	money -= removal_service_price
-	removal_service_price += 2
-	$"UI/Bench/Crane Tooltip".cost = removal_service_price
+	pass
+
+
+func _on_rooms_sell(value: int) -> void:
+	money += value

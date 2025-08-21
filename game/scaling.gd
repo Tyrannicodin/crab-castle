@@ -20,3 +20,7 @@ func scale_gold_gained(gold: float, wave_number: int) -> float:
 
 func scale_reroll_price(wave_number: int, amount_of_rerolls: int):
 	return (1 if wave_number == 0 else 2 + wave_number) + (amount_of_rerolls**1.5)
+
+func sell_price(wave_number: int, room: Room):
+	var price = scale_shop(wave_number, room.cost)
+	return max(int(price / 5), 1)

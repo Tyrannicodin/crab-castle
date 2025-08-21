@@ -23,4 +23,5 @@ func _input(event):
 
 func _process(delta: float) -> void:
 	if room:
-		$"Tooltip".set_room_tooltip(room)
+		var wave_number = $"../../../".wave_number
+		$"Tooltip".set_room_tooltip(wave_number, room)

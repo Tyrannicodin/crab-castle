@@ -7,6 +7,7 @@ var room_overlay = preload("res://game/rooms/room_overlay.tscn")
 
 signal room_placed(room: int)
 signal removal_service
+signal sell(room: int)
 
 var current_room: int = -1
 
@@ -75,6 +76,12 @@ func _ready():
 	game.wave_start.connect(func():
 		for room in rooms:
 			room.reset_cooldown()
+		for overlay in room_overlays.values():
+			overlay.wave_number = game.wave_number
+	)
+	game.wave_end.connect(func():
+		for overlay in room_overlays.values():
+			overlay.wave_number = game.wave_number
 	)
 
 func set_current_room(room: int) -> void:
@@ -119,6 +126,9 @@ func _input(event) -> void:
 	# We use the id -2 and the claw to destroy the room, and put it back on the bench
 	# Dont you dare complain about the code
 	if current_room == -2:
+		# cant remove if the bench is full
+		if $"../../UI/Rooms".is_full():
+			return
 		if room_overlays.has(target):
 			if get_cell_source_id(Vector2(target.x, target.y - 1)) == BG:
 				# can not remove rooms if there is a room above it
@@ -131,6 +141,10 @@ func _input(event) -> void:
 			$"../../UI/Rooms".dragging_crane = false
 			redraw_castle()
 			removal_service.emit()
+		return
+	
+	if $"../../UI/TrashCan".hovered:
+		sell.emit(current_room)
 		return
 	
 	if target.x != 0 and target.x != 1:
@@ -151,6 +165,7 @@ func _input(event) -> void:
 	game.wave_start.connect(new_overlay.show_progress)
 	room_overlays[target] = new_overlay
 	new_overlay.position = map_to_local(target) - Vector2(232, 171)
+	new_overlay.wave_number = game.wave_number
 	tower_overlay_node.add_child(new_overlay)
 	redraw_castle()
 

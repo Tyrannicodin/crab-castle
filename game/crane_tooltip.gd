@@ -4,7 +4,7 @@ var cost: int = 0
 
 func _ready() -> void:
 	tooltip_name = "Removal Service"
-	text = "Drag on to the top of your Castle to remove a room. Price increases after each use."
+	text = "Drag on to your Castle to remove a room."
 	super._ready()
 
 func get_tooltip_label(n, text) -> Tooltip:
