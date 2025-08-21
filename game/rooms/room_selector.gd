@@ -9,8 +9,8 @@ var BenchedRoom = load("res://game/BenchedRoom.tscn")
 func add_room(room: Room) -> void:
 	var but: Node2D = BenchedRoom.instantiate()
 	var image: Node2D = but.get_child(0)
-	image.global_scale = room.scale / 2.5;
 	image.texture = room.image
+	image.scale = room.scale / 2.5;
 	but.room = room
 	bench.push_back(but)
 	self.add_child(but)
