@@ -11,6 +11,7 @@ signal removal_service
 var current_room: int = -1
 
 var room_overlays: Dictionary[Vector2i, RoomOverlay] = {}
+@onready var buildableIndicators = [$"../../BuildableIndicators/BuildableLocation1", $"../../BuildableIndicators/BuildableLocation2"]
 
 const BG = 0
 const PALISADES = 1
@@ -79,6 +80,27 @@ func _ready():
 func set_current_room(room: int) -> void:
 	current_room = room
 
+func show_buildable_locations():
+	var heights = [6, 6]
+
+	for target in room_overlays.keys():
+		set_cell(target, BG, Vector2.ZERO)
+		if heights[target.x] > target.y:
+			heights[target.x] = target.y
+
+	for i in range(2):
+		var h = heights[i]
+		if h < 2:
+			continue
+		var b = buildableIndicators[i]
+		b.show()
+		b.position = to_global(map_to_local(Vector2i(i, h - 2)))
+		i+=1
+
+func hide_buildable_indicators():
+	for b in buildableIndicators:
+		b.hide()
+
 func _input(event) -> void:
 	if not event is InputEventMouseButton:
 		return
@@ -106,7 +128,9 @@ func _input(event) -> void:
 		return
 	
 	if target.x != 0 and target.x != 1:
-		return 
+		return
+	if target.y < 1:
+		return
 	if target.y != 5 and get_cell_source_id(Vector2(target.x, target.y + 1)) != BG:
 		return
 	if get_cell_source_id(Vector2(target.x, target.y)) == BG:
@@ -114,6 +138,8 @@ func _input(event) -> void:
 		return
 
 	# Add the new room
+	$"../../UI/Rooms".dragging_room = false
+	hide_buildable_indicators()
 	var new_overlay = room_overlay.instantiate()
 	game.wave_end.connect(new_overlay.hide_progress)
 	game.wave_start.connect(new_overlay.show_progress)
@@ -152,6 +178,11 @@ func redraw_castle():
 		i+=1
 
 func _process(delta: float) -> void:
+	if $"../../UI/Rooms".dragging_room:
+		show_buildable_locations()
+	else:
+		hide_buildable_indicators()
+
 	if !game.is_in_wave():
 		return
 	for room in rooms:

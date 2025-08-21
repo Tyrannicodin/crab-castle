@@ -5,6 +5,14 @@ signal room_selected(index: int)
 var bench = []
 var child_script = load("res://game/bench_room.gd")
 var BenchedRoom = load("res://game/BenchedRoom.tscn")
+var dragging_room = false
+
+func _process(delta: float) -> void:
+	dragging_room = false
+	for b in bench:
+		if b.dragging:
+			dragging_room = true
+			break
 
 func add_room(room: Room) -> void:
 	var but: Node2D = BenchedRoom.instantiate()
