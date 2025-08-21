@@ -108,4 +108,92 @@ static var waves = [
 			[[Shark, 2]]
 		]
 	},
+	# Wave 12
+	func() : 
+		return {
+		"water_level": 4,
+		"enemies": [
+			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
+			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
+			[[Shark, 2]]
+		]
+	},
+	# Wave 13
+	func() : 
+		return {
+		"water_level": 4,
+		"enemies": [
+			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
+			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
+			[[Shark, 2]]
+		]
+	},
+	# Wave 14
+	func() : 
+		return {
+		"water_level": 4,
+		"enemies": [
+			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
+			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
+			[[Shark, 2]]
+		]
+	},
+	# Wave 15
+	func() : 
+		return {
+		"water_level": 4,
+		"enemies": [
+			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
+			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
+			[[Shark, 2]]
+		]
+	},
+	# Wave 16
+	func() : 
+		return {
+		"water_level": 4,
+		"enemies": [
+			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
+			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
+			[[Shark, 2]]
+		]
+	},
+	# Wave 17
+	func() : 
+		return {
+		"water_level": 4,
+		"enemies": [
+			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
+			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
+			[[Shark, 2]]
+		]
+	},
+	# Wave 18
+	func() : 
+		return {
+		"water_level": 4,
+		"enemies": [
+			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
+			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
+			[[Shark, 2]]
+		]
+	},
+	# Wave 19
+	func() : 
+		return {
+		"water_level": 4,
+		"enemies": [
+			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
+			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
+			[[Shark, 2]]
+		]
+	},
+	# Wave 20
+	func() : 
+		return {
+		"water_level": 4,
+		"enemies": [
+			[[Shark, 3],[Shark, 3],[Shark, 3],[Shark, 3],[Shark, 3]]
+		]
+	},
 ]
