@@ -27,6 +27,7 @@ var money: float = 12.:
 			money_earned = value - money
 		balance_changed.emit(value)
 		money = value
+		check_can_use_removal_service()
 
 @onready var enemy_manager = $EnemyManager
 var tower_health = 150 : 
@@ -46,6 +47,7 @@ var current_enemy_wave = []
 var current_wave_enemy_count = 0
 var finished_spawning = false
 var water_level = 0
+var removal_service_price = 2
 
 var money_earned: float = 0
 var kills: int = 0
@@ -60,6 +62,7 @@ func _ready() -> void:
 	$BgSkyWater.material.set_shader_parameter("water_height", bg_water_levels[water_level])
 	$TowerTexture.material.set_shader_parameter("water_height", bg_water_levels[water_level])
 	$SkyReflection.material.set_shader_parameter("water_height", bg_water_levels[water_level])
+	$"UI/Bench/Crane Tooltip".cost = removal_service_price
 	load_rooms()
 	$UpgradeUi.balance_changed.connect(func(m): money = m)
 	on_wave_end(false)
@@ -225,3 +228,11 @@ func _on_start_next_wave_button_down() -> void:
 
 func _on_game_end() -> void:
 	get_tree().call_group("statistic", "update_stat", self)
+
+func check_can_use_removal_service():
+	$"UI/Bench/Crane".disabled = money < removal_service_price
+
+func _on_tower_removal_service() -> void:
+	money -= removal_service_price
+	removal_service_price += 2
+	$"UI/Bench/Crane Tooltip".cost = removal_service_price
