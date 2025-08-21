@@ -129,6 +129,7 @@ func on_wave_end(wait_for_wave=true):
 		game_end.emit()
 		return
 
+	$"UI/wave_number".text = "Wave " + str(wave_number + 1)
 	$"UpgradeUi".roll_rooms(wave_number)
 
 	wave_end.emit()

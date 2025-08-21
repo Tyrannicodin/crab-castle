@@ -301,6 +301,17 @@ position = Vector2(82, 995)
 scale = Vector2(0.639995, 0.639995)
 texture = ExtResource("23_q52ks")
 
+[node name="wave_number" type="Label" parent="UI"]
+offset_left = 1694.0
+offset_top = 969.0
+offset_right = 1896.0
+offset_bottom = 1033.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("6_mhvfb")
+theme_override_font_sizes/font_size = 48
+text = "Wave 500"
+
 [node name="UpgradeUi" parent="." instance=ExtResource("3_dakft")]
 offset = Vector2(250, -80)
 transform = Transform2D(1, 0, 0, 1, 250, -80)
