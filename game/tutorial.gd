@@ -8,15 +8,19 @@ var text = [
 	"Press start wave and defend!",
 ]
 
-var tutorial_disabled = false
+@onready var tutorial_disabled = not ConfigManager.get_value("show_tutorial", true)
 var tutorial_index = 0
 
 func next_tutorial() -> void:
 	for child in get_children():
 		child.hide()
 	
+	if tutorial_disabled:
+		return
+
 	if tutorial_index >= len(text):
 		tutorial_disabled = true
+		ConfigManager.set_value("show_tutorial", false)
 		return
 
 	textBox.show()
@@ -26,17 +30,13 @@ func next_tutorial() -> void:
 	tutorial_index += 1
 
 func _ready() -> void:
-	if tutorial_disabled: return
 	next_tutorial()
 
 func _on_upgrade_ui_upgrade_selected(_room: Room) -> void:
-	if tutorial_disabled: return
 	next_tutorial()
 
 func _on_tower_room_placed(_room: int) -> void:
-	if tutorial_disabled: return
 	next_tutorial()
 
 func _on_game_wave_start() -> void:
-	if tutorial_disabled: return
 	next_tutorial()

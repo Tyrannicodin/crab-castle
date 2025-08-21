@@ -28,15 +28,16 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("pause") and in_game:
 		if get_tree().paused:
-			get_tree().paused = false
 			if deep:
 				animator.play_backwards("deeper")
 				await animator.animation_finished
 			animator.play("wave")
 			await animator.animation_finished
+			get_tree().paused = false
 			return
-		get_tree().paused = true
+		print("Pausing")
 		animator.play_backwards("wave")
+		get_tree().paused = true
 
 func resume_pressed() -> void:
 	if buttons_disabled:
@@ -73,6 +74,7 @@ func quit_pressed() -> void:
 		buttons_disabled = true
 		animator.play("deeperer")
 		await animator.animation_finished
+		get_tree().paused = false
 		get_tree().change_scene_to_file("res://menu/menu.tscn")
 		return # Just to be safe
 	get_tree().quit()
