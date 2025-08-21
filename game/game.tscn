@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=56 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
@@ -31,6 +31,9 @@
 [ext_resource type="Script" uid="uid://b7oo264lufx8i" path="res://game/crane_tooltip.gd" id="22_fegy3"]
 [ext_resource type="PackedScene" uid="uid://buphc88egqhj5" path="res://sea_overlay/sea_overlay.tscn" id="23_5e03w"]
 [ext_resource type="Texture2D" uid="uid://b1tvic7afvxmn" path="res://assets/heart.png" id="23_q52ks"]
+[ext_resource type="Script" uid="uid://dv8ryvt05fp74" path="res://game/tutorial.gd" id="32_posua"]
+[ext_resource type="PackedScene" uid="uid://jopgqibdquxd" path="res://game/TutorialTextBox.tscn" id="32_pvdu1"]
+[ext_resource type="Texture2D" uid="uid://dmnmkxsnexb3d" path="res://assets/room_details/arrow_down.png" id="33_cf130"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
 shader = ExtResource("4_u5opy")
@@ -299,7 +302,6 @@ scale = Vector2(0.639995, 0.639995)
 texture = ExtResource("23_q52ks")
 
 [node name="UpgradeUi" parent="." instance=ExtResource("3_dakft")]
-visible = false
 offset = Vector2(250, -80)
 transform = Transform2D(1, 0, 0, 1, 250, -80)
 
@@ -328,17 +330,52 @@ position = Vector2(1124, -329)
 [node name="SeaOverlay" parent="." instance=ExtResource("23_5e03w")]
 visible = false
 
+[node name="Tutorial" type="CanvasLayer" parent="."]
+script = ExtResource("32_posua")
+
+[node name="One" type="CanvasLayer" parent="Tutorial"]
+visible = false
+
+[node name="TutorialTextBox" parent="Tutorial/One" instance=ExtResource("32_pvdu1")]
+position = Vector2(26, 19)
+text = "The seagulls are attacking! We have to build a castle!"
+
+[node name="Two" type="CanvasLayer" parent="Tutorial"]
+visible = false
+
+[node name="TutorialTextBox" parent="Tutorial/Two" instance=ExtResource("32_pvdu1")]
+position = Vector2(26, 19)
+text = "Drag your weapon onto the platform."
+
+[node name="Sprite2D" type="Sprite2D" parent="Tutorial/Two"]
+position = Vector2(330, 608)
+texture = ExtResource("33_cf130")
+
+[node name="Three" type="CanvasLayer" parent="Tutorial"]
+visible = false
+
+[node name="TutorialTextBox" parent="Tutorial/Three" instance=ExtResource("32_pvdu1")]
+position = Vector2(26, 19)
+text = "Press start wave and defend!"
+
+[node name="Sprite2D" type="Sprite2D" parent="Tutorial/Three"]
+position = Vector2(1454, 895)
+texture = ExtResource("33_cf130")
+
 [connection signal="balance_changed" from="." to="UI/gold_display" method="set_gold"]
 [connection signal="balance_changed" from="." to="UpgradeUi" method="on_balance_change"]
 [connection signal="game_end" from="." to="." method="_on_game_end"]
 [connection signal="game_end" from="." to="GameEnd" method="show"]
 [connection signal="rooms_loaded" from="." to="UpgradeUi" method="on_rooms_loaded"]
 [connection signal="wave_end" from="." to="UI/Start Next Wave" method="show"]
+[connection signal="wave_start" from="." to="Tutorial" method="_on_game_wave_start"]
 [connection signal="area_shape_entered" from="Eliminator" to="Eliminator" method="_on_area_shape_entered"]
 [connection signal="removal_service" from="TowerViewport/Tower" to="." method="_on_tower_removal_service"]
 [connection signal="room_placed" from="TowerViewport/Tower" to="." method="room_placed"]
 [connection signal="room_placed" from="TowerViewport/Tower" to="UI/Rooms" method="remove_room"]
+[connection signal="room_placed" from="TowerViewport/Tower" to="Tutorial" method="_on_tower_room_placed"]
 [connection signal="room_selected" from="UI/Rooms" to="TowerViewport/Tower" method="set_current_room"]
 [connection signal="button_down" from="UI/Start Next Wave" to="." method="_on_start_next_wave_button_down"]
 [connection signal="upgrade_selected" from="UpgradeUi" to="." method="room_selected"]
 [connection signal="upgrade_selected" from="UpgradeUi" to="UI/Rooms" method="add_room"]
+[connection signal="upgrade_selected" from="UpgradeUi" to="Tutorial" method="_on_upgrade_ui_upgrade_selected"]
