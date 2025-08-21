@@ -4,6 +4,7 @@ uniform float water_height = 0.1;
 uniform vec4 sky_color: source_color;
 uniform vec4 water_color: source_color;
 uniform vec4 underwater_color: source_color;
+uniform vec4 underwater_back: source_color;
 uniform vec4 surface_color: source_color;
 uniform vec4 foam_color: source_color;
 uniform float foam_size = 0.005;
@@ -13,14 +14,14 @@ void fragment() {
 		float progress = mod(TIME + 3.0 * UV.x, PI * 4.0);
 		float water_offset = sin(progress) / 200.0;
 
-		COLOR = sky_color;
+		COLOR = sky_color * (vec4(1.0) * UV.y / 3.0 + 0.9);
 
 		if (UV.y > water_height + sin(progress) / 200.0 && UV.y <= 0.5) {
 			COLOR = water_color;
 		} else if (UV.y > water_height - foam_size + water_offset && UV.y <= water_height + water_offset) {
 			COLOR = foam_color;
 		} else if (UV.y < 0.5) {
-			COLOR = underwater_color;
+			COLOR = underwater_color - underwater_back * (-UV.y * 2.0 + 1.0);
 		}
 
 		if (0.5 < water_height + water_offset && UV.y < water_height - foam_size + water_offset && UV.y > 0.5) {
