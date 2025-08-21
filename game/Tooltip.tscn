@@ -1,7 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbc8mrd055rnk"]
+[gd_scene load_steps=5 format=3 uid="uid://cbc8mrd055rnk"]
 
 [ext_resource type="FontVariation" uid="uid://xvvik2j6lvhf" path="res://assets/fonts/nunito.tres" id="1_0wuj5"]
+[ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="2_bjmkw"]
 [ext_resource type="Script" uid="uid://li2qfkfdcud3" path="res://game/tooltip.gd" id="2_lvb04"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvb04"]
+bg_color = Color(0.258824, 0.258824, 0.258824, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
 
 [node name="PanelContainer" type="PanelContainer"]
 anchors_preset = 5
@@ -13,14 +29,24 @@ offset_bottom = 45.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_lvb04")
 script = ExtResource("2_lvb04")
 
-[node name="Tooltip" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_0wuj5")
-theme_override_font_sizes/font_size = 32
+
+[node name="name" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_bjmkw")
+theme_override_font_sizes/font_size = 24
 text = "Example Docs"
 
+[node name="description" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0wuj5")
+theme_override_font_sizes/font_size = 18
+text = "Default description"
+
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="mouse_exited" from="Tooltip" to="Tooltip" method="_on_mouse_exited"]
+[connection signal="mouse_exited" from="VBoxContainer/name" to="VBoxContainer/name" method="_on_mouse_exited"]
