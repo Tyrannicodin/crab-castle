@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=53 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://daq0fcjji8v2n" path="res://game/gold_display.gd" id="6_hb504"]
 [ext_resource type="Texture2D" uid="uid://dvlr1truseh3y" path="res://assets/sun-yellow.png" id="6_jucfl"]
 [ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="6_mhvfb"]
-[ext_resource type="Shader" path="res://assets/shader/reflection.gdshader" id="7_jdpby"]
+[ext_resource type="Shader" uid="uid://bvs3xyo6lff1h" path="res://assets/shader/reflection.gdshader" id="7_jdpby"]
 [ext_resource type="Texture2D" uid="uid://cnk12qj5b8tpq" path="res://assets/cloud.png" id="8_58yx1"]
 [ext_resource type="Script" uid="uid://bvgeo6l2ym3qs" path="res://game/happy_clouds.gd" id="8_hbvmx"]
 [ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/room_details/empty.png" id="11_ee6o4"]
@@ -28,7 +28,8 @@
 [ext_resource type="Script" uid="uid://biswc6ipcfiun" path="res://game/eliminator.gd" id="20_u8s88"]
 [ext_resource type="Texture2D" uid="uid://bg6np85mcxhrw" path="res://assets/bench.png" id="21_5e03w"]
 [ext_resource type="Texture2D" uid="uid://bewvh84gv88sy" path="res://assets/money.png" id="22_8bboj"]
-[ext_resource type="PackedScene" uid="uid://buphc88egqhj5" path="res://sea_overlay/sea_overlay.tscn" id="23_5e03w"]
+[ext_resource type="Script" uid="uid://cyre2fbdj4vom" path="res://game/custom_tooltip.gd" id="22_fegy3"]
+[ext_resource type="PackedScene" uid="uid://buphc88egqhj5" path="res://menu/menu.tscn" id="23_5e03w"]
 [ext_resource type="Texture2D" uid="uid://b1tvic7afvxmn" path="res://assets/heart.png" id="23_q52ks"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lnu2h"]
@@ -240,10 +241,19 @@ scale = Vector2(0.804878, 0.804878)
 texture = ExtResource("21_5e03w")
 
 [node name="Crane" type="Sprite2D" parent="UI/Bench"]
-position = Vector2(-459.697, 1.2424)
+position = Vector2(-459.697, 1.24243)
 scale = Vector2(0.187839, 0.187839)
 texture = ExtResource("17_jucfl")
 script = ExtResource("18_jdpby")
+
+[node name="Crane Tooltip" type="Control" parent="UI/Bench"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -459.697
+offset_top = 1.24243
+offset_right = -419.697
+offset_bottom = 41.2424
+script = ExtResource("22_fegy3")
 
 [node name="Rooms" type="Node2D" parent="UI"]
 position = Vector2(657, 947)
