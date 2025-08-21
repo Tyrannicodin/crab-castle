@@ -227,6 +227,14 @@ position = Vector2(1100, 919)
 scale = Vector2(0.392897, 0.382396)
 texture = ExtResource("15_leid8")
 
+[node name="TowerTexture" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_hb504")
+offset_left = 1.0
+offset_right = 1921.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = SubResource("ViewportTexture_b686c")
+
 [node name="BuildableIndicators" type="Node2D" parent="."]
 
 [node name="BuildableLocation1" type="Sprite2D" parent="BuildableIndicators"]
@@ -236,14 +244,6 @@ texture = ExtResource("33_cf130")
 [node name="BuildableLocation2" type="Sprite2D" parent="BuildableIndicators"]
 visible = false
 texture = ExtResource("33_cf130")
-
-[node name="TowerTexture" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_hb504")
-offset_left = 1.0
-offset_right = 1921.0
-offset_bottom = 1080.0
-mouse_filter = 2
-texture = SubResource("ViewportTexture_b686c")
 
 [node name="TowerOverlay" type="Node2D" parent="."]
 

@@ -6,13 +6,17 @@ var bench = []
 var child_script = load("res://game/bench_room.gd")
 var BenchedRoom = load("res://game/BenchedRoom.tscn")
 var dragging_room = false
+var dragging_crane = false
 
 func _process(delta: float) -> void:
 	dragging_room = false
+	dragging_crane = false
 	for b in bench:
 		if b.dragging:
 			dragging_room = true
 			break
+	if $"../Bench/Crane".dragging:
+		dragging_crane = true
 
 func add_room(room: Room) -> void:
 	var but: Node2D = BenchedRoom.instantiate()

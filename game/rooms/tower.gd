@@ -80,7 +80,7 @@ func _ready():
 func set_current_room(room: int) -> void:
 	current_room = room
 
-func show_buildable_locations():
+func show_buildable_locations(destroy=false):
 	var heights = [6, 6]
 
 	for target in room_overlays.keys():
@@ -93,8 +93,13 @@ func show_buildable_locations():
 		if h < 2:
 			continue
 		var b = buildableIndicators[i]
+		var show_at_h = h - 2
+		if destroy:
+			show_at_h += 1
+			if h == 6:
+				continue
 		b.show()
-		b.position = to_global(map_to_local(Vector2i(i, h - 2)))
+		b.position = to_global(map_to_local(Vector2i(i, show_at_h)))
 		i+=1
 
 func hide_buildable_indicators():
@@ -123,6 +128,7 @@ func _input(event) -> void:
 			rooms = rooms.filter(func(room: RoomInstance): return room.position != target)
 			$"../../UpgradeUi".upgrade_selected.emit(overlay.room)
 			overlay.queue_free()
+			$"../../UI/Rooms".dragging_crane = false
 			redraw_castle()
 			removal_service.emit()
 		return
@@ -180,6 +186,8 @@ func redraw_castle():
 func _process(delta: float) -> void:
 	if $"../../UI/Rooms".dragging_room:
 		show_buildable_locations()
+	elif $"../../UI/Rooms".dragging_crane:
+		show_buildable_locations(true)
 	else:
 		hide_buildable_indicators()
 
