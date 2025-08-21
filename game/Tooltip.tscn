@@ -6,12 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://bewvh84gv88sy" path="res://assets/money.png" id="4_6h5qk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvb04"]
-bg_color = Color(0.290696, 0.239141, 0.270029, 1)
+bg_color = Color(0.258824, 0.258824, 0.258824, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.188235, 0.141176, 0.247059, 1)
 corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
@@ -47,7 +46,7 @@ text = "Example Docs"
 [node name="description" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0wuj5")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 text = "Default description"
 
 [node name="Cost" type="HBoxContainer" parent="VBoxContainer"]
@@ -57,7 +56,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer/Cost"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0wuj5")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 text = "Cost"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Cost"]
