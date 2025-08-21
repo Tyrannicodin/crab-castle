@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://buphc88egqhj5"]
+[gd_scene load_steps=11 format=3 uid="uid://buphc88egqhj5"]
 
+[ext_resource type="Script" uid="uid://bqm22m7vq1t3h" path="res://menu/menu.gd" id="1_6nwqt"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="2_xptdw"]
 [ext_resource type="Script" path="res://menu/volume.gd" id="3_6nwqt"]
 
@@ -97,6 +98,7 @@ _data = {
 
 [node name="SeaOverlay" type="CanvasLayer"]
 process_mode = 3
+script = ExtResource("1_6nwqt")
 
 [node name="GameStartOverlay" type="TextureRect" parent="."]
 clip_children = 1
