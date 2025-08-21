@@ -27,5 +27,7 @@ func get_tooltip_label(n, text) -> Tooltip:
 	t.set_description(n, text)
 	t.global_position = global_position
 	t.position.x = t.position.x - 1080 + 16
-	t.position.y = t.position.y - t.size.y
+	if (t.global_position.x <= -955):
+		t.global_position.x = -950
+	t.position.y = t.position.y - 1080 - 64 - 25
 	return t
