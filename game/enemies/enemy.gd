@@ -25,7 +25,6 @@ var stun_lock_time_remaining: float = 0
 var living_time: float = 0
 
 func _process(delta):
-	print(health)
 	move(delta)
 		
 	if not is_alive():

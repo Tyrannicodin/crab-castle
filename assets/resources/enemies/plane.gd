@@ -45,8 +45,8 @@ func _process(delta):
 		queue_free()
 
 func _exit_tree():
-	manager.spawn_enemy(3, Octopus, 0, Vector2(position.x, 0))
+	manager.spawn_enemy(3, Octopus, 0, Vector2(position.x - 16, 0))
 	await get_tree().create_timer(0.2).timeout
-	manager.spawn_enemy(3, Octopus, 0, Vector2(position.x, 0))
+	manager.spawn_enemy(3, Octopus, 0, Vector2(position.x + 16, 0))
 	death.emit(enemy)
 	dying = false

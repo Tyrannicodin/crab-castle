@@ -2,8 +2,8 @@ extends Node
 class_name Scaling
 
 func scale_enemy_hp(wave_number: int, hp: int):
-	if wave_number > 3:
-		return  hp + hp * (wave_number-1) / 5.0
+	if wave_number > 7:
+		return  hp + hp * (hp/10.0)**(wave_number-7)
 	return hp
 
 func scale_shop(wave_number: int, price: int):
