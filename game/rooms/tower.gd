@@ -16,6 +16,7 @@ var room_overlays: Dictionary[Vector2i, RoomOverlay] = {}
 
 const BG = 0
 const PALISADES = 1
+const SCAFFOLD = 2
 const BOTTOM = 6
 const PALISADES_MIRROR = 7
 const BUILDABLE = 8
@@ -130,9 +131,6 @@ func _input(event) -> void:
 		if $"../../UI/Rooms".is_full():
 			return
 		if room_overlays.has(target):
-			if get_cell_source_id(Vector2(target.x, target.y - 1)) == BG:
-				# can not remove rooms if there is a room above it
-				return
 			var overlay = room_overlays[target]
 			room_overlays.erase(target)
 			rooms = rooms.filter(func(room: RoomInstance): return room.position != target)

@@ -15,8 +15,6 @@ func _process(delta: float) -> void:
 
 func _input(event):
 	if $"../../../".in_wave: return
-	if disabled:
-		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if (event.position - self.global_position).length() < click_radius:
 			$'../../Rooms'.room_selected.emit(room_id)

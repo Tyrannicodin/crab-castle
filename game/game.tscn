@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=61 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/room_details/empty.png" id="11_ee6o4"]
 [ext_resource type="Shader" uid="uid://dur8qajqyjrlu" path="res://assets/shader/background.gdshader" id="11_hb504"]
 [ext_resource type="Shader" uid="uid://bb1gwvblyt57i" path="res://assets/shader/castle.gdshader" id="12_hb504"]
+[ext_resource type="Texture2D" uid="uid://dk2wwehlijrdc" path="res://assets/room_details/scaffold.png" id="12_vkvnp"]
 [ext_resource type="Texture2D" uid="uid://od7uidhhkf5r" path="res://assets/room_details/palisades.png" id="13_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://cygfg2olr2wsn" path="res://assets/room_details/bottom.png" id="14_u8s88"]
 [ext_resource type="Texture2D" uid="uid://bkmhnjxdeyq3f" path="res://assets/room_details/palisades_mirror.png" id="15_dxwpq"]
@@ -94,6 +95,12 @@ texture = ExtResource("13_pxxsx")
 texture_region_size = Vector2i(464, 342)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_urpib"]
+resource_name = "scaffold"
+texture = ExtResource("12_vkvnp")
+texture_region_size = Vector2i(464, 342)
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5e03w"]
 resource_name = "bottom"
 texture = ExtResource("14_u8s88")
@@ -119,6 +126,7 @@ sources/1 = SubResource("TileSetAtlasSource_mhvfb")
 sources/6 = SubResource("TileSetAtlasSource_5e03w")
 sources/7 = SubResource("TileSetAtlasSource_leid8")
 sources/8 = SubResource("TileSetAtlasSource_dxwpq")
+sources/2 = SubResource("TileSetAtlasSource_urpib")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hb504"]
 shader = ExtResource("12_hb504")
