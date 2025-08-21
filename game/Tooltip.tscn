@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbc8mrd055rnk"]
+[gd_scene load_steps=6 format=3 uid="uid://cbc8mrd055rnk"]
 
 [ext_resource type="FontVariation" uid="uid://xvvik2j6lvhf" path="res://assets/fonts/nunito.tres" id="1_0wuj5"]
 [ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="2_bjmkw"]
 [ext_resource type="Script" uid="uid://li2qfkfdcud3" path="res://game/tooltip.gd" id="2_lvb04"]
+[ext_resource type="Texture2D" uid="uid://bewvh84gv88sy" path="res://assets/money.png" id="4_6h5qk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvb04"]
 bg_color = Color(0.258824, 0.258824, 0.258824, 1)
@@ -47,6 +48,21 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0wuj5")
 theme_override_font_sizes/font_size = 18
 text = "Default description"
+
+[node name="Cost" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Cost"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0wuj5")
+theme_override_font_sizes/font_size = 18
+text = "Cost"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Cost"]
+layout_mode = 2
+texture = ExtResource("4_6h5qk")
+expand_mode = 2
 
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="mouse_exited" from="VBoxContainer/name" to="VBoxContainer/name" method="_on_mouse_exited"]
