@@ -130,7 +130,9 @@ func on_wave_end(wait_for_wave=true):
 		return
 
 	$"UI/wave_number".text = "Wave " + str(wave_number + 1)
-	$"UpgradeUi".roll_rooms(wave_number)
+	
+	if !$"UI/Rooms".is_full():
+		$"UpgradeUi".roll_rooms(wave_number)
 
 	wave_end.emit()
 

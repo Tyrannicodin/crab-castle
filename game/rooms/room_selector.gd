@@ -8,6 +8,8 @@ var BenchedRoom = load("res://game/BenchedRoom.tscn")
 var dragging_room = false
 var dragging_crane = false
 
+var max_bench_size = 6
+
 func _process(delta: float) -> void:
 	dragging_room = false
 	dragging_crane = false
@@ -19,6 +21,10 @@ func _process(delta: float) -> void:
 		dragging_crane = true
 
 func add_room(room: Room) -> void:
+	if is_full():
+		# This is really bad...
+		return
+	
 	var but: Node2D = BenchedRoom.instantiate()
 	var image: Node2D = but.get_child(0)
 	image.texture = room.image
@@ -26,14 +32,17 @@ func add_room(room: Room) -> void:
 	but.room = room
 	bench.push_back(but)
 	self.add_child(but)
-	
+
 	for i in range(len(bench)):
 		position_on_bench(bench[i], i)
 
 func position_on_bench(but: Node2D, i: int):
-	but.global_position.x = self.global_position.x + (i * 80) + 32
+	but.global_position.x = self.global_position.x + (i * 112) + 32
 	but.global_position.y = self.global_position.y + 32
 	but.room_id = i
+
+func is_full():
+	return len(bench) >= max_bench_size
 
 func remove_room(index: int) -> void:
 	remove_child(bench[index])

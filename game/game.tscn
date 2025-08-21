@@ -264,9 +264,9 @@ script = ExtResource("18_jdpby")
 layout_mode = 3
 anchors_preset = 0
 offset_left = -499.0
-offset_top = -42.0
+offset_top = -41.9999
 offset_right = -419.0
-offset_bottom = 41.0
+offset_bottom = 41.0001
 script = ExtResource("22_fegy3")
 
 [node name="Rooms" type="Node2D" parent="UI"]

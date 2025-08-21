@@ -21,7 +21,13 @@ expand_margin_top = 4.0
 expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 
-[node name="PanelContainer" type="PanelContainer"]
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 2
+script = ExtResource("2_lvb04")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+z_index = 1000
+z_as_relative = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -36,19 +42,18 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lvb04")
-script = ExtResource("2_lvb04")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="name" type="Label" parent="VBoxContainer"]
+[node name="name" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("2_bjmkw")
 theme_override_font_sizes/font_size = 24
 text = "Example Docs"
 
-[node name="description" type="Label" parent="VBoxContainer"]
+[node name="description" type="Label" parent="PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0wuj5")
@@ -56,20 +61,20 @@ theme_override_font_sizes/font_size = 20
 text = "Default description thats should wrap if it's too long."
 autowrap_mode = 2
 
-[node name="Cost" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Cost" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Cost"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Cost"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0wuj5")
 theme_override_font_sizes/font_size = 20
 text = "Cost"
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Cost"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/Cost"]
 layout_mode = 2
 texture = ExtResource("4_6h5qk")
 expand_mode = 2
 
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="mouse_exited" from="VBoxContainer/name" to="VBoxContainer/name" method="_on_mouse_exited"]
+[connection signal="mouse_exited" from="PanelContainer" to="PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_exited" from="PanelContainer/VBoxContainer/name" to="PanelContainer/VBoxContainer/name" method="_on_mouse_exited"]
