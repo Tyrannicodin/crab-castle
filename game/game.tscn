@@ -370,7 +370,7 @@ position = Vector2(26, 19)
 text = "Drag your weapon onto the platform."
 
 [node name="Sprite2D" type="Sprite2D" parent="Tutorial/Two"]
-position = Vector2(663, 892)
+position = Vector2(688, 877)
 texture = ExtResource("33_cf130")
 
 [node name="Three" type="CanvasLayer" parent="Tutorial"]
@@ -381,7 +381,7 @@ position = Vector2(26, 19)
 text = "Press start wave and defend!"
 
 [node name="Sprite2D" type="Sprite2D" parent="Tutorial/Three"]
-position = Vector2(1454, 895)
+position = Vector2(1474, 896)
 texture = ExtResource("33_cf130")
 
 [connection signal="balance_changed" from="." to="UI/gold_display" method="set_gold"]

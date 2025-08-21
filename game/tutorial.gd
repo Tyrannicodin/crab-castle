@@ -15,11 +15,14 @@ func _on_upgrade_ui_upgrade_selected(room: Room) -> void:
 
 func _on_tower_room_placed(room: int) -> void:
 	if tutorial_disabled: return
+	$One.hide()
 	$Two.hide()
 	$Three.show()
 
 
 func _on_game_wave_start() -> void:
 	if tutorial_disabled: return
+	$One.hide()
+	$Two.hide()
 	$Three.hide()
 	tutorial_disabled = true
