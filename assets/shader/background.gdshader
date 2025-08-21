@@ -12,9 +12,9 @@ const float scaling_factor = 150.0/81.0;
 void fragment() {
 		float progress = mod(TIME + 3.0 * UV.x, PI * 4.0);
 		float water_offset = sin(progress) / 200.0;
-		
+
 		COLOR = sky_color;
-		
+
 		if (UV.y > water_height + sin(progress) / 200.0 && UV.y <= 0.5) {
 			COLOR = water_color;
 		} else if (UV.y > water_height - foam_size + water_offset && UV.y <= water_height + water_offset) {
@@ -22,7 +22,7 @@ void fragment() {
 		} else if (UV.y < 0.5) {
 			COLOR = underwater_color;
 		}
-		
+
 		if (0.5 < water_height + water_offset && UV.y < water_height - foam_size + water_offset && UV.y > 0.5) {
 			COLOR = surface_color;
 		}
