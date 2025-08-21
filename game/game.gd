@@ -24,7 +24,7 @@ var bg_water_levels = [
 var money: float = 12.:
 	set(value):
 		if value > money:
-			money_earned = value - money
+			money_earned += value - money
 		balance_changed.emit(value)
 		money = value
 		check_can_use_removal_service()
@@ -33,7 +33,7 @@ var money: float = 12.:
 var tower_health = 150 : 
 	set(value):
 		if value < money:
-			tower_health = tower_health - value
+			total_damage_taken += tower_health - value
 		tower_health = value
 
 var waves = preload("res://game/enemy_waves.gd").waves
