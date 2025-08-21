@@ -26,6 +26,7 @@ class RoomInstance:
 	var cooldown: float
 	var bonus_projectiles: int = 0
 	var extra_damage: int = 0
+	var extra_pierce: int = 0
 
 	func _init(room_type: Room, pos: Vector2i):
 		type = room_type
@@ -178,9 +179,11 @@ func fire_projectiles_above_enemy(room: RoomInstance, projectile: PackedScene, n
 func fire_projectiles_with_target(room: RoomInstance, projectile: PackedScene, number: int, target_func: Callable, filter=null):
 	var targets = game.find_n_closest_enemies(room, number + room.bonus_projectiles, filter)
 	var this_volley_extra_damage = room.extra_damage
+	var this_volley_extra_pierce = room.extra_pierce
 	
 	room.bonus_projectiles = 0
 	room.extra_damage = 0
+	room.extra_pierce = 0
 
 	for target in targets:
 		if target == null:
@@ -188,6 +191,7 @@ func fire_projectiles_with_target(room: RoomInstance, projectile: PackedScene, n
 		room_overlays[room.position].time_since_fired = 0
 		var projectileInst = projectile.instantiate()
 		projectileInst.damage += this_volley_extra_damage
+		projectileInst.pierce += this_volley_extra_pierce
 		game.add_child(projectileInst)
 		target_func.call(room, projectileInst, target)
 		await get_tree().create_timer(.1).timeout
