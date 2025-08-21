@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=4 format=3 uid="uid://dfnwslo6qeo0u"]
+
+[ext_resource type="Script" uid="uid://c8coed0afy17b" path="res://game/enemies/enemy.gd" id="1_olvg5"]
+[ext_resource type="Script" uid="uid://dx0myaehl7et" path="res://assets/resources/definitions/enemy.gd" id="2_4s5vv"]
+[ext_resource type="Texture2D" uid="uid://du547r4tt5qpk" path="res://assets/enemies/crazy_bird.png" id="3_olvg5"]
+
+[resource]
+script = ExtResource("2_4s5vv")
+display_name = "Crazy Bird"
+sprite = ExtResource("3_olvg5")
+scale = Vector2(0.27, 0.27)
+instance_script = ExtResource("1_olvg5")
+underwater = false
+max_health = 50
+speed = 180
+value = 2
+knockback_resist = 0.0
+metadata/_custom_type_script = "uid://dx0myaehl7et"
