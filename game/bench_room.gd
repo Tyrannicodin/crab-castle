@@ -22,4 +22,4 @@ func _input(event):
 
 func _process(delta: float) -> void:
 	if room:
-		$Tooltip.set_room_tooltip(room)
+		$"Tooltip".set_room_tooltip(room)

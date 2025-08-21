@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbc8mrd055rnk"]
+
+[ext_resource type="FontVariation" uid="uid://xvvik2j6lvhf" path="res://assets/fonts/nunito.tres" id="1_0wuj5"]
+[ext_resource type="Script" uid="uid://li2qfkfdcud3" path="res://game/tooltip.gd" id="2_lvb04"]
+
+[node name="PanelContainer" type="PanelContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.5
+offset_right = 105.5
+offset_bottom = 45.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_lvb04")
+
+[node name="Tooltip" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_0wuj5")
+theme_override_font_sizes/font_size = 32
+text = "Example Docs"
+
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_exited" from="Tooltip" to="Tooltip" method="_on_mouse_exited"]
