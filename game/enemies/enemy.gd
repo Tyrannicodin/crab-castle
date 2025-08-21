@@ -67,8 +67,7 @@ func is_alive() -> bool:
 func damage(value: int):
 	health -= value
 	if health <= 0:
-		death.emit(enemy)
-		death_animation()
+		on_death()
 	
 	var text: FlavorText = flavor_text.instantiate()
 	get_parent().add_child(text)
@@ -86,8 +85,8 @@ func stun_lock(time: float):
 func knockback(power: int):
 	backwards_velocity = power * (1 - enemy.knockback_resist)
 
-func death_animation():
-	pass
+func on_death():
+	death.emit(enemy)
 
 func attack_successful():
 	attack_success = true

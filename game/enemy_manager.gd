@@ -1,11 +1,13 @@
 extends Node2D
+class_name EnemyManager
 
 var enemy_base = preload("res://game/enemies/enemy.tscn")
 
 var scaling: Scaling = preload("res://game/scaling.gd").new()
 
-func spawn_enemy(wave_number: int, enemy: Enemy) -> void:
+func spawn_enemy(wave_number: int, enemy: Enemy, initial_pos: Vector2 = Vector2.ZERO) -> void:
 	var new_enemy = enemy_base.instantiate()
+	new_enemy.set_script(enemy.instance_script)
 	new_enemy.death.connect($"..".enemy_killed)
 	new_enemy.enemy = enemy
 	new_enemy.health = int(scaling.scale_enemy_hp(wave_number, enemy.max_health))
@@ -21,7 +23,7 @@ func spawn_enemy(wave_number: int, enemy: Enemy) -> void:
 		layer = randi_range(water_level, layer_count)
 
 	get_child(layer).add_child(new_enemy)
-	new_enemy.position = Vector2.ZERO
+	new_enemy.position = initial_pos
 	new_enemy.underwater = enemy.underwater
 
 func get_all_enemies() -> Array[EnemyInstance]:

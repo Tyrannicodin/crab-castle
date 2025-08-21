@@ -8,6 +8,8 @@ class_name Enemy
 @export var sprite: Texture2D
 @export var scale: Vector2 = Vector2.ONE
 
+@export var instance_script: GDScript = preload("res://game/enemies/enemy.gd")
+
 @export_category("stats")
 @export var underwater: bool = false
 @export var max_health: int = 500

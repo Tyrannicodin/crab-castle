@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=4 format=3 uid="uid://c5xam4uk0qps4"]
+
+[ext_resource type="Script" uid="uid://8ibt6hmbk3xs" path="res://assets/resources/enemies/plane.gd" id="1_55hgy"]
+[ext_resource type="Script" uid="uid://dx0myaehl7et" path="res://assets/resources/definitions/enemy.gd" id="2_55hgy"]
+[ext_resource type="Texture2D" uid="uid://cu2v0gc7t134d" path="res://assets/enemies/airplane.png" id="2_pkjce"]
+
+[resource]
+script = ExtResource("2_55hgy")
+display_name = "Cargo plane"
+sprite = ExtResource("2_pkjce")
+scale = Vector2(0.75, 0.75)
+instance_script = ExtResource("1_55hgy")
+underwater = false
+max_health = 300
+speed = 20
+value = 10
+knockback_resist = 1.0
+metadata/_custom_type_script = "uid://dx0myaehl7et"

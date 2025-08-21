@@ -4,6 +4,7 @@ static var Seagull = preload("res://assets/resources/enemies/seagull.tres")
 static var Fish = preload("res://assets/resources/enemies/fish.tres")
 static var Shark = preload("res://assets/resources/enemies/shark.tres")
 static var Octopus = preload("res://assets/resources/enemies/octopus.tres")
+static var PlaneEnemy = preload("res://assets/resources/enemies/plane.tres")
 
 
 static var waves = [
