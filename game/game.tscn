@@ -270,7 +270,7 @@ offset_bottom = 1035.0
 theme_override_fonts/font = ExtResource("6_mhvfb")
 theme_override_font_sizes/font_size = 48
 disabled = true
-text = "Next Wave
+text = "Start Wave
 "
 
 [node name="gold_display" type="Label" parent="UI"]
