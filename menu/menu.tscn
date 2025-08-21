@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bqm22m7vq1t3h" path="res://menu/menu.gd" id="1_wal61"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="2_xptdw"]
-[ext_resource type="Script" path="res://menu/volume.gd" id="3_6nwqt"]
+[ext_resource type="Script" uid="uid://lfjkc5ltahax" path="res://menu/volume.gd" id="3_6nwqt"]
 
 [sub_resource type="Gradient" id="Gradient_jc4t8"]
 interpolation_mode = 2
