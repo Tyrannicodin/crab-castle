@@ -43,10 +43,13 @@ func _process(delta):
 
 	if scale.x < .05:
 		queue_free()
+		
+func set_rank(rank: int):
+	material.set_shader_parameter("rank", rank)
 
 func _exit_tree():
-	manager.spawn_enemy(3, Octopus, Vector2(position.x, 0))
+	manager.spawn_enemy(3, Octopus, 0, Vector2(position.x - 16, 0))
 	await get_tree().create_timer(0.2).timeout
-	manager.spawn_enemy(3, Octopus, Vector2(position.x, 0))
+	manager.spawn_enemy(3, Octopus, 0, Vector2(position.x + 16, 0))
 	death.emit(enemy)
 	dying = false

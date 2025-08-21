@@ -9,8 +9,7 @@ var flavor_text = preload("res://game/FlavorText.tscn")
 var attack_success = false
 var underwater = false
 const ACCELERATION = 30
-
-@onready var health: int = enemy.max_health
+var health: int = 1
 
 func _ready():
 	material = material.duplicate()
@@ -78,6 +77,9 @@ func damage(value: int):
 	
 	$Hit.pitch_scale = randf_range(1, 1.4)
 	$Hit.play()
+	
+func set_rank(rank: int):
+	material.set_shader_parameter("rank", rank)
 
 func stun_lock(time: float):
 	stun_lock_time_remaining = time

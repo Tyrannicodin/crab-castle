@@ -1,12 +1,19 @@
 [gd_scene load_steps=9 format=3 uid="uid://b2iys8q280ysb"]
 
 [ext_resource type="Script" uid="uid://c8coed0afy17b" path="res://game/enemies/enemy.gd" id="1_1kd2t"]
-[ext_resource type="Shader" path="res://game/enemies/enemy.gdshader" id="1_b4nw2"]
+[ext_resource type="Shader" uid="uid://cthja2aw2bnvd" path="res://game/enemies/enemy.gdshader" id="1_b4nw2"]
 [ext_resource type="AudioStream" uid="uid://bgsc5emduw20g" path="res://assets/sfx/hit.mp3" id="3_qymtj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qymtj"]
 shader = ExtResource("1_b4nw2")
+shader_parameter/elite_r1 = Color(4.13924e-06, 0.668648, 0.837225, 1)
+shader_parameter/elite_r2 = Color(0.635041, 0.00189058, 0.828115, 1)
+shader_parameter/elite_r3 = Color(0.890397, 0, 0.219543, 1)
+shader_parameter/rank = 0
+shader_parameter/radius = 15.0
+shader_parameter/samples = 15
 shader_parameter/brightness = 1.0
+shader_parameter/speed = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4nw2"]
 

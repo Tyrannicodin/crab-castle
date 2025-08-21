@@ -2,12 +2,15 @@ extends Node
 class_name Scaling
 
 func scale_enemy_hp(wave_number: int, hp: int):
-	if wave_number > 3:
-		return  hp + (hp/10.0)**wave_number
+	if wave_number > 7:
+		return  hp + (hp/10.0)*(wave_number-7)
 	return hp
 
 func scale_shop(wave_number: int, price: int):
-	return ((wave_number + 1) * (5.0 / price)) + price + wave_number
+	if wave_number > 3:
+		return ((wave_number - 2) * (5.0 / price)) + price + (wave_number - 3)
+	else:
+		return price
 
 # Return the amount of gold dropped by 1 enemy
 func scale_gold_gained(gold: float, wave_number: int) -> float:

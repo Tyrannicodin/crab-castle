@@ -17,7 +17,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		self.disable()
 	else:
 		remaining_pierce -= 1
-
+		
+	if $ExplosionRadius == null:
+		return
+		
 	for enemy in $ExplosionRadius.get_overlapping_areas():
 		if enemy is not EnemyInstance:
 			continue

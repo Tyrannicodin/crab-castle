@@ -160,7 +160,10 @@ func try_spawn_next_enemy_wave():
 	current_wave_enemy_count = len(current_enemy_wave["enemies"][enemy_waves_cleared])
 	finished_spawning = false
 	for enemy in current_enemy_wave["enemies"][enemy_waves_cleared]:
-		$EnemyManager.spawn_enemy(wave_number, enemy)
+		if typeof(enemy) == TYPE_ARRAY:
+			$EnemyManager.spawn_enemy(wave_number, enemy[0], enemy[1])
+		else:
+			$EnemyManager.spawn_enemy(wave_number, enemy, 0)
 		await get_tree().create_timer(.5).timeout
 	finished_spawning = true
 
