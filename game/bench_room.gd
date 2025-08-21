@@ -7,6 +7,7 @@ var room: Room
 
 @export var room_id = -1
 func _input(event):
+	if $"../../../".in_wave: return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if (event.position - self.global_position).length() < click_radius:
 			$'../'.room_selected.emit(room_id)

@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 		pass
 
 func _input(event):
+	if $"../../../".in_wave: return
 	if disabled:
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
