@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://daq0fcjji8v2n" path="res://game/gold_display.gd" id="6_hb504"]
 [ext_resource type="Texture2D" uid="uid://dvlr1truseh3y" path="res://assets/sun-yellow.png" id="6_jucfl"]
 [ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="6_mhvfb"]
-[ext_resource type="Shader" uid="uid://bvs3xyo6lff1h" path="res://assets/shader/reflection.gdshader" id="7_jdpby"]
+[ext_resource type="Shader" path="res://assets/shader/reflection.gdshader" id="7_jdpby"]
 [ext_resource type="Texture2D" uid="uid://cnk12qj5b8tpq" path="res://assets/cloud.png" id="8_58yx1"]
 [ext_resource type="Script" uid="uid://bvgeo6l2ym3qs" path="res://game/happy_clouds.gd" id="8_hbvmx"]
 [ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/room_details/empty.png" id="11_ee6o4"]
@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://bg6np85mcxhrw" path="res://assets/bench.png" id="21_5e03w"]
 [ext_resource type="Texture2D" uid="uid://bewvh84gv88sy" path="res://assets/money.png" id="22_8bboj"]
 [ext_resource type="Script" uid="uid://b7oo264lufx8i" path="res://game/crane_tooltip.gd" id="22_fegy3"]
-[ext_resource type="PackedScene" uid="uid://buphc88egqhj5" path="res://menu/menu.tscn" id="23_5e03w"]
+[ext_resource type="PackedScene" uid="uid://buphc88egqhj5" path="res://sea_overlay/sea_overlay.tscn" id="23_5e03w"]
 [ext_resource type="Texture2D" uid="uid://b1tvic7afvxmn" path="res://assets/heart.png" id="23_q52ks"]
 [ext_resource type="Script" uid="uid://dv8ryvt05fp74" path="res://game/tutorial.gd" id="32_posua"]
 [ext_resource type="PackedScene" uid="uid://jopgqibdquxd" path="res://game/TutorialTextBox.tscn" id="32_pvdu1"]
@@ -355,18 +355,32 @@ visible = false
 [node name="Tutorial" type="CanvasLayer" parent="."]
 script = ExtResource("32_posua")
 
-[node name="TutorialTextBox" parent="Tutorial" instance=ExtResource("32_pvdu1")]
+[node name="One" type="CanvasLayer" parent="Tutorial"]
 visible = false
+
+[node name="TutorialTextBox" parent="Tutorial/One" instance=ExtResource("32_pvdu1")]
 position = Vector2(26, 19)
 text = "The seagulls are attacking! We have to build a castle!"
 
-[node name="Tutorial1" type="Sprite2D" parent="Tutorial"]
+[node name="Two" type="CanvasLayer" parent="Tutorial"]
 visible = false
+
+[node name="TutorialTextBox" parent="Tutorial/Two" instance=ExtResource("32_pvdu1")]
+position = Vector2(26, 19)
+text = "Drag your weapon onto the platform."
+
+[node name="Sprite2D" type="Sprite2D" parent="Tutorial/Two"]
 position = Vector2(688, 877)
 texture = ExtResource("33_cf130")
 
-[node name="Tutorial2" type="Sprite2D" parent="Tutorial"]
+[node name="Three" type="CanvasLayer" parent="Tutorial"]
 visible = false
+
+[node name="TutorialTextBox" parent="Tutorial/Three" instance=ExtResource("32_pvdu1")]
+position = Vector2(26, 19)
+text = "Press start wave and defend!"
+
+[node name="Sprite2D" type="Sprite2D" parent="Tutorial/Three"]
 position = Vector2(1474, 896)
 texture = ExtResource("33_cf130")
 
