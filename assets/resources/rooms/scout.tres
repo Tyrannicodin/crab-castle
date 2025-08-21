@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Room" load_steps=4 format=3 uid="uid://2vsj86f4v75g"]
+
+[ext_resource type="Texture2D" uid="uid://kjlsfne54hgc" path="res://assets/rooms/kunai.png" id="1_c2qwi"]
+[ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="2_123ns"]
+[ext_resource type="Script" uid="uid://dy3asm55t4wos" path="res://assets/resources/rooms/scout.gd" id="3_c2qwi"]
+
+[resource]
+script = ExtResource("2_123ns")
+display_name = "Scout"
+description = "5 damage. 10 additional damage for each room below."
+image = ExtResource("1_c2qwi")
+scale = Vector2(-0.35, 0.35)
+translation = Vector2(0, 0)
+rotation = 0.0
+animate_on_trigger = true
+visible_progress_bar = true
+visible_arrows = 0
+trigger_script = ExtResource("3_c2qwi")
+cooldown_seconds = 3.0
+requires_enemies_to_trigger = true
+weight = 60
+cost = 19
+metadata/_custom_type_script = "uid://s5vpeux5sx8g"

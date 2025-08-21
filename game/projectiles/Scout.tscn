@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://yj0jkgibe75b"]
+
+[ext_resource type="PackedScene" uid="uid://bligscgn0qlft" path="res://game/projectiles/Projectile.tscn" id="1_7v8dc"]
+[ext_resource type="Texture2D" uid="uid://kjlsfne54hgc" path="res://assets/rooms/kunai.png" id="2_7v8dc"]
+
+[node name="Projectile" instance=ExtResource("1_7v8dc")]
+damage = 5
+speed = 1500.0
+pierce = 1
+stun_lock = 0.15
+knockback = 3
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(11, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+position = Vector2(-1, 2.38419e-07)
+rotation = 2.36583
+scale = Vector2(0.0924939, 0.0924939)
+texture = ExtResource("2_7v8dc")
