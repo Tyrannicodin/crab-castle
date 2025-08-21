@@ -26,6 +26,6 @@ func get_tooltip_label(n, text) -> Tooltip:
 	var t: Tooltip = Tooltip.instantiate()
 	t.set_description(n, text)
 	t.global_position = global_position
-	t.position.x = t.position.x - 1080 + (t.size.x / 2)
-	t.position.y = t.position.y - t.size.y - 37
+	t.position.x = t.position.x - 1080 + 16
+	t.position.y = t.position.y - t.size.y
 	return t
