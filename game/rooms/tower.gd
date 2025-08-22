@@ -34,9 +34,9 @@ class RoomInstance:
 	
 	# extra stuff for specific rooms
 	var gym_extra_damage: float = 0
-	var workshop_extra_coins: int = 0
+	var workshop_extra_coins: float = 0
 	var funeral_parlor_scaling: int = 0
-	var funeral_parlor_scaling: int = 0
+	var funeral_parlor_extra_damage: int = 0
 
 	func _init(room_type: Room, pos: Vector2i):
 		type = room_type
@@ -261,7 +261,7 @@ func fire_projectiles_with_target(room: RoomInstance, projectile: PackedScene, n
 			continue
 		room_overlays[room.position].time_since_fired = 0
 		var projectileInst = projectile.instantiate()
-		projectileInst.damage += this_volley_extra_damage
+		projectileInst.damage += this_volley_extra_damage + room.funeral_parlor_extra_damage
 		projectileInst.pierce += this_volley_extra_pierce
 		game.add_child(projectileInst)
 		target_func.call(room, projectileInst, target)
