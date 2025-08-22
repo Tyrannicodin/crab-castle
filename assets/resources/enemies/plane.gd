@@ -50,9 +50,9 @@ func set_rank(r: int):
 	material.set_shader_parameter("rank", r)
 
 func _exit_tree():
-	for i in 2**rank:
-		manager.spawn_enemy(3, Octopus, rank, Vector2(position.x - 16, 0))
+	for i in range(0,2**rank):
+		manager.spawn_enemy(3, Octopus, rank, Vector2(position.x - 16 * i, 0))
 		await get_tree().create_timer(0.2).timeout
-		manager.spawn_enemy(3, Octopus, rank, Vector2(position.x + 16, 0))
+		manager.spawn_enemy(3, Octopus, rank, Vector2(position.x + 16 * i, 0))
 	death.emit(enemy)
 	dying = false
