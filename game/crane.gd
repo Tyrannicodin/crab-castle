@@ -8,10 +8,11 @@ var click_radius = 40
 var initial_pos = position
 @export var room_id = -2
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if disabled:
-		# grayscale this here
-		pass
+		use_parent_material = false
+	else:
+		use_parent_material = true
 
 func _input(event):
 	if $"../../../".in_wave: return

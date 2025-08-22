@@ -4,10 +4,10 @@
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="1_wn2jo"]
 [ext_resource type="Texture2D" uid="uid://g885r3geq3xg" path="res://upgrades/white.png" id="2_mhvgj"]
 [ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="3_5ht27"]
-[ext_resource type="Script" path="res://game_end/outcome.gd" id="4_g3c4v"]
+[ext_resource type="Script" uid="uid://bn2x8uuhk5u8k" path="res://game_end/outcome.gd" id="4_g3c4v"]
 [ext_resource type="FontVariation" uid="uid://xvvik2j6lvhf" path="res://assets/fonts/nunito.tres" id="4_wrq5b"]
 [ext_resource type="PackedScene" uid="uid://dt1xpla3sg1p6" path="res://game_end/statistic.tscn" id="5_wrq5b"]
-[ext_resource type="Script" path="res://game_end/wave_count.gd" id="6_tmv5n"]
+[ext_resource type="Script" uid="uid://cnh4fjaquu1lo" path="res://game_end/wave_count.gd" id="6_tmv5n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5ht27"]
 shader = ExtResource("1_wn2jo")
@@ -83,31 +83,40 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("6_tmv5n")
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/h_separation = 20
-columns = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 125
 
-[node name="Statistic" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
+[node name="GridContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Statistic" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
 layout_mode = 2
 stat_name = "Gold earned: "
 property = &"money_earned"
 
-[node name="Statistic2" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
+[node name="Statistic2" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
 layout_mode = 2
 stat_name = "Enemies killed: "
 property = &"kills"
 
-[node name="Statistic3" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
+[node name="Statistic3" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
 layout_mode = 2
-stat_name = "Rooms built: "
+stat_name = "Rooms bought: "
 property = &"rooms_built"
 
-[node name="Statistic4" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
+[node name="Statistic4" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
 layout_mode = 2
-stat_name = "Rooms destroyed: "
+stat_name = "Rooms sold: "
+property = &"rooms_sold"
 
-[node name="Statistic5" parent="MarginContainer/MarginContainer/VBoxContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
+[node name="Statistic6" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
+layout_mode = 2
+stat_name = "Damage dealt: "
+property = &"total_damage_dealt"
+
+[node name="Statistic5" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
 layout_mode = 2
 stat_name = "Damage taken: "
 property = &"total_damage_taken"

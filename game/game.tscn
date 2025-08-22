@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=63 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://bg6np85mcxhrw" path="res://assets/bench.png" id="21_5e03w"]
 [ext_resource type="Texture2D" uid="uid://bewvh84gv88sy" path="res://assets/money.png" id="22_8bboj"]
 [ext_resource type="Script" uid="uid://b7oo264lufx8i" path="res://game/crane_tooltip.gd" id="22_fegy3"]
+[ext_resource type="Shader" uid="uid://1hsrcasdr8yc" path="res://assets/shader/grayscale.gdshader" id="22_urpib"]
 [ext_resource type="Texture2D" uid="uid://b1tvic7afvxmn" path="res://assets/heart.png" id="23_q52ks"]
 [ext_resource type="Texture2D" uid="uid://cn5kqx8ahc3t6" path="res://assets/trash_can.png" id="29_gvtgv"]
 [ext_resource type="Script" uid="uid://dy6w7t42yvbeo" path="res://game/trash_can.gd" id="30_5ywmu"]
@@ -141,6 +142,9 @@ shader_parameter/blend_texture = ExtResource("19_dxwpq")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_b686c"]
 viewport_path = NodePath("TowerViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cieqw"]
+shader = ExtResource("22_urpib")
 
 [sub_resource type="LabelSettings" id="LabelSettings_q52ks"]
 font = ExtResource("6_mhvfb")
@@ -266,6 +270,7 @@ scale = Vector2(0.804878, 0.804878)
 texture = ExtResource("21_5e03w")
 
 [node name="Crane" type="Sprite2D" parent="UI/Bench"]
+material = SubResource("ShaderMaterial_cieqw")
 position = Vector2(-459.697, 1.24243)
 scale = Vector2(0.187839, 0.187839)
 texture = ExtResource("17_jucfl")
