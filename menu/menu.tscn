@@ -177,16 +177,15 @@ text = "Quit"
 
 [node name="Options" type="VBoxContainer" parent="GameStartOverlay/SeaGradient"]
 visible = false
-layout_mode = 1
-anchors_preset = -1
+layout_mode = 2
 anchor_left = 0.5
 anchor_top = 0.625
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -146.0
-offset_top = -97.5
+offset_top = -1840.5
 offset_right = 146.0
-offset_bottom = -995.0
+offset_bottom = -2734.0
 grow_horizontal = 2
 grow_vertical = 0
 
