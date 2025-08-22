@@ -37,12 +37,13 @@ class RoomInstance:
 	var workshop_extra_coins: float = 0
 	var funeral_parlor_scaling: int = 1
 	var funeral_parlor_extra_damage: int = 0
+	var music_room_cooldown_reduction: float = 0
 
 	func _init(room_type: Room, pos: Vector2i):
 		type = room_type
 		position = pos
 		cooldown = type.cooldown_seconds
-		cooldown_remaining = type.cooldown_seconds
+		cooldown_remaining = max(type.cooldown_seconds  - music_room_cooldown_reduction, .2)
 
 	func play_sound(tower: Tower, sound: String):
 		tower.room_overlays[position].play_sound(sound)
