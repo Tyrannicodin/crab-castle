@@ -34,7 +34,7 @@ class RoomInstance:
 	
 	# extra stuff for specific rooms
 	var gym_extra_damage: float = 0
-	var workshop_extra_coins: float = 0
+	var workshop_extra_coins: float = 1
 	var funeral_parlor_scaling: int = 1
 	var funeral_parlor_extra_damage: int = 0
 	var music_room_cooldown_reduction: float = 0
