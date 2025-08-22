@@ -16,3 +16,4 @@ class_name Enemy
 @export var speed: int = 60
 @export var value: int = 1
 @export var knockback_resist: float = 0.
+@export var tower_damage: int = 0

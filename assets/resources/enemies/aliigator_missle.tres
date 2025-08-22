@@ -15,4 +15,5 @@ max_health = 5
 speed = 500
 value = 5
 knockback_resist = 1.0
+tower_damage = 50
 metadata/_custom_type_script = "uid://dx0myaehl7et"
