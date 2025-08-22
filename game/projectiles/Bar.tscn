@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://disfrto57erkv"]
+
+[ext_resource type="PackedScene" uid="uid://bligscgn0qlft" path="res://game/projectiles/Projectile.tscn" id="1_5t2ss"]
+[ext_resource type="Texture2D" path="res://assets/projectiles/beer.png" id="2_5t2ss"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_serln"]
+radius = 34.0147
+
+[node name="Projectile" instance=ExtResource("1_5t2ss")]
+damage = 1
+pierce = 10
+stun_lock = 0.5
+knockback = 4
+sound = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+position = Vector2(0, -1.90735e-06)
+rotation = 1.52999
+scale = Vector2(0.0935014, 0.0980848)
+texture = ExtResource("2_5t2ss")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_serln")
