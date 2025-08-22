@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ba1kssk67eari" path="res://assets/rooms/shuriken.png" id="1_xynor"]
 [ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="2_l4efh"]
-[ext_resource type="Script" path="res://assets/resources/rooms/shuriken.gd" id="3_xynor"]
+[ext_resource type="Script" uid="uid://dhe15ihacxqbc" path="res://assets/resources/rooms/shuriken.gd" id="3_xynor"]
 
 [resource]
 script = ExtResource("2_l4efh")

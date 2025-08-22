@@ -1,11 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dd47h5uyo32f6"]
+[gd_scene load_steps=3 format=3 uid="uid://sx1rc3thhvxo"]
 
 [ext_resource type="PackedScene" uid="uid://bligscgn0qlft" path="res://game/projectiles/Projectile.tscn" id="1_mhrr4"]
 [ext_resource type="Texture2D" uid="uid://ba1kssk67eari" path="res://assets/rooms/shuriken.png" id="2_mhrr4"]
 
 [node name="Projectile" instance=ExtResource("1_mhrr4")]
 damage = 5
-=======
 speed = 2000.0
 pierce = 1
 stun_lock = 0.05
