@@ -13,6 +13,7 @@ static func on_trigger(tower: Tower, room: Tower.RoomInstance) -> void:
 
 	for r: Tower.RoomInstance in tower.get_adjacent_rooms(room).values():
 		if r == null: continue
+		if r.type.display_name == "Stairwell": continue
 		
 		if extra_damage != 0:
 			r.extra_damage += extra_damage
