@@ -28,7 +28,6 @@ var money: float = 12.:
 			money_earned += value - money
 		balance_changed.emit(value)
 		money = value
-		check_can_use_removal_service()
 
 @onready var enemy_manager = $EnemyManager
 var tower_health = 150 : 

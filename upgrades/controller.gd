@@ -20,7 +20,8 @@ func roll_rooms(new_wave_number) -> void:
 func reroll_rooms() -> void:
 	$Margin/VBox/Center/VBox/Roll.show()
 	$Margin/VBox/Center/VBox/Skip.show()
-	on_balance_change(money - last_reroll_cost)
+	if number_of_rerolls != 0:
+		on_balance_change(money - last_reroll_cost)
 	self.balance_changed.emit(money)
 	var reroll_cost = scaling.scale_reroll_price(wave_number, number_of_rerolls)
 	last_reroll_cost = reroll_cost
