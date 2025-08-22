@@ -133,6 +133,13 @@ func on_wave_end(wait_for_wave=true):
 	$"UI/wave_number".text = "Wave " + str(wave_number + 1)
 	
 	if !$"UI/Rooms".is_full():
+		var has_bar_room = false
+		for r: Tower.RoomInstance in $TowerViewport/Tower.rooms:
+			if r.type.display_name == "Bar":
+				has_bar_room = true
+		
+		if has_bar_room:
+			$UpgradeUi.free_rerolls += 2
 		$"UpgradeUi".roll_rooms(wave_number)
 
 	wave_end.emit()

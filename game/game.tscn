@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://bg6np85mcxhrw" path="res://assets/bench.png" id="21_5e03w"]
 [ext_resource type="Texture2D" uid="uid://bewvh84gv88sy" path="res://assets/money.png" id="22_8bboj"]
 [ext_resource type="Script" uid="uid://b7oo264lufx8i" path="res://game/crane_tooltip.gd" id="22_fegy3"]
-[ext_resource type="PackedScene" uid="uid://buphc88egqhj5" path="res://menu/menu.tscn" id="23_5e03w"]
+[ext_resource type="PackedScene" uid="uid://buphc88egqhj5" path="res://sea_overlay/sea_overlay.tscn" id="23_5e03w"]
 [ext_resource type="Texture2D" uid="uid://b1tvic7afvxmn" path="res://assets/heart.png" id="23_q52ks"]
 [ext_resource type="Texture2D" uid="uid://cn5kqx8ahc3t6" path="res://assets/trash_can.png" id="29_gvtgv"]
 [ext_resource type="Script" uid="uid://dy6w7t42yvbeo" path="res://game/trash_can.gd" id="30_5ywmu"]

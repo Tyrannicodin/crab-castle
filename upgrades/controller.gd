@@ -9,6 +9,7 @@ var wave_number = 0
 var scaling: Scaling = load("res://game/scaling.gd").new()
 var number_of_rerolls = 0
 var last_reroll_cost = 0
+var free_rerolls = 0
 
 func roll_rooms(new_wave_number) -> void:
 	number_of_rerolls = 0
@@ -26,6 +27,12 @@ func reroll_rooms() -> void:
 	var reroll_cost = scaling.scale_reroll_price(wave_number, number_of_rerolls)
 	last_reroll_cost = reroll_cost
 	number_of_rerolls += 1
+	
+	if free_rerolls > 1:
+		free_rerolls -= 1
+		number_of_rerolls -= 1
+		reroll_cost = 0
+	
 	var rng = RandomNumberGenerator.new()
 	
 	var filtered_rooms = available_rooms.duplicate()
@@ -69,4 +76,5 @@ func skip() -> void:
 
 func on_close():
 	$"../UI/Start Next Wave".disabled = false
+	free_rerolls = 0
 	hide()
