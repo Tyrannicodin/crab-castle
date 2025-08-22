@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_l4efh")
 display_name = "Shuriken"
-description = "Deals 5 damage. When any room triggers, reduce cooldown by 0.2s, increase damage by 2, increase pierce by 1."
+description = "Deals 5 damage. When any room triggers, reduce cooldown by 0.1s, increase damage by 2, increase pierce by 1."
 image = ExtResource("1_xynor")
 scale = Vector2(1.2, 1.2)
 translation = Vector2(0, 0)
