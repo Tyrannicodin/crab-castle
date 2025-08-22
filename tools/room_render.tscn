@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/room_details/empty.png" id="1_fuwc3"]
 [ext_resource type="Script" uid="uid://bmuobh4tmvs1m" path="res://tools/overlay_display.gd" id="2_pqqnw"]
-[ext_resource type="Resource" uid="uid://dv47f6q3m8vx0" path="res://assets/resources/rooms/stairwell.tres" id="3_c4clm"]
+[ext_resource type="Resource" uid="uid://5udt7yya60at" path="res://assets/resources/rooms/gym.tres" id="3_c4clm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqqnw"]
 texture = ExtResource("1_fuwc3")

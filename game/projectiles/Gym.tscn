@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://blyenif2t8idb"]
+
+[ext_resource type="PackedScene" uid="uid://bligscgn0qlft" path="res://game/projectiles/Projectile.tscn" id="1_a7wbv"]
+[ext_resource type="Texture2D" uid="uid://cang30kqmge8t" path="res://assets/rooms/gym.png" id="2_a7wbv"]
+
+[node name="Projectile" instance=ExtResource("1_a7wbv")]
+damage = 10
+speed = 1000.0
+pierce = 1
+stun_lock = 0.4
+knockback = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+position = Vector2(-6, -2)
+rotation = -1.57112
+scale = Vector2(0.132543, 0.132543)
+texture = ExtResource("2_a7wbv")

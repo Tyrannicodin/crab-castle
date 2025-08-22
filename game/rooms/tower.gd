@@ -30,6 +30,9 @@ class RoomInstance:
 	var bonus_projectiles: int = 0
 	var extra_damage: int = 0
 	var extra_pierce: int = 0
+	
+	# extra stuff for specific rooms
+	var gym_extra_damage: float = 0
 
 	func _init(room_type: Room, pos: Vector2i):
 		type = room_type
