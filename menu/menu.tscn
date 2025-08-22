@@ -1,8 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://buphc88egqhj5"]
+[gd_scene load_steps=14 format=3 uid="uid://buphc88egqhj5"]
 
 [ext_resource type="Script" uid="uid://bqm22m7vq1t3h" path="res://menu/menu.gd" id="1_6nwqt"]
 [ext_resource type="Texture2D" uid="uid://lrapmwqvv453" path="res://menu/wave.png" id="2_xptdw"]
 [ext_resource type="Script" uid="uid://lfjkc5ltahax" path="res://menu/volume.gd" id="3_6nwqt"]
+[ext_resource type="Texture2D" uid="uid://did6355gudwqm" path="res://assets/elder_crab.png" id="3_juveg"]
+[ext_resource type="FontVariation" uid="uid://xvvik2j6lvhf" path="res://assets/fonts/nunito.tres" id="3_pbjm4"]
+[ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="4_v6yed"]
 
 [sub_resource type="Gradient" id="Gradient_jc4t8"]
 interpolation_mode = 2
@@ -116,7 +119,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 1274.0
+offset_top = -1000.0
+offset_bottom = 274.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_y36n6")
@@ -135,16 +139,40 @@ offset_bottom = -586.5
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="HBoxContainer" type="HBoxContainer" parent="GameStartOverlay/SeaGradient/Menu"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="GameStartOverlay/SeaGradient/Menu/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_juveg")
+expand_mode = 3
+flip_h = true
+
+[node name="Label" type="Label" parent="GameStartOverlay/SeaGradient/Menu/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_v6yed")
+theme_override_font_sizes/font_size = 120
+text = "Crab Castle!"
+
 [node name="Resume" type="Button" parent="GameStartOverlay/SeaGradient/Menu"]
 layout_mode = 2
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_pbjm4")
+theme_override_font_sizes/font_size = 36
 text = "Start"
 
 [node name="Options" type="Button" parent="GameStartOverlay/SeaGradient/Menu"]
 layout_mode = 2
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_pbjm4")
+theme_override_font_sizes/font_size = 36
 text = "Options"
 
 [node name="Quit" type="Button" parent="GameStartOverlay/SeaGradient/Menu"]
 layout_mode = 2
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_pbjm4")
+theme_override_font_sizes/font_size = 36
 text = "Quit"
 
 [node name="Options" type="VBoxContainer" parent="GameStartOverlay/SeaGradient"]
@@ -169,6 +197,8 @@ script = ExtResource("3_6nwqt")
 
 [node name="Back" type="Button" parent="GameStartOverlay/SeaGradient/Options"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pbjm4")
+theme_override_font_sizes/font_size = 36
 text = "Go Back"
 
 [node name="GameStartAnimation" type="AnimationPlayer" parent="GameStartOverlay"]
