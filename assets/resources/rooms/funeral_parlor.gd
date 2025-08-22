@@ -14,8 +14,9 @@ static func on_trigger(tower: Tower, room: Tower.RoomInstance) -> void:
 	rooms = rooms.filter(func(r: Tower.RoomInstance): return r.type.display_name != "Funeral Parlor")
 
 	await tower.get_tree().create_timer(.2).timeout
-	rooms[0].funeral_parlor_extra_damage += scaling
-	rooms[0].create_flavor_text(tower, "+%d Damage" % scaling)
+	var buff_room = rooms.pick_random()
+	buff_room.funeral_parlor_extra_damage += scaling
+	buff_room.create_flavor_text(tower, "+%d Damage" % scaling)
 
 	room.funeral_parlor_scaling += 1
 
