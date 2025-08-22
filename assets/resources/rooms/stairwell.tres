@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_g437o")
 display_name = "Stairwell"
-description = "Copies effect of adjacent rooms to other adjacent rooms, twice."
+description = "Spread all buffs originating from adjacent room to adjacent rooms, twice (excluding cooldown buff)."
 image = ExtResource("1_v6to4")
 scale = Vector2(0.55, 0.55)
 translation = Vector2(0, 0)

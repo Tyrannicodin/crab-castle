@@ -33,5 +33,4 @@ texture = SubResource("GradientTexture1D_0253i")
 
 [node name="Sound" type="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource("2_0253i")
-volume_db = -4.0
 bus = &"SFX"

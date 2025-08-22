@@ -9,9 +9,24 @@ speed = 2000.0
 pierce = 1
 stun_lock = 0.05
 knockback = 4
-sound = 1
+sound = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="1"]
 position = Vector2(0, -4.76837e-07)
 scale = Vector2(0.321429, 0.321429)
 texture = ExtResource("2_mhrr4")
+
+[node name="Whip" parent="." index="2"]
+volume_db = 0.0
+
+[node name="Whoosh" parent="." index="3"]
+volume_db = 0.0
+
+[node name="WeaponThrow" parent="." index="4"]
+volume_db = 0.0
+
+[node name="CannonBlast" parent="." index="5"]
+volume_db = 0.0
+
+[node name="Bow" parent="." index="6"]
+volume_db = 0.0

@@ -6,7 +6,7 @@ var click_radius = 40
 
 func _ready() -> void:
 	$Tooltip.tooltip_name = "Trash Can"
-	$Tooltip.text = "Drag a tower to sell."
+	$Tooltip.text = "Drag a tower here to sell it."
 
 func _process(delta: float) -> void:
 	hovered = false
