@@ -5,6 +5,13 @@ static func on_trigger(tower: Tower, room: Tower.RoomInstance) -> void:
 	if room_pos.distance_to(closest_target) > 350:
 		return
 	
+	var audio = AudioStreamPlayer.new()
+	audio.stream = preload("res://assets/sfx/explosion.wav")
+	audio.bus = "SFX"
+	tower.game.add_child(audio)
+	audio.play()
+	audio.finished.connect(audio.queue_free)
+
 	for enemy in tower.game.find_closest_enemies(room):
 		if room_pos.distance_to(enemy.global_position) > 600:
 			return
