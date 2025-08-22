@@ -18,3 +18,5 @@ static func on_trigger(tower: Tower, room: Tower.RoomInstance) -> void:
 	rooms[0].create_flavor_text(tower, "+%d Damage" % scaling)
 
 	room.funeral_parlor_scaling += 1
+
+	room.play_sound(tower, "buff")
