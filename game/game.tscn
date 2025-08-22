@@ -358,6 +358,7 @@ offset = Vector2(250, -80)
 transform = Transform2D(1, 0, 0, 1, 250, -80)
 
 [node name="GameEnd" parent="." instance=ExtResource("4_dxrkv")]
+process_mode = 3
 visible = false
 
 [node name="EnemyManager" type="Node2D" parent="."]

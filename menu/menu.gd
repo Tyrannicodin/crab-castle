@@ -26,7 +26,7 @@ func _ready():
 	buttons_disabled = false
 
 func _process(_delta):
-	if Input.is_action_just_pressed("pause") and in_game:
+	if Input.is_action_just_pressed("pause") and in_game and not parent.game_ended:
 		if get_tree().paused:
 			if deep:
 				animator.play_backwards("deeper")
