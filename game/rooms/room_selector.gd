@@ -1,7 +1,7 @@
 extends Node2D
 
 signal room_selected(index: int)
-signal sell(value: int)
+signal sell(room: int, value: int)
 
 var bench = []
 var child_script = load("res://game/bench_room.gd")
@@ -58,4 +58,5 @@ func _on_tower_sell(room: int) -> void:
 	var room_data = bench[room]
 	var sell_price = scaling.sell_price($"../..".wave_number, room_data.room)
 	remove_room(room)
-	sell.emit(sell_price)
+	print(bench)
+	sell.emit(room, sell_price)

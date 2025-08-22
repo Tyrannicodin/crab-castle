@@ -242,5 +242,6 @@ func _on_tower_removal_service() -> void:
 	pass
 
 
-func _on_rooms_sell(value: int) -> void:
+func _on_rooms_sell(room: int, value: int) -> void:
 	money += value
+	purchased_rooms.remove_at(room)
