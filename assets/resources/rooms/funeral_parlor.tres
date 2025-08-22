@@ -1,23 +1,23 @@
 [gd_resource type="Resource" script_class="Room" load_steps=4 format=3 uid="uid://bv1pjnowo517e"]
 
-[ext_resource type="Texture2D" uid="uid://cj4rj2bn3ii4i" path="res://assets/rooms/workshop.png" id="1_h1lad"]
+[ext_resource type="Texture2D" uid="uid://dth7oxgtnuaxn" path="res://assets/rooms/funeral_parlor.png" id="1_h1lad"]
 [ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="2_6w444"]
-[ext_resource type="Script" uid="uid://bobdtfbx081ym" path="res://assets/resources/rooms/workshop.gd" id="3_jxevd"]
+[ext_resource type="Script" uid="uid://del3gsfyyya04" path="res://assets/resources/rooms/funeral_parlor.gd" id="3_h1lad"]
 
 [resource]
 script = ExtResource("2_6w444")
-display_name = "Workshop"
-description = "Gain 2 gold."
+display_name = "Funeral Parlor"
+description = "Adds 1 damage to all adjacent towers and remove 1hp. Increase both by 1 each time this room triggers. Resets when removed."
 image = ExtResource("1_h1lad")
-scale = Vector2(0.9, 0.9)
+scale = Vector2(0.6, 0.6)
 translation = Vector2(0, 0)
 rotation = 0.0
 animate_on_trigger = true
 visible_progress_bar = true
 visible_arrows = 0
-trigger_script = ExtResource("3_jxevd")
-cooldown_seconds = 5.0
+trigger_script = ExtResource("3_h1lad")
+cooldown_seconds = 10.0
 requires_enemies_to_trigger = false
-weight = 100
-cost = 17
+weight = 30
+cost = 43
 metadata/_custom_type_script = "uid://s5vpeux5sx8g"
