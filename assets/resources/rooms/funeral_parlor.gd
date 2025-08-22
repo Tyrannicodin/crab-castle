@@ -10,10 +10,11 @@ static func on_trigger(tower: Tower, room: Tower.RoomInstance) -> void:
 	tower.game.tower_health -= scaling
 	room.create_flavor_text(tower, "-%d Health" % scaling)
 
-	for r: Tower.RoomInstance in tower.get_adjacent_rooms(room).values():
-		if r == null: continue
-		await tower.get_tree().create_timer(.2).timeout
-		r.funeral_parlor_extra_damage += scaling
-		r.create_flavor_text(tower, "+%d Damage" % scaling)
+	var rooms = tower.rooms.duplicate()
+	rooms = rooms.filter(func(r: Tower.RoomInstance): return r.type.display_name != "Funeral Parlor")
+
+	await tower.get_tree().create_timer(.2).timeout
+	rooms[0].funeral_parlor_extra_damage += scaling
+	rooms[0].create_flavor_text(tower, "+%d Damage" % scaling)
 
 	room.funeral_parlor_scaling += 1
