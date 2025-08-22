@@ -125,7 +125,7 @@ static var waves = [
 		"water_level": 2,
 		"enemies": [
 			range(10).map(func(_i): return [CrazyBird, 1]) + range(3).map(func(_i): return [Alligator, 1]),
-			range(10).map(func(_i): return [Octopus, 1]) + [Shark, Shark, Shark, Shark, Shark],
+			[[Octopus, 2]] + range(7).map(func(_i): return [Octopus, 1]) + [Shark, Shark, Shark, Shark, Shark],
 			[[PlaneEnemy, 2]]
 		]
 	},
