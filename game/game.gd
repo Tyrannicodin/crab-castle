@@ -35,6 +35,7 @@ var tower_health = 150 :
 		if value < money:
 			total_damage_taken += tower_health - value
 		tower_health = value
+		$UI/health_display.text = str(value)
 
 var waves = preload("res://game/enemy_waves.gd").waves
 var scaling = preload("res://game/scaling.gd").new()

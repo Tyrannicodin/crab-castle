@@ -27,18 +27,18 @@ float draw_band(float offset, vec2 uv, sampler2D tex, vec2 texture_pixel_size) {
 
 void fragment(){
 	vec4 tex = texture(TEXTURE, UV);
-			
+
 	vec4 previous_color = texture(TEXTURE, UV);
     vec4 white_color = vec4(1.0, 1.0, 1.0, previous_color.a);
     vec4 new_color = previous_color;
     new_color = mix(previous_color, white_color, brightness);
     COLOR = new_color;
-	
+
 	if (COLOR.a < 0.9) {
 		float band_1 = draw_band(-0.5, UV, TEXTURE, TEXTURE_PIXEL_SIZE);
 		float band_2 = draw_band(0.0, UV, TEXTURE, TEXTURE_PIXEL_SIZE);
 		float band_3 = draw_band(0.5, UV, TEXTURE, TEXTURE_PIXEL_SIZE);
-		
+
 		if (rank == 1) {
 			COLOR = vec4(
 				mix(elite_r1.rgb, white_color.rgb, brightness),
@@ -48,13 +48,13 @@ void fragment(){
 			COLOR = vec4(
 				mix(elite_r2.rgb, white_color.rgb, brightness),
 				band_1 + band_2 + band_3
-			);			
+			);
 		} else if (rank == 3) {
 			COLOR = vec4(
 				mix(elite_r3.rgb, white_color.rgb, brightness),
 				band_1 + band_2 + band_3
-			);			
+			);
 		}
-		
+
 	}
 }
