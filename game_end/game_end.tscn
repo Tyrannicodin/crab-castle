@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://jbioikw54jg4"]
+[gd_scene load_steps=14 format=3 uid="uid://jbioikw54jg4"]
 
 [ext_resource type="Script" uid="uid://bsdloip56540v" path="res://game_end/main_menu.gd" id="1_nbbxe"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="1_wn2jo"]
@@ -29,6 +29,9 @@ font_size = 60
 [sub_resource type="LabelSettings" id="LabelSettings_8dehv"]
 font = ExtResource("4_wrq5b")
 font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_g3c4v"]
+font_size = 30
 
 [node name="GameEnd" type="CanvasLayer"]
 
@@ -86,39 +89,82 @@ script = ExtResource("6_tmv5n")
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 50
-theme_override_constants/margin_right = 125
+theme_override_constants/margin_right = 50
 
-[node name="GridContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Gold earned"
+label_settings = SubResource("LabelSettings_g3c4v")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Statistic" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
 layout_mode = 2
-stat_name = "Gold earned: "
-property = &"money_earned"
+property = &"money_end"
+
+[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Enemies killed"
+label_settings = SubResource("LabelSettings_g3c4v")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Statistic2" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
 layout_mode = 2
-stat_name = "Enemies killed: "
 property = &"kills"
+
+[node name="Label3" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Rooms bought"
+label_settings = SubResource("LabelSettings_g3c4v")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Statistic3" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
 layout_mode = 2
-stat_name = "Rooms bought: "
 property = &"rooms_built"
+
+[node name="Label4" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Rooms sold"
+label_settings = SubResource("LabelSettings_g3c4v")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Statistic4" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
 layout_mode = 2
-stat_name = "Rooms sold: "
 property = &"rooms_sold"
+
+[node name="Label5" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Damage dealt"
+label_settings = SubResource("LabelSettings_g3c4v")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Statistic6" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
 layout_mode = 2
-stat_name = "Damage dealt: "
 property = &"total_damage_dealt"
+
+[node name="Label6" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Damage taken"
+label_settings = SubResource("LabelSettings_g3c4v")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Statistic5" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
 layout_mode = 2
-stat_name = "Damage taken: "
 property = &"total_damage_taken"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=64 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=63 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
 [ext_resource type="AudioStream" uid="uid://dqef6khyml52g" path="res://assets/music/crabcastle.mp3" id="2_ee6o4"]
 [ext_resource type="PackedScene" uid="uid://68en2fypp2j5" path="res://upgrades/UpgradeUI.tscn" id="3_dakft"]
+[ext_resource type="Script" uid="uid://dqdjo2qye7qv5" path="res://game/tower_damage.gd" id="4_cieqw"]
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
 [ext_resource type="Script" uid="uid://daq0fcjji8v2n" path="res://game/gold_display.gd" id="6_hb504"]
@@ -26,7 +27,7 @@
 [ext_resource type="Script" uid="uid://ci4t2wa870mqd" path="res://game/crane.gd" id="18_jdpby"]
 [ext_resource type="Texture2D" uid="uid://bcp5t1pl737lf" path="res://assets/room_details/paper_blend.png" id="19_dxwpq"]
 [ext_resource type="Script" uid="uid://b7x38g8nwawmq" path="res://game/enemy_manager.gd" id="19_pxxsx"]
-[ext_resource type="Script" uid="uid://biswc6ipcfiun" path="res://game/eliminator.gd" id="20_u8s88"]
+[ext_resource type="Script" uid="uid://biswc6ipcfiun" path="res://game/cleanup_proj.gd" id="20_u8s88"]
 [ext_resource type="Texture2D" uid="uid://bg6np85mcxhrw" path="res://assets/bench.png" id="21_5e03w"]
 [ext_resource type="Texture2D" uid="uid://bewvh84gv88sy" path="res://assets/money.png" id="22_8bboj"]
 [ext_resource type="Script" uid="uid://b7oo264lufx8i" path="res://game/crane_tooltip.gd" id="22_fegy3"]
@@ -48,13 +49,7 @@ shader_parameter/amount = 2.5
 normal = Vector2(0.999987, -0.00502506)
 distance = 366.005
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dxwpq"]
-normal = Vector2(-1, 0)
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mhvfb"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5e03w"]
-normal = Vector2(0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ee6o4"]
 shader = ExtResource("11_hb504")
@@ -172,25 +167,21 @@ parameters/looping = true
 material = SubResource("ShaderMaterial_lnu2h")
 anchor_mode = 0
 
-[node name="Eliminator" type="Area2D" parent="."]
+[node name="Damage" type="Area2D" parent="."]
 monitorable = false
-script = ExtResource("20_u8s88")
+script = ExtResource("4_cieqw")
 
-[node name="Left" type="CollisionShape2D" parent="Eliminator"]
+[node name="Left" type="CollisionShape2D" parent="Damage"]
 position = Vector2(0, 540)
 shape = SubResource("WorldBoundaryShape2D_u8s88")
 
-[node name="Right" type="CollisionShape2D" parent="Eliminator"]
-position = Vector2(1920, 540)
-shape = SubResource("WorldBoundaryShape2D_dxwpq")
+[node name="Cleanup" type="Area2D" parent="."]
+monitorable = false
+script = ExtResource("20_u8s88")
 
-[node name="Down" type="CollisionShape2D" parent="Eliminator"]
+[node name="Down" type="CollisionShape2D" parent="Cleanup"]
 position = Vector2(960, 1080)
 shape = SubResource("WorldBoundaryShape2D_mhvfb")
-
-[node name="Up" type="CollisionShape2D" parent="Eliminator"]
-position = Vector2(960, 0)
-shape = SubResource("WorldBoundaryShape2D_5e03w")
 
 [node name="BgSkyWater" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ee6o4")
@@ -430,7 +421,8 @@ texture = ExtResource("33_cf130")
 [connection signal="rooms_loaded" from="." to="UpgradeUi" method="on_rooms_loaded"]
 [connection signal="wave_end" from="." to="UI/Start Next Wave" method="show"]
 [connection signal="wave_start" from="." to="Tutorial" method="_on_game_wave_start"]
-[connection signal="area_shape_entered" from="Eliminator" to="Eliminator" method="_on_area_shape_entered"]
+[connection signal="area_entered" from="Damage" to="Damage" method="_on_area_entered"]
+[connection signal="area_entered" from="Cleanup" to="Cleanup" method="_on_area_entered"]
 [connection signal="removal_service" from="TowerViewport/Tower" to="." method="_on_tower_removal_service"]
 [connection signal="removal_service" from="TowerViewport/Tower" to="UI/Rooms" method="add_room"]
 [connection signal="room_placed" from="TowerViewport/Tower" to="." method="room_placed"]
