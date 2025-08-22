@@ -104,9 +104,9 @@ static var waves = [
 		return {
 		"water_level": 4,
 		"enemies": [
+			range(2).map(func(_i): return Alligator),
 			range(2).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]) + range(2).map(func(_i): return CrazyBird),
 			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark] + range(4).map(func(_i): return CrazyBird),
-			[[Shark, 1]]
 		]
 	},
 	# Wave 12
@@ -181,7 +181,7 @@ static var waves = [
 		return {
 		"water_level": 2,
 		"enemies": [
-			range(8).map(func(_i): return [CrazyBird, 1]),
+			range(2).map(func(_i): return [CrazyBird, 3]) + range(8).map(func(_i): return [CrazyBird, 1]),
 			range(6).map(func(_i): return [CrazyBird, 2]),
 			range(3).map(func(_i): return [CrazyBird, 1]) + range(4).map(func(_i): return [CrazyBird, 3])
 		]
