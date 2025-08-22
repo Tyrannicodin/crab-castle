@@ -287,10 +287,13 @@ func check_just_triggered():
 			room.just_triggered = false
 	
 			# do something when the room just triggered
-			# SHURUKEN
 			for r in rooms:
+				# SHURUKEN
 				if r.type.display_name == "Shuriken":
 					r.cooldown_remaining -= .2
 					r.extra_damage += 2
 					r.extra_pierce += 1
-					r.create_flavor_text(self, "-.2s Cooldowns")
+					r.create_flavor_text(self, "-.2s Cooldown")
+				# GYM
+				if r.type.display_name == "Gym":
+					r.gym_extra_damage += .1

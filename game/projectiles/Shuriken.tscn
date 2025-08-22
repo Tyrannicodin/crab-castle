@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ba1kssk67eari" path="res://assets/rooms/shuriken.png" id="2_mhrr4"]
 
 [node name="Projectile" instance=ExtResource("1_mhrr4")]
-damage = 1
+damage = 5
 speed = 2000.0
 pierce = 1
 stun_lock = 0.05
