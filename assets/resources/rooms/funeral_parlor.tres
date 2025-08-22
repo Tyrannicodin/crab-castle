@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_6w444")
-display_name = ""
+display_name = "Funeral Parlor"
 description = "Adds 1 damage to a random room and remove 1hp. Increase both by 1 each time this room triggers. Resets when removed."
 image = ExtResource("1_h1lad")
 scale = Vector2(0.6, 0.6)
