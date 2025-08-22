@@ -1,5 +1,7 @@
 extends Node
 
+signal on_value_set(param: String, value: Variant)
+
 @onready var _file = ConfigFile.new()
 
 func _ready():
@@ -7,6 +9,7 @@ func _ready():
 
 func set_value(param: String, value: Variant) -> void:
     _file.set_value("options", param, value)
+    on_value_set.emit(param, value)
 
 func get_value(param: String, default = null) -> Variant:
     return _file.get_value("options", param, default)
