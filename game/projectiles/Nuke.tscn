@@ -24,9 +24,11 @@ texture = ExtResource("2_qsa4b")
 region_enabled = true
 region_rect = Rect2(10, 55, 430, 220)
 
-[node name="ExplosionRadius" type="Area2D" parent="." index="1"]
+[node name="ExplosionRadius" type="Area2D" parent="Sprite2D" index="0"]
+rotation = -3.14159
+scale = Vector2(2.22222, 2.22222)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRadius" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ExplosionRadius" index="0"]
 rotation = 1.5708
 shape = SubResource("CircleShape2D_qsa4b")
 

@@ -2,6 +2,7 @@ extends Area2D
 class_name EnemyInstance
 
 signal death(type: Enemy)
+signal damage_taken(amount: int)
 
 var enemy: Enemy
 
@@ -69,6 +70,7 @@ func is_alive() -> bool:
 
 func damage(value: int):
 	health -= value
+	damage_taken.emit(value)
 	if health <= 0:
 		on_death()
 	

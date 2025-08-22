@@ -41,6 +41,7 @@ var waves = preload("res://game/enemy_waves.gd").waves
 var scaling = preload("res://game/scaling.gd").new()
 var wave_number = 0
 var in_wave = false
+var game_eneded = false
 
 var enemy_waves_cleared = 0
 var enemy_waves_spawned = 0
@@ -54,6 +55,8 @@ var money_earned: float = 0
 var kills: int = 0
 var rooms_built: int = 0
 var total_damage_taken: int = 0
+var total_damage_dealt: int = 0
+var rooms_sold: int = 0
 
 func is_in_wave() -> bool:
 	return in_wave
@@ -99,8 +102,7 @@ func _input(event):
 func load_rooms():
 	available_rooms = []
 	for file_name in DirAccess.get_files_at("res://assets/resources/rooms"):
-		if (file_name.get_extension() == "import"):
-			file_name = file_name.replace('.import', '')
+		file_name = file_name.trim_suffix(".remap").trim_suffix(".import")
 		var resource = null
 		if file_name.ends_with(".tres"):
 			resource = ResourceLoader.load("res://assets/resources/rooms/" + file_name)
@@ -212,10 +214,10 @@ func fire_projectile_above_enemy(_room: Tower.RoomInstance, projectile: Node2D, 
 	projectile.global_position = target.global_position + Vector2(0, -50)
 
 func room_selected(room: Room) -> void:
+	rooms_built += 1
 	purchased_rooms.append(room)
 
 func room_placed(room: int) -> void:
-	rooms_built += 1
 	purchased_rooms.remove_at(room)
 
 func enemy_killed(enemy: Enemy) -> void:
@@ -241,15 +243,17 @@ func _on_start_next_wave_button_down() -> void:
 	on_wave_start()
 
 func _on_game_end() -> void:
+	game_eneded = true
+	get_tree().paused = true
 	get_tree().call_group("statistic", "update_stat", self)
-
-func check_can_use_removal_service():
-	$"UI/Bench/Crane".disabled = money < removal_service_price
-
-func _on_tower_removal_service() -> void:
-	pass
-
 
 func _on_rooms_sell(room: int, value: int) -> void:
 	money += value
 	purchased_rooms.remove_at(room)
+	rooms_sold += 1
+
+func _on_tower_removal_service(room: Room) -> void:
+	purchased_rooms.append(room)
+
+func enemy_taken_damage(amount: int) -> void:
+	total_damage_dealt += amount

@@ -6,7 +6,7 @@ var room_overlay = preload("res://game/rooms/room_overlay.tscn")
 @onready var tower_overlay_node = $"../../TowerOverlay"
 
 signal room_placed(room: int)
-signal removal_service
+signal removal_service(room: Room)
 signal sell(room: int)
 
 var current_room: int = -1
@@ -34,7 +34,7 @@ class RoomInstance:
 	
 	# extra stuff for specific rooms
 	var gym_extra_damage: float = 0
-	var workshop_extra_coins: float = 0
+	var workshop_extra_coins: float = 1
 	var funeral_parlor_scaling: int = 1
 	var funeral_parlor_extra_damage: int = 0
 	var music_room_cooldown_reduction: float = 0
@@ -43,7 +43,7 @@ class RoomInstance:
 		type = room_type
 		position = pos
 		cooldown = type.cooldown_seconds
-		cooldown_remaining = max(type.cooldown_seconds  - music_room_cooldown_reduction, .2)
+		cooldown_remaining = type.cooldown_seconds
 
 	func play_sound(tower: Tower, sound: String):
 		tower.room_overlays[position].play_sound(sound)
@@ -146,11 +146,10 @@ func _input(event) -> void:
 			var overlay = room_overlays[target]
 			room_overlays.erase(target)
 			rooms = rooms.filter(func(room: RoomInstance): return room.position != target)
-			$"../../UpgradeUi".upgrade_selected.emit(overlay.room)
+			removal_service.emit(overlay.room)
 			overlay.queue_free()
 			$"../../UI/Rooms".dragging_crane = false
 			redraw_castle()
-			removal_service.emit()
 		return
 	
 	if $"../../UI/TrashCan".hovered:
@@ -235,7 +234,7 @@ func _process(delta: float) -> void:
 			if room.can_fire != null and can_fire:
 				can_fire = room.can_fire(game, self)
 			if can_fire:
-				room.cooldown_remaining = room.type.cooldown_seconds
+				room.cooldown_remaining = max(room.type.cooldown_seconds  - room.music_room_cooldown_reduction, .2)
 				room.trigger(self)
 
 		if room.type.cooldown_seconds > 0 and room.cooldown_remaining > 0:

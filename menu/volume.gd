@@ -8,6 +8,7 @@ func _ready():
 	tree_exited.connect(ConfigManager.on_quit)
 
 	set_show_tutorial.emit(ConfigManager.get_value("show_tutorial", true))
+	ConfigManager.on_value_set.connect(func(param, value): if param == "show_tutorial": set_show_tutorial.emit(value))
 
 	var volume: float
 	var bus_label: Label
@@ -34,6 +35,7 @@ func _ready():
 			AudioServer.get_bus_volume_linear(AudioServer.get_bus_index(bus))
 		)
 		volume = clamp(volume, 0, 1)
+		AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(bus), volume)
 		bus_slider.value = volume
 		add_child(bus_label)
 		add_child(bus_slider)

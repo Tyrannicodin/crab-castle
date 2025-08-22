@@ -9,4 +9,7 @@ static func on_trigger(tower: Tower, room: Tower.RoomInstance) -> void:
 				target_room.cooldown_remaining = target_room.cooldown_remaining + (1/target_room.cooldown) - extra_projectiles
 			else:
 				target_room.cooldown_remaining -= 1.0
+				if target_room.cooldown_remaining <= 0:
+					target_room.cooldown_remaining = target_room.cooldown + target_room.cooldown_remaining
+					target_room.trigger(tower)
 			target_room.create_flavor_text(tower, "-1s Cooldown")

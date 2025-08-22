@@ -119,8 +119,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -1000.0
-offset_bottom = 274.0
+offset_top = -800.0
+offset_bottom = 474.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_y36n6")
@@ -177,15 +177,16 @@ text = "Quit"
 
 [node name="Options" type="VBoxContainer" parent="GameStartOverlay/SeaGradient"]
 visible = false
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.625
+anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -146.0
-offset_top = -1840.5
-offset_right = 146.0
-offset_bottom = -2734.0
+offset_left = -230.0
+offset_top = -977.0
+offset_right = 230.0
+offset_bottom = -915.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -193,6 +194,18 @@ grow_vertical = 0
 layout_mode = 2
 columns = 2
 script = ExtResource("3_6nwqt")
+
+[node name="Label" type="Label" parent="GameStartOverlay/SeaGradient/Options/Volume"]
+layout_mode = 2
+text = "Show tutorial"
+
+[node name="CenterContainer" type="CenterContainer" parent="GameStartOverlay/SeaGradient/Options/Volume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CheckBox" type="CheckBox" parent="GameStartOverlay/SeaGradient/Options/Volume/CenterContainer"]
+layout_mode = 2
 
 [node name="Back" type="Button" parent="GameStartOverlay/SeaGradient/Options"]
 layout_mode = 2
@@ -209,4 +222,6 @@ libraries = {
 [connection signal="pressed" from="GameStartOverlay/SeaGradient/Menu/Resume" to="." method="resume_pressed"]
 [connection signal="pressed" from="GameStartOverlay/SeaGradient/Menu/Options" to="." method="options_pressed"]
 [connection signal="pressed" from="GameStartOverlay/SeaGradient/Menu/Quit" to="." method="quit_pressed"]
+[connection signal="set_show_tutorial" from="GameStartOverlay/SeaGradient/Options/Volume" to="GameStartOverlay/SeaGradient/Options/Volume/CenterContainer/CheckBox" method="set_pressed_no_signal"]
+[connection signal="toggled" from="GameStartOverlay/SeaGradient/Options/Volume/CenterContainer/CheckBox" to="GameStartOverlay/SeaGradient/Options/Volume" method="show_tutorial_changed"]
 [connection signal="pressed" from="GameStartOverlay/SeaGradient/Options/Back" to="." method="options_back_pressed"]
