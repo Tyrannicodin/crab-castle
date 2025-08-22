@@ -12,6 +12,11 @@ func spawn_enemy(wave_number: int, enemy: Enemy, rank: int, initial_pos: Vector2
 	new_enemy.enemy = enemy
 	new_enemy.set_rank(rank)
 	new_enemy.health = int(scaling.scale_enemy_hp(wave_number, enemy.max_health)) * 2.512 ** rank
+	if rank > 0:
+		if enemy.knockback_resist < 0:
+			enemy.knockback_resist = enemy.knockback_resist / rank
+		else:
+			enemy.knockback_resist = enemy.knockback_resist * rank
 
 	var water_level = $"..".water_level
 
