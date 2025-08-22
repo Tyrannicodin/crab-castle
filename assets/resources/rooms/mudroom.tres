@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Room" load_steps=4 format=3 uid="uid://gb6uq1clnl7q"]
+
+[ext_resource type="Texture2D" uid="uid://7lgp7i57k7pv" path="res://assets/rooms/mudroom.png" id="1_3p28v"]
+[ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="2_lpmjh"]
+[ext_resource type="Script" uid="uid://bh3634kgqqmy3" path="res://assets/resources/rooms/mudroom.gd" id="3_3p28v"]
+
+[resource]
+script = ExtResource("2_lpmjh")
+display_name = "Mudroom"
+description = "Slows down enemies"
+image = ExtResource("1_3p28v")
+scale = Vector2(0.4, 0.4)
+translation = Vector2(0, 0)
+rotation = 0.0
+animate_on_trigger = true
+visible_progress_bar = true
+visible_arrows = 0
+trigger_script = ExtResource("3_3p28v")
+cooldown_seconds = 1.4
+requires_enemies_to_trigger = true
+weight = 70
+cost = 17
+metadata/_custom_type_script = "uid://s5vpeux5sx8g"

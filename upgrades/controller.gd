@@ -27,10 +27,11 @@ func reroll_rooms() -> void:
 	var reroll_cost = scaling.scale_reroll_price(wave_number, number_of_rerolls)
 	last_reroll_cost = reroll_cost
 	number_of_rerolls += 1
-	
-	if free_rerolls > 1:
+
+	if free_rerolls >= 1:
 		free_rerolls -= 1
 		number_of_rerolls -= 1
+		last_reroll_cost = 0
 		reroll_cost = 0
 	
 	var rng = RandomNumberGenerator.new()
