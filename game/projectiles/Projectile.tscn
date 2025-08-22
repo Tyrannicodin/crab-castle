@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bligscgn0qlft"]
 
 [ext_resource type="Script" uid="uid://6lsj8u78lvu8" path="res://game/projectiles/projectile.gd" id="1_wqu2c"]
-[ext_resource type="AudioStream" uid="uid://2tlrvtsjbcib" path="res://assets/sfx/whip.wav" id="2_t1psp"]
+[ext_resource type="AudioStream" uid="uid://cx8v04ewd4hi5" path="res://assets/sfx/whip.wav" id="2_t1psp"]
 [ext_resource type="AudioStream" uid="uid://dl6wdjjhbc0w5" path="res://assets/sfx/weapon_throw.mp3" id="3_rhpsa"]
 [ext_resource type="AudioStream" uid="uid://cng2lwwse40kl" path="res://assets/sfx/whoosh.wav" id="3_tgtle"]
 [ext_resource type="AudioStream" uid="uid://cksse175aytq6" path="res://assets/sfx/cannon_blast.mp3" id="5_mnvv6"]
