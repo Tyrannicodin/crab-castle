@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Room" load_steps=3 format=3 uid="uid://dg5dsup2vplor"]
+[gd_resource type="Resource" script_class="Room" load_steps=3 format=3 uid="uid://6rmg0n440wvv"]
 
 [ext_resource type="Texture2D" uid="uid://dugg3up4hat1u" path="res://assets/rooms/bar.png" id="1_2ig3f"]
 [ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="2_yvwex"]
@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_yvwex")
 display_name = "Bar"
-description = "Gain 1 gold. Gain 1 more for every 5 times this room triggers. Resets when removed."
+description = "After each wave, your first 2 rerolls are free."
 image = ExtResource("1_2ig3f")
 scale = Vector2(0.6, 0.6)
 translation = Vector2(0, 0)
@@ -14,8 +14,8 @@ rotation = 0.0
 animate_on_trigger = true
 visible_progress_bar = true
 visible_arrows = 0
-cooldown_seconds = 0.0
+cooldown_seconds = 8.0
 requires_enemies_to_trigger = false
-weight = 100000
-cost = 1
+weight = 80
+cost = 10
 metadata/_custom_type_script = "uid://s5vpeux5sx8g"
