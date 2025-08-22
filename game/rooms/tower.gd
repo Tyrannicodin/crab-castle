@@ -149,7 +149,7 @@ func _input(event) -> void:
 		return
 	if target.y < 1:
 		return
-	if target.y != 5 and get_cell_source_id(Vector2(target.x, target.y + 1)) != BG:
+	if target.y != 5 and get_cell_source_id(Vector2(target.x, target.y + 1)) not in [BG, SCAFFOLD]:
 		return
 	if get_cell_source_id(Vector2(target.x, target.y)) == BG:
 		# Can not place a room where there is already a room
@@ -183,18 +183,26 @@ func redraw_castle():
 
 	var heights = [6, 6]
 
+	var i = 0
+	
 	for target in room_overlays.keys():
-		set_cell(target, BG, Vector2.ZERO)
 		if heights[target.x] > target.y:
 			heights[target.x] = target.y
 
-	var i = 0
+	for x in range(2):
+		for y in range(1, 6):
+			if y > heights[x]:
+				set_cell(Vector2i(x, y), SCAFFOLD, Vector2.ZERO)
+
 	for h in heights:
 		if h != 6 and i == 0:
 			set_cell(Vector2(i, h - 1), PALISADES, Vector2.ZERO)
 		if h != 6 and i == 1:
 			set_cell(Vector2(i, h - 1), PALISADES_MIRROR, Vector2.ZERO)
 		i+=1
+	
+	for target in room_overlays.keys():
+		set_cell(target, BG, Vector2.ZERO)
 
 func _process(delta: float) -> void:
 	if $"../../UI/Rooms".dragging_room:
