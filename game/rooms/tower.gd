@@ -301,7 +301,7 @@ func check_just_triggered():
 					r.cooldown_remaining -= .1
 					r.extra_damage += 2
 					r.extra_pierce += 1
-					r.create_flavor_text(self, "-.2s Cooldown")
+					r.create_flavor_text(self, "-.1s Cooldown")
 				# GYM
 				if r.type.display_name == "Gym":
 					r.gym_extra_damage += .1
