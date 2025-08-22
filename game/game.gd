@@ -72,6 +72,9 @@ func _ready() -> void:
 	on_wave_end(false)
 
 func _process(delta: float) -> void:
+	if $AudioStreamPlayer.playing == false:
+		$AudioStreamPlayer.play()
+	
 	if in_wave:
 		try_spawn_next_enemy_wave()
 
