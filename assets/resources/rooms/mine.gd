@@ -2,11 +2,11 @@ static func on_trigger(tower: Tower, room: Tower.RoomInstance) -> void:
 	var closest_target = tower.game.find_closest_enemy(room).global_position
 	var room_pos = tower.get_room_global_position(room)
 
-	if room_pos.distance_to(closest_target) > 250:
+	if room_pos.distance_to(closest_target) > 350:
 		return
 	
 	for enemy in tower.game.find_closest_enemies(room):
-		if room_pos.distance_to(enemy.global_position) > 500:
+		if room_pos.distance_to(enemy.global_position) > 600:
 			return
 		
 		enemy.damage(200)
