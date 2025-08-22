@@ -7,15 +7,17 @@
 [resource]
 script = ExtResource("1_ti6xv")
 display_name = "Mine"
+description = "If an enemy is in range when triggered, explode to deal damage and knockback."
 image = ExtResource("1_mhu8k")
 scale = Vector2(1, 1)
+translation = Vector2(0, 0)
 rotation = 0.0
 animate_on_trigger = true
 visible_progress_bar = true
-visible_arrows = 0
+visible_arrows = 2
 trigger_script = ExtResource("3_ttqcp")
-cooldown_seconds = 7.5
-requires_enemies_to_trigger = false
+cooldown_seconds = 1.0
+requires_enemies_to_trigger = true
 weight = 100
 cost = 7
 metadata/_custom_type_script = "uid://s5vpeux5sx8g"

@@ -41,7 +41,7 @@ var waves = preload("res://game/enemy_waves.gd").waves
 var scaling = preload("res://game/scaling.gd").new()
 var wave_number = 0
 var in_wave = false
-var game_eneded = false
+var game_ended = false
 
 var enemy_waves_cleared = 0
 var enemy_waves_spawned = 0
@@ -243,7 +243,7 @@ func _on_start_next_wave_button_down() -> void:
 	on_wave_start()
 
 func _on_game_end() -> void:
-	game_eneded = true
+	game_ended = true
 	get_tree().paused = true
 	get_tree().call_group("statistic", "update_stat", self)
 

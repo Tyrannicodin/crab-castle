@@ -1,4 +1,4 @@
-extends "res://game/projectiles/projectile.gd"
+extends Projectile
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if disabled:

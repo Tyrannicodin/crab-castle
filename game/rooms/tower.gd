@@ -59,7 +59,7 @@ class RoomInstance:
 		just_triggered = true
 		if type.trigger_script:
 			type.trigger_script.on_trigger(tower, self)
-			if type.animate_on_trigger:
+			if type.animate_on_trigger and tower.room_overlays.has(position):
 				tower.room_overlays[position].time_since_fired = 0
 		else:
 			print("Room type: '" + type.display_name + "' has no triigger action")
@@ -236,6 +236,9 @@ func _process(delta: float) -> void:
 			if can_fire:
 				room.cooldown_remaining = max(room.type.cooldown_seconds  - room.music_room_cooldown_reduction, .2)
 				room.trigger(self)
+		
+		if not room_overlays.has(room.position):
+			return
 
 		if room.type.cooldown_seconds > 0 and room.cooldown_remaining > 0:
 			room_overlays[room.position].progress = room.cooldown_remaining / room.type.cooldown_seconds
