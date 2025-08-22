@@ -103,17 +103,17 @@ static var waves = [
 		return {
 		"water_level": 4,
 		"enemies": [
-			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
-			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
+			range(2).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]) + range(2).map(func(_i): return CrazyBird),
+			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark] + range(4).map(func(_i): return CrazyBird),
 			[[Shark, 1]]
 		]
 	},
 	# Wave 12
 	func() : 
 		return {
-		"water_level": 4,
+		"water_level": 3,
 		"enemies": [
-			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
+			range(4).map(func(_i): return PlaneEnemy) + range(10).map(func(_i): return [Fish, 2]),
 			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
 			[[Shark, 2]]
 		]
@@ -121,41 +121,40 @@ static var waves = [
 	# Wave 13
 	func() : 
 		return {
-		"water_level": 4,
+		"water_level": 2,
 		"enemies": [
-			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
-			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
-			[[Shark, 2]]
+			range(10).map(func(_i): return [CrazyBird, 1]) + range(5).map(func(_i): return [CrazyBird, 2]),
+			range(10).map(func(_i): return [Octopus, 1]) + [Shark, Shark, Shark, Shark, Shark],
+			[[PlaneEnemy, 2]]
 		]
 	},
 	# Wave 14
 	func() : 
 		return {
-		"water_level": 4,
+		"water_level": 1,
 		"enemies": [
-			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
-			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
-			[[Shark, 2]]
+			[[Shark, 2], [Octopus, 2], [Octopus, 2]],
+			range(6).map(func(_i): return [CrazyBird, 2]) + range(12).map(func(_i): return [Seagull, 3]),
+			[[Shark, 3]],
 		]
 	},
 	# Wave 15
 	func() : 
 		return {
-		"water_level": 4,
+		"water_level": 2,
 		"enemies": [
-			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
-			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
-			[[Shark, 2]]
+			range(10).map(func(_i): return Fish) + range(20).map(func(_i): return [Fish, 1]),
+			range(10).map(func(_i): return [Fish, 1]) + range(10).map(func(_i): return [Fish, 2]),
+			range(15).map(func(_i): return [Fish, 1]) + range(5).map(func(_i): return [Fish, 3]),
 		]
 	},
 	# Wave 16
 	func() : 
 		return {
-		"water_level": 4,
+		"water_level": 3,
 		"enemies": [
-			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
-			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
-			[[Shark, 2]]
+			[[PlaneEnemy, 3]],
+			range(10).map(func(_i): return [Octopus, 2])
 		]
 	},
 	# Wave 17
@@ -163,35 +162,32 @@ static var waves = [
 		return {
 		"water_level": 4,
 		"enemies": [
-			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
-			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
-			[[Shark, 2]]
+			[[PlaneEnemy, 3]],
+			range(10).map(func(_i): return [Octopus, 2])
 		]
 	},
 	# Wave 18
 	func() : 
 		return {
-		"water_level": 4,
+		"water_level": 3,
 		"enemies": [
-			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
-			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
-			[[Shark, 2]]
+			[[PlaneEnemy, 3]],
+			range(10).map(func(_i): return [Octopus, 2])
 		]
 	},
 	# Wave 19
 	func() : 
 		return {
-		"water_level": 4,
+		"water_level": 2,
 		"enemies": [
-			range(4).map(func(_i): return Shark) + range(5).map(func(_i): return [Fish, 1]),
-			range(2).map(func(_i): return [Shark, 1]) + [Shark, Shark],
-			[[Shark, 2]]
+			[[PlaneEnemy, 3]],
+			range(10).map(func(_i): return [Octopus, 2])
 		]
 	},
 	# Wave 20
 	func() : 
 		return {
-		"water_level": 4,
+		"water_level": 5,
 		"enemies": [
 			[[Shark, 3],[Shark, 3],[Shark, 3],[Shark, 3],[Shark, 3]]
 		]
