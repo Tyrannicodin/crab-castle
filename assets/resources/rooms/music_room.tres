@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b7ftyy5qjgt6f" path="res://assets/rooms/music_room.png" id="1_b1j3e"]
 [ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="2_7m5pq"]
-[ext_resource type="Script" uid="uid://dx382662dat3e" path="res://assets/resources/rooms/music_room.gd" id="3_b1j3e"]
+[ext_resource type="Script" path="res://assets/resources/rooms/music_room.gd" id="3_b1j3e"]
 
 [resource]
 script = ExtResource("2_7m5pq")
@@ -17,7 +17,7 @@ animate_on_trigger = true
 visible_progress_bar = true
 visible_arrows = 0
 trigger_script = ExtResource("3_b1j3e")
-cooldown_seconds = 2.6
+cooldown_seconds = 3.5
 requires_enemies_to_trigger = false
 weight = 75
 cost = 23
