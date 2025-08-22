@@ -18,6 +18,6 @@ visible_arrows = 0
 trigger_script = ExtResource("3_j60sr")
 cooldown_seconds = 3.0
 requires_enemies_to_trigger = true
-weight = 50
+weight = 30
 cost = 35
 metadata/_custom_type_script = "uid://s5vpeux5sx8g"

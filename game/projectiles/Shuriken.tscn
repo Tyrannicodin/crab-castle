@@ -12,8 +12,8 @@ knockback = 4
 sound = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="1"]
-position = Vector2(0, -4.76837e-07)
-scale = Vector2(0.321429, 0.321429)
+position = Vector2(-9.53674e-07, -9.53674e-07)
+scale = Vector2(0.265715, 0.265715)
 texture = ExtResource("2_mhrr4")
 
 [node name="Whip" parent="." index="2"]

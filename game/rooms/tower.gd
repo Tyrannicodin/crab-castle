@@ -68,7 +68,7 @@ class RoomInstance:
 
 var rooms: Array[RoomInstance] = []
 
-@onready var game = $"../.."
+@onready var game: Game = $"../.."
 
 func _ready():
 	tower_overlay_node.global_position = global_position
@@ -87,8 +87,9 @@ func _ready():
 			overlay.wave_number = game.wave_number
 	)
 	game.wave_end.connect(func():
-		for overlay in room_overlays.values():
+		for overlay: RoomOverlay in room_overlays.values():
 			overlay.wave_number = game.wave_number
+			overlay.flavor_text_queue = []
 	)
 
 func set_current_room(room: int) -> void:
