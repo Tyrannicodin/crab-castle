@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bligscgn0qlft" path="res://game/projectiles/Projectile.tscn" id="1_w2dv8"]
 [ext_resource type="Texture2D" uid="uid://bewvh84gv88sy" path="res://assets/money.png" id="2_w2dv8"]
 
-[node name="Projectile" instance=ExtResource("1_w2dv8")]
+[node name="Projectile2" instance=ExtResource("1_w2dv8")]
 damage = 0
 speed = 1800.0
 stun_lock = 0.05

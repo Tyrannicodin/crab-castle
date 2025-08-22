@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="1_hcltn"]
 [ext_resource type="Texture2D" uid="uid://j865uv68tp0v" path="res://assets/rooms/vault.png" id="1_hkj1d"]
-[ext_resource type="Script" uid="uid://1j3pkgadffob" path="res://assets/resources/rooms/vault.gd" id="3_dhnmn"]
+[ext_resource type="Script" path="res://assets/resources/rooms/vault.gd" id="3_dhnmn"]
 
 [resource]
 script = ExtResource("1_hcltn")
@@ -18,6 +18,6 @@ visible_arrows = 0
 trigger_script = ExtResource("3_dhnmn")
 cooldown_seconds = 5.0
 requires_enemies_to_trigger = true
-weight = 50
+weight = 40
 cost = 35
 metadata/_custom_type_script = "uid://s5vpeux5sx8g"
