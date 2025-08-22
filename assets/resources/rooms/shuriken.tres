@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Room" load_steps=4 format=3 uid="uid://blli0qjvcosbq"]
+
+[ext_resource type="Texture2D" uid="uid://ba1kssk67eari" path="res://assets/rooms/shuriken.png" id="1_xynor"]
+[ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="2_l4efh"]
+[ext_resource type="Script" uid="uid://dhe15ihacxqbc" path="res://assets/resources/rooms/shuriken.gd" id="3_xynor"]
+
+[resource]
+script = ExtResource("2_l4efh")
+display_name = "Shuriken"
+description = "When any room triggers, reduce cooldown by 0.2s and increase damage by 2 and pierce by 1."
+image = ExtResource("1_xynor")
+scale = Vector2(1.2, 1.2)
+translation = Vector2(0, 0)
+rotation = 0.0
+animate_on_trigger = true
+visible_progress_bar = true
+visible_arrows = 0
+trigger_script = ExtResource("3_xynor")
+cooldown_seconds = 1.5
+requires_enemies_to_trigger = true
+weight = 70
+cost = 17
+metadata/_custom_type_script = "uid://s5vpeux5sx8g"

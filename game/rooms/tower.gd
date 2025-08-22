@@ -25,6 +25,7 @@ class RoomInstance:
 	var type: Room
 	var position: Vector2i
 
+	var just_triggered: bool = false
 	var cooldown_remaining: float
 	var cooldown: float
 	var bonus_projectiles: int = 0
@@ -45,11 +46,13 @@ class RoomInstance:
 
 	func reset_cooldown():
 		cooldown_remaining = type.cooldown_seconds
+		just_triggered = false
 
 	func create_flavor_text(tower: Tower, text: String):
 		tower.room_overlays[position].create_flavor_text(text)
 
 	func trigger(tower: Tower) -> void:
+		just_triggered = true
 		if type.trigger_script:
 			type.trigger_script.on_trigger(tower, self)
 			if type.animate_on_trigger:
@@ -217,6 +220,7 @@ func _process(delta: float) -> void:
 
 	if !game.is_in_wave():
 		return
+	check_just_triggered()
 	for room in rooms:
 		room.cooldown_remaining -= delta
 
@@ -276,3 +280,17 @@ func get_adjacent_rooms(room: RoomInstance) -> Dictionary[String, RoomInstance]:
 		"down": get_room_at_positon(get_neighbor_cell(room.position, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE)),
 		"left": get_room_at_positon(get_neighbor_cell(room.position, TileSet.CELL_NEIGHBOR_LEFT_SIDE)),
 	}
+
+func check_just_triggered():
+	for room in rooms:
+		if room.just_triggered:
+			room.just_triggered = false
+	
+			# do something when the room just triggered
+			# SHURUKEN
+			for r in rooms:
+				if r.type.display_name == "Shuriken":
+					r.cooldown_remaining -= .2
+					r.extra_damage += 2
+					r.extra_pierce += 1
+					r.create_flavor_text(self, "-.2s Cooldowns")
