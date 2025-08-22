@@ -6,7 +6,7 @@ var room_overlay = preload("res://game/rooms/room_overlay.tscn")
 @onready var tower_overlay_node = $"../../TowerOverlay"
 
 signal room_placed(room: int)
-signal removal_service
+signal removal_service(room: Room)
 signal sell(room: int)
 
 var current_room: int = -1
@@ -146,11 +146,10 @@ func _input(event) -> void:
 			var overlay = room_overlays[target]
 			room_overlays.erase(target)
 			rooms = rooms.filter(func(room: RoomInstance): return room.position != target)
-			$"../../UpgradeUi".upgrade_selected.emit(overlay.room)
+			removal_service.emit(overlay.room)
 			overlay.queue_free()
 			$"../../UI/Rooms".dragging_crane = false
 			redraw_castle()
-			removal_service.emit()
 		return
 	
 	if $"../../UI/TrashCan".hovered:

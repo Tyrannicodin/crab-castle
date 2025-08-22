@@ -35,7 +35,6 @@ func _process(_delta):
 			await animator.animation_finished
 			get_tree().paused = false
 			return
-		print("Pausing")
 		animator.play_backwards("wave")
 		get_tree().paused = true
 

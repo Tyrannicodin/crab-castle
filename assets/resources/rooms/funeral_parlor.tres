@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="Room" load_steps=4 format=3 uid="uid://bv1pjnowo517e"]
+[gd_resource type="Resource" script_class="Room" load_steps=4 format=3 uid="uid://c44j1rqmmmerm"]
 
 [ext_resource type="Texture2D" uid="uid://dth7oxgtnuaxn" path="res://assets/rooms/funeral_parlor.png" id="1_h1lad"]
 [ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="2_6w444"]
-[ext_resource type="Script" uid="uid://del3gsfyyya04" path="res://assets/resources/rooms/funeral_parlor.gd" id="3_h1lad"]
+[ext_resource type="Script" path="res://assets/resources/rooms/funeral_parlor.gd" id="3_h1lad"]
 
 [resource]
 script = ExtResource("2_6w444")
 display_name = "Funeral Parlor"
-description = "Adds 1 damage to a random room and remove 1hp. Increase both by 1 each time this room triggers. Resets when removed."
+description = "Add 1 damage to a random room and remove 1hp. Increase both by 1 each time this room triggers. Resets when removed."
 image = ExtResource("1_h1lad")
 scale = Vector2(0.6, 0.6)
 translation = Vector2(0, 0)

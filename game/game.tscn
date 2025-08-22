@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=4 uid="uid://cnvnbsupfdau4"]
+[gd_scene load_steps=64 format=4 uid="uid://cnvnbsupfdau4"]
 
 [ext_resource type="Script" uid="uid://cjab70obtn2ow" path="res://game/game.gd" id="1_l8g03"]
 [ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
@@ -153,6 +153,9 @@ font_size = 48
 [sub_resource type="LabelSettings" id="LabelSettings_pxxsx"]
 font = ExtResource("6_mhvfb")
 font_size = 48
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_urpib"]
+shader = ExtResource("22_urpib")
 
 [node name="Game" type="Node2D"]
 process_mode = 1
@@ -340,6 +343,7 @@ theme_override_font_sizes/font_size = 48
 text = "Wave 500"
 
 [node name="TrashCan" type="Sprite2D" parent="UI"]
+material = SubResource("ShaderMaterial_urpib")
 position = Vector2(462, 997)
 scale = Vector2(0.215798, 0.215798)
 texture = ExtResource("29_gvtgv")
@@ -428,6 +432,7 @@ texture = ExtResource("33_cf130")
 [connection signal="wave_start" from="." to="Tutorial" method="_on_game_wave_start"]
 [connection signal="area_shape_entered" from="Eliminator" to="Eliminator" method="_on_area_shape_entered"]
 [connection signal="removal_service" from="TowerViewport/Tower" to="." method="_on_tower_removal_service"]
+[connection signal="removal_service" from="TowerViewport/Tower" to="UI/Rooms" method="add_room"]
 [connection signal="room_placed" from="TowerViewport/Tower" to="." method="room_placed"]
 [connection signal="room_placed" from="TowerViewport/Tower" to="UI/Rooms" method="remove_room"]
 [connection signal="room_placed" from="TowerViewport/Tower" to="Tutorial" method="_on_tower_room_placed"]

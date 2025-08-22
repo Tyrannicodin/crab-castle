@@ -12,13 +12,17 @@ var dragging_crane = false
 
 var max_bench_size = 6
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	dragging_room = false
 	dragging_crane = false
 	for b in bench:
 		if b.dragging:
 			dragging_room = true
 			break
+	if is_full():
+		$"../Bench/Crane".disabled = true
+	else:
+		$"../Bench/Crane".disabled = false
 	if $"../Bench/Crane".dragging:
 		dragging_crane = true
 
@@ -53,10 +57,8 @@ func remove_room(index: int) -> void:
 	for i in range(len(bench)):
 		position_on_bench(bench[i], i)
 
-
 func _on_tower_sell(room: int) -> void:
 	var room_data = bench[room]
 	var sell_price = scaling.sell_price($"../..".wave_number, room_data.room)
 	remove_room(room)
-	print(bench)
 	sell.emit(room, sell_price)

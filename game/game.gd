@@ -248,3 +248,6 @@ func _on_rooms_sell(room: int, value: int) -> void:
 	money += value
 	purchased_rooms.remove_at(room)
 	rooms_sold += 1
+
+func _on_tower_removal_service(room: Room) -> void:
+	purchased_rooms.append(room)
