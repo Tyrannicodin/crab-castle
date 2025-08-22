@@ -13,6 +13,7 @@ class_name Projectile
 @export var instant_kill: bool = false
 enum MovementType {Parabolic, Drop}
 @export var movement_type: MovementType
+@export var slow_down: bool = false
 
 enum Sound {
 	None,
@@ -108,6 +109,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 	enemy.damage(damage)
 	enemy.stun_lock(stun_lock)
+	if slow_down:
+		enemy.slow_down()
 	enemy.knockback(knockback)
 
 func disable():

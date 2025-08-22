@@ -10,6 +10,7 @@ var attack_success = false
 var underwater = false
 const ACCELERATION = 30
 var health: int = 1
+var slow_down_ = false
 
 func _ready():
 	material = material.duplicate()
@@ -55,7 +56,10 @@ func move(delta) -> void:
 	if stun_lock_time_remaining >= 0:
 		stun_lock_time_remaining -= delta
 		return
-	position.x -= delta * enemy.speed
+	if slow_down_:
+		position.x -= delta * enemy.speed * .5
+	else:
+		position.x -= delta * enemy.speed
 	if is_alive():
 		living_time += delta
 		position.y = -20 * abs(sin(2 * living_time)) + 10
@@ -89,6 +93,9 @@ func knockback(power: int):
 
 func on_death():
 	death.emit(enemy)
+
+func slow_down():
+	slow_down_ = true
 
 func attack_successful():
 	attack_success = true
