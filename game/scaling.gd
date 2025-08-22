@@ -7,9 +7,9 @@ func scale_enemy_hp(wave_number: int, hp: int):
 	if wave_number < 6:
 		return hp * 0.8
 	elif wave_number < 7:
-		hp * 0.9
-	elif wave_number > 7:
-		return  hp
+		return hp * 0.9
+	elif wave_number >= 10:
+		return hp + (1.072 ** (wave_number - 10)) * hp
 	return hp
 
 func scale_shop(wave_number: int, price: int):
