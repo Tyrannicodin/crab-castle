@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bibbldumcm71g"]
+
+[ext_resource type="PackedScene" uid="uid://bligscgn0qlft" path="res://game/projectiles/Projectile.tscn" id="1_5vyep"]
+[ext_resource type="Texture2D" uid="uid://bknvuihirv4a7" path="res://assets/projectiles/classroom.png" id="2_5vyep"]
+
+[node name="Projectile" instance=ExtResource("1_5vyep")]
+damage = 2
+speed = 1000.0
+stun_lock = 0.05
+knockback = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(0.0708004, 0.0708004)
+texture = ExtResource("2_5vyep")
