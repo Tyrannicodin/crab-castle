@@ -1,16 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://bligscgn0qlft"]
+[gd_scene load_steps=8 format=3 uid="uid://bligscgn0qlft"]
 
 [ext_resource type="Script" uid="uid://6lsj8u78lvu8" path="res://game/projectiles/projectile.gd" id="1_wqu2c"]
+[ext_resource type="AudioStream" uid="uid://2tlrvtsjbcib" path="res://assets/sfx/whip.wav" id="2_t1psp"]
+[ext_resource type="AudioStream" uid="uid://dl6wdjjhbc0w5" path="res://assets/sfx/weapon_throw.mp3" id="3_rhpsa"]
+[ext_resource type="AudioStream" uid="uid://cng2lwwse40kl" path="res://assets/sfx/whoosh.wav" id="3_tgtle"]
+[ext_resource type="AudioStream" uid="uid://cksse175aytq6" path="res://assets/sfx/cannon_blast.mp3" id="5_mnvv6"]
+[ext_resource type="AudioStream" uid="uid://brj8gw11yogup" path="res://assets/sfx/bow_shoot.mp3" id="6_j7nqq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqu2c"]
 radius = 15.1327
 
-[node name="Projectile2" type="Node2D"]
+[node name="Projectile" type="Node2D"]
 script = ExtResource("1_wqu2c")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_wqu2c")
+
+[node name="Whip" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_t1psp")
+bus = &"SFX"
+
+[node name="Whoosh" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_tgtle")
+bus = &"SFX"
+
+[node name="WeaponThrow" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_rhpsa")
+bus = &"SFX"
+
+[node name="CannonBlast" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_mnvv6")
+
+[node name="Bow" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_j7nqq")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

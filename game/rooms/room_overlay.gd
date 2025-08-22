@@ -89,6 +89,8 @@ func summon_text(text: String):
 	get_tree().root.add_child(inst)
 	inst.global_position.x = global_position.x + 80
 	inst.global_position.y = global_position.y + 40 + randi_range(-20, 10)
+	$RecieveBuff.pitch_scale = randf_range(1, 1.2)
+	$RecieveBuff.play()
 
 func play_sound(sound: String):
 	if sound == "buff":

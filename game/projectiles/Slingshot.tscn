@@ -8,6 +8,7 @@ damage = 1
 speed = 1800.0
 stun_lock = 0.05
 knockback = 4
+sound = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="1"]
 position = Vector2(0, -4.76837e-07)

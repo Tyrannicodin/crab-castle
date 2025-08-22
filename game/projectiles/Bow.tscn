@@ -9,6 +9,7 @@ speed = 2000.0
 pierce = 1
 stun_lock = 0.2
 knockback = 2
+sound = 5
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(33, 0)

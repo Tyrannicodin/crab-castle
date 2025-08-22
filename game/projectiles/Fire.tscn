@@ -8,6 +8,7 @@ damage = 20
 speed = 2000.0
 pierce = 2
 knockback = 1
+sound = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="1"]
 position = Vector2(1, -6)

@@ -14,6 +14,16 @@ class_name Projectile
 enum MovementType {Parabolic, Drop}
 @export var movement_type: MovementType
 
+enum Sound {
+	None,
+	Whip,
+	Whoosh,
+	WeaponThrow,
+	CannonBlast,
+	Bow,
+}
+@export var sound: Sound = Sound.None
+
 var time = 0
 var enemy_position: Vector2 = Vector2.ZERO
 var origin: Vector2 = Vector2.ZERO
@@ -43,6 +53,23 @@ func aim(spawnpoint: Vector2, enemy: EnemyInstance):
 	if has_node("Sound"):
 		$Sound.pitch_scale = randf_range(1, 1.2)
 		$Sound.play()
+
+	if sound != null:
+		if sound == Sound.Whip:
+			$Whip.pitch_scale = randf_range(1, 1.2)
+			$Whip.play()
+		if sound == Sound.Whoosh:
+			$Whoosh.pitch_scale = randf_range(1, 1.2)
+			$Whoosh.play()
+		if sound == Sound.WeaponThrow:
+			$WeaponThrow.pitch_scale = randf_range(1, 1.2)
+			$WeaponThrow.play()
+		if sound == Sound.CannonBlast:
+			$CannonBlast.pitch_scale = randf_range(1, 1.2)
+			$CannonBlast.play()
+		if sound == Sound.Bow:
+			$Bow.pitch_scale = randf_range(1, 1.2)
+			$Bow.play()
 
 func _process(delta: float) -> void:
 	time += delta
