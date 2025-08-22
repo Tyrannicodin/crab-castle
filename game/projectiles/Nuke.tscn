@@ -15,6 +15,7 @@ height = 188.0
 script = ExtResource("2_hr45m")
 damage = 100
 speed = 1000.0
+knockback = 10
 sound = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
