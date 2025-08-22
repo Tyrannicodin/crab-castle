@@ -4,13 +4,13 @@
 [ext_resource type="Script" uid="uid://d2c82s4i8k7dc" path="res://game/rooms/room_selector.gd" id="2_4cobl"]
 [ext_resource type="AudioStream" uid="uid://dqef6khyml52g" path="res://assets/music/crabcastle.mp3" id="2_ee6o4"]
 [ext_resource type="PackedScene" uid="uid://68en2fypp2j5" path="res://upgrades/UpgradeUI.tscn" id="3_dakft"]
-[ext_resource type="Script" uid="uid://dqdjo2qye7qv5" path="res://game/tower_damage.gd" id="4_cieqw"]
+[ext_resource type="Script" path="res://game/tower_damage.gd" id="4_cieqw"]
 [ext_resource type="PackedScene" uid="uid://jbioikw54jg4" path="res://game_end/game_end.tscn" id="4_dxrkv"]
 [ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="4_u5opy"]
 [ext_resource type="Script" uid="uid://daq0fcjji8v2n" path="res://game/gold_display.gd" id="6_hb504"]
 [ext_resource type="Texture2D" uid="uid://dvlr1truseh3y" path="res://assets/sun-yellow.png" id="6_jucfl"]
 [ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="6_mhvfb"]
-[ext_resource type="Shader" uid="uid://bvs3xyo6lff1h" path="res://assets/shader/reflection.gdshader" id="7_jdpby"]
+[ext_resource type="Shader" path="res://assets/shader/reflection.gdshader" id="7_jdpby"]
 [ext_resource type="Texture2D" uid="uid://cnk12qj5b8tpq" path="res://assets/cloud.png" id="8_58yx1"]
 [ext_resource type="Script" uid="uid://bvgeo6l2ym3qs" path="res://game/happy_clouds.gd" id="8_hbvmx"]
 [ext_resource type="Texture2D" uid="uid://dnivjwwausano" path="res://assets/room_details/empty.png" id="11_ee6o4"]
@@ -27,15 +27,15 @@
 [ext_resource type="Script" uid="uid://ci4t2wa870mqd" path="res://game/crane.gd" id="18_jdpby"]
 [ext_resource type="Texture2D" uid="uid://bcp5t1pl737lf" path="res://assets/room_details/paper_blend.png" id="19_dxwpq"]
 [ext_resource type="Script" uid="uid://b7x38g8nwawmq" path="res://game/enemy_manager.gd" id="19_pxxsx"]
-[ext_resource type="Script" uid="uid://biswc6ipcfiun" path="res://game/cleanup_proj.gd" id="20_u8s88"]
+[ext_resource type="Script" path="res://game/cleanup_proj.gd" id="20_u8s88"]
 [ext_resource type="Texture2D" uid="uid://bg6np85mcxhrw" path="res://assets/bench.png" id="21_5e03w"]
 [ext_resource type="Texture2D" uid="uid://bewvh84gv88sy" path="res://assets/money.png" id="22_8bboj"]
 [ext_resource type="Script" uid="uid://b7oo264lufx8i" path="res://game/crane_tooltip.gd" id="22_fegy3"]
-[ext_resource type="Shader" uid="uid://1hsrcasdr8yc" path="res://assets/shader/grayscale.gdshader" id="22_urpib"]
+[ext_resource type="Shader" path="res://assets/shader/grayscale.gdshader" id="22_urpib"]
 [ext_resource type="Texture2D" uid="uid://b1tvic7afvxmn" path="res://assets/heart.png" id="23_q52ks"]
 [ext_resource type="Texture2D" uid="uid://cn5kqx8ahc3t6" path="res://assets/trash_can.png" id="29_gvtgv"]
 [ext_resource type="Script" uid="uid://dy6w7t42yvbeo" path="res://game/trash_can.gd" id="30_5ywmu"]
-[ext_resource type="Script" path="res://game/trash_can_tooltip.gd" id="31_mhp6k"]
+[ext_resource type="Script" uid="uid://f3181yq0x2f4" path="res://game/trash_can_tooltip.gd" id="31_mhp6k"]
 [ext_resource type="Script" uid="uid://dv8ryvt05fp74" path="res://game/tutorial.gd" id="32_posua"]
 [ext_resource type="PackedScene" uid="uid://jopgqibdquxd" path="res://game/TutorialTextBox.tscn" id="32_pvdu1"]
 [ext_resource type="Texture2D" uid="uid://dmnmkxsnexb3d" path="res://assets/room_details/arrow_down.png" id="33_cf130"]
@@ -416,12 +416,37 @@ text = "Press start wave and defend!"
 position = Vector2(1474, 896)
 texture = ExtResource("33_cf130")
 
+[node name="HintOne" type="CanvasLayer" parent="Tutorial"]
+visible = false
+
+[node name="TutorialTextBox" parent="Tutorial/HintOne" instance=ExtResource("32_pvdu1")]
+position = Vector2(26, 19)
+text = "You can drag the claw to a room to remove it."
+
+[node name="Sprite2D" type="Sprite2D" parent="Tutorial/HintOne"]
+position = Vector2(555, 923)
+scale = Vector2(0.65625, 0.65625)
+texture = ExtResource("33_cf130")
+
+[node name="HintTwo" type="CanvasLayer" parent="Tutorial"]
+visible = false
+
+[node name="TutorialTextBox" parent="Tutorial/HintTwo" instance=ExtResource("32_pvdu1")]
+position = Vector2(26, 19)
+text = "Rooms can be dragged to the trash can to sell them."
+
+[node name="Sprite2D" type="Sprite2D" parent="Tutorial/HintTwo"]
+position = Vector2(460, 913)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("33_cf130")
+
 [connection signal="balance_changed" from="." to="UI/gold_display" method="set_gold"]
 [connection signal="balance_changed" from="." to="UpgradeUi" method="on_balance_change"]
 [connection signal="game_end" from="." to="." method="_on_game_end"]
 [connection signal="game_end" from="." to="GameEnd" method="show"]
 [connection signal="rooms_loaded" from="." to="UpgradeUi" method="on_rooms_loaded"]
 [connection signal="wave_end" from="." to="UI/Start Next Wave" method="show"]
+[connection signal="wave_end" from="." to="Tutorial" method="_on_game_wave_end"]
 [connection signal="wave_start" from="." to="Tutorial" method="_on_game_wave_start"]
 [connection signal="area_entered" from="Damage" to="Damage" method="_on_area_entered"]
 [connection signal="area_entered" from="Cleanup" to="Cleanup" method="_on_area_entered"]

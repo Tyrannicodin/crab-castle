@@ -298,7 +298,7 @@ func check_just_triggered():
 			for r in rooms:
 				# SHURUKEN
 				if r.type.display_name == "Shuriken":
-					r.cooldown_remaining -= .2
+					r.cooldown_remaining -= .1
 					r.extra_damage += 2
 					r.extra_pierce += 1
 					r.create_flavor_text(self, "-.2s Cooldown")
