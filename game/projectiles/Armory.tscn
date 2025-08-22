@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkjr807tgt3go"]
+
+[ext_resource type="PackedScene" uid="uid://bligscgn0qlft" path="res://game/projectiles/Projectile.tscn" id="1_vskti"]
+[ext_resource type="Script" uid="uid://7tbsdc1v3raj" path="res://game/projectiles/armory.gd" id="2_7ek1v"]
+[ext_resource type="Texture2D" uid="uid://5qe81do3clg5" path="res://assets/rooms/armory/sword.png" id="2_ose6j"]
+[ext_resource type="Texture2D" uid="uid://30vid1h2xbee" path="res://assets/rooms/armory/sword2.png" id="3_40ug4"]
+[ext_resource type="Texture2D" uid="uid://dgdatdbafyd81" path="res://assets/rooms/armory/sword3.png" id="4_40ug4"]
+[ext_resource type="Texture2D" uid="uid://bkeb1vn7hwrj3" path="res://assets/rooms/armory/sword4.png" id="5_18s4q"]
+[ext_resource type="Texture2D" uid="uid://mvkq74l3julj" path="res://assets/rooms/armory/sword5.png" id="6_18s4q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ek1v"]
+size = Vector2(157, 20)
+
+[node name="Projectile" instance=ExtResource("1_vskti")]
+script = ExtResource("2_7ek1v")
+damage = 0
+speed = 1200.0
+pierce = 2
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_7ek1v")
+
+[node name="Sword1" type="Sprite2D" parent="." index="1"]
+visible = false
+scale = Vector2(0.194048, 0.194048)
+texture = ExtResource("2_ose6j")
+
+[node name="Sword2" type="Sprite2D" parent="." index="2"]
+visible = false
+position = Vector2(2, -1)
+scale = Vector2(0.209381, 0.209381)
+texture = ExtResource("3_40ug4")
+
+[node name="Sword3" type="Sprite2D" parent="." index="3"]
+visible = false
+position = Vector2(-5.72205e-06, 1)
+rotation = 0.76695
+scale = Vector2(0.107714, 0.107714)
+texture = ExtResource("4_40ug4")
+
+[node name="Sword4" type="Sprite2D" parent="." index="4"]
+visible = false
+position = Vector2(-3, -1)
+rotation = 0.790721
+scale = Vector2(0.0760369, 0.0760369)
+texture = ExtResource("5_18s4q")
+
+[node name="Sword5" type="Sprite2D" parent="." index="5"]
+visible = false
+scale = Vector2(0.234049, 0.234049)
+texture = ExtResource("6_18s4q")
