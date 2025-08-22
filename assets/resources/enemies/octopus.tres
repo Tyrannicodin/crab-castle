@@ -13,6 +13,6 @@ instance_script = ExtResource("1_7ue6a")
 underwater = true
 max_health = 60
 speed = 80
-value = 6
+value = 4
 knockback_resist = 0.0
 metadata/_custom_type_script = "uid://dx0myaehl7et"
