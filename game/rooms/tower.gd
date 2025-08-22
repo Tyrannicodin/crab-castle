@@ -87,6 +87,7 @@ func _ready():
 	game.wave_start.connect(func():
 		for room in rooms:
 			room.reset_cooldown()
+			room.music_room_cooldown_reduction = 0
 		for overlay in room_overlays.values():
 			overlay.wave_number = game.wave_number
 	)
