@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_7m5pq")
 display_name = "Music Room"
-description = "Decerease cooldown of adjacent rooms by 0.1 until end of wave.
+description = "Decrease cooldown of adjacent rooms by 0.1 until end of wave.
 "
 image = ExtResource("1_b1j3e")
 scale = Vector2(0.7, 0.7)
