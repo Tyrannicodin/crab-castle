@@ -34,6 +34,9 @@ class RoomInstance:
 	
 	# extra stuff for specific rooms
 	var gym_extra_damage: float = 0
+	var workshop_extra_coins: int = 0
+	var funeral_parlor_scaling: int = 0
+	var funeral_parlor_scaling: int = 0
 
 	func _init(room_type: Room, pos: Vector2i):
 		type = room_type
