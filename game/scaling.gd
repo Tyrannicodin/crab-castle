@@ -3,9 +3,9 @@ class_name Scaling
 
 func scale_enemy_hp(wave_number: int, hp: int):
 	if wave_number < 3:
-		hp * 0.67
+		return hp * 0.67
 	if wave_number < 6:
-		hp * 0.8
+		return hp * 0.8
 	elif wave_number < 7:
 		hp * 0.9
 	elif wave_number > 7:
