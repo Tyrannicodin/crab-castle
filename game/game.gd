@@ -251,3 +251,6 @@ func _on_rooms_sell(room: int, value: int) -> void:
 
 func _on_tower_removal_service(room: Room) -> void:
 	purchased_rooms.append(room)
+
+func enemy_taken_damage(amount: int) -> void:
+	total_damage_dealt += amount

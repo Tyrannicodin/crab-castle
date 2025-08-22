@@ -56,3 +56,6 @@ func _exit_tree():
 		manager.spawn_enemy(3, Octopus, rank, Vector2(position.x + 16 * i, 0))
 	death.emit(enemy)
 	dying = false
+
+func stun_lock(_time: float):
+	return
