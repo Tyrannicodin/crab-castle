@@ -1,17 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://jbioikw54jg4"]
+[gd_scene load_steps=11 format=3 uid="uid://jbioikw54jg4"]
 
 [ext_resource type="Script" uid="uid://bsdloip56540v" path="res://game_end/main_menu.gd" id="1_nbbxe"]
-[ext_resource type="Shader" uid="uid://bf5fwipxptqdn" path="res://upgrades/blur.gdshader" id="1_wn2jo"]
-[ext_resource type="Texture2D" uid="uid://g885r3geq3xg" path="res://upgrades/white.png" id="2_mhvgj"]
 [ext_resource type="FontFile" uid="uid://duybivoopja6f" path="res://assets/fonts/Candy Beans.otf" id="3_5ht27"]
 [ext_resource type="Script" uid="uid://bn2x8uuhk5u8k" path="res://game_end/outcome.gd" id="4_g3c4v"]
 [ext_resource type="FontVariation" uid="uid://xvvik2j6lvhf" path="res://assets/fonts/nunito.tres" id="4_wrq5b"]
 [ext_resource type="PackedScene" uid="uid://dt1xpla3sg1p6" path="res://game_end/statistic.tscn" id="5_wrq5b"]
 [ext_resource type="Script" uid="uid://cnh4fjaquu1lo" path="res://game_end/wave_count.gd" id="6_tmv5n"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ht27"]
-shader = ExtResource("1_wn2jo")
-shader_parameter/amount = 2.5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ckj2n"]
 bg_color = Color(0.165656, 0.165656, 0.165656, 1)
@@ -34,15 +28,6 @@ font_size = 25
 font_size = 30
 
 [node name="GameEnd" type="CanvasLayer"]
-
-[node name="Blur" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_5ht27")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_mhvgj")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 11
@@ -105,7 +90,7 @@ vertical_alignment = 1
 
 [node name="Statistic" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" groups=["statistic"] instance=ExtResource("5_wrq5b")]
 layout_mode = 2
-property = &"money_end"
+property = &"money_earned"
 
 [node name="Label2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
