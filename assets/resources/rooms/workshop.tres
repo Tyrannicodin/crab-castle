@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_ihymt")
 display_name = "Workshop"
-description = "Gain 2 gold."
+description = "Gain 1 gold. Gain 1 more for each time this room triggers. Resets when removed."
 image = ExtResource("1_sctq5")
 scale = Vector2(0.9, 0.9)
 translation = Vector2(0, 0)
@@ -16,7 +16,7 @@ animate_on_trigger = true
 visible_progress_bar = true
 visible_arrows = 0
 trigger_script = ExtResource("3_sctq5")
-cooldown_seconds = 5.0
+cooldown_seconds = 10.0
 requires_enemies_to_trigger = false
 weight = 100
 cost = 17
