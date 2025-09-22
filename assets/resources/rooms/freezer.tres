@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_d3tcq")
 display_name = "Freezer"
-description = "Stuns underwater enemies for 3 seconds."
+description = "Stuns underwater enemies for 2 seconds."
 image = ExtResource("1_qabjs")
 scale = Vector2(0.55, 0.55)
 translation = Vector2(0, 0)
@@ -16,7 +16,7 @@ animate_on_trigger = false
 visible_progress_bar = true
 visible_arrows = 0
 trigger_script = ExtResource("3_ao2cv")
-cooldown_seconds = 3.0
+cooldown_seconds = 5.0
 requires_enemies_to_trigger = true
 weight = 90
 cost = 15

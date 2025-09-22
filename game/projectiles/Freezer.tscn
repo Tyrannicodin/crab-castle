@@ -8,7 +8,7 @@ damage = 0
 speed = 0.0
 max_velocity = 0.0
 pierce = 10
-stun_lock = 3.0
+stun_lock = 2.0
 movement_type = 1
 sound = 1
 
