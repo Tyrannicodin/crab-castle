@@ -88,10 +88,10 @@ func set_rank(rank: int):
 	material.set_shader_parameter("rank", rank)
 
 func stun_lock(time: float):
-	stun_lock_time_remaining = time
+	stun_lock_time_remaining = max(stun_lock_time_remaining, time)
 
 func knockback(power: int):
-	backwards_velocity = power * (1 - enemy.knockback_resist)
+	backwards_velocity = 0.9 * power * (1 - enemy.knockback_resist)
 
 func on_death():
 	death.emit(enemy)
