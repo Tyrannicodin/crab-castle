@@ -55,16 +55,16 @@ func reroll_rooms() -> void:
 		var room = filtered_rooms[selected].duplicate()
 		room.cost = scaling.scale_shop(wave_number, room.cost)
 		child.set_room(room)
-		child.disabled = money < room.cost
 		weights.remove_at(selected)
 		filtered_rooms.remove_at(selected)
 
 func on_upgrade_selected(room: Room) -> void:
 	# Maybe ID could be replaced with a resource
-	upgrade_selected.emit(room)
-	on_balance_change(money - room.cost)
-	self.balance_changed.emit(money)
-	on_close()
+	if money >= room.cost:
+		upgrade_selected.emit(room)
+		on_balance_change(money - room.cost)
+		self.balance_changed.emit(money)
+		on_close()
 
 func on_rooms_loaded(rooms: Array[Room]):
 	available_rooms = rooms

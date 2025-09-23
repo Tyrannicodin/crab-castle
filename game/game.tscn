@@ -35,7 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://b1tvic7afvxmn" path="res://assets/heart.png" id="23_q52ks"]
 [ext_resource type="Texture2D" uid="uid://cn5kqx8ahc3t6" path="res://assets/trash_can.png" id="29_gvtgv"]
 [ext_resource type="Script" uid="uid://dy6w7t42yvbeo" path="res://game/trash_can.gd" id="30_5ywmu"]
-[ext_resource type="Script" path="res://game/trash_can_tooltip.gd" id="31_mhp6k"]
+[ext_resource type="Script" uid="uid://f3181yq0x2f4" path="res://game/trash_can_tooltip.gd" id="31_mhp6k"]
 [ext_resource type="Script" uid="uid://dv8ryvt05fp74" path="res://game/tutorial.gd" id="32_posua"]
 [ext_resource type="PackedScene" uid="uid://jopgqibdquxd" path="res://game/TutorialTextBox.tscn" id="32_pvdu1"]
 [ext_resource type="Texture2D" uid="uid://dmnmkxsnexb3d" path="res://assets/room_details/arrow_down.png" id="33_cf130"]

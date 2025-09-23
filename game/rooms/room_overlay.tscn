@@ -7,14 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://dmnmkxsnexb3d" path="res://assets/room_details/arrow_down.png" id="4_dic12"]
 [ext_resource type="Texture2D" uid="uid://cgggqyclpoo3o" path="res://assets/room_details/arrow_up.png" id="5_vvy4f"]
 [ext_resource type="AudioStream" uid="uid://68tov3l70any" path="res://assets/sfx/buff.mp3" id="6_5hopr"]
-[ext_resource type="Script" path="res://game/rooms/tooltip.gd" id="8_q8w3g"]
+[ext_resource type="Script" uid="uid://bvwc6cvvxcqyu" path="res://game/rooms/tooltip.gd" id="8_q8w3g"]
 
 [node name="RoomImages" type="Node2D"]
 script = ExtResource("1_brg1v")
 
 [node name="Build" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_llj3t")
-pitch_scale = 1.1579
+pitch_scale = 1.13543
 
 [node name="Buff" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(232, 171)
