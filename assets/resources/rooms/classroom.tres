@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://dagwxcjqa7pml" path="res://assets/rooms/classroom.png" id="1_kbvyt"]
 [ext_resource type="Script" uid="uid://s5vpeux5sx8g" path="res://assets/resources/definitions/room.gd" id="2_8a7a8"]
-[ext_resource type="Script" path="res://assets/resources/rooms/classroom.gd" id="3_kbvyt"]
+[ext_resource type="Script" uid="uid://7rd0ij8ha7cx" path="res://assets/resources/rooms/classroom.gd" id="3_kbvyt"]
 
 [resource]
 script = ExtResource("2_8a7a8")
 display_name = "Classroom"
-description = "Deals 4 damage. Gain 1 projectile for each unique room."
+description = "Deals %d damage. Gain 1 projectile for each unique room."
 image = ExtResource("1_kbvyt")
 scale = Vector2(0.4, 0.4)
 translation = Vector2(0, 0)
@@ -15,6 +15,7 @@ rotation = 0.0
 animate_on_trigger = true
 visible_progress_bar = true
 visible_arrows = 0
+base_damage = 4
 trigger_script = ExtResource("3_kbvyt")
 cooldown_seconds = 3.0
 requires_enemies_to_trigger = true

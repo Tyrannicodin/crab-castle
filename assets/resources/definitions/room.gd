@@ -17,6 +17,7 @@ class_name Room
 @export_flags("up", "right", "down", "left") var visible_arrows: int = 0
 
 @export_category("stats")
+@export var base_damage: int = 0
 @export var trigger_script: GDScript
 @export var cooldown_seconds: float = 0
 @export var requires_enemies_to_trigger: bool = true

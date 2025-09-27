@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_bpa10")
 display_name = "Crab Cannon"
-description = "Deals 12 damage to up to 10 enemies."
+description = "Deals %d damage to up to 10 enemies."
 image = ExtResource("1_2vvaa")
 scale = Vector2(-0.35, 0.35)
 translation = Vector2(0, 0)
@@ -15,6 +15,7 @@ rotation = 0.0
 animate_on_trigger = false
 visible_progress_bar = true
 visible_arrows = 0
+base_damage = 12
 trigger_script = ExtResource("3_tnirv")
 cooldown_seconds = 4.5
 requires_enemies_to_trigger = true

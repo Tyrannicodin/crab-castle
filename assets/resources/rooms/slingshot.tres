@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_5o570")
 display_name = "Slingshot"
-description = "Deals 1 damage 3 times."
+description = "Deals %d damage 3 times."
 image = ExtResource("1_pv3f7")
 scale = Vector2(0.55, 0.55)
 translation = Vector2(0, 0)
@@ -15,6 +15,7 @@ rotation = 0.0
 animate_on_trigger = false
 visible_progress_bar = true
 visible_arrows = 0
+base_damage = 1
 trigger_script = ExtResource("3_hfnin")
 cooldown_seconds = 1.3
 requires_enemies_to_trigger = true

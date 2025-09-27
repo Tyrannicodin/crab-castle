@@ -35,7 +35,7 @@ func add_room(room: Room) -> void:
 	var image: Node2D = but.get_child(0)
 	image.texture = room.image
 	image.scale = room.scale / 2.5;
-	but.room = room
+	but.instance = Tower.RoomInstance.new(room, Vector2i(-1,-1))
 	bench.push_back(but)
 	self.add_child(but)
 

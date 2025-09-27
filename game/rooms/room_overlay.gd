@@ -6,10 +6,11 @@ class_name RoomOverlay
 	set(value):
 		room = value
 		if room:
-			$Tooltip.set_room_tooltip(wave_number, room)
+			$Tooltip.set_room_tooltip(wave_number, instance)
 			update_sprite()
 var progress: float = 0
 var flavor_text = preload("res://game/FlavorText.tscn")
+var instance: Variant = null
 
 var wave_number: int = 0
 var extra_scale = Vector2(1, 1)

@@ -3,9 +3,10 @@ extends Node
 var dragging = false
 var click_radius = 40
 var initial_pos = Vector2(0,0)
-var room: Room
+var instance: Tower.RoomInstance
 
 @export var room_id = -1
+
 func _input(event):
 	if $"../../../".in_wave: return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -22,6 +23,6 @@ func _input(event):
 		self.global_position = event.position
 
 func _process(delta: float) -> void:
-	if room:
+	if instance.type:
 		var wave_number = $"../../../".wave_number
-		$"Tooltip".set_room_tooltip(wave_number, room)
+		$"Tooltip".set_room_tooltip(wave_number, instance)

@@ -11,10 +11,20 @@ func _ready() -> void:
 	mouse_entered.connect(mouse_entered_f)
 	mouse_exited.connect(mouse_exited_f)
 
-func set_room_tooltip(wave_number: int, room: Room):
-	tooltip_name = room.display_name
-	text = "%s\nCooldown: %ss" % [room.description, str(room.cooldown_seconds)]
-	sell_price = scaling.sell_price(wave_number, room)
+func set_room_tooltip(wave_number: int, room: Tower.RoomInstance):
+	if (!room):
+		tooltip_name = "NULL"
+		text = "NULL"
+		sell_price = -1
+		return
+	tooltip_name = room.type.display_name
+	var description = ""
+	if (room.gym_extra_damage > 0 or room.funeral_parlor_extra_damage > 0):
+		description = room.type.description.replace("%d", str(room.gym_extra_damage + room.funeral_parlor_extra_damage + room.type.base_damage))
+	else:
+		description = room.type.description.replace("%d", str(room.type.base_damage))
+	text = "%s\nCooldown: %ss" % [description, str(room.type.cooldown_seconds)]
+	sell_price = scaling.sell_price(wave_number, room.type)
 
 func mouse_entered_f():
 	if tooltip != null:
