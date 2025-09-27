@@ -3,7 +3,9 @@ shader_type canvas_item;
 uniform vec4 elite_r1: source_color;
 uniform vec4 elite_r2: source_color;
 uniform vec4 elite_r3: source_color;
+uniform vec4 poision: source_color;
 uniform int rank = 0;
+uniform float poision_level = 0.0;
 
 uniform float radius = 30;
 uniform int samples = 15;
@@ -31,7 +33,10 @@ void fragment(){
 	vec4 previous_color = texture(TEXTURE, UV);
     vec4 white_color = vec4(1.0, 1.0, 1.0, previous_color.a);
     vec4 new_color = previous_color;
-    new_color = mix(previous_color, white_color, brightness);
+	if (poision_level >= 1.0 && previous_color.a > 0.9) {
+		new_color = mix(new_color, poision, 0.75 - 1.0 / (poision_level + 1.0));
+	}
+    new_color = mix(new_color, white_color, brightness);
     COLOR = new_color;
 
 	if (COLOR.a < 0.9) {

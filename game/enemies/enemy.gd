@@ -25,6 +25,8 @@ var time_since_hit: float = 10
 var backwards_velocity: float = 0
 var stun_lock_time_remaining: float = 0
 var living_time: float = 0
+var poision_level = 0
+var time_since_poision: float = 0
 
 func _process(delta):
 	move(delta)
@@ -37,6 +39,7 @@ func _process(delta):
 		rotational_vel += delta
 	
 	time_since_hit += delta
+	time_since_poision += delta
 	
 	material.set_shader_parameter("brightness",
 		lerp(1., 0., ease(time_since_hit * 5, 20))
@@ -48,6 +51,10 @@ func _process(delta):
 	
 	if self.scale.x < .05:
 		self.queue_free()
+		
+	if time_since_poision >= 1 and poision_level > 0:
+		damage(poision_level * 5)
+		time_since_poision = 0
 
 func move(delta) -> void:
 	backwards_velocity -= ACCELERATION * delta
@@ -86,6 +93,10 @@ func damage(value: int):
 	
 func set_rank(rank: int):
 	material.set_shader_parameter("rank", rank)
+
+func poision():
+	poision_level += 1
+	material.set_shader_parameter("poision_level", poision_level)
 
 func stun_lock(time: float):
 	stun_lock_time_remaining = max(stun_lock_time_remaining, time)

@@ -25,5 +25,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		if enemy is not EnemyInstance:
 			continue
 		enemy.damage(damage)
+		enemy.poision()
 		enemy.stun_lock(stun_lock)
 		enemy.knockback(knockback)
