@@ -216,9 +216,9 @@ func fire_projectile_above_enemy(_room: Tower.RoomInstance, projectile: Node2D, 
 	projectile.visible = true
 	projectile.global_position = target.global_position + Vector2(0, -50)
 
-func room_selected(room: Room) -> void:
+func room_selected(room: Tower.RoomInstance) -> void:
 	rooms_built += 1
-	purchased_rooms.append(Tower.RoomInstance.new(room, Vector2i(-1,-1)))
+	purchased_rooms.append(room)
 
 func room_placed(room: int) -> void:
 	purchased_rooms.remove_at(room)
@@ -255,8 +255,8 @@ func _on_rooms_sell(room: int, value: int) -> void:
 	purchased_rooms.remove_at(room)
 	rooms_sold += 1
 
-func _on_tower_removal_service(room: Room) -> void:
-	purchased_rooms.append(Tower.RoomInstance.new(room, Vector2i(-1,-1)))
+func _on_tower_removal_service(room: Tower.RoomInstance) -> void:
+	purchased_rooms.append(room)
 
 func enemy_taken_damage(amount: int) -> void:
 	total_damage_dealt += amount

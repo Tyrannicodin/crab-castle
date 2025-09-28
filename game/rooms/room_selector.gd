@@ -26,16 +26,17 @@ func _process(_delta: float) -> void:
 	if $"../Bench/Crane".dragging:
 		dragging_crane = true
 
-func add_room(room: Room) -> void:
+func add_room(room: Tower.RoomInstance) -> void:
 	if is_full():
 		# This is really bad...
 		return
 	
 	var but: Node2D = BenchedRoom.instantiate()
 	var image: Node2D = but.get_child(0)
-	image.texture = room.image
-	image.scale = room.scale / 2.5;
-	but.instance = Tower.RoomInstance.new(room, Vector2i(-1,-1))
+	image.texture = room.type.image
+	image.scale = room.type.scale / 2.5;
+	room.position = Vector2i(-1,-1)
+	but.instance = room
 	bench.push_back(but)
 	self.add_child(but)
 

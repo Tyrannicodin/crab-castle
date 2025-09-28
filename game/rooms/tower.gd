@@ -144,9 +144,10 @@ func _input(event) -> void:
 			return
 		if room_overlays.has(target):
 			var overlay = room_overlays[target]
+			var room_to_remove = rooms.filter(func(room: RoomInstance): return room.position == target)[0]
 			room_overlays.erase(target)
 			rooms = rooms.filter(func(room: RoomInstance): return room.position != target)
-			removal_service.emit(overlay.room)
+			removal_service.emit(room_to_remove)
 			overlay.queue_free()
 			$"../../UI/Rooms".dragging_crane = false
 			redraw_castle()

@@ -61,7 +61,7 @@ func reroll_rooms() -> void:
 
 func on_upgrade_selected(room: Room) -> void:
 	# Maybe ID could be replaced with a resource
-	upgrade_selected.emit(room)
+	upgrade_selected.emit(Tower.RoomInstance.new(room, Vector2i(-1,-1)))
 	on_balance_change(money - room.cost)
 	self.balance_changed.emit(money)
 	on_close()

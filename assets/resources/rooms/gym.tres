@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_6ek50")
 display_name = "Gym"
-description = "Deals 10 damage. Damage increases by 1 every 10 times any room triggers. Resets when removed."
+description = "Deals 10 damage. Damage increases by 1 every 10 times any room triggers."
 image = ExtResource("1_j60sr")
 scale = Vector2(0.6, 0.6)
 translation = Vector2(0, 0)
@@ -15,6 +15,7 @@ rotation = 0.0
 animate_on_trigger = true
 visible_progress_bar = true
 visible_arrows = 0
+base_damage = 0
 trigger_script = ExtResource("3_j60sr")
 cooldown_seconds = 3.0
 requires_enemies_to_trigger = true
