@@ -41,6 +41,10 @@ func _process(delta):
 	time_since_hit += delta
 	time_since_poision += delta
 	
+	if time_since_poision >= 1 and poision_level > 0:
+		self.damage(poision_level * 5)
+		time_since_poision = 0
+	
 	material.set_shader_parameter("brightness",
 		lerp(1., 0., ease(time_since_hit * 5, 20))
 	)
@@ -51,10 +55,6 @@ func _process(delta):
 	
 	if self.scale.x < .05:
 		self.queue_free()
-		
-	if time_since_poision >= 1 and poision_level > 0:
-		damage(poision_level * 5)
-		time_since_poision = 0
 
 func move(delta) -> void:
 	backwards_velocity -= ACCELERATION * delta
