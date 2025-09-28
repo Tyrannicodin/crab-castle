@@ -15,6 +15,7 @@ rotation = 0.0
 animate_on_trigger = true
 visible_progress_bar = true
 visible_arrows = 0
+base_damage = 0
 trigger_script = ExtResource("3_h1lad")
 cooldown_seconds = 10.0
 requires_enemies_to_trigger = false

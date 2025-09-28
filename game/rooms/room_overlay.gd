@@ -35,7 +35,7 @@ func _process(delta) -> void:
 	$Pos.visible = true
 	$Pos/Sprite.visible = true
 	update_sprite()
-
+	
 	if not room:
 		return
 
