@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-var tutorial_disabled = not ConfigManager.get_value("show_tutorial", true)
-var show_tutorial = ConfigManager.get_value("show_tutorial", true)
+@onready var tutorial_disabled = not ConfigManager.get_value("show_tutorial", true)
+@onready var show_tutorial = ConfigManager.get_value("show_tutorial", true)
 
 func _ready() -> void:
 	ConfigManager.on_value_set.connect(on_value_set)
