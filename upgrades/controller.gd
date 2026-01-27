@@ -71,6 +71,11 @@ func on_rooms_loaded(rooms: Array[Room]):
 
 func on_balance_change(value: float) -> void:
 	money = value
+	
+	for child in $Margin/VBox/Upgrades.get_children():
+		var room: Room = child.room
+		if room:
+			child.disabled = money < room.cost
 
 func skip() -> void:
 	on_close()
