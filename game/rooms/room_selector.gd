@@ -60,6 +60,6 @@ func remove_room(index: int) -> void:
 
 func _on_tower_sell(room: int) -> void:
 	var room_data = bench[room]
-	var sell_price = scaling.sell_price($"../..".wave_number, room_data.room)
+	var sell_price = scaling.sell_price($"../..".wave_number, room_data.instance.type)
 	remove_room(room)
 	sell.emit(room, sell_price)
